@@ -72,7 +72,7 @@ CREATE TABLE equipos
 	tiempo_laborado		DOUBLE PRECISION
 );
 
-CREATE TABLE actividades
+CREATE TABLE historias
 (
     ID                    INT PRIMARY KEY,
     Nombre                VARCHAR(200),
@@ -85,14 +85,14 @@ CREATE TABLE actividades
 );
 
 
-CREATE TABLE subactividades
+CREATE TABLE epopeyas
 (
 	ID 						INT PRIMARY KEY,
 	Nombre                  VARCHAR(200),
 	tiempo_planificado    	DOUBLE PRECISION,
     tiempo_real           	DOUBLE PRECISION,
 	estado				  	VARCHAR(50),
-	actividad				INT REFERENCES actividades(ID),
+	actividad				INT REFERENCES epopeyas(ID),
 	responsable				INT REFERENCES equipos(ID)
 );
 
