@@ -1,19 +1,13 @@
-CREATE USER plan 
-WITH PASSWORD 'plan'
-SUPERUSER CREATEDB;
-
-CREATE DATABASE planificacion 
-OWNER plan;
-
 CREATE TABLE owners
 (
 	ID			INT PRIMARY KEY,
-	Nombres		VARCHAR(30),
-	Apellidos	VARCHAR(30),
-	Telefono	CHAR(12),
-	Celular		CHAR(12),
-	Direccion	VARCHAR(100),
-	Empresa		VARCHAR(150)
+	nombres		VARCHAR(30),
+	apellidos	VARCHAR(30),
+	razonsocial	VARCHAR(100),
+	telefono	VARCHAR(50),
+	celular		VARCHAR(50),
+	direccion	VARCHAR(100),
+	empresa		VARCHAR(150)
 );
 
 CREATE TABLE proyectos
@@ -27,11 +21,23 @@ CREATE TABLE proyectos
 	owner		 	INT REFERENCES owners(ID)
 );
 
+CREATE TABLE sprints
+(
+	numero			 INT,
+	objetivo			VARCHAR(300),
+	fecha_inicio	         DATE,
+	fecha_fin		 DATE,
+	horas_planificadas       INT,
+	porcentaje_valido        INT,
+	proyecto		INT REFERENCES proyectos(ID),
+	PRIMARY KEY(numero,proyecto)
+);
+-------------------------------------------------------HASTA AQUI LA VERSION DEL SCRIPT EJECUTADA --------------------------------------
 CREATE TABLE funciones
 (
 	ID			INT PRIMARY KEY,
-	Nombre		VARCHAR(25),
-	Descripcion	VARCHAR(300)
+	nombre		VARCHAR(25),
+	descripcion	VARCHAR(300)
 );
 
 CREATE TABLE miembros
@@ -52,18 +58,6 @@ CREATE TABLE funciones_miembro
 	PRIMARY KEY(miembro,funcion)
 );
 
-CREATE TABLE sprints
-(
-	numero			 INT,
-	objetivo			VARCHAR(300),
-	fecha_inicio	         DATE,
-	fecha_fin		 DATE,
-	horas_planificadas       INT,
-	porcentaje_valido        INT,
-	proyecto		INT REFERENCES proyectos(ID),
-	PRIMARY KEY(numero,proyecto)
-);
-
 CREATE TABLE equipos
 (
 	ID					INT PRIMARY KEY,
@@ -75,7 +69,7 @@ CREATE TABLE equipos
 CREATE TABLE historias
 (
     ID                    INT PRIMARY KEY,
-    Nombre                VARCHAR(200),
+    nombre                VARCHAR(200),
     tiempo_planificado    DOUBLE PRECISION,
     tiempo_real           DOUBLE PRECISION,
 	estado				  VARCHAR(50),
@@ -88,7 +82,7 @@ CREATE TABLE historias
 CREATE TABLE epopeyas
 (
 	ID 						INT PRIMARY KEY,
-	Nombre                  VARCHAR(200),
+	nombre                  VARCHAR(200),
 	tiempo_planificado    	DOUBLE PRECISION,
     tiempo_real           	DOUBLE PRECISION,
 	estado				  	VARCHAR(50),
@@ -99,8 +93,8 @@ CREATE TABLE epopeyas
 CREATE TABLE tipo_pruebas
 (
 	ID			INT PRIMARY KEY,
-	Tipo		VARCHAR(25),
-	Descripcion	VARCHAR(300)	
+	tipo		VARCHAR(25),
+	descripcion	VARCHAR(300)	
 );
 
 CREATE TABLE pruebas
@@ -427,7 +421,7 @@ END;
 $body$
 LANGUAGE 'plpgsql';
 /* ***************************************************************************************************************** */
-select p_insert_funcion('Senior Java','Programación Avanzada en JAVA');
+select p_insert_funcion('Senior Java','Programaciï¿½n Avanzada en JAVA');
 /* ***************************************************************************************************************** */
 /* ***************************************************************************************************************** */
 CREATE OR REPLACE FUNCTION p_update_funcion(
@@ -447,7 +441,7 @@ END;
 $body$
 LANGUAGE 'plpgsql';
 /* ***************************************************************************************************************** */
-select p_update_funcion(6,'Senior Java','Programación Avanzada en JAVA');
+select p_update_funcion(6,'Senior Java','Programaciï¿½n Avanzada en JAVA');
 /* ***************************************************************************************************************** */
 /* ***************************************************************************************************************** */
 CREATE OR REPLACE FUNCTION p_delete_funcion(
