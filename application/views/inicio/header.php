@@ -10,84 +10,102 @@
     
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 
-    <script src="<?php echo base_url() ?>js/jquery/jquery-1.8.2.min.js" type="text/javascript" ></script>
-    <link href="<?php echo base_url() ?>css/customize-template.css" type="text/css" media="screen, projection" rel="stylesheet" />
+    <script src="<?php echo base_url() ?>js/jquery-2.0.3.min.js" type="text/javascript" ></script>
+    <link href="<?php echo base_url() ?>css/style.css" type="text/css" media="screen, projection" rel="stylesheet" />
+    <link href="<?php echo base_url() ?>css/font-awesome.css" type="text/css" media="screen, projection" rel="stylesheet" />
 
     <style>
     </style>
 </head>
     <body>
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <button class="btn btn-navbar" data-toggle="collapse" data-target="#app-nav-top-bar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="#" class="brand"><i class="icon-leaf"></i></a>
-                    <div id="app-nav-top-bar" class="nav-collapse">
-                        <ul class="nav">
-                            
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">PROYECTOS
-                                        <b class="caret hidden-phone"></b>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="dashboard.html">Dashboard</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                        </ul>
-                        <ul class="nav pull-right">
-                            <li>
-                                <a href="login.html">Logout</a>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-		<div class="body-nav body-nav-horizontal body-nav-fixed">
-            <div class="container">
-                <ul>
-                    <li>
-                        <a href="<?php echo site_url('proyectos');?>">
-                            <i class="icon-dashboard icon-large"></i> Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="icon-calendar icon-large"></i> Calendario
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo site_url('owners');?>">
-                            <i class="icon-user icon-large"></i>Miembros
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo site_url('sprints');?>">
-                            <i class="icon-tasks icon-large"></i>Sprints
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="icon-cogs icon-large"></i> Settings
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="icon-list-alt icon-large"></i> Forms
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="icon-bar-chart icon-large"></i> Charts
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+		<div class="contenedor-main">
+		<header class="cabecera">
+			<div class="title">
+				<hgroup>
+					<h1>Titulo</h1>
+					<h2>Un toque de Descripcion por Aqui</h2>
+				</hgroup>
+			</div>
+			<div class="tooltips">
+				<div class="panel">
+					<div class="panel-header">
+						TITULO TOOLTIP
+					</div>
+					<div class="panel-body">
+						sugerencia
+					</div>
+				</div>
+			</div>
+		</header>
+			<div class="contenedor">
+				<div style="min-height: 500px;" class="contenedor-left">
+					<nav class="menu">
+						<ul class="">
+							<li>
+								<a href="<?php echo base_url() ?>">
+									<i class="fa fa-lg fa-fw fa-inbox"></i>
+									<span>Inicio</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-lg fa-fw fa-suitcase"></i>
+									<span>Proyectos</span>
+									<b class="collapse-sign">
+									    <em class="fa fa-plus-square-o"></em>
+									</b>
+								</a>
+								<ul>
+									<li>
+										<a href="http://127.0.0.1/planning/es/proyectos"><i class="fa fa-lg fa-fw fa-suitcase"></i>Proyectos</a>
+									</li>
+									<li>
+										<a href="#">Proyecto 1</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://127.0.0.1/planning/es/owners">
+									<i class="fa fa-lg fa-fw fa-group"></i>
+									<span>Owners</span>
+									<b class="collapse-sign">
+									    <em class="fa fa-plus-square-o"></em>
+									</b>
+								</a>
+							</li>
+							<li>
+								<a href="http://127.0.0.1/planning/es/sprints">
+									<i class="fa fa-lg fa-fw fa-calendar"></i>
+									<span>Caldenario</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-lg fa-fw fa-inbox"></i>
+									<span>Item 1</span>
+									<b class="collapse-sign">
+									    <em class="fa fa-plus-square-o"></em>
+									</b>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-lg fa-fw fa-inbox"></i>
+									<span>Main-item</span>
+									<b class="collapse-sign">
+									    <em class="fa fa-plus-square-o"></em>
+									</b>
+								</a>
+								<ul>
+									<li>
+										<a href="#">SUBItem 1</a>
+									</li>
+									<li>
+										<a href="#">SUBItem 2</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				</div>
+					<div class="contenedor-right" style="min-height: 500px;">

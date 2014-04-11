@@ -96,7 +96,7 @@ $autoload['config'] = array();
 |
 */
 
-$autoload['language'] = array('owners','proyectos','sprints');
+$autoload['language'] = array('inicio','owners','proyectos','sprints');
 
 
 /*
