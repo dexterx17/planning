@@ -1,24 +1,28 @@
-CREATE TABLE owners
+CREATE TABLE people
 (
-	ID			INT PRIMARY KEY,
+	ID   INT   AUTO_INCREMENT,
+	nick  VARCHAR(30) UNIQUE,
 	nombres		VARCHAR(30),
-	apellidos	VARCHAR(30),
-	razonsocial	VARCHAR(100),
-	telefono	VARCHAR(50),
-	celular		VARCHAR(50),
-	direccion	VARCHAR(100),
-	empresa		VARCHAR(150)
+	apellidos   VARCHAR(30),
+	telefono    VARCHAR(50),
+	celular     VARCHAR(50),
+	direccion   VARCHAR(100),
+	email    VARCHAR(100),
+	empresa     VARCHAR(150),
+	PRIMARY KEY(ID)
 );
 
 CREATE TABLE proyectos
 (
-	ID 			INT PRIMARY KEY,
-	nombre	 		VARCHAR(150),
-	descripcion 		VARCHAR(500),
-	fecha_inicio 		DATE,
-	fecha_fin 		DATE,
-	presupuesto		DOUBLE PRECISION,
-	owner		 	INT REFERENCES owners(ID)
+	ID    INT    AUTO_INCREMENT,
+	nick    VARCHAR(50)    UNIQUE,
+	nombre    VARCHAR(150),
+	descripcion    VARCHAR(500),
+	fecha_inicio    DATE,
+	fecha_fin    DATE,
+	presupuesto    DOUBLE PRECISION,
+	owner    INT    REFERENCES people(ID),
+	PRIMARY KEY(ID)
 );
 
 CREATE TABLE sprints

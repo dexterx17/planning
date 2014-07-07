@@ -357,6 +357,11 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*
+ * Segmento con el nombre del controlador
+ */
+$config['index_seg_controller']=2;
+
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

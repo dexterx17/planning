@@ -25,4 +25,19 @@ function get_default_table() {
 
 	return $default_table;
 }
+
+function get_row_form($caption,$id,$value) {
+	
+	$default_row = '';
+	$default_row .= '<div class="row control-group">';
+	$default_row .= form_label($caption,"$id");
+	$default_row .= form_input(array(
+										'name'=>"$id",
+										'id'=>"$id",
+										));
+	$default_row .= '</div>';
+	
+	return $default_row;
+}
+
 ?>

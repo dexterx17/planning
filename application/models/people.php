@@ -1,8 +1,8 @@
 <?php
 
-class Proyecto extends CI_Model{
+class People extends CI_Model{
 	
-	var $table_name = "proyectos";
+	var $table_name = "people";
 	
 	/**
 	 *Determina si determinado elemento existe

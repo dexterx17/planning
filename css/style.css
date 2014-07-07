@@ -19,6 +19,11 @@ h2{
 	font bold 14px verdana, sans-serif;
 }
 
+a {
+  color: rgb(200,200,200);
+  text-decoration: none;
+}
+
 body{
 	text-align: center;
 	background: var(main-color);
@@ -161,31 +166,71 @@ body{
 .contenido{
 		padding:10px 14px;
 		position:relative;
+		display:block;
 		left:0px;
+		background: rgb(225,225,225);
 }
 .seccion{
+	display:block;
 	width: 100%;
 	float:left;
 }
 
+.seccion hgroup{
+	background:rgb(200,200,200);
+}
 .pie{
 	width:100%;
 	clear:both;
 	position:relative;
+	display:block;
 	background: #CCCCCC;
 	vertical-align: middle;
 	text-align: center;
 	background: rgb(200,200,200) ;
 	border-radius: 5px 5px;
-	bottom:0px;
+	bottom: 0px;
 /*	
 	border: 1px solid #999999;
 	*/
 }
 
+.row{
+	display:block;
+}
+.col-3,
+.col-6{
+	display:inline-block;
+	position:relative;
+}
+
+.col-3{
+	width:24%;
+}
+
+.col-6{
+	width:48%;
+}
+.block{
+	border:1px solid rgb(0,0,0);
+	padding:10px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.block .col-main{
+	display:inline-block;
+	width:40%;
+}
+
+.block .col-secondary{
+	display:inline-block;
+	width:58%;
+}
+
 article{
 	background: #FFFBCC;
-	border: 1px solid #999999;
+/*	border: 1px solid #999999;*/
 	padding: 20px;
 	margin-bottom: 15px;
 }
@@ -213,3 +258,40 @@ figcaption{
 .panel-body{
 	display:block;
 }
+
+.btn{
+	background:rgb(50,50,50);
+	border-radius:5px;
+	margin:2px 2px 2px 5px;
+}
+
+form{
+	padding:2px;
+}
+
+form .row{
+	display: block;
+	padding: 5px 0px 5px 10px;
+	
+}
+
+form .footer{
+	margin: 10px 0px 0px 10px;
+	bottom:0px;
+	width:100%;
+	/*background: rgb(125,125,125);*/
+}
+
+label.valid {
+	width: 24px;
+	height: 24px;
+	background: url(../images/valid.png) center center no-repeat;
+	display: inline-block;
+	text-indent: -9999px;
+}
+label.error {
+	font-weight: bold;
+	padding: 2px 8px;
+	margin-top: 2px;
+}
+

@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('table','database','grocery_CRUD');
+$autoload['libraries'] = array('table','database','form_validation');
 
 
 /*
@@ -64,7 +64,7 @@ $autoload['libraries'] = array('table','database','grocery_CRUD');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url','table');
+$autoload['helper'] = array('url','table','form','language');
 
 
 /*
@@ -96,7 +96,7 @@ $autoload['config'] = array();
 |
 */
 
-$autoload['language'] = array('inicio','owners','proyectos','sprints');
+$autoload['language'] = array('inicio','comun','people','proyectos','sprints');
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array('inicio','owners','proyectos','sprints');
 |
 */
 
-$autoload['model'] = array('owner','proyecto','grocery_crud_model');
+$autoload['model'] = array('people','proyecto','grocery_crud_model');
 
 
 /* End of file autoload.php */
