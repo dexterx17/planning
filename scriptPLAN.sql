@@ -2,7 +2,7 @@ CREATE TABLE people
 (
 	ID   INT   AUTO_INCREMENT,
 	nick  VARCHAR(30) UNIQUE,
-	nombres		VARCHAR(30),
+	nombres VARCHAR(30),
 	apellidos   VARCHAR(30),
 	telefono    VARCHAR(50),
 	celular     VARCHAR(50),
@@ -27,7 +27,7 @@ CREATE TABLE proyectos
 
 CREATE TABLE sprints
 (
-	numero			 INT,
+	numero			 INT AUTO_INCREMENT,
 	objetivo			VARCHAR(300),
 	fecha_inicio	         DATE,
 	fecha_fin		 DATE,
@@ -36,6 +36,33 @@ CREATE TABLE sprints
 	proyecto		INT REFERENCES proyectos(ID),
 	PRIMARY KEY(numero,proyecto)
 );
+
+CREATE TABLE actividades
+(
+    ID                    INT PRIMARY KEY AUTO_INCREMENT,
+    nombre                VARCHAR(200),
+    descripcion           TEXT,
+    tiempo_planificado    DOUBLE PRECISION,
+    tiempo_real           DOUBLE PRECISION,
+	estado				  VARCHAR(50),
+ 	proyecto			  INT,
+	FOREIGN KEY (proyecto) REFERENCES proyectos(ID)
+);
+
+ALTER TABLE actividades ADD COLUMN tipo INT;
+
+CREATE TABLE tareas
+(
+    ID                    INT PRIMARY KEY AUTO_INCREMENT,
+    nombre                VARCHAR(200),
+    descripcion           TEXT,
+    tiempo_planificado    DOUBLE PRECISION,
+    tiempo_real           DOUBLE PRECISION,
+	estado				  VARCHAR(50),
+ 	actividad			  INT,
+ FOREIGN KEY (actividad) REFERENCES actividades(ID)
+);
+
 -------------------------------------------------------HASTA AQUI LA VERSION DEL SCRIPT EJECUTADA --------------------------------------
 CREATE TABLE funciones
 (

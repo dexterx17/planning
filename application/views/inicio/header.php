@@ -8,12 +8,14 @@
     
     <meta name="layout" content="main"/>
     
-    <link href="<?php echo base_url() ?>css/style.css" type="text/css" media="screen, projection" rel="stylesheet" />
+    <link href="<?php echo base_url() ?>css/estilo.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <link href="<?php echo base_url() ?>css/font-awesome.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 
     <script src="<?php echo base_url() ?>js/jquery-2.0.3.min.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/jquery.validate_es.min.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/highcharts.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/dark-blue.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/scripts.js" type="text/javascript" ></script>
     
 
@@ -25,8 +27,8 @@
 		<header class="cabecera">
 			<div class="title">
 				<hgroup>
-					<h1>Titulo</h1>
-					<h2>Un toque de Descripcion por Aqui</h2>
+					<h1>DRY - KISS - SOLID</h1>
+					<h2>Monitoreando y gestionando para ti...</h2>
 				</hgroup>
 			</div>
 			<div class="tooltips">
@@ -62,9 +64,6 @@
 									<li>
 										<a href="<?php echo site_url('proyectos') ?>"><i class="fa fa-lg fa-fw fa-suitcase"></i>Proyectos</a>
 									</li>
-									<li>
-										<a href="#">Proyecto 1</a>
-									</li>
 								</ul>
 							</li>
 							<li>
@@ -79,42 +78,13 @@
 									<li>
 										<a href="<?php echo site_url('peoples') ?>"><i class="fa fa-lg fa-fw fa-suitcase"></i>Owners</a>
 									</li>
-									<li>
-										<a href="#">Developers</a>
-									</li>
 								</ul>
 							</li>
 							<li>
 								<a href="http://127.0.0.1/planning/es/sprints">
 									<i class="fa fa-lg fa-fw fa-calendar"></i>
-									<span>Caldenario</span>
+									<span><?php echo lang('comun_calendario'); ?></span>
 								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa fa-lg fa-fw fa-inbox"></i>
-									<span>Item 1</span>
-									<b class="collapse-sign">
-									    <em class="fa fa-minus-square-o"></em>
-									</b>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa fa-lg fa-fw fa-inbox"></i>
-									<span>Main-item</span>
-									<b class="collapse-sign">
-									    <em class="fa fa-plus-square-o"></em>
-									</b>
-								</a>
-								<ul>
-									<li>
-										<a href="#">SUBItem 1</a>
-									</li>
-									<li>
-										<a href="#">SUBItem 2</a>
-									</li>
-								</ul>
 							</li>
 						</ul>
 					</nav>

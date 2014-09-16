@@ -100,3 +100,75 @@ $.fn.extend({
 		});
 	} // end function
 });
+
+
+
+//LOAD AJAX PAGES
+
+function loadURL(url, container) {
+	//console.log(container)
+
+	$.ajax({
+		type : "GET",
+		url : url,
+		dataType : 'html',
+		cache : true, // (warning: this will cause a timestamp and will call the request twice)
+		beforeSend : function() {
+			// cog placed
+			container.html('<h1><i class="fa fa-cog fa-spin"></i> Cargando contenido...</h1>');
+		
+			// Only draw breadcrumb if it is main content material
+			// TODO: see the framerate for the animation in touch devices
+			
+			if (container[0] == $("#contenido2")[0]) {
+				//drawBreadCrumb();
+				// scroll up
+				$("html").animate({
+					scrollTop : 0
+				}, "fast");
+			} 
+		},
+		/*complete: function(){
+	    	// Handle the complete event
+	    	// alert("complete")
+		},*/
+		success : function(data) {
+			// cog replaced here...
+			// alert("success")
+			
+			container.css({
+				opacity : '0.0'
+			}).html(data).delay(50).animate({
+				opacity : '1.0'
+			}, 300);
+			
+
+		},
+		error : function(xhr, ajaxOptions, thrownError) {
+			container.html('<h4 style="margin-top:10px; display:block; text-align:left"><i class="fa fa-warning txt-color-orangeDark"></i> Error 404! Página no encontrada.</h4>');
+		},
+		async : false
+	});
+
+	//console.log("ajax request sent");
+}
+
+$(document).on('click', '.btn-embed', function(e) {
+    e.preventDefault();
+    var $this = $(e.currentTarget);
+	loadURL($this.attr('href'),$('#contenido2'));
+});
+
+$(document).on('click', '.btn-redirected', function(e) {
+    e.preventDefault();
+    var $this = $(e.currentTarget);
+    
+	loadURL($this.attr('href'),$('#'+$this.attr('data-content')));
+});
+
+
+$(document).on('click', '.panel-collapse panel-header', function(e) {
+    e.preventDefault();
+    var $this = $(e.currentTarget);
+    
+});

@@ -4,8 +4,20 @@
 		<div class="col-main">
 			<div class="panel">
 				<div class="panel-header">
+					<div class="menu-operaciones">
+						<ul>
+							<li><a href="<?php echo site_url("$controller_name/nuevo/".$info['ID']); ?> ">
+									<i class="fa fa-lg fa-fw fa-edit"></i>
+									<span><?php echo lang('comun_edit'); ?></span>
+								</a>
+							</li>
+							<li><i class="fa fa-lg fa-fw fa-trash-o"></i>
+								<span><?php echo lang('comun_delete'); ?></span>
+							</li>
+						</ul>
+					</div>
 					<h2><a href="<?php echo site_url($controller_name."/view/".$info['ID']); ?>"> <?php echo $info['nick']; ?></a> </h2>
-					<h3><?php echo $info['nombre']; ?></h3>/
+					<h3><?php echo $info['nombre']; ?></h3>
 					<small><?php echo $info['descripcion']; ?></small>
 				</div>
 				<div class="panel-body">

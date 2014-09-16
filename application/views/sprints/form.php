@@ -1,10 +1,9 @@
-<?php $this -> load -> view('inicio/header'); ?>
 <div class="contenido">
 	<section class="seccion">
 		<article class="panel">
 			<hgroup>
 				<h2><?php echo lang($controller_name.'_new'); ?></h2>
-				<small><?php echo lang($controller_name.'_description').$info['nick']; ?></small>
+				<small><?php echo lang($controller_name.'_description'); ?></small>
 			</hgroup>
 			<div id="results" style="display: none">
 				<div id="messages">
@@ -12,11 +11,11 @@
 				</div>
 				<!-- SI SE QUIEREN AGREGAR MAS BOTENES PARA OPERACIONES DESPUES DE GUARDAR-->
 				<div class="acciones">
-					<a class="btn" href="<?php echo site_url("$controller_name"); ?>">
+					<a class="btn btn-embed" href="<?php echo site_url("$controller_name/view/".$proyecto); ?>">
 						<i class="fa fa-lg fa-fw fa-group"></i>
 						<span><?php echo lang('comun_back_to_list'); ?></span>
 					</a>
-					<a class="btn" href="<?php echo site_url("$controller_name/nuevo"); ?>">
+					<a class="btn btn-embed" href="<?php echo site_url("$controller_name/nuevo/-1/".$proyecto); ?>">
 						<i class="fa fa-lg fa-fw fa-plus"></i>
 						<span><?php echo lang($controller_name.'_new'); ?></span>
 					</a>
@@ -24,15 +23,14 @@
 			</div>
 			<form action="<?php echo site_url($controller_name.'/save') ?>" method="post" id="<?php echo $controller_name; ?>-form">
 				<div id="errors" class="alert-info"></div>
-				<?php echo get_row_form(lang('comun_nick'),'nick',$info['nick']); ?>
-				<?php echo get_row_form(lang('comun_name'),'nombre',$info['nombre']); ?>
-				<?php echo get_row_form(lang('comun_description'),'descripcion',$info['descripcion']); ?>
-				<?php echo get_row_form(lang('comun_date_start'),'fecha_inicio',$info['fecha_inicio']); ?>
-				<?php echo get_row_form(lang('comun_date_end'),'fecha_fin',$info['fecha_fin']); ?>
-				<?php echo get_row_form(lang('comun_owner'),'owner',$info['owner']); ?>
-				<?php echo get_row_form(lang('comun_presupuesto'),'presupuesto',$info['presupuesto']); ?>
+				<?php echo get_row_form(lang('comun_objetive'),'objetivo',$info['objetivo']); ?>
+				<?php echo get_row_form(lang('comun_start_date'),'fecha_inicio',$info['fecha_inicio']); ?>
+				<?php echo get_row_form(lang('comun_end_date'),'fecha_fin',$info['fecha_fin']); ?>
+				<?php echo get_row_form(lang('comun_planned_time'),'horas_planificadas',$info['horas_planificadas']); ?>
+				<?php echo get_row_form(lang('comun_valid_percent'),'porcentaje_valido',$info['porcentaje_valido']); ?>
 				
 				<?php echo form_hidden('ID',$info['ID']); ?>
+				<?php echo form_hidden('proyecto',$proyecto); ?>
 				
 				<div class="footer">
 					<?php echo form_submit(array(
@@ -55,12 +53,7 @@
 $(document).ready(function() {
  $('#<?php echo $controller_name; ?>-form').validate({
   rules: {
-   nick: {
-    required: true,
-    minlength:4,
-    maxlength:50
-   },
-   nombre: {
+   objetivo: {
     required: true
    }
   },
@@ -94,4 +87,3 @@ $(document).ready(function() {
 }); // end document.ready
 
 </script>
-<?php $this -> load -> view('inicio/footer'); ?>

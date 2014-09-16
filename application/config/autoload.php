@@ -96,7 +96,7 @@ $autoload['config'] = array();
 |
 */
 
-$autoload['language'] = array('inicio','comun','people','proyectos','sprints');
+$autoload['language'] = array('inicio','comun','people','proyectos','sprints','actividades');
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array('inicio','comun','people','proyectos','sprints');
 |
 */
 
-$autoload['model'] = array('people','proyecto','grocery_crud_model');
+$autoload['model'] = array('people','proyecto','grocery_crud_model','actividad','tarea','sprint');
 
 
 /* End of file autoload.php */

@@ -169,6 +169,7 @@ body{
 		display:block;
 		left:0px;
 		background: rgb(225,225,225);
+		overflow: hidden;
 }
 .seccion{
 	display:block;

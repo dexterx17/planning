@@ -11,7 +11,7 @@
 				<span><?php echo lang($controller_name.'_new'); ?></span>
 			</a>
 		</div>
-		<article>
+		<article class="master">
 			<?php 
 				foreach ($items as $key => $value) {
 					$data['info']=(array)$value;

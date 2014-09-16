@@ -10,7 +10,7 @@
 		foreach ($items as $key => $value) {
 			$data['info']=(array)$value;
 			
-			$this -> load -> view('sprints/block',$data);
+			$this -> load -> view('backlog/block',$data);
 		}
 	?>
 	</div>
