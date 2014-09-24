@@ -10,12 +10,14 @@
     
     <link href="<?php echo base_url() ?>css/estilo.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <link href="<?php echo base_url() ?>css/font-awesome.css" type="text/css" media="screen, projection" rel="stylesheet" />
+    <link href="<?php echo base_url() ?>css/jquery.spinner.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 
     <script src="<?php echo base_url() ?>js/jquery-2.0.3.min.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/jquery.validate_es.min.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/highcharts.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/dark-blue.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/jquery.spinner.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/scripts.js" type="text/javascript" ></script>
     
 

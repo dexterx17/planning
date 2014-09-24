@@ -28,10 +28,12 @@
 				<?php echo get_row_form(lang('comun_nick'),'nick', $info['nick']); ?>
 				<?php echo get_row_form(lang('comun_names'),'nombres',$info['nombres']); ?>
 				<?php echo get_row_form(lang('comun_lastnames'),'apellidos',$info['apellidos']); ?>
-				<?php echo get_row_form(lang('comun_email'),'email','email',$info['email']); ?>
+				<?php echo get_row_form(lang('comun_email'),'email',$info['email']); ?>
 				<?php echo get_row_form(lang('comun_address'),'direccion',$info['direccion']); ?>
 				<?php echo get_row_form(lang('comun_phone'),'telefono',$info['telefono']); ?>
 				<?php echo get_row_form(lang('comun_cellphone'),'celular',$info['celular']); ?>
+				<?php echo get_row_form(lang('comun_latitude'),'latitud',$info['latitud']); ?>
+				<?php echo get_row_form(lang('comun_longitude'),'longitud',$info['longitud']); ?>
 				
 				<?php echo form_hidden('ID',$info['ID']); ?>
 				<div class="footer">

@@ -11,7 +11,8 @@ CREATE TABLE people
 	empresa     VARCHAR(150),
 	PRIMARY KEY(ID)
 );
-
+ALTER TABLE people ADD COLUMN latitud float DEFAULT NULL;
+ALTER TABLE people ADD COLUMN longitud float DEFAULT NULL;
 CREATE TABLE proyectos
 (
 	ID    INT    AUTO_INCREMENT,
@@ -51,6 +52,12 @@ CREATE TABLE actividades
 
 ALTER TABLE actividades ADD COLUMN tipo INT;
 
+CREATE TABLE estado_tarea
+(
+    ID      INT PRIMARY KEY AUTO_INCREMENT,
+    nombre  VARCHAR(50)
+);
+INSERT INTO estado_tarea(nombre) VALUES('TO DO'),('DOING'),('DONE');
 CREATE TABLE tareas
 (
     ID                    INT PRIMARY KEY AUTO_INCREMENT,
@@ -58,10 +65,18 @@ CREATE TABLE tareas
     descripcion           TEXT,
     tiempo_planificado    DOUBLE PRECISION,
     tiempo_real           DOUBLE PRECISION,
-	estado				  VARCHAR(50),
- 	actividad			  INT,
+    estado		  VARCHAR(50),
+    actividad			  INT,
  FOREIGN KEY (actividad) REFERENCES actividades(ID)
 );
+ALTER TABLE tareas MODIFY COLUMN estado INT;
+
+CREATE TABLE IF NOT EXISTS `geocoding` (
+	`address` varchar(255) NOT NULL DEFAULT '',
+	`latitude` float DEFAULT NULL,
+	`longitude` float DEFAULT NULL,
+	PRIMARY KEY (`address`)
+)
 
 -------------------------------------------------------HASTA AQUI LA VERSION DEL SCRIPT EJECUTADA --------------------------------------
 CREATE TABLE funciones

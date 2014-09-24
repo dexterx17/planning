@@ -115,7 +115,7 @@ function loadURL(url, container) {
 		cache : true, // (warning: this will cause a timestamp and will call the request twice)
 		beforeSend : function() {
 			// cog placed
-			container.html('<h1><i class="fa fa-cog fa-spin"></i> Cargando contenido...</h1>');
+			container.html('<h1><i class="small progress"></i> Cargando contenido...</h1>');
 		
 			// Only draw breadcrumb if it is main content material
 			// TODO: see the framerate for the animation in touch devices
@@ -139,7 +139,7 @@ function loadURL(url, container) {
 			container.css({
 				opacity : '0.0'
 			}).html(data).delay(50).animate({
-				opacity : '1.0'
+				opacity : '1.0',
 			}, 300);
 			
 

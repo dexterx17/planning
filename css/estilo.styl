@@ -265,7 +265,7 @@ ul#ul-arbol, ul#ul-arbol ul
 			padding-right 10px
 			color color_txt_labels
 			margin-right 10px
-		input
+		input,.spinner
 			display inline-block
 			width 60%
 			margin-left 20px
@@ -279,13 +279,17 @@ ul#ul-arbol, ul#ul-arbol ul
 			text-align right
 			padding-right 10px
 			color color_txt_labels
-		input
+		input,.spinner
 			display inline-block
 			width 60%
 			margin-left 5px
 
 input 
 	color color_txt_botones
+
+select
+	color color_txt_botones
+
 input.valid
 	border-color none !important
 	background-color none !important
@@ -351,6 +355,7 @@ figcaption
 
 .panel-body
 	display block
+	color color_txt_botones
 
 
 .btn
@@ -444,3 +449,62 @@ form
 		width 100%
 		input
 			display inline
+
+@keyframes spin 
+	to  transform rotate(1turn)
+
+.progress
+	position relative
+	display inline-block
+	width 5em
+	height 5em
+	margin 0 .5em
+	font-size 12px
+	text-indent 999em
+	overflow hidden
+	animation spin 1s infinite steps(8)
+
+.small.progress 
+	font-size 6px
+
+.large.progress 
+	font-size 24px
+
+.progress:before,
+.progress:after,
+.progress > div:before,
+.progress > div:after 
+	content ''
+	position absolute
+	top 0
+	left 2.25em/* (container width - part width)/2  */
+	width .5em
+	height 1.5em
+	border-radius .2em
+	background #eee
+	box-shadow 0 3.5em #eee /* container height - part height */
+	transform-origin 50% 2.5em /* container height / 2 */
+
+.progress:before 
+	background #555
+
+.progress:after 
+	transform rotate(-45deg)
+	background #777
+
+
+.progress > div:before 
+	transform rotate(-90deg)
+	background #999
+
+
+.progress > div:after 
+	transform rotate(-135deg)
+
+.coordenadas
+	color color_txt_botones
+	display block
+	dd
+		color color_txt_botones
+	dt
+		color color_txt_botones

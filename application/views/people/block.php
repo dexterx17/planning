@@ -6,7 +6,7 @@
 				<div class="panel-header">
 					<div class="menu-operaciones">
 						<ul>
-							<li><a class="btn-embed" href="<?php echo site_url("$controller_name/nuevo/".$info['ID'].'/'.$info['proyecto']); ?> ">
+							<li><a class="" href="<?php echo site_url("$controller_name/nuevo/".$info['ID']); ?> ">
 									<i class="fa fa-lg fa-fw fa-edit"></i>
 									<span><?php echo lang('comun_edit'); ?></span>
 								</a>
@@ -16,32 +16,48 @@
 							</li>
 						</ul>
 					</div>
-					<h3><?php echo $info['nombre']; ?></h3>
-					<small><?php echo $info['descripcion']; ?></small>
+					<h3><?php echo $info['nombres'].' '.$info['apellidos']; ?></h3>
+					<small><?php echo $info['email']; ?></small>
 				</div>
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-6">
-							<?php echo lang('comun_estado'); ?>
+							<?php echo lang('comun_nick'); ?>
 						</div>
 						<div class="col-6">
-							<?php echo $info['estado']; ?>
+							<?php echo $info['nick']; ?>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-3">
-							<?php echo lang('comun_planned_time'); ?>
+							<?php echo lang('comun_phone'); ?>
 						</div>
 						<div class="col-3">
-							<?php echo $info['tiempo_planificado']; ?>
+							<?php echo $info['telefono']; ?>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-3">
-							<?php echo lang('comun_real_time'); ?>
+							<?php echo lang('comun_cellphone'); ?>
 						</div>
 						<div class="col-3">
-							<?php echo $info['tiempo_real']; ?>
+							<?php echo $info['celular']; ?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<?php echo lang('comun_latitude'); ?>
+						</div>
+						<div class="col-3">
+							<?php echo $info['latitud']; ?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<?php echo lang('comun_longitude'); ?>
+						</div>
+						<div class="col-3">
+							<?php echo $info['longitud']; ?>
 						</div>
 					</div>
 				</div>
@@ -65,10 +81,10 @@
 				<div class="panel-body">
 					<ul class="todo-list">
 			            <?php 
-							foreach ($info['tareas'] as $key => $value) {
+						/*	foreach ($info['tareas'] as $key => $value) {
                                                             $data['tarea']=$value;
                                                             $this->load->view('backlog/block_tarea',$data);
-							}
+							}*/
 						?>
 		        	</ul>
 		        	<div id="tareillas<?php echo $info['ID']; ?>"></div>

@@ -12,8 +12,8 @@
 		<?php echo get_row_form(lang('comun_name'),'nombre',$info['nombre']); ?>
 		<?php echo get_row_form(lang('comun_description'),'descripcion',$info['descripcion']); ?>
 		<?php echo get_row_form(lang('comun_planned_time'),'tiempo_planificado',$info['tiempo_planificado']); ?>
-		<?php echo get_row_form(lang('comun_real_time'),'timpo_real',$info['tiempo_real']); ?>
-		<?php echo get_row_form(lang('comun_state'),'estado',$info['estado']); ?>
+		<?php echo get_row_form(lang('comun_real_time'),'tiempo_real',$info['tiempo_real']); ?>
+		<?php echo get_row_form(lang('comun_state'),'estado',$info['estado'],$estados_tarea); ?>
 		
 		<?php echo form_hidden('ID',$info['ID']); ?>
 		<?php echo form_hidden('actividad',$actividad); ?>
@@ -39,13 +39,11 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+	$('#tiempo_planificado').spinner();
+	$('#tiempo_real').spinner();
+
  $('form#<?php echo $controller_name; ?>-form').validate({
   rules: {
-   nick: {
-    required: true,
-    minlength:4,
-    maxlength:50
-   },
    nombre: {
     required: true
    }

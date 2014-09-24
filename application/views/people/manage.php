@@ -1,4 +1,6 @@
 <?php	$this->load->view('inicio/header'); ?>
+<?php echo $map['js']; ?>
+
 <div class="contenido">
 	<section class="seccion">
 		<hgroup>
@@ -12,11 +14,68 @@
 			</a>
 		</div>
 		<article>
-			<?php print_r($items); ?>
+		<div class="panel-group">
+			<?php 
+				foreach ($items as $key => $value) {
+					$data['info']=(array)$value;
+					
+					$this -> load -> view('people/block',$data);
+				}
+			?>
+		</div>
 		</article>
+		<aside>
+            <div class="panel">
+            	<div class="panel-header">
+					<div id="direccion"></div>
+            	</div>
+            	<?php echo $map['html']; ?>
+            </div>    
+        </aside>
 	</section>
 
 </div>
+<script type="text/javascript">
 
+function createMarker(map,location){	
+	 var marker = new google.maps.Marker({
+      position: location,
+      map: map
+  });
+
+}
+function onDragMarker(map,location){	
+	 var marker = new google.maps.Marker({
+      position: location,
+      map: map
+  });
+	 
+}
+/*
+var map;
+function initialize() {
+  var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+  var mapOptions = {
+    zoom: 4,
+    center: myLatlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  }
+  map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+  google.maps.event.addListener(map, 'click', function(event) {
+    placeMarker(event.latLng);
+  });
+}
+
+function placeMarker(location) {
+  var marker = new google.maps.Marker({
+      position: location,
+      map: map
+  });
+
+  map.setCenter(location);
+}*/
+
+</script>
 
 <?php $this->load->view('inicio/footer'); ?>

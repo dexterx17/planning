@@ -314,7 +314,8 @@ ul#ul-arbol ul li .cierre {
     color: #c8c8c8;
     margin-right: 10px;
   }
-  .row input {
+  .row input,
+  .row .spinner {
     display: inline-block;
     width: 60%;
     margin-left: 20px;
@@ -329,13 +330,17 @@ ul#ul-arbol ul li .cierre {
     padding-right: 10px;
     color: #c8c8c8;
   }
-  .row input {
+  .row input,
+  .row .spinner {
     display: inline-block;
     width: 60%;
     margin-left: 5px;
   }
 }
 input {
+  color: #000;
+}
+select {
   color: #000;
 }
 input.valid {
@@ -401,6 +406,7 @@ figcaption {
 }
 .panel-body {
   display: block;
+  color: #000;
 }
 .btn {
   background: #323232;
@@ -504,4 +510,84 @@ form .footer {
 }
 form .footer input {
   display: inline;
+}
+.progress {
+  position: relative;
+  display: inline-block;
+  width: 5em;
+  height: 5em;
+  margin: 0 0.5em;
+  font-size: 12px;
+  text-indent: 999em;
+  overflow: hidden;
+  animation: spin 1s infinite steps(8);
+}
+.small.progress {
+  font-size: 6px;
+}
+.large.progress {
+  font-size: 24px;
+}
+.progress:before,
+.progress:after,
+.progress > div:before,
+.progress > div:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 2.25em;
+  width: 0.5em;
+  height: 1.5em;
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  -ms-border-radius: 0.2em;
+  -o-border-radius: 0.2em;
+  border-radius: 0.2em;
+  background: #eee;
+  -webkit-box-shadow: 0 3.5em #eee;
+  -moz-box-shadow: 0 3.5em #eee;
+  -ms-box-shadow: 0 3.5em #eee;
+  -o-box-shadow: 0 3.5em #eee;
+  box-shadow: 0 3.5em #eee;
+  -webkit-transform-origin: 50% 2.5em;
+  -moz-transform-origin: 50% 2.5em;
+  -ms-transform-origin: 50% 2.5em;
+  -o-transform-origin: 50% 2.5em;
+  transform-origin: 50% 2.5em;
+}
+.progress:before {
+  background: #555;
+}
+.progress:after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  background: #777;
+}
+.progress > div:before {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  background: #999;
+}
+.progress > div:after {
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+.coordenadas {
+  color: #000;
+  display: block;
+}
+.coordenadas dd {
+  color: #000;
+}
+.coordenadas dt {
+  color: #000;
 }

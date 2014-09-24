@@ -48,6 +48,7 @@ class Tareas extends CI_Controller {
 			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
 			$data['info']=(array)$this->tarea->get_info($clave);
 			$data['actividad']=$actividad;
+                        $data['estados_tarea'] = $this->configuracion->get_comboBox('estado_tarea');
 			$this->load->view('backlog/form_tarea',$data);
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());

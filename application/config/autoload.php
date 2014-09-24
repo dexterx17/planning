@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('table','database','form_validation');
+$autoload['libraries'] = array('table','database','form_validation','googlemaps');
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array('inicio','comun','people','proyectos','sprints','a
 |
 */
 
-$autoload['model'] = array('people','proyecto','grocery_crud_model','actividad','tarea','sprint');
+$autoload['model'] = array('people','proyecto','grocery_crud_model','actividad','tarea','sprint','configuracion');
 
 
 /* End of file autoload.php */
