@@ -48,7 +48,6 @@
         </aside>
 	</section>
 </div>
-
 <script type="text/javascript">
 $(document).ready(function() {
  $('#<?php echo $controller_name; ?>-form').validate({

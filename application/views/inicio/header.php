@@ -19,6 +19,7 @@
     <script src="<?php echo base_url() ?>js/dark-blue.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/jquery.spinner.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/scripts.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/maps.js" type="text/javascript" ></script>
     
 
     <style>

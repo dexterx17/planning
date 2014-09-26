@@ -45,8 +45,69 @@
 				</div>
 			</form>
 		</article>
+		<aside>
+                <div class="panel">
+                	<div class="row">
+		                <div class="acciones">
+							<a class="btn" href="#" onclick="geoLocalizacion();">
+								<i class="fa fa-lg fa-fw fa-group"></i>
+								<span><?php echo lang('comun_geolocalizarme'); ?></span>
+							</a>
+							<a class="btn" href="#" onclick="clearMarker();">
+								<i class="fa fa-lg fa-fw fa-trash-o"></i>
+								<span><?php echo lang('comun_remove_marker'); ?></span>
+							</a>
+						</div>
+					</div>
+					<div class="row">
+                		<?php echo $map['html']; ?>
+                	</div>
+                </div>    
+        </aside>
 	</section>
 </div>
+<?php echo $map['js']; ?>
+<script type="text/javascript">
+var map;
+var marker=null;
+
+
+ map = new google.maps.Map(document.getElementById('map_canvas'));
+
+
+function createMarker(map,location){
+	if(this.marker==null){	
+		 var marker = new google.maps.Marker({
+	      position: location,
+	      map: map,
+	      draggable:true,
+	 	 });
+
+		google.maps.event.addListener(marker, 'dragend', onDragMarker);
+		this.marker=marker;
+	}
+}
+
+function onDragMarker(event){	
+	$('#latitud').val(event.latLng.lat());
+	$('#longitud').val(event.latLng.lng());
+}
+
+function clearMarker() {
+	if(this.marker!=null){
+		this.marker.setMap(null);
+		$('#latitud,#longitud').val('');
+		this.marker=null;
+	}else{
+		if(typeof marker_0!= 'undefined'){
+			this.marker=marker_0;
+			clearMarker();
+		}
+	}
+}
+
+
+</script>
 <script type="text/javascript">
 $(document).ready(function() {
  $('#<?php echo $controller_name; ?>-form').validate({

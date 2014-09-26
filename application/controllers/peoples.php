@@ -72,10 +72,25 @@ class Peoples extends CI_Controller {
 	public function nuevo($clave=-1)
 	{
 		try{
-			
 			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
-			$data['info']=(array)$this->people->get_info($clave);
-			
+			//LATITUD - LONGITUD 
+			$config['center'] = '-1.2403298, -78.6285244';
+			$info=(array)$this->people->get_info($clave);
+			$data['info']=$info;
+			if(!empty($info['latitud'])&&!empty($info['longitud'])){
+				$marker = array();
+				$marker['position'] = $info['latitud'].','.$info['longitud'];
+				$marker['title'] = $info['nick'];
+				$marker['infowindow_content'] = '<div class="panel"><div class="panel-body">'.$info['latitud'].','.$info['longitud'].'</div></div>';
+				$config['clickable']="TRUE";
+				$marker['draggable'] = true;
+				$marker['ondragend'] = 'onDragMarker(event);';
+				$this->googlemaps->add_marker($marker);
+			}else{
+				$config['onclick'] = 'createMarker(map,event.latLng);';
+			}
+			$this->googlemaps->initialize($config);
+			$data['map'] = $this->googlemaps->create_map();
 			$this->load->view('people/form',$data);
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());

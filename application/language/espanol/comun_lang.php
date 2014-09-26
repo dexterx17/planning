@@ -42,4 +42,6 @@ $lang[$word.'_description'] = "Descripción";
 $lang[$word.'_start_date'] = "Fecha inicio";
 $lang[$word.'_end_date'] = "Fecha fin";
 $lang[$word.'_valid_percent'] = "Porcentaje dedicación";
+$lang[$word.'_geolocalizarme'] = "Geolocalizarme";
+$lang[$word.'_remove_marker'] = "Remover marcador";
 ?>
