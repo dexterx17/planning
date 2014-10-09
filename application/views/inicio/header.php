@@ -8,9 +8,9 @@
     
     <meta name="layout" content="main"/>
     
-    <link href="<?php echo base_url() ?>css/estilo.css" type="text/css" media="screen, projection" rel="stylesheet" />
-    <link href="<?php echo base_url() ?>css/font-awesome.css" type="text/css" media="screen, projection" rel="stylesheet" />
-    <link href="<?php echo base_url() ?>css/jquery.spinner.css" type="text/css" media="screen, projection" rel="stylesheet" />
+    <link href="<?php echo base_url() ?>css/estilo.min.css" type="text/css" media="screen, projection" rel="stylesheet" />
+    <link href="<?php echo base_url() ?>css/font-awesome.min.css" type="text/css" media="screen, projection" rel="stylesheet" />
+    <link href="<?php echo base_url() ?>css/jquery-spinner.min.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 
     <script src="<?php echo base_url() ?>js/min/jquery-2.0.3.min.js" type="text/javascript" ></script>
