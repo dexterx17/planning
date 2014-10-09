@@ -8,3 +8,6 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 /nbproject/private/
+node_modules/
+Gruntfile.js
+package.json

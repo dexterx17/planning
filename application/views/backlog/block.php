@@ -63,6 +63,7 @@
 					<small><?php echo lang('actividades_taks_list_desc'); ?></small>
 				</div>
 				<div class="panel-body">
+		        	<div id="tareillas<?php echo $info['ID']; ?>"></div>
 					<ul class="todo-list">
 			            <?php 
 							foreach ($info['tareas'] as $key => $value) {
@@ -71,7 +72,6 @@
 							}
 						?>
 		        	</ul>
-		        	<div id="tareillas<?php echo $info['ID']; ?>"></div>
 		        </div>
 	        </div>
 		</div>

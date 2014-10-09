@@ -305,36 +305,22 @@ ul#ul-arbol ul li .cierre {
 .row {
   display: block;
 }
-@media (min-width: 1000px) {
+@media (min-width: 600px) {
   .row label {
     display: inline-block;
-    width: 18%;
+    width: 25%;
+    foat: left;
     text-align: right;
     padding-right: 10px;
     color: #c8c8c8;
     margin-right: 10px;
   }
   .row input,
-  .row .spinner {
+  .row .spinner,
+  .row select {
     display: inline-block;
-    width: 60%;
     margin-left: 20px;
     padding-left: 10px;
-  }
-}
-@media (min-width: 600px) {
-  .row label {
-    display: inline-block;
-    width: 10%;
-    text-align: right;
-    padding-right: 10px;
-    color: #c8c8c8;
-  }
-  .row input,
-  .row .spinner {
-    display: inline-block;
-    width: 60%;
-    margin-left: 5px;
   }
 }
 input {
@@ -495,21 +481,6 @@ figcaption {
   display: inline-block;
   cursor: move;
   margin: 0px 5px;
-}
-form {
-  padding: 2px;
-}
-form .row {
-  display: block;
-  padding: 5px 0px 5px 10px;
-}
-form .footer {
-  margin: 10px 0px 0px 10px;
-  bottom: 0px;
-  width: 100%;
-}
-form .footer input {
-  display: inline;
 }
 .progress {
   position: relative;

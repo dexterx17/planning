@@ -256,34 +256,20 @@ ul#ul-arbol, ul#ul-arbol ul
 .row
 	display block
 
-@media (min-width: 1000px)
-	.row
-		label
-			display inline-block
-			width 18%
-			text-align right
-			padding-right 10px
-			color color_txt_labels
-			margin-right 10px
-		input,.spinner
-			display inline-block
-			width 60%
-			margin-left 20px
-			padding-left 10px
-		
 @media (min-width: 600px)
 	.row
 		label
 			display inline-block
-			width 10%
+			width 25%
+			foat left
 			text-align right
 			padding-right 10px
 			color color_txt_labels
-		input,.spinner
+			margin-right 10px
+		input,.spinner,select
 			display inline-block
-			width 60%
-			margin-left 5px
-
+			margin-left 20px
+			padding-left 10px
 input 
 	color color_txt_botones
 
@@ -438,17 +424,6 @@ figcaption
 	cursor move
 	margin 0px 5px
 
-form
-	padding 2px
-	.row
-		display block
-		padding 5px 0px 5px 10px
-	.footer
-		margin 10px 0px 0px 10px
-		bottom 0px
-		width 100%
-		input
-			display inline
 
 @keyframes spin 
 	to  transform rotate(1turn)

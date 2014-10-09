@@ -13,13 +13,13 @@
     <link href="<?php echo base_url() ?>css/jquery.spinner.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 
-    <script src="<?php echo base_url() ?>js/jquery-2.0.3.min.js" type="text/javascript" ></script>
-    <script src="<?php echo base_url() ?>js/jquery.validate_es.min.js" type="text/javascript" ></script>
-    <script src="<?php echo base_url() ?>js/highcharts.js" type="text/javascript" ></script>
-    <script src="<?php echo base_url() ?>js/dark-blue.js" type="text/javascript" ></script>
-    <script src="<?php echo base_url() ?>js/jquery.spinner.js" type="text/javascript" ></script>
-    <script src="<?php echo base_url() ?>js/scripts.js" type="text/javascript" ></script>
-    <script src="<?php echo base_url() ?>js/maps.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/min/jquery-2.0.3.min.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/min/jquery.validate_es.min.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/min/highcharts.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/min/dark-blue.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/min/jquery.spinner.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/min/scripts.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/min/maps.js" type="text/javascript" ></script>
     
 
     <style>
