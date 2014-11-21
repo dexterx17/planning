@@ -5,6 +5,14 @@
 	</a>
 </div>
 <article class="master">
+<!--	<?php echo form_input(array(
+								'type'=>'button',
+								'name'=>'lol',
+								'id'=>'lol',
+								'value'=>'LOL',
+								'class'=>'btn'
+								));	?>
+-->
 	<div class="panel-group" id="accordion">
 	<?php 
 		foreach ($items as $key => $value) {
@@ -15,3 +23,19 @@
 	?>
 	</div>
 </article>
+
+
+<script type="text/javascript">
+/*$(document).ready(function() {
+
+ $('#lol').click(function(){
+
+ 	$.get('<?php echo site_url("tareas");?>/get_row/39', function(data) {
+	    $('#tareillas9+ul.todo-list').prepend(data);
+	});
+ });
+  
+}); // end document.ready
+*/
+
+</script>

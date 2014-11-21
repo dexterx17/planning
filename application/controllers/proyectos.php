@@ -4,6 +4,8 @@
  * Permite realizar operaciones de mantenimiento en los proyectos
  * 
  * @author Jaime Santana
+ * @package planning
+ * @subpackage controllers
  */
 class Proyectos extends CI_Controller {
 
@@ -40,15 +42,23 @@ class Proyectos extends CI_Controller {
 	
 	/**
 	 * Devuelve un bloque HTML con la info de un proyecto
+	 * @param integer $clave Clave primaria del proyecto EJ: 2
 	 */
-	public function get_block(){
-		$this->load->view('proyectos/block');
+	public function get_row($clave=-1)
+	{
+		try{
+			
+			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+			$data['info']=(array)$this->proyecto->get_info($clave);
+			$this->load->view('proyectos/block',$data);
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
 	}
-	
 	/**
 	 * Muestra un formulario que permite ingresar y modificar los datos de un proyecto
 	 * 
-	 * @param $clave Clave primario del Proyecto EJ: 2
+	 * @param integer $clave Clave primario del Proyecto EJ: 2
 	 */
 	public function nuevo($clave=-1)
 	{
@@ -56,7 +66,6 @@ class Proyectos extends CI_Controller {
 			
 			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
 			$data['info']=(array)$this->proyecto->get_info($clave);
-			print_r($data['info']);
 			$this->load->view('proyectos/form',$data);
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
@@ -66,7 +75,7 @@ class Proyectos extends CI_Controller {
 	/**
 	 * Muestra un formulario que permite ver toda la informacion de un proyecto
 	 * 
-	 * @param $clave Clave primario del Proyecto EJ: 2
+	 * @param integer $clave Clave primario del Proyecto EJ: 2
 	 */
 	public function view($clave=-1)
 	{
@@ -86,13 +95,13 @@ class Proyectos extends CI_Controller {
 	public function save()
 	{
 		try{
-			$this->form_validation->set_rules('nick',lang('comun_nick'),'trim|required|min_length[4]|max_length[50]|is_unique[proyectos.nick]'); 
-			$this->form_validation->set_rules('nombre',lang('comun_name'),'trim|required');
-			//$this->form_validation->set_rules('password',lang('comun_password'),'required|matches[repassword]|md5');
-			//$this->form_validation->set_rules('repassword',lang('comun_repassword'),'required');
-			
 			$ID = $this->input->post('ID')==''? -1 :$this->input->post('ID');
-		
+			$this->form_validation->set_rules('nombre',lang('comun_name'),'trim|required');
+			if($ID==-1){
+				$this->form_validation->set_rules('nick',lang('comun_nick'),'trim|required|min_length[4]|max_length[50]|is_unique[proyectos.nick]'); 
+			}else{
+				$this->form_validation->set_rules('nick',lang('comun_nick'),'trim|required|min_length[4]|max_length[50]'); 
+			}
 			if($this->form_validation->run()==TRUE){
 				
 				$data=array(
@@ -105,8 +114,8 @@ class Proyectos extends CI_Controller {
 					'presupuesto'=>$this->input->post('presupuesto')
 					);
 					
-				if($this->proyecto->save($ID,$data)){
-					echo json_encode(array('error'=>false,'message'=>'TODO BIEN'));
+				if($ID= $this->proyecto->save($ID,$data)){
+					echo json_encode(array('error'=>false,'message'=>'TODO BIEN','proyecto_id'=>$ID));
 				}else{
 					echo json_encode(array('error'=>true,'message'=>'Error al guardar'));
 				}				
@@ -119,5 +128,17 @@ class Proyectos extends CI_Controller {
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
+	}
+
+	/**
+	 * Elimina un proyecto
+	 *@param integer $proyecto_id Clave primaria del proyecto
+	 **/
+	public function delete($proyecto_id){
+		if($ID= $this->proyecto->delete($ID)){
+			echo json_encode(array('error'=>false,'message'=>'TODO BIEN','proyecto_id'=>$ID));
+		}else{
+			echo json_encode(array('error'=>true,'message'=>'Error al eliminar'));
+		}	
 	}
 }

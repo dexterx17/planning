@@ -26,6 +26,7 @@ $lang[$word.'_cancel'] = "Cancelar";
 $lang[$word.'_submit'] = "Guardar";
 $lang[$word.'_personas'] = "Personas";
 $lang[$word.'_backlog'] = "Backlog";
+$lang[$word.'_sprint_backlog'] = "Sprint Backlog";
 $lang[$word.'_sprints'] = "Sprints";
 $lang[$word.'_burndown'] = "Burndown";
 $lang[$word.'_kanban'] = "Kanban";
@@ -44,4 +45,5 @@ $lang[$word.'_end_date'] = "Fecha fin";
 $lang[$word.'_valid_percent'] = "Porcentaje dedicación";
 $lang[$word.'_geolocalizarme'] = "Geolocalizarme";
 $lang[$word.'_remove_marker'] = "Remover marcador";
+$lang[$word.'_mi_perfil'] = "Mi perfil";
 ?>

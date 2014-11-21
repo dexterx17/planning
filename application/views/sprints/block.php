@@ -16,7 +16,7 @@
 							</li>
 						</ul>
 					</div>
-					<h3><?php echo $info['objetivo']; ?></h3>
+					<h3><a class="btn-embed" href="<?php echo site_url($controller_name."/view/".$info['ID']); ?>"><?php echo $info['objetivo']; ?></a></h3>
 					<small><?php echo $info['horas_planificadas']; ?></small>
 				</div>
 				<div class="panel-body">

@@ -103,8 +103,10 @@ $.fn.extend({
 
 
 
-//LOAD AJAX PAGES
-
+/**
+ * Carga contenido de una URL en un elemento HTML
+ *
+ **/
 function loadURL(url, container) {
 	//console.log(container)
 
@@ -166,9 +168,19 @@ $(document).on('click', '.btn-redirected', function(e) {
 	loadURL($this.attr('href'),$('#'+$this.attr('data-content')));
 });
 
+$(document).on('click', '.btn-delete', function(e) {
+    e.preventDefault();
+    var $this = $(e.currentTarget);
+    
+	loadURL($this.attr('href'),$('#'+$this.attr('data-content')));
+});
 
 $(document).on('click', '.panel-collapse panel-header', function(e) {
     e.preventDefault();
     var $this = $(e.currentTarget);
     
 });
+
+ $('#cancelar').click(function(){
+ 	$('#tareillas'+'<?php echo $actividad;?>').html('');
+ });

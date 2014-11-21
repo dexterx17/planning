@@ -5,7 +5,7 @@
         <i class="fa fa-ellipsis-v"></i>
     </span>
     <!-- Dropdown para Estado de tarea -->
-    <?php echo form_dropdown('estado',$estados_tarea,$tarea['estado']); ?>
+    <?php echo $estados_tarea[$tarea["estado"]]; ?>
     <!--Descripcion de la tarea-->
     <span class="text"><?php echo $tarea['nombre']; ?></span>
     <!--Tiempo estimado -->
@@ -14,4 +14,4 @@
         <a class="fa fa-edit btn-redirected" data-content="task-<?php echo $tarea['ID'];?>" href='<?php echo site_url("tareas/nuevo/".$tarea['ID']."/".$tarea["actividad"]); ?>'></a>
         <a class="fa fa-trash-o" href="<?php echo site_url("tareas/delete/".$tarea['ID']);?>"></a>
     </div>
-</li>
+</li>   

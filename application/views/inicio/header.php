@@ -7,17 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="layout" content="main"/>
-    
+    <link href="<?php echo base_url() ?>css/normalize.min.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <link href="<?php echo base_url() ?>css/estilo.min.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <link href="<?php echo base_url() ?>css/font-awesome.min.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <link href="<?php echo base_url() ?>css/jquery-spinner.min.css" type="text/css" media="screen, projection" rel="stylesheet" />
+    <link href="<?php echo base_url() ?>css/jquery-datetimepicker.min.css" type="text/css" media="screen, projection" rel="stylesheet" />
+    <link href="<?php echo base_url() ?>css/droparea.min.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 
     <script src="<?php echo base_url() ?>js/min/jquery-2.0.3.min.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/min/jquery.validate_es.min.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/min/highcharts.js" type="text/javascript" ></script>
-    <script src="<?php echo base_url() ?>js/min/dark-blue.js" type="text/javascript" ></script>
+    <!--<script src="<?php echo base_url() ?>js/min/dark-blue.js" type="text/javascript" ></script>-->
     <script src="<?php echo base_url() ?>js/min/jquery.spinner.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/min/jquery.datetimepicker.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/src/droparea.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/min/scripts.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/min/maps.js" type="text/javascript" ></script>
     
@@ -30,7 +34,7 @@
 		<header class="cabecera">
 			<div class="title">
 				<hgroup>
-					<h1>DRY - KISS - SOLID</h1>
+					<h1>DRY - KISS - SOLID - TDD - CI</h1>
 					<h2>Monitoreando y gestionando para ti...</h2>
 				</hgroup>
 			</div>

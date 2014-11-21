@@ -1,7 +1,18 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Permite realizar operaciones de mantenimiento con los SPRINTS de un proyecto
+ * 
+ * @author Jaime Santana
+ * @package planning
+ * @subpackage controllers
+ */
 class Sprints extends CI_Controller {
 
+	 /**
+     * Muestra una vista con el listado de sprints de un proyecto y los botones realizar operaciones CRUD
+     * @param integer $proyecto Clave primaria del proyecto a los que pertenecen los sprints
+     */
 	public function index($proyecto)
 	{
 		try{
@@ -24,14 +35,31 @@ class Sprints extends CI_Controller {
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
 	}
+
+	/**
+	 * Muestra la vista principal de un sprint
+	 * 
+	 * @param integer $clave Clave primaria del sprint
+	 **/
+	function view($clave){
+		$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+		$data['info']=(array)$this->sprint->get_info($clave);
+		$this->load->view('sprints/view',$data);
+	}
+	/**
+	 * Ok
+	 * 
+	 * @ignore
+	 **/
 	function test(){
 		return anchor('#','Test');
 	}
 	
 	/**
-	 * Muestra un formulario que permite ingresar y modificar los datos de un proyecto
+	 * Muestra un formulario que permite ingresar y modificar los datos de un sprint
 	 * 
-	 * @param $clave Clave primario del Proyecto EJ: 2
+	 * @param integer $clave Clave primaria del Sprint
+	 * @param integer $proyecto Clave primaria del Proyecto
 	 */
 	public function nuevo($clave=-1,$proyecto)
 	{

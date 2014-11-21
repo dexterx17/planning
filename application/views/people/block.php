@@ -16,7 +16,10 @@
 							</li>
 						</ul>
 					</div>
-					<h3><?php echo $info['nombres'].' '.$info['apellidos']; ?></h3>
+					<h3>
+						<a class="btn" href="<?php echo site_url("$controller_name/perfil/".$info['ID']); ?> "><i class="fa fa-lg fa-fw fa-user"></i></a>
+						<?php echo $info['nombres'].' '.$info['apellidos']; ?>
+					</h3>
 					<small><?php echo $info['email']; ?></small>
 				</div>
 				<div class="panel-body">

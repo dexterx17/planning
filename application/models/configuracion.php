@@ -1,12 +1,19 @@
 <?php
 
+/**
+* Permite realizar operaciones DML sobre una tabla especificada por un parametro
+*
+* @package planning
+* @subpackage models
+**/
 class Configuracion extends CI_Model{
 	
 	/**
-	 *Determina si determinado elemento existe
+	 *Determina si determinado elemento existe en la tabla especificada
 	 *
-         * @param table_name Nombre de la tabla
-	 * @return Devuelve una valor boolean EJ: true 
+     * @param string $table_name Nombre de la tabla
+     * @param integer $id  Clave primaria de elemento (ID)
+	 * @return boolean Devuelve true o false 
 	 */
 	function exists($table_name,$id)
 	{
@@ -20,8 +27,8 @@ class Configuracion extends CI_Model{
 	
 	/**
 	 * Devuelve un array con un elemento de la tabla
-         * @param table_name Nombre de la tabla
-	 * @param id Clave primaria del elemento
+     * @param string $table_name Nombre de la tabla
+	 * @param integer $id Clave primaria del elemento
 	 */
 	function get_info($table_name,$id){
 		$this->db->where('ID',$id);
@@ -43,8 +50,8 @@ class Configuracion extends CI_Model{
 	
 	/**
 	 * Devuelve una array con todos los elementos
-         * @param table_name Nombre de la tabla
-	 * @return Array con todos los elementos 
+     * @param string $table_name Nombre de la tabla
+	 * @return array Array con todos los elementos 
 	 */
 	function get_all($table_name){
 		$res = $this->db->query('select * from '.$table_name);
@@ -52,10 +59,10 @@ class Configuracion extends CI_Model{
 		return $res->result_array();
 	}
 	
-        /**
+    /**
 	 * Devuelve una array con el ID y el nombre del elemento
-         * @param table_name Nombre de la tabla
-	 * @return Array con todos los elementos 
+     * @param string $table_name Nombre de la tabla
+	 * @return array Array con todos los elementos 
 	 */
 	function get_comboBox($table_name){
 		$res = $this->db->query('select * from '.$table_name)->result_array();
@@ -68,8 +75,8 @@ class Configuracion extends CI_Model{
 		
 	/**
 	 * Devuelve un array  de 10 elementos
-         * @param table_name Nombre de la tabla
-	 * @param skip Número desde el cual se cuentan los 10 elementos
+     * @param string $table_name Nombre de la tabla
+	 * @param integer $skip Número desde el cual se cuentan los 10 elementos
 	 */
 	public function get_with_limits($table_name,$skip=0){
 		try{
@@ -84,9 +91,9 @@ class Configuracion extends CI_Model{
 	
 	/**
 	 * Ingresa un elemento en la BDD
-         * @param table_name Nombre de la tabla
-	 * @param $id Clave primaria del elemento
-	 * @param $data Array con los datos del elemento
+     * @param string $table_name Nombre de la tabla
+	 * @param integer $id Clave primaria del elemento
+	 * @param array $data Array con los datos del elemento
 	 */
 	function save($table_name,$id,$data){
 		try{
@@ -106,8 +113,9 @@ class Configuracion extends CI_Model{
 	
 	/**
 	 * Elimina un elemento de la tabla 
-	 * @param table_name Nombre de la tabla
-	 * @param $id Clave primaria del elemento
+	 * @param string $table_name Nombre de la tabla
+	 * @param integer $id Clave primaria del elemento
+	 * @return boolean Devuelve true o false 
 	 */
 	public function delete($table_name,$id){
 		try{

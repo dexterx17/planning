@@ -1,13 +1,24 @@
 <?php
 
+/**
+* Permite realizar operaciones DML sobre la tabla "proyectos"
+*
+* @package planning
+* @subpackage models
+**/
 class Proyecto extends CI_Model{
 	
+	/**
+	* Nombre de la table en la cual se realizaran las operaciones DML
+	*@var string Nombre de la Tabla
+	**/
 	var $table_name = "proyectos";
 	
 	/**
 	 *Determina si determinado elemento existe
-	 *
-	 *@return Devuelve una valor boolean EJ: true 
+	 * 
+	 *@param integer $id Clave primaria del proyecto
+	 *@return boolean Devuelve true o false
 	 */
 	function exists($id)
 	{
@@ -21,7 +32,7 @@ class Proyecto extends CI_Model{
 	
 	/**
 	 * Devuelve un array con un elemento de la tabla
-	 * @param id Clave primaria del elemento
+	 * @param integer $id Clave primaria del elemento
 	 */
 	function get_info($id){
 		$this->db->where('ID',$id);
@@ -43,7 +54,7 @@ class Proyecto extends CI_Model{
 	
 	/**
 	 * Devuelve una array con todos los elementos
-	 * @return Array con todos los elementos 
+	 * @return array Array con todos los elementos 
 	 */
 	function get_all(){
 		$res = $this->db->query('select * from '.$this->table_name);
@@ -54,7 +65,7 @@ class Proyecto extends CI_Model{
 		
 	/**
 	 * Devuelve un array  de 10 elementos
-	 * @param skip Número desde el cual se cuentan los 10 elementos
+	 * @param integer $skip Número desde el cual se cuentan los 10 elementos
 	 */
 	public function get_with_limits($skip=0){
 		try{
@@ -69,14 +80,15 @@ class Proyecto extends CI_Model{
 	
 	/**
 	 * Ingresa un elemento en la BDD
-	 * @param $id Clave primaria del elemento
-	 * @param $data Array con los datos del elemento
+	 * @param integer $id Clave primaria del elemento
+	 * @param array $data Array con los datos del elemento
 	 */
 	function save($id,$data){
 		try{
 			
 			if($id==-1 && !$this->exists($id)){
-				return $this->db->insert($this->table_name,$data);
+				if($this->db->insert($this->table_name,$data))
+					return $this->db->insert_id();
 			}
 			
 			$this->db->where('ID',$id);
@@ -91,7 +103,8 @@ class Proyecto extends CI_Model{
 	/**
 	 * Elimina un elemento de la tabla 
 	 * 
-	 * @param $id Clave primaria del elemento
+	 * @param integer $id Clave primaria del elemento
+	 * @return boolean Devuelve true o false
 	 */
 	public function delete($id){
 		try{

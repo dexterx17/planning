@@ -1,18 +1,21 @@
 
-<div class="block" id="<?php echo $info['ID']; ?>">
+<div class="block" id="proyecto<?php echo $info['ID']; ?>">
 	<div class="row">
 		<div class="col-main">
 			<div class="panel">
 				<div class="panel-header">
 					<div class="menu-operaciones">
 						<ul>
-							<li><a href="<?php echo site_url("$controller_name/nuevo/".$info['ID']); ?> ">
+							<li><a class="btn-redirected" data-content="proyecto<?php echo $info['ID']; ?>" href="<?php echo site_url("$controller_name/nuevo/".$info['ID']); ?>">
 									<i class="fa fa-lg fa-fw fa-edit"></i>
 									<span><?php echo lang('comun_edit'); ?></span>
 								</a>
 							</li>
-							<li><i class="fa fa-lg fa-fw fa-trash-o"></i>
-								<span><?php echo lang('comun_delete'); ?></span>
+							<li>
+								<a class="btn btn-delete" data-content="proyecto<?php echo $info['ID']; ?>" href="<?php echo site_url("$controller_name/delete/".$info['ID']); ?>">
+									<i class="fa fa-lg fa-fw fa-trash-o"></i>
+									<span><?php echo lang('comun_delete'); ?></span>
+								</a>
 							</li>
 						</ul>
 					</div>

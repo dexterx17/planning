@@ -13,6 +13,7 @@ CREATE TABLE people
 );
 ALTER TABLE people ADD COLUMN latitud float DEFAULT NULL;
 ALTER TABLE people ADD COLUMN longitud float DEFAULT NULL;
+ALTER TABLE people ADD COLUMN imagen VARCHAR(255);
 CREATE TABLE proyectos
 (
 	ID    INT    AUTO_INCREMENT,
@@ -76,7 +77,12 @@ CREATE TABLE IF NOT EXISTS `geocoding` (
 	`latitude` float DEFAULT NULL,
 	`longitude` float DEFAULT NULL,
 	PRIMARY KEY (`address`)
-)
+);
+
+CREATE TABLE actividades_sprint
+(
+	
+);
 
 -------------------------------------------------------HASTA AQUI LA VERSION DEL SCRIPT EJECUTADA --------------------------------------
 CREATE TABLE funciones

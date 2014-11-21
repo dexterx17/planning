@@ -1,0 +1,31 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ * Permite realizar pruebas para servicios web que utiliza Android
+ * 
+ * @author Jaime Santana
+ * @package planning
+ * @subpackage controllers
+ * @ignore
+ */
+class Android extends CI_Controller {
+
+	public function index()
+	{
+		echo "HOLA ANDROID";
+	}
+
+	public function testing(){
+		$tmp = "hola";
+
+
+		echo $tmp;
+		//$parametro = $this->input->post('parametro');
+		//print_r($_POST);
+		//echo "HI => ".$parametro.'-';
+	}
+
+	public function php_info(){
+		phpinfo();
+	}
+}

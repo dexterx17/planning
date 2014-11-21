@@ -67,8 +67,8 @@
 					<ul class="todo-list">
 			            <?php 
 							foreach ($info['tareas'] as $key => $value) {
-                                                            $data['tarea']=$value;
-                                                            $this->load->view('backlog/block_tarea',$data);
+                                $data['tarea']=$value;
+                                $this->load->view('backlog/block_tarea',$data);
 							}
 						?>
 		        	</ul>

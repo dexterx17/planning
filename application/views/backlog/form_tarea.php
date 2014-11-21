@@ -15,7 +15,7 @@
 		<?php echo get_row_form(lang('comun_real_time'),'tiempo_real',$info['tiempo_real']); ?>
 		<?php echo get_row_form(lang('comun_state'),'estado',$info['estado'],$estados_tarea); ?>
 		
-		<?php echo form_hidden('ID',$info['ID']); ?>
+		<?php echo form_input(array('type'=>'hidden','name'=>'ID','value'=>$info['ID'],'id'=>'ID')); ?>
 		<?php echo form_hidden('actividad',$actividad); ?>
 		
 		<div class="footer">
@@ -39,6 +39,8 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+	var id_tarea = $('#ID').val();
+
 	$('#tiempo_planificado').spinner();
 	$('#tiempo_real').spinner();
 
@@ -64,9 +66,14 @@ $(document).ready(function() {
             dataType: 'json',
             success : function(data){
             if(!data.error){
-             $("#<?php echo $controller_name; ?>-form").hide('slow');
-             $('#results'+'<?php echo $actividad;?>').show();
-             $('#messages'+'<?php echo $actividad;?>').html(data.message);
+                $("#<?php echo $controller_name; ?>-form").hide('slow');
+                if(id_tarea===""){
+                	$.get('<?php echo site_url($controller_name);?>/get_row/'+data.task_id, function(data) {
+					    $('#tareillas'+'<?php echo $actividad;?> ul.todo-list').prepend(data);
+					});
+			 	}else{
+			 		$('#task-'+id_tarea).load('<?php echo site_url($controller_name);?>/get_row/'+id_tarea);
+			 	}
             }else
              $('#errors'+'<?php echo $actividad;?>').html(data.message);	
             }
@@ -76,7 +83,11 @@ $(document).ready(function() {
   
  });
  $('#cancelar').click(function(){
- 	$('#tareillas'+'<?php echo $actividad;?>').html('');
+ 	if(id_tarea===""){
+ 		$('#tareillas'+'<?php echo $actividad;?>').html('');
+ 	}else{
+ 		$('#task-'+id_tarea).load('<?php echo site_url($controller_name);?>/get_row/'+id_tarea);
+ 	}
  });
   
 }); // end document.ready

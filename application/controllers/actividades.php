@@ -7,11 +7,14 @@ if (!defined('BASEPATH'))
  * Permite realizar operaciones de mantenimiento con la pila de producto BACKLOG
  * 
  * @author Jaime Santana
+ * @package planning
+ * @subpackage controllers
  */
 class Actividades extends CI_Controller {
 
     /**
      * Muestra una vista con el listado de actividades o items del BACKLOG y los botones realizar operaciones CRUD
+     * @param integer $proyecto Clave primaria del proyecto
      */
     public function index($proyecto) {
         try {
@@ -39,7 +42,8 @@ class Actividades extends CI_Controller {
     /**
      * Muestra un formulario que permite ingresar y modificar los datos de un proyecto
      * 
-     * @param $clave Clave primario del Proyecto EJ: 2
+     * @param integer $clave Clave primaria de la actividad
+     * @param integer $proyecto Clave primaria del proyecto a la que pertenece la actividad
      */
     public function nuevo($clave = -1, $proyecto) {
         try {

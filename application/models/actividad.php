@@ -1,13 +1,24 @@
 <?php
 
+/**
+* Permite realizar operaciones DML sobre la tabla "actividades"
+*
+* @package planning
+* @subpackage models
+**/
 class Actividad extends CI_Model{
 	
+	/**
+	* Nombre de la table en la cual se realizaran las operaciones DML
+	*@var string Nombre de la Tabla
+	**/
 	var $table_name = "actividades";
 	
 	/**
 	 *Determina si determinado elemento existe
-	 *
-	 *@return Devuelve una valor boolean EJ: true 
+	 * 
+	 *@param integer $id Clave primaria de la actividad
+	 *@return boolean Devuelve true o false
 	 */
 	function exists($id)
 	{
@@ -21,7 +32,7 @@ class Actividad extends CI_Model{
 	
 	/**
 	 * Devuelve un array con un elemento de la tabla
-	 * @param id Clave primaria del elemento
+	 * @param integer $id Clave primaria de la actividad
 	 */
 	function get_info($id){
 		$this->db->where('ID',$id);
@@ -43,7 +54,7 @@ class Actividad extends CI_Model{
 	
 	/**
 	 * Devuelve una array con todos los elementos
-	 * @return Array con todos los elementos 
+	 * @return array Array con todos los elementos 
 	 */
 	function get_all(){
 		$res = $this->db->query('select * from '.$this->table_name);
@@ -54,8 +65,8 @@ class Actividad extends CI_Model{
 		
 	/**
 	 * Devuelve un array  de 10 elementos
-	 * @param skip Número desde el cual se cuentan los 10 elementos
-	 * @param proyecto Clave primaria del proyecto
+	 * @param integer $skip Número desde el cual se cuentan los 10 elementos
+	 * @param integer $proyecto Clave primaria del proyecto
 	 */
 	public function get_with_limits($skip=0,$proyecto){
 		try{
@@ -76,8 +87,8 @@ class Actividad extends CI_Model{
 	
 	/**
 	 * Ingresa un elemento en la BDD
-	 * @param $id Clave primaria del elemento
-	 * @param $data Array con los datos del elemento
+	 * @param integer $id Clave primaria del elemento
+	 * @param array $data Array con los datos del elemento
 	 */
 	function save($id,$data){
 		try{
@@ -98,7 +109,8 @@ class Actividad extends CI_Model{
 	/**
 	 * Elimina un elemento de la tabla 
 	 * 
-	 * @param $id Clave primaria del elemento
+	 * @param integer $id Clave primaria del elemento
+	 *@return boolean Devuelve true o false
 	 */
 	public function delete($id){
 		try{
@@ -114,7 +126,7 @@ class Actividad extends CI_Model{
 	
 	/**
 	 * Devuelve un array con todas las actividades de un proyecto
-	 * @param $proyectp Clave primaria del proyecto
+	 * @param integer $proyecto Clave primaria del proyecto
 	 */
 	function get_by_proyecto($proyecto){
 		$this->db->where('ID',$proyecto);

@@ -4,42 +4,16 @@
  * Permite realizar operaciones de mantenimiento con las subtareas de las actividades del BACKLOG
  * 
  * @author Jaime Santana
+ * @package planning
+ * @subpackage controllers
  */
 class Tareas extends CI_Controller {
 	
 	/**
-	 * Muestra una vista con el listado de actividades o items del BACKLOG y los botones realizar operaciones CRUD
-	 */
-	public function index($proyecto)
-	{
-		try{
-			
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
-			$data['proyecto']=$proyecto;
-			$ultimo = $this->input->post('ultimo_id');
-			if($ultimo)
-			{
-	            $nuevos_datos = $this->actividad->get_with_limits($ultimo,$proyecto);
-	            if($nuevos_datos){      
-		            foreach ($nuevos_datos as $fila) {
-		            		get_row_people($fila,$data['items']);
-			            }
-			         }
-	      }	else{
-			$data['items']=$this->actividad->get_with_limits(0,$proyecto);
-			$this->load->view('backlog/manage',$data);
-		  }
-		  
-		}catch(Exception $e){
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-			
-			}
-	}
-	
-	/**
 	 * Muestra un formulario que permite ingresar y modificar los datos de un proyecto
 	 * 
-	 * @param $clave Clave primario de la actividad EJ: 2
+	 * @param $clave Clave primaria de la tarea EJ: 2
+	 * @param $actividad Clave primaria de la actividad a la que pertenece la tarea EJ: 10
 	 */
 	public function nuevo($clave=-1,$actividad)
 	{
@@ -48,13 +22,32 @@ class Tareas extends CI_Controller {
 			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
 			$data['info']=(array)$this->tarea->get_info($clave);
 			$data['actividad']=$actividad;
-                        $data['estados_tarea'] = $this->configuracion->get_comboBox('estado_tarea');
+            $data['estados_tarea'] = $this->configuracion->get_comboBox('estado_tarea');
 			$this->load->view('backlog/form_tarea',$data);
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
 	}
 	
+	/**
+	 * Muestra un row con información de la tarea
+	 * 
+	 * @param $clave Clave primario de la tarea EJ: 2
+	 */
+	public function get_row($clave=-1)
+	{
+		try{
+			
+			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+			$data['tarea']=(array)$this->tarea->get_info($clave);
+			//$data['actividad']=$actividad;
+            $data['estados_tarea'] = $this->configuracion->get_comboBox('estado_tarea');
+			$this->load->view('backlog/block_tarea',$data);
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+	}
+
 	/**
 	* Obtiene y valida los datos del formularios para enviarlos a guardar 
 	*/
@@ -75,8 +68,8 @@ class Tareas extends CI_Controller {
 					'actividad'=>$this->input->post('actividad')
 					);
 					
-				if($this->tarea->save($ID,$data)){
-					echo json_encode(array('error'=>false,'message'=>'TODO BIEN'));
+				if($ID= $this->tarea->save($ID,$data)){
+					echo json_encode(array('error'=>false,'message'=>'OK','task_id'=>$ID));
 				}else{
 					echo json_encode(array('error'=>true,'message'=>'Error al guardar'));
 				}				

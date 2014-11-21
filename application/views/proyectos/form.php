@@ -1,4 +1,4 @@
-<?php $this -> load -> view('inicio/header'); ?>
+
 <div class="contenido">
 	<section class="seccion">
 		<article class="panel">
@@ -32,13 +32,21 @@
 				<?php echo get_row_form(lang('comun_owner'),'owner',$info['owner']); ?>
 				<?php echo get_row_form(lang('comun_presupuesto'),'presupuesto',$info['presupuesto']); ?>
 				
-				<?php echo form_hidden('ID',$info['ID']); ?>
+				<?php echo form_input(array('type'=>'hidden','name'=>'ID','value'=>$info['ID'],'id'=>'ID')); ?>
 				
 				<div class="footer">
+					<?php echo form_input(array(
+								'type'=>'button',
+								'name'=>'cancelar',
+								'id'=>'cancelar',
+								'value'=>lang('comun_cancel'),
+								'class'=>'btn'
+								));	?>
 					<?php echo form_submit(array(
 										'name'=>'submit',
 										'id'=>'submit',
-										'value'=>lang('comun_submit')
+										'value'=>lang('comun_submit'),
+										'class'=>'btn'
 										));	?>
 				</div>
 			</form>
@@ -53,6 +61,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+ var id_proyecto = $('#ID').val();
  $('#<?php echo $controller_name; ?>-form').validate({
   rules: {
    nick: {
@@ -81,17 +90,43 @@ $(document).ready(function() {
             success : function(data){
             if(!data.error){
              $("#<?php echo $controller_name; ?>-form").hide('slow');
-             $('#results').show();
-             $('#messages').html(data.message);
+            	if(id_proyecto===""){
+            		$('#proyectillos').html();
+			 		$.get('<?php echo site_url($controller_name);?>/get_row/'+data.proyecto_id, function(data) {
+					    $('.proyectos div.block:last').after(data);
+					});
+			 	}else{
+			 		$('#proyecto'+id_proyecto).load('<?php echo site_url($controller_name);?>/get_row/'+id_proyecto);
+			 	}
             }else
-             $('#errors').html(data.message);	
+            	$('#errors').html(data.message);	
             }
         })
         return false;
      }
   
  });  
+ 	$('#fecha_inicio').datetimepicker({
+	 	theme:'dark',
+	 	timepicker:false,
+	 	format:'Y/m/d',
+		formatDate:'Y/m/d'
+	});
+	$('#fecha_fin').datetimepicker({
+	 	theme:'dark',
+	 	timepicker:false,
+	 	format:'Y/m/d',
+		formatDate:'Y/m/d'
+	});
+
+ $('#cancelar').click(function(){
+ 	if(id_proyecto===""){
+ 		$('#proyectillos').html('');
+ 	}else{
+ 		$('#proyecto'+id_proyecto).load('<?php echo site_url($controller_name);?>/get_row/'+id_proyecto);
+ 	}
+ });
+
 }); // end document.ready
 
 </script>
-<?php $this -> load -> view('inicio/footer'); ?>

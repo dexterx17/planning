@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Devuelve una estructura HTML con una tabla
+ * @return string Bloque HTML
+ **/
 function get_default_table() {
 		
 	$default_table = array (
@@ -26,6 +30,14 @@ function get_default_table() {
 	return $default_table;
 }
 
+/**
+ * Devuelve un row con un input creado con los parametros recibidos
+ * 
+ * @param string $caption Label que figura
+ * @param string $id ID que se le dara al input
+ * @param string $value Valor que tiene el input
+ * @param array $opciones Array con opciones para un combobox
+ **/
 function get_row_form($caption,$id,$value,$opciones="") {
 	
 	$default_row = '';
