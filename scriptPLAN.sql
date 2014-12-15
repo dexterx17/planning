@@ -84,6 +84,31 @@ CREATE TABLE actividades_sprint
 	
 );
 
+ALTER TABLE actividades ADD COLUMN sprint INT;
+
+CREATE TABLE estado_actividades
+(
+    ID      INT PRIMARY KEY AUTO_INCREMENT,
+    nombre  VARCHAR(50),
+    lang 	VARCHAR(5) DEFAULT "es"
+);
+INSERT INTO estado_actividades(nombre) VALUES('Nueva'),('Lista para estimación'),('Lista para sprint'),('Por hacer'),('En progreso'),('Realizada'),('Sprint completado');
+
+ALTER TABLE sprints ADD COLUMN num INT;
+
+DELIMITER //
+DROP TRIGGER IF EXISTS ins_sprint //
+CREATE TRIGGER ins_sprint
+BEFORE INSERT ON sprints
+FOR EACH ROW 
+BEGIN 
+ SELECT COUNT(*) INTO @cantidad
+ FROM sprints S
+ WHERE S.proyecto = NEW.proyecto; 
+ SET NEW.num=@cantidad+1;
+END; //
+DELIMITER ;
+
 -------------------------------------------------------HASTA AQUI LA VERSION DEL SCRIPT EJECUTADA --------------------------------------
 CREATE TABLE funciones
 (

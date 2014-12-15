@@ -27,8 +27,10 @@
 				<?php echo get_row_form(lang('comun_description'),'descripcion',$info['descripcion']); ?>
 				<?php echo get_row_form(lang('comun_planned_time'),'tiempo_planificado',$info['tiempo_planificado']); ?>
 				<?php echo get_row_form(lang('comun_real_time'),'timpo_real',$info['tiempo_real']); ?>
-				<?php echo get_row_form(lang('comun_state'),'estado',$info['estado']); ?>
+				<?php echo get_row_form(lang('comun_state'),'estado',$info['estado'],$estados_actividad); ?>
 				
+				<?php echo get_row_form(lang('sprints_singular'),'sprint',$info['sprint'],$sprints); ?>
+
 				<?php echo form_hidden('ID',$info['ID']); ?>
 				<?php echo form_hidden('proyecto',$proyecto); ?>
 				

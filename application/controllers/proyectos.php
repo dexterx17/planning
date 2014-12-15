@@ -135,8 +135,8 @@ class Proyectos extends CI_Controller {
 	 *@param integer $proyecto_id Clave primaria del proyecto
 	 **/
 	public function delete($proyecto_id){
-		if($ID= $this->proyecto->delete($ID)){
-			echo json_encode(array('error'=>false,'message'=>'TODO BIEN','proyecto_id'=>$ID));
+		if($ID= $this->proyecto->delete($proyecto_id)){
+			echo json_encode(array('error'=>false,'message'=>'TODO BIEN','proyecto_id'=>$proyecto_id));
 		}else{
 			echo json_encode(array('error'=>true,'message'=>'Error al eliminar'));
 		}	

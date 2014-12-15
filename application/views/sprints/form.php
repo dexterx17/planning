@@ -83,7 +83,19 @@ $(document).ready(function() {
         return false;
      }
   
- });  
+ });
+	$('#fecha_inicio').datetimepicker({
+	 	theme:'dark',
+	 	timepicker:false,
+	 	format:'Y/m/d',
+		formatDate:'Y/m/d'
+	});
+	$('#fecha_fin').datetimepicker({
+	 	theme:'dark',
+	 	timepicker:false,
+	 	format:'Y/m/d',
+		formatDate:'Y/m/d'
+	});
 }); // end document.ready
 
 </script>

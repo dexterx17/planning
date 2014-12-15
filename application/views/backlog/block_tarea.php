@@ -1,4 +1,4 @@
-<li id="task-<?php echo $tarea['ID']; ?>">
+<li id="task-<?php echo $tarea['ID']; ?>" draggable="true">
    <!--Boton de DRAG and DROP-->
     <span class="handle">
         <i class="fa fa-ellipsis-v"></i>

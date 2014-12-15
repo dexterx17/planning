@@ -134,6 +134,23 @@ class Tarea extends CI_Model{
 			} 
 			
 	}
+
+	/**
+	 * Devuelve un array con todas las tareas en determinado estado de una actividad
+	 * @param integer $actividad Clave primaria de la actividad a la que pertenecen las tareas
+	 * @param integer $estado Estado de las tareas que se quiere obtener
+	 */
+	function get_pendientes_by_actividad($actividad, $estado = 1){
+		try{
+				$this->db->where('actividad',$actividad);	
+				$this->db->where('estado',$estado);
+				return  $this->db->get($this->table_name)->result_array();
+				
+			}catch(Exception $e){
+				show_error($e->getMessage().' --- '.$e->getTraceAsString());
+				return null;
+			}
+	}
 }
 
 ?>

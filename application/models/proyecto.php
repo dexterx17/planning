@@ -110,7 +110,7 @@ class Proyecto extends CI_Model{
 		try{
 			
 			$this->db->where('ID',$id);
-			return $this->db->delete($this->$table_name);
+			return $this->db->delete($this->table_name);
 			
 			}catch(Exception $e){
 				show_error($e->getMessage().' --- '.$e->getTraceAsString());

@@ -84,7 +84,7 @@ $(document).on('click', '.menu-sec a[href!="#"]', function(e) {
 	    var $this = $(e.currentTarget);
 		loadURL($this.attr('href'),$('#contenido2'));
     });
-    
+    loadURL("<?php echo site_url("actividades/index").'/'.$info['ID']; ?>",$('#contenido2'));
 	$(function () {
 	
     $('#container').highcharts({

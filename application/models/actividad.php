@@ -129,21 +129,51 @@ class Actividad extends CI_Model{
 	 * @param integer $proyecto Clave primaria del proyecto
 	 */
 	function get_by_proyecto($proyecto){
-		$this->db->where('ID',$proyecto);
-		$query=  $this->db->get($this->table_name);
-		
-		if ($query->num_rows() == 1) {
-			return $query->row();
-		} else {
-			//Get empty base parent object, as $item_id is NOT an item
-			$info_obj =  array();
+		try{
+			$this->db->where('proyecto',$proyecto);	
+			return  $this->db->get($this->table_name)->result_array();
 			
-			$fields = $this->db->list_fields($this->table_name);
-			foreach ($fields as $field) {
-				$info_obj["$field"] = '';
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+			return null;
+		} 
+	}
+
+	/**
+	 * Devuelve un array con todas las actividades de un sprint
+	 * @param integer $sprint Clave primaria del sprint
+	 */
+	function get_by_sprint($sprint){
+		try{
+			$this->db->where('sprint',$sprint);	
+			return  $this->db->get($this->table_name)->result_array();
+			
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+			return null;
+		} 
+	}
+
+	/**
+	 * Devuelve un array con las actividades que estan activas
+	 * @param integer $proyecto Clave primaria del proyecto
+	 */
+	function get_pendientes($proyecto){
+		try{
+			$this->db->where('proyecto',$proyecto);
+			$res=  (array)$this->db->get($
+				$this->table_name,10,$skip)->result();
+			$resultado=array();
+			foreach ($res as $key => $value) {
+				$aux=(array)$value;
+				$resultado[$key]=(array)$value;
+				$resultado[$key]['tareas']=$this->tarea->get_pendientes_by_actividad($aux['ID']);
 			}
-			return $info_obj;
-		}
+			return $resultado;
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+			return null;
+		} 
 	}
 }
 

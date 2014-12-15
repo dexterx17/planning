@@ -24,6 +24,7 @@ class Sprints extends CI_Controller {
 	            $nuevos_datos = $this->sprint->get_with_limits($ultimo,$proyecto);
 	            if($nuevos_datos){      
 		            foreach ($nuevos_datos as $fila) {
+		            		$fila['actividades']=$this->actividad->get_by_sprint($fila['ID']);
 		            		get_row_sprint($fila,$data['items']);
 			            }
 			         }
@@ -39,11 +40,12 @@ class Sprints extends CI_Controller {
 	/**
 	 * Muestra la vista principal de un sprint
 	 * 
-	 * @param integer $clave Clave primaria del sprint
+	 * @param integer $sprint_id Clave primaria del sprint
 	 **/
-	function view($clave){
+	function view($sprint_id){
 		$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
-		$data['info']=(array)$this->sprint->get_info($clave);
+		$data['info']=(array)$this->sprint->get_info($sprint_id);
+		print_r($data);
 		$this->load->view('sprints/view',$data);
 	}
 	/**

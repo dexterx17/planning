@@ -50,6 +50,10 @@ class Actividades extends CI_Controller {
 
             $data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
             $data['info'] = (array) $this->actividad->get_info($clave);
+            $data['estados_actividad'] = (array)$this->configuracion->get_comboBox('estado_actividades');
+            $sprints=$this->sprint->get_by_proyecto_comboBox($proyecto);
+            $sprints[""]="";
+            $data['sprints']=$sprints;
             $data['proyecto'] = $proyecto;
             $this->load->view('backlog/form', $data);
         } catch (Exception $e) {
@@ -76,7 +80,8 @@ class Actividades extends CI_Controller {
                     'tiempo_planificado' => $this->input->post('tiempo_planificado'),
                     'tiempo_real' => $this->input->post('tiempo_real'),
                     'estado' => $this->input->post('estado'),
-                    'proyecto' => $this->input->post('proyecto')
+                    'proyecto' => $this->input->post('proyecto'),
+                    'sprint' => $this->input->post('sprint'),
                 );
 
                 if ($this->actividad->save($ID, $data)) {

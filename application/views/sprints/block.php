@@ -65,8 +65,9 @@
 				<div class="panel-body">
 					<ul class="todo-list">
 			            <?php 
-							foreach ($info['tareas'] as $key => $value) {
-								echo get_li_todo_list(lang('comun_name'),$value);
+							foreach ($info['actividades'] as $key => $value) {
+								 $data['info']=$value;
+                                $this->load->view('backlog/block_actividad',$data);
 							}
 						?>
 		        	</ul>

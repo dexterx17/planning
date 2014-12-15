@@ -15,6 +15,7 @@
 		<?php echo get_row_form(lang('comun_real_time'),'tiempo_real',$info['tiempo_real']); ?>
 		<?php echo get_row_form(lang('comun_state'),'estado',$info['estado'],$estados_tarea); ?>
 		
+		
 		<?php echo form_input(array('type'=>'hidden','name'=>'ID','value'=>$info['ID'],'id'=>'ID')); ?>
 		<?php echo form_hidden('actividad',$actividad); ?>
 		

@@ -72,8 +72,13 @@ class Sprint extends CI_Model{
 		try{
 				$this->db->where('proyecto',$proyecto);	
 				$res=  (array)$this->db->get($this->table_name,10,$skip)->result();
-
-				return $res;
+				$resultado=array();
+				foreach ($res as $key => $value) {
+					$aux=(array)$value;
+					$resultado[$key]=(array)$value;
+					$resultado[$key]['actividades']=$this->actividad->get_by_sprint($aux['ID']);
+				}
+				return $resultado;
 			}catch(Exception $e){
 				show_error($e->getMessage().' --- '.$e->getTraceAsString());
 				return null;
@@ -124,21 +129,24 @@ class Sprint extends CI_Model{
 	 * @param integer $proyecto Clave primaria del proyecto
 	 */
 	function get_by_proyecto($proyecto){
-		$this->db->where('ID',$proyecto);
-		$query=  $this->db->get($this->table_name);
-		
-		if ($query->num_rows() == 1) {
-			return $query->row();
-		} else {
-			//Get empty base parent object, as $item_id is NOT an item
-			$info_obj =  array();
-			
-			$fields = $this->db->list_fields($this->table_name);
-			foreach ($fields as $field) {
-				$info_obj["$field"] = '';
-			}
-			return $info_obj;
-		}
+		$this->db->where('proyecto',$proyecto);
+		return $this->db->get($this->table_name)->result_array();
+	}
+
+	/**
+	 * Devuelve una array con el ID y el nombre del elemento
+     * @param integer $proyecto Clave primaria del proyecto
+	 * @return array Array con todos los elementos 
+	 */
+	function get_by_proyecto_comboBox($proyecto){
+		$this->db->select('ID,num');
+		$this->db->where('proyecto',$proyecto);
+		$res = $this->db->get($this->table_name)->result_array();
+        $resultado=array();
+        foreach ($res as $key => $value) {
+            $resultado[$value['ID']]=$value['num'];
+        }
+        return $resultado;
 	}
 }
 
