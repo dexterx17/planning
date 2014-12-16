@@ -96,9 +96,12 @@ INSERT INTO estado_actividades(nombre) VALUES('Nueva'),('Lista para estimación'
 
 ALTER TABLE sprints ADD COLUMN num INT;
 
+/**
+* Genera un nuevo Número de sprint
+**/
 DELIMITER //
-DROP TRIGGER IF EXISTS ins_sprint //
-CREATE TRIGGER ins_sprint
+DROP TRIGGER IF EXISTS before_sprint_insert; //
+CREATE TRIGGER before_sprint_insert
 BEFORE INSERT ON sprints
 FOR EACH ROW 
 BEGIN 
@@ -108,6 +111,79 @@ BEGIN
  SET NEW.num=@cantidad+1;
 END; //
 DELIMITER ;
+
+/**
+* Actualiza los tiempos planificado y real de la actidad, sumando los tiempos de cada tarea
+**/
+DELIMITER //
+DROP TRIGGER IF EXISTS after_tareas_insert; //
+CREATE TRIGGER after_tareas_insert
+AFTER INSERT ON tareas
+FOR EACH ROW
+BEGIN
+ SELECT SUM(T.tiempo_planificado) into @TP
+ FROM tareas T
+ WHERE T.actividad=NEW.actividad;
+ SELECT SUM(T.tiempo_real) into @TR
+ FROM tareas T
+ WHERE T.actividad=NEW.actividad;
+
+ UPDATE actividades 
+ SET tiempo_planificado = @TP,
+ tiempo_real = @TR
+ WHERE ID=NEW.actividad;
+
+END; //
+DELIMITER ;
+
+/**
+* Actualiza los tiempos planificado y real de la actidad, sumando los tiempos de cada tarea
+**/
+DELIMITER //
+DROP TRIGGER IF EXISTS after_tareas_update; //
+CREATE TRIGGER after_tareas_update
+AFTER UPDATE ON tareas
+FOR EACH ROW
+BEGIN
+ SELECT SUM(T.tiempo_planificado) into @TP
+ FROM tareas T
+ WHERE T.actividad=NEW.actividad;
+ SELECT SUM(T.tiempo_real) into @TR
+ FROM tareas T
+ WHERE T.actividad=NEW.actividad;
+
+ UPDATE actividades 
+ SET tiempo_planificado = @TP,
+ tiempo_real = @TR
+ WHERE ID=NEW.actividad;
+
+END; //
+DELIMITER ;
+
+/**
+* Actualiza los tiempos planificado y real de la actidad, sumando los tiempos de cada tarea
+**/
+DELIMITER //
+DROP TRIGGER IF EXISTS after_tareas_delete; //
+CREATE TRIGGER after_tareas_delete
+AFTER DELETE ON tareas
+FOR EACH ROW
+BEGIN
+ SELECT SUM(T.tiempo_planificado) into @TP
+ FROM tareas T
+ WHERE T.actividad=OLD.actividad;
+ SELECT SUM(T.tiempo_real) into @TR
+ FROM tareas T
+ WHERE T.actividad=OLD.actividad;
+
+ UPDATE actividades 
+ SET tiempo_planificado = @TP,
+ tiempo_real = @TR
+ WHERE ID=OLD.actividad;
+
+END; //
+DELIMITER ;
+
 
 -------------------------------------------------------HASTA AQUI LA VERSION DEL SCRIPT EJECUTADA --------------------------------------
 CREATE TABLE funciones

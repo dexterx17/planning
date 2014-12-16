@@ -82,5 +82,17 @@ class Tareas extends CI_Controller {
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
+	}
+
+	/**
+	 * Elimina un proyecto
+	 *@param integer $proyecto_id Clave primaria del proyecto
+	 **/
+	public function delete($proyecto_id){
+		if($ID= $this->tarea->delete($proyecto_id)){
+			echo json_encode(array('error'=>false,'message'=>'TODO BIEN','task_id'=>$proyecto_id));
+		}else{
+			echo json_encode(array('error'=>true,'message'=>'Error al eliminar'));
+		}	
 	}	
 }

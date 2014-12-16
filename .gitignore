@@ -1,5 +1,5 @@
 .DS_Store
-
+*.sublime-classdb
 application/cache/*
 !application/cache/index.html
 !application/cache/.htaccess

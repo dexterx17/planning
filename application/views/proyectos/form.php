@@ -1,62 +1,52 @@
 
-<div class="contenido">
-	<section class="seccion">
-		<article class="panel">
-			<hgroup>
-				<h2><?php echo lang($controller_name.'_new'); ?></h2>
-				<small><?php echo lang($controller_name.'_description').$info['nick']; ?></small>
-			</hgroup>
-			<div id="results" style="display: none">
-				<div id="messages">
-					
-				</div>
-				<!-- SI SE QUIEREN AGREGAR MAS BOTENES PARA OPERACIONES DESPUES DE GUARDAR-->
-				<div class="acciones">
-					<a class="btn" href="<?php echo site_url("$controller_name"); ?>">
-						<i class="fa fa-lg fa-fw fa-group"></i>
-						<span><?php echo lang('comun_back_to_list'); ?></span>
-					</a>
-					<a class="btn" href="<?php echo site_url("$controller_name/nuevo"); ?>">
-						<i class="fa fa-lg fa-fw fa-plus"></i>
-						<span><?php echo lang($controller_name.'_new'); ?></span>
-					</a>
-				</div>
+<div class="row">
+	<div class="col-lg-6">
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title"><?php echo lang($controller_name.'_singular'); ?>
+					<small><?php echo lang($controller_name.'_description').$info['nick']; ?></small>
+				</h3>
+				
 			</div>
-			<form action="<?php echo site_url($controller_name.'/save') ?>" method="post" id="<?php echo $controller_name; ?>-form">
-				<div id="errors" class="alert-info"></div>
-				<?php echo get_row_form(lang('comun_nick'),'nick',$info['nick']); ?>
-				<?php echo get_row_form(lang('comun_name'),'nombre',$info['nombre']); ?>
-				<?php echo get_row_form(lang('comun_description'),'descripcion',$info['descripcion']); ?>
-				<?php echo get_row_form(lang('comun_date_start'),'fecha_inicio',$info['fecha_inicio']); ?>
-				<?php echo get_row_form(lang('comun_date_end'),'fecha_fin',$info['fecha_fin']); ?>
-				<?php echo get_row_form(lang('comun_owner'),'owner',$info['owner']); ?>
-				<?php echo get_row_form(lang('comun_presupuesto'),'presupuesto',$info['presupuesto']); ?>
-				
-				<?php echo form_input(array('type'=>'hidden','name'=>'ID','value'=>$info['ID'],'id'=>'ID')); ?>
-				
-				<div class="footer">
-					<?php echo form_input(array(
-								'type'=>'button',
-								'name'=>'cancelar',
-								'id'=>'cancelar',
-								'value'=>lang('comun_cancel'),
-								'class'=>'btn'
-								));	?>
-					<?php echo form_submit(array(
-										'name'=>'submit',
-										'id'=>'submit',
-										'value'=>lang('comun_submit'),
-										'class'=>'btn'
-										));	?>
+			<form role="form" class="form-horizontal" action="<?php echo site_url($controller_name.'/save') ?>" method="post" id="<?php echo $controller_name; ?>-form">
+				<div class="box-body">
+					<div id="errors" class="alert-info"></div>
+					<?php echo get_row_form(lang('comun_nick'),'nick',$info['nick']); ?>
+					<?php echo get_row_form(lang('comun_name'),'nombre',$info['nombre']); ?>
+					<?php echo get_row_form(lang('comun_description'),'descripcion',$info['descripcion']); ?>
+					<?php echo get_row_form(lang('comun_date_start'),'fecha_inicio',$info['fecha_inicio']); ?>
+					<?php echo get_row_form(lang('comun_date_end'),'fecha_fin',$info['fecha_fin']); ?>
+					<?php echo get_row_form(lang('comun_owner'),'owner',$info['owner']); ?>
+					<?php echo get_row_form(lang('comun_presupuesto'),'presupuesto',$info['presupuesto']); ?>
+					
+					<?php echo form_input(array('type'=>'hidden','name'=>'ID','value'=>$info['ID'],'id'=>'ID')); ?>
+					
+					<div class="box-footer">
+						<div class="btn-group">
+						<?php echo form_input(array(
+									'type'=>'button',
+									'name'=>'cancelar',
+									'id'=>'cancelar',
+									'value'=>lang('comun_cancel'),
+									'class'=>'btn'
+									));	?>
+						<?php echo form_submit(array(
+											'name'=>'submit',
+											'id'=>'submit',
+											'value'=>lang('comun_submit'),
+											'class'=>'btn'
+											));	?>
+						</div>
+					</div>
 				</div>
 			</form>
-		</article>
-		<aside>
-                <div class="panel">
-                	<p>Ayuda del formulario actual</p>
-                </div>    
-        </aside>
-	</section>
+		</div>
+	</div>
+	<div class="col-lg-6">
+            <div class="panel">
+            	<p>Ayuda del formulario actual</p>
+            </div>    
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -112,6 +102,7 @@ $(document).ready(function() {
 	 	format:'Y/m/d',
 		formatDate:'Y/m/d'
 	});
+	//$("#fecha_inicio").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
 	$('#fecha_fin').datetimepicker({
 	 	theme:'dark',
 	 	timepicker:false,

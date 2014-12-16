@@ -41,20 +41,42 @@ function get_default_table() {
 function get_row_form($caption,$id,$value,$opciones="") {
 	
 	$default_row = '';
-	$default_row .= '<div class="row control-group">';
-	$default_row .= form_label($caption,"$id");
+	$default_row .= '<div class="form-group">';
+	$default_row .= form_label($caption,"$id",array('class'=>'control-label col-sm-2'));
+    $default_row .= '<div class="col-sm-10">';
         if(!is_array($opciones)){
             $default_row .= form_input(array(
                                         'name'=>"$id",
                                         'id'=>"$id",
-                                        'value'=>$value
+                                        'value'=>$value,
+                                        'class'=>'form-control',
+                                        'placeholder'=>$caption
                                         ));
         }else{
             $default_row .= form_dropdown("$id",$opciones,$value,'');
         }
+    $default_row .= '</div>';    
 	$default_row .= '</div>';
 	
 	return $default_row;
 }
+
+/**
+ * Retorna un array con los proyectos 
+ **/
+function get_proyectos(){
+    $CI =& get_instance();
+    return $CI->proyecto->get_with_limits(0);
+}
+
+/**
+ * Retorn el número de actividades que tiene un proyecto
+ *@param integer $proyecto_id Clave primaria del proyecto
+ **/
+function get_count_actividades($proyecto_id){
+    $CI =& get_instance();
+    return $CI->actividad->get_count_by_proyecto(0);
+}
+
 
 ?>

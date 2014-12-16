@@ -26,16 +26,27 @@
 
 
 <script type="text/javascript">
-/*$(document).ready(function() {
+$(document).ready(function() {
 
- $('#lol').click(function(){
-
- 	$.get('<?php echo site_url("tareas");?>/get_row/39', function(data) {
-	    $('#tareillas9+ul.todo-list').prepend(data);
-	});
- });
-  
+    //jQuery UI sortable for the todo list
+    $(".todo-list").sortable({
+        placeholder: "sort-highlight",
+        handle: ".handle",
+        forcePlaceholderSize: true,
+        zIndex: 999999
+    }).disableSelection();
+    
+        //jQuery UI sortable for the todo list
+    $(".block_actividad").sortable({
+        placeholder: "sort-highlight",
+        connectWith: ".block_actividad",
+        handle: ".handl",
+        forcePlaceholderSize: true,
+        zIndex: 999978
+    }).disableSelection();
+    ;
 }); // end document.ready
-*/
+
+
 
 </script>

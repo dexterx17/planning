@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"pr",
+				"proyecto"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
 				"est",
 				"estados_tarea"
 			],
@@ -59,62 +67,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "application/controllers/sprints.php",
-			"settings":
-			{
-				"buffer_size": 3696,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/models/sprint.php",
-			"settings":
-			{
-				"buffer_size": 3747,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/views/sprints/block.php",
-			"settings":
-			{
-				"buffer_size": 2492,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/views/backlog/block_actividad.php",
-			"settings":
-			{
-				"buffer_size": 1409,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/views/sprints/manage.php",
-			"settings":
-			{
-				"buffer_size": 460,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/models/actividad.php",
-			"settings":
-			{
-				"buffer_size": 4386,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/views/backlog/block_tarea.php",
-			"settings":
-			{
-				"buffer_size": 869,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -219,23 +171,55 @@
 		"/var/www/html/planning/application/models",
 		"/var/www/html/planning/application/views",
 		"/var/www/html/planning/application/views/backlog",
+		"/var/www/html/planning/application/views/inicio",
 		"/var/www/html/planning/application/views/proyectos",
-		"/var/www/html/planning/application/views/sprints"
+		"/var/www/html/planning/application/views/sprints",
+		"/var/www/html/planning/css",
+		"/var/www/html/planning/js",
+		"/var/www/html/planning/js/src"
 	],
 	"file_history":
 	[
-		"/var/www/html/planning/application/models/sprint.php",
-		"/var/www/html/planning/application/models/proyecto.php",
-		"/var/www/html/planning/application/views/backlog/form.php",
-		"/var/www/html/planning/application/controllers/actividades.php",
-		"/var/www/html/planning/application/views/inicio/index.php",
-		"/var/www/html/planning/application/controllers/proyectos.php",
+		"/var/www/html/planning/application/views/proyectos/manage.php",
+		"/var/www/html/planning/application/views/proyectos/block.php",
+		"/var/www/html/planning/application/views/backlog/block_tarea.php",
+		"/var/www/html/planning/application/language/espanol/comun_lang.php",
+		"/var/www/html/planning/application/models/actividad.php",
+		"/var/www/html/planning/application/controllers/sprints.php",
+		"/var/www/html/planning/application/views/sprints/manage.php",
+		"/var/www/html/planning/application/language/espanol/actividades_lang.php",
+		"/var/www/html/planning/application/views/sprints/block.php",
+		"/var/www/html/planning/application/views/backlog/block_actividad.php",
+		"/var/www/html/planning/application/models/tarea.php",
+		"/var/www/html/planning/application/controllers/tareas.php",
+		"/var/www/html/planning/scriptPLAN.sql",
 		"/var/www/html/planning/application/views/proyectos/view.php",
+		"/var/www/html/planning/application/helpers/table_helper.php",
+		"/var/www/html/planning/application/views/backlog/manage.php",
+		"/var/www/html/planning/js/AdminLTE/dashboard.js",
+		"/var/www/html/planning/application/views/inicio/footer.php",
+		"/var/www/html/planning/application/views/inicio/header.php",
+		"/var/www/html/planning/application/views/backlog/form.php",
+		"/var/www/html/planning/application/views/backlog/block.php",
+		"/var/www/html/planning/js/AdminLTE/app.js",
+		"/var/www/html/planning/application/views/inicio/index.php",
+		"/var/www/html/planning/js/src/scripts.js",
+		"/var/www/html/planning/js/plugins/bootstrap-slider/bootstrap-slider.js",
+		"/var/www/html/planning/application/views/proyectos/form.php",
+		"/var/www/html/planning/application/controllers/inicio.php",
+		"/var/www/html/planning/application/models/proyecto.php",
+		"/var/www/html/planning/planning.sublime-project",
+		"/var/www/html/planning/js/AdminLTE/demo.js",
+		"/var/www/html/planning/DER.pgd",
+		"/var/www/html/planning/node_modules/grunt-contrib-stylus/node_modules/stylus/node_modules/sax/test/xmlns-xml-default-ns.js",
+		"/var/www/html/planning/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/argument_parser.js",
+		"/var/www/html/planning/application/config/autoload.php",
+		"/var/www/html/planning/application/models/sprint.php",
+		"/var/www/html/planning/application/controllers/actividades.php",
+		"/var/www/html/planning/application/controllers/proyectos.php",
 		"/var/www/html/planning/application/views/sprints/form.php",
 		"/var/www/html/planning/application/views/backlog/form_tarea.php",
-		"/var/www/html/planning/scriptPLAN.sql",
 		"/var/www/html/planning/application/controllers/android.php",
-		"/var/www/html/planning/planning.sublime-project",
 		"/var/www/html/planning/application/controllers/android.html",
 		"/var/www/html/rrnn/application/modules/inicio/models/vocero.php",
 		"/var/www/html/rrnn/application/modules/inicio/controllers/voceros.php",
@@ -292,7 +276,6 @@
 		"/var/www/html/planning/css/min/font-awesome.css",
 		"/var/www/html/planning/css/estilo.css",
 		"/var/www/html/planning/.gitignore",
-		"/var/www/html/planning/application/views/inicio/header.php",
 		"/var/www/html/planning/js/highcharts.js",
 		"/var/www/html/planning/js/bootstrap.min.js",
 		"/var/www/html/planning/js/jquery-1.10.2.min.js",
@@ -324,38 +307,11 @@
 		"/var/www/html/rrnn/application/modules/poas/themes/bootstrap/poas/matriz_planificacion.html.twig",
 		"/var/www/html/rrnn/application/modules/poas/themes/bootstrap/poas/matriz_general.html.twig",
 		"/var/www/html/rrnn/application/modules/poas/themes/bootstrap/actividades/info_row.html.twig",
-		"/var/www/html/rrnn/application/modules/poas/controllers/actividades.php",
-		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/monitoreo/componentes/manage.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/language/espanol/promotores_lang.php",
-		"/var/www/html/rrnn/application/modules/documentos/themes/bootstrap/documentos/manage.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/autoridades/form.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/helpers/table_helper.php",
-		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/promotores/manage.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/admin/periodos.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/comunidades/manage.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/autoridades/manage_tipos.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/documentos/manage.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/language/espanol/documentos_lang.php",
-		"/var/www/html/rrnn/application/modules/planes_manejo/language/espanol/autoridades_lang.php",
-		"/var/www/html/rrnn/application/modules/planes_manejo/language/espanol/comunidades_lang.php",
-		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/autoridades/manage.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/tecnicos/manage.html.twig",
-		"/var/www/html/rrnn/application/themes/bootstrap/_layouts/planes_manejo.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/tecnicos/form.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/ongs/manage.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/beneficiarios/formBeneficios.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/beneficiarios/form.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/autoridades/form_tipos.html.twig",
-		"/var/www/html/rrnn/index.html",
-		"/var/www/html/rrnn/test/infoDbSql.php",
-		"/var/www/html/rrnn/tools/install.sh",
-		"/var/www/html/rrnn/system/core/URI.php",
-		"/var/www/html/rrnn/application/libraries/mongo_db.php",
-		"/var/www/html/planning/tests/generate"
+		"/var/www/html/rrnn/application/modules/poas/controllers/actividades.php"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 51.0
 	},
 	"find_in_files":
 	{
@@ -370,6 +326,20 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"><?",
+			"btn",
+			"todolist",
+			"alert",
+			"    <!--",
+			"alert",
+			"slider",
+			"ionRangeSlider",
+			"\";\n",
+			"button",
+			"form_label",
+			"navbar",
+			"no-print",
+			"change_skin",
 			"clave",
 			"lista",
 			"noticia",
@@ -428,653 +398,13 @@
 	"groups":
 	[
 		{
-			"selected": 3,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "application/controllers/sprints.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3696,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1134,
-								1134
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 30.0,
-						"translation.y": 153.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/models/sprint.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3747,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1918,
-								1918
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 76.0,
-						"translation.y": 867.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "application/views/sprints/block.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2492,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								77,
-								77
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "application/views/backlog/block_actividad.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1409,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								615,
-								615
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		},
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 4,
-					"file": "application/views/sprints/manage.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 460,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								384,
-								384
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "application/models/actividad.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4386,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1661,
-								1661
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 612.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "application/views/backlog/block_tarea.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 869,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								868,
-								868
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1152,6 +482,14 @@
 		"selected_items":
 		[
 			[
+				"demo",
+				"js/AdminLTE/demo.js"
+			],
+			[
+				"app",
+				"js/AdminLTE/app.js"
+			],
+			[
 				"helper",
 				"assets/js/highchart/helper.js"
 			],
@@ -1198,7 +536,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 		"xdebug":

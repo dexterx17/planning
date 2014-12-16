@@ -1,57 +1,59 @@
-<div class="contenido">
-	<section class="seccion">
-		<article class="panel">
-			<hgroup>
-				<h2><?php echo lang($controller_name.'_new'); ?></h2>
-				<small><?php echo lang($controller_name.'_description'); ?></small>
-			</hgroup>
-			<div id="results" style="display: none">
-				<div id="messages">
-					
-				</div>
-				<!-- SI SE QUIEREN AGREGAR MAS BOTENES PARA OPERACIONES DESPUES DE GUARDAR-->
-				<div class="acciones">
-					<a class="btn btn-embed" href="<?php echo site_url("$controller_name/view/".$proyecto); ?>">
-						<i class="fa fa-lg fa-fw fa-group"></i>
-						<span><?php echo lang('comun_back_to_list'); ?></span>
-					</a>
-					<a class="btn btn-embed" href="<?php echo site_url("$controller_name/nuevo/-1/".$proyecto); ?>">
-						<i class="fa fa-lg fa-fw fa-plus"></i>
-						<span><?php echo lang($controller_name.'_new'); ?></span>
-					</a>
-				</div>
+<div class="box">
+	<div class="box-header">
+		<h3 class="box-title"><?php echo lang($controller_name.'_new'); ?>
+			<small><?php echo lang($controller_name.'_description'); ?></small>
+		</h3>
+	</div>
+	<div id="results" style="display: none">
+		<div id="messages">
+			
+		</div>
+	</div>
+	<form class="form-horizontal" role="form" action="<?php echo site_url($controller_name.'/save') ?>" method="post" id="<?php echo $controller_name; ?>-form">
+		<div id="errors" class="alert-info"></div>
+		<?php echo get_row_form(lang('comun_name'),'nombre',$info['nombre']); ?>
+		<?php echo get_row_form(lang('comun_description'),'descripcion',$info['descripcion']); ?>
+		<div class="form-group">
+			<?php echo form_label(lang('comun_planned_time'),'tiempo_planificado',array('class'=>'control-label col-sm-2')); ?>
+			<div class="col-sm-10">
+				<?php echo form_input(array(
+                                        'name'=>"tiempo_planificado",
+                                        'id'=>"red",
+                                        'value'=>$info['tiempo_planificado'],
+                                        'class'=>'form-control slider',
+                                        ));
+                ?>
 			</div>
-			<form action="<?php echo site_url($controller_name.'/save') ?>" method="post" id="<?php echo $controller_name; ?>-form">
-				<div id="errors" class="alert-info"></div>
-				<?php echo get_row_form(lang('comun_name'),'nombre',$info['nombre']); ?>
-				<?php echo get_row_form(lang('comun_description'),'descripcion',$info['descripcion']); ?>
-				<?php echo get_row_form(lang('comun_planned_time'),'tiempo_planificado',$info['tiempo_planificado']); ?>
-				<?php echo get_row_form(lang('comun_real_time'),'timpo_real',$info['tiempo_real']); ?>
-				<?php echo get_row_form(lang('comun_state'),'estado',$info['estado'],$estados_actividad); ?>
-				
-				<?php echo get_row_form(lang('sprints_singular'),'sprint',$info['sprint'],$sprints); ?>
+		</div>
 
-				<?php echo form_hidden('ID',$info['ID']); ?>
-				<?php echo form_hidden('proyecto',$proyecto); ?>
-				
-				<div class="footer">
-					<?php echo form_submit(array(
-										'name'=>'submit',
-										'id'=>'submit',
-										'value'=>lang('comun_submit')
-										));	?>
-				</div>
-			</form>
-		</article>
-		<aside>
-                <div class="panel">
-                	<p>Ayuda del formulario actual</p>
-                </div>    
-        </aside>
-	</section>
+<input type="text" value="" class="slider form-control" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="[0, 20]" data-slider-orientation="vertical" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="red">
+		<?php echo get_row_form(lang('comun_real_time'),'tiempo_real',$info['tiempo_real']); ?>
+		<?php echo get_row_form(lang('comun_state'),'estado',$info['estado'],$estados_actividad); ?>
+		
+		<?php echo get_row_form(lang('sprints_singular'),'sprint',$info['sprint'],$sprints); ?>
+
+		<?php echo form_hidden('ID',$info['ID']); ?>
+		<?php echo form_hidden('proyecto',$proyecto); ?>
+		
+		<div class="box-footer">
+			<?php echo form_submit(array(
+								'name'=>'submit',
+								'id'=>'submit',
+								'value'=>lang('comun_submit'),
+								'class'=>'btn'
+								));	?>
+		</div>
+	</form>
 </div>
+
 <script type="text/javascript">
+ $(function() {
+ 	$('.slider').slider();	
+ });
+
 $(document).ready(function() {
+
+
  $('#<?php echo $controller_name; ?>-form').validate({
   rules: {
    nick: {

@@ -19,6 +19,9 @@ class Sprints extends CI_Controller {
 			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
 			$data['proyecto']=$proyecto;
 			$ultimo = $this->input->post('ultimo_id');
+			$data['estados_tarea'] = $this->configuracion->get_comboBox('estado_tarea');
+			$data['actividades']= $this->actividad->get_by_proyecto_sin_sprint($proyecto);
+
 			if($ultimo)
 			{
 	            $nuevos_datos = $this->sprint->get_with_limits($ultimo,$proyecto);

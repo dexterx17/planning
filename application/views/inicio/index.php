@@ -1,5 +1,18 @@
 <?php $this -> load -> view('inicio/header'); ?>
-<div class="contenido">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Inicio
+                        <small>DRY - KISS - SOLID - TDD - CI</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+                        <li class="active">Dashboard</li>
+                    </ol>
+                </section>
+ 		 <!-- Main content -->
+                <section class="content">
+
 	<section class="seccion">
 		<hgroup>
 			<h1></h1>
@@ -55,6 +68,9 @@
 			<h2>"Si tuviera 9 horas para cortar un árbol, le dedicaría 6 horas a afilar mi hacha", Abraham Lincoln.</h2>
 		</div>
 		<div class="row">
+			<input type="text" value="" class="slider form-control" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="[0, 20]" data-slider-orientation="vertical" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="red">
+		</div>
+		<div class="row">
 			<a href="<?php echo site_url(''); ?>scriptPLAN.sql" download="<?php echo site_url(''); ?>scriptPlan.sql">Download Filtros</a>
 		</div>
 			<ul id="ul-arbol">
@@ -86,7 +102,7 @@
 		</article>
 	</section>
 
-</div>
+</section>
 <script>
 
 </script>

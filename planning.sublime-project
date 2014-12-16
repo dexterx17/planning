@@ -7,6 +7,7 @@
 		}
 	],
 	"settings":{
-		"xdebug":{ "url":"http://localhost"}
+		"xdebug":{ "url":"http://localhost"},
+		 "scan_php_classes": true
 	}
 }

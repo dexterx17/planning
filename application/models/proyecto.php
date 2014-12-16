@@ -70,7 +70,7 @@ class Proyecto extends CI_Model{
 	public function get_with_limits($skip=0){
 		try{
 			
-				return  $this->db->get($this->table_name,10,$skip)->result();
+				return  $this->db->get($this->table_name,10,$skip)->result_array();
 				
 			}catch(Exception $e){
 				show_error($e->getMessage().' --- '.$e->getTraceAsString());

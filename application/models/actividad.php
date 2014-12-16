@@ -123,6 +123,22 @@ class Actividad extends CI_Model{
 				return false;
 			} 
 	}
+
+	/**
+	 * Devuelve el número de actividades de un proyecto
+	 * @param integer $proyecto Clave primaria del proyecto
+	 */
+	function get_count_by_proyecto($proyecto){
+		try{
+			$this->db->where('proyecto',$proyecto);	
+			return  $this->db->count_all($this->table_name);
+			
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+			return null;
+		} 
+	}
+
 	
 	/**
 	 * Devuelve un array con todas las actividades de un proyecto
@@ -131,6 +147,23 @@ class Actividad extends CI_Model{
 	function get_by_proyecto($proyecto){
 		try{
 			$this->db->where('proyecto',$proyecto);	
+			return  $this->db->get($this->table_name)->result_array();
+			
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+			return null;
+		} 
+	}
+
+	/**
+	 * Devuelve un array con todas las actividades de un proyecto
+	 * @param integer $proyecto Clave primaria del proyecto
+	 */
+	function get_by_proyecto_sin_sprint($proyecto){
+		try{
+			$this->db->where('proyecto',$proyecto);
+			$this->db->where('sprint',NULL);		
+			$this->db->or_where('sprint',0);
 			return  $this->db->get($this->table_name)->result_array();
 			
 		}catch(Exception $e){
