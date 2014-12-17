@@ -68,5 +68,12 @@ $(document).ready(function() {
         forcePlaceholderSize: true,
         zIndex: 999978
     }).disableSelection();
-    ;
+    
+    $("div.calendario").each(function(){
+    	$item = $(this);
+    	$item.datepicker({startDate:$item.attr('startDate'),
+    					endDate:$item.attr('endDate'),
+    					language:"es"});
+
+    });
 }); // end document.ready

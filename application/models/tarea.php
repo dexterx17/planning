@@ -139,12 +139,39 @@ class Tarea extends CI_Model{
 	 * Devuelve un array con todas las tareas en determinado estado de una actividad
 	 * @param integer $actividad Clave primaria de la actividad a la que pertenecen las tareas
 	 * @param integer $estado Estado de las tareas que se quiere obtener
+	 * @param boolean $not Si es true se buscar las tareas que no tengan el estado especificado
 	 */
-	function get_pendientes_by_actividad($actividad, $estado = 1){
+	function get_by_actividad_estado($actividad, $estado = 0,$not=false){
 		try{
+				if($not)
+					$this->db->where_not_in('estado',$estado);
+				else	
+					$this->db->where('estado',$estado);
+						
 				$this->db->where('actividad',$actividad);	
-				$this->db->where('estado',$estado);
 				return  $this->db->get($this->table_name)->result_array();
+				
+			}catch(Exception $e){
+				show_error($e->getMessage().' --- '.$e->getTraceAsString());
+				return null;
+			}
+	}
+
+		/**
+	 * Devuelve un array con todas las tareas en determinado estado de una actividad
+	 * @param integer $actividad Clave primaria de la actividad a la que pertenecen las tareas
+	 * @param integer $estado Estado de las tareas que se quiere obtener
+	 * @param boolean $not Si es true se buscar las tareas que no tengan el estado especificado
+	 */
+	function get_count_by_actividad_estado($actividad, $estado = 0,$not=false){
+		try{
+				if($not)
+					$this->db->where_not_in('estado',$estado);
+				else	
+					$this->db->where('estado',$estado);
+						
+				$this->db->where('actividad',$actividad);	
+				return  $this->db->get($this->table_name)->num_rows();
 				
 			}catch(Exception $e){
 				show_error($e->getMessage().' --- '.$e->getTraceAsString());

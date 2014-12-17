@@ -164,8 +164,15 @@ class Actividad extends CI_Model{
 			$this->db->where('proyecto',$proyecto);
 			$this->db->where('sprint',NULL);		
 			$this->db->or_where('sprint',0);
-			return  $this->db->get($this->table_name)->result_array();
-			
+			$res =  $this->db->get($this->table_name)->result_array();
+			$resultado=array();
+			foreach ($res as $key => $value) {
+				$aux=(array)$value;
+				$resultado[$key]=(array)$value;
+				$resultado[$key]['todo']=$this->tarea->get_count_by_actividad_estado($aux['ID'],3,true);
+				$resultado[$key]['done']=$this->tarea->get_count_by_actividad_estado($aux['ID'],3);
+			}
+			return $resultado;
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 			return null;
@@ -179,8 +186,12 @@ class Actividad extends CI_Model{
 	function get_by_sprint($sprint){
 		try{
 			$this->db->where('sprint',$sprint);	
-			return  $this->db->get($this->table_name)->result_array();
-			
+			$res=  $this->db->get($this->table_name)->result_array();
+			foreach ($res as $key => $value) {
+				$res[$key]['todo']=$this->tarea->get_count_by_actividad_estado($value['ID'],3,true);
+				$res[$key]['done']=$this->tarea->get_count_by_actividad_estado($value['ID'],3);
+			}
+			return $res;
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 			return null;
