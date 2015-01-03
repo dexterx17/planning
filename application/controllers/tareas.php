@@ -19,7 +19,7 @@ class Tareas extends CI_Controller {
 	{
 		try{
 			
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+			$data['controller_name'] = "tareas";
 			$data['info']=(array)$this->tarea->get_info($clave);
 			$data['actividad']=$actividad;
             $data['estados_tarea'] = $this->configuracion->get_comboBox('estado_tarea');
@@ -38,7 +38,7 @@ class Tareas extends CI_Controller {
 	{
 		try{
 			
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+			$data['controller_name'] = "tareas";
 			$data['tarea']=(array)$this->tarea->get_info($clave);
 			//$data['actividad']=$actividad;
             $data['estados_tarea'] = $this->configuracion->get_comboBox('estado_tarea');
@@ -85,12 +85,31 @@ class Tareas extends CI_Controller {
 	}
 
 	/**
-	 * Elimina un proyecto
-	 *@param integer $proyecto_id Clave primaria del proyecto
+     * Es llamado cuando se cambia de posición un tarea del backlog para que actualize el orden 
+     * de las tareas 
+     **/
+    public function ordenar(){
+        $items = $this->input->post('items');
+        $res=[];
+        $count=0;
+
+        foreach ($items as $key => $value) {
+            if($this->tarea->save(extrar_numeros($value),array('orden'=>$key+1)))
+                $count++;
+        }
+        if($count==count($items))
+            echo json_encode(array('error' => false, 'message' => 'TODO BIEN'));
+        else 
+            echo json_encode(array('error' => true, 'message' => 'Error al guardar'));
+    }
+
+	/**
+	 * Elimina una tarea
+	 *@param integer $tarea_id Clave primaria de la tarea
 	 **/
-	public function delete($proyecto_id){
-		if($ID= $this->tarea->delete($proyecto_id)){
-			echo json_encode(array('error'=>false,'message'=>'TODO BIEN','task_id'=>$proyecto_id));
+	public function delete($tarea_id){
+		if($ID= $this->tarea->delete($tarea_id)){
+			echo json_encode(array('error'=>false,'message'=>'TODO BIEN','task_id'=>$tarea_id));
 		}else{
 			echo json_encode(array('error'=>true,'message'=>'Error al eliminar'));
 		}	

@@ -15,7 +15,7 @@
 
     <script src="<?php echo base_url() ?>js/min/jquery-2.0.3.min.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/src/bootstrap.js" type="text/javascript" ></script>
-    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url() ?>js/src/jquery-ui.js" type="text/javascript"></script>
     <script src="<?php echo base_url() ?>js/min/jquery.validate_es.min.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/min/highcharts.js" type="text/javascript" ></script>
     <!--<script src="<?php echo base_url() ?>js/min/dark-blue.js" type="text/javascript" ></script>-->
@@ -42,10 +42,10 @@
 <!--    <script src="<?php echo base_url() ?>js/min/jquery.spinner.js" type="text/javascript" ></script>-->
     <script src="<?php echo base_url() ?>js/min/jquery.datetimepicker.js" type="text/javascript" ></script> 
     <script src="<?php echo base_url() ?>js/src/droparea.js" type="text/javascript" ></script>
-    <script src="<?php echo base_url() ?>js/min/scripts.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/src/scripts.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/min/maps.js" type="text/javascript" ></script>
 	
-	<!-- Piwik -->
+	<!-- Piwik 
 	<script type="text/javascript">
 	  var _paq = _paq || [];
 	  _paq.push(['trackPageView']);
@@ -59,6 +59,6 @@
 	  })();
 	</script>
 	<noscript><p><img src="//127.0.0.1/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-	<!-- End Piwik Code -->
+	 End Piwik Code -->
 	</body>
 </html>

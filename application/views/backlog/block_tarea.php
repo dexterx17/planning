@@ -1,10 +1,9 @@
-<li id="task-<?php echo $tarea['ID']; ?>">
+<li id="task-<?php echo $tarea['ID']; ?>" status="<?php echo $tarea["estado"] ?>">
    <!--Boton de DRAG and DROP-->
     <span class="handle">
         <i class="fa fa-ellipsis-v"></i>
         <i class="fa fa-ellipsis-v"></i>
     </span>
-    <!-- Dropdown para Estado de tarea -->
     <?php echo $estados_tarea[$tarea["estado"]]; ?>
     <!--Descripcion de la tarea-->
     <span class="text"><?php echo $tarea['nombre']; ?></span>

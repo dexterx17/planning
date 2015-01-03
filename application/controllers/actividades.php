@@ -19,10 +19,11 @@ class Actividades extends CI_Controller {
     public function index($proyecto) {
         try {
 
-            $data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+            $data['controller_name'] = 'actividades';
             $data['proyecto'] = $proyecto;
             $ultimo = $this->input->post('ultimo_id');
             $data['estados_tarea'] = $this->configuracion->get_comboBox('estado_tarea');
+            $data['sprints']=$this->sprint->get_by_proyecto($proyecto);
             if ($ultimo) {
                 $nuevos_datos = $this->actividad->get_with_limits($ultimo, $proyecto);
                 if ($nuevos_datos) {
@@ -48,7 +49,7 @@ class Actividades extends CI_Controller {
     public function nuevo($clave = -1, $proyecto) {
         try {
 
-            $data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+            $data['controller_name'] = 'actividades';
             $data['info'] = (array) $this->actividad->get_info($clave);
             $data['estados_actividad'] = (array)$this->configuracion->get_comboBox('estado_actividades');
             $sprints=$this->sprint->get_by_proyecto_comboBox($proyecto);
@@ -98,4 +99,34 @@ class Actividades extends CI_Controller {
         }
     }
 
+    /**
+     * Es llamado cuando se cambia de posición un elemento del backlog para que actualize el orden 
+     * de la pila de producto
+     **/
+    public function ordenar(){
+        $items = $this->input->post('items');
+        $res=[];
+        $count=0;
+
+        foreach ($items as $key => $value) {
+            if($this->actividad->save(extrar_numeros($value),array('orden'=>$key+1)))
+                $count++;
+        }
+        if($count==count($items))
+            echo json_encode(array('error' => false, 'message' => 'TODO BIEN'));
+        else 
+            echo json_encode(array('error' => true, 'message' => 'Error al guardar'));
+    }
+    
+    /**
+     * Elimina una actividad 
+     *@param integer $actividad_id Clave primaria de la actividad
+     **/
+    public function delete($actividad_id){
+        if($ID= $this->actividad->delete($actividad_id)){
+            echo json_encode(array('error'=>false,'message'=>'TODO BIEN','actividad_id'=>$actividad_id));
+        }else{
+            echo json_encode(array('error'=>true,'message'=>'Error al eliminar'));
+        }
+    }
 }

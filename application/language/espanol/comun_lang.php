@@ -48,4 +48,5 @@ $lang[$word.'_geolocalizarme'] = "Geolocalizarme";
 $lang[$word.'_remove_marker'] = "Remover marcador";
 $lang[$word.'_mi_perfil'] = "Mi perfil";
 $lang[$word.'_more_info'] = "Mas información";
+$lang[$word.'_orden_on_backlog'] = "Orden en Backlog";
 ?>

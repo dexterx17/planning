@@ -17,7 +17,7 @@ class Proyectos extends CI_Controller {
 		
 		try{
 			
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+			$data['controller_name'] = "proyectos";
 			
 			$ultimo = $this->input->post('ultimo_id');
 			if($ultimo)
@@ -47,8 +47,7 @@ class Proyectos extends CI_Controller {
 	public function get_row($clave=-1)
 	{
 		try{
-			
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+			$data['controller_name'] = "proyectos";
 			$data['info']=(array)$this->proyecto->get_info($clave);
 			$this->load->view('proyectos/block',$data);
 		}catch(Exception $e){
@@ -63,8 +62,7 @@ class Proyectos extends CI_Controller {
 	public function nuevo($clave=-1)
 	{
 		try{
-			
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+			$data['controller_name'] = "proyectos";
 			$data['info']=(array)$this->proyecto->get_info($clave);
 			$this->load->view('proyectos/form',$data);
 		}catch(Exception $e){
@@ -80,8 +78,7 @@ class Proyectos extends CI_Controller {
 	public function view($clave=-1)
 	{
 		try{
-			
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+			$data['controller_name'] = "proyectos";
 			$data['info']=(array)$this->proyecto->get_info($clave);
 			$this->load->view('proyectos/view',$data);
 		}catch(Exception $e){

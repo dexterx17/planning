@@ -93,7 +93,7 @@
                                 <div class="icon">
                                     <i class="ion ion-bag"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">
+                                <a href="<?php echo site_url("actividades/index").'/'.$info['ID']; ?>" class="small-box-footer btn-embed">
                                     <?php echo lang('comun_more_info'); ?><i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>

@@ -16,7 +16,7 @@ class Sprints extends CI_Controller {
 	public function index($proyecto)
 	{
 		try{
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+			$data['controller_name'] = "sprints";
 			$data['proyecto']=$proyecto;
 			$ultimo = $this->input->post('ultimo_id');
 			$data['estados_tarea'] = $this->configuracion->get_comboBox('estado_tarea');
@@ -46,7 +46,7 @@ class Sprints extends CI_Controller {
 	 * @param integer $sprint_id Clave primaria del sprint
 	 **/
 	function view($sprint_id){
-		$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+		$data['controller_name'] = "sprints";
 		$data['info']=(array)$this->sprint->get_info($sprint_id);
 		print_r($data);
 		$this->load->view('sprints/view',$data);
@@ -70,7 +70,7 @@ class Sprints extends CI_Controller {
 	{
 		try{
 			
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+			$data['controller_name'] = "sprints";
 			$data['info']=(array)$this->sprint->get_info($clave);
 			$data['proyecto']=$proyecto;
 			$this->load->view('sprints/form',$data);

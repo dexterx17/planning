@@ -17,7 +17,7 @@
 					</div>
 				</div>
 				<div class="box-body">
-					<h3><a href="<?php echo site_url($controller_name."/view/".$info['ID']); ?>"> <?php echo $info['nombre']; ?></a> </h3>
+					<h3><a href="<?php echo site_url("proyectos/view/".$info['ID']); ?>"> <?php echo $info['nombre']; ?></a> </h3>
 					<small><?php echo $info['descripcion']; ?></small>
 					<div class="row">
 						<div class="col-sm-6">

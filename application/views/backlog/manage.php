@@ -1,5 +1,5 @@
 <div class="acciones">
-	<a class="btn btn-embed" href="<?php echo site_url("$controller_name/nuevo/-1/".$proyecto); ?>">
+	<a class="btn btn-embed" href="<?php echo site_url("actividades/nuevo/-1/".$proyecto); ?>">
 		<i class="fa fa-lg fa-fw fa-plus"></i>
 		<span><?php echo lang($controller_name.'_new'); ?></span>
 	</a>
@@ -13,7 +13,7 @@
 								'class'=>'btn'
 								));	?>
 -->
-	<div class="panel-group" id="accordion">
+	<div class="panel-group" id="backlog-content">
 	<?php 
 		foreach ($items as $key => $value) {
 			$data['info']=(array)$value;
@@ -28,23 +28,28 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
-    //jQuery UI sortable for the todo list
-    $(".todo-list").sortable({
-        placeholder: "sort-highlight",
-        handle: ".handle",
-        forcePlaceholderSize: true,
-        zIndex: 999999
-    }).disableSelection();
-    
-        //jQuery UI sortable for the todo list
-    $(".block_actividad").sortable({
-        placeholder: "sort-highlight",
-        connectWith: ".block_actividad",
+    $("#backlog-content").sortable({
         handle: ".handl",
-        forcePlaceholderSize: true,
-        zIndex: 999978
-    }).disableSelection();
-    ;
+        update:function(event, ui){
+            $.post('<?php echo site_url("actividades/ordenar"); ?>',
+                    {items : $(this).sortable('toArray')},
+                    function(data){
+                        //Hacer algo 
+                    });
+        }
+    });
+
+    $(".todo-list").sortable({
+        handle: ".handle",
+        update:function(event, ui){
+            $.post('<?php echo site_url("tareas/ordenar"); ?>',
+                    {items : $(this).sortable('toArray')},
+                    function(data){
+                        //Hacer algo 
+                    });
+        }
+    });
+    $(".todo-list").todolist();
 }); // end document.ready
 
 

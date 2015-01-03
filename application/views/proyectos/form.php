@@ -4,7 +4,7 @@
 		<div class="box">
 			<div class="box-header">
 				<h3 class="box-title"><?php echo lang($controller_name.'_singular'); ?>
-					<small><?php echo lang($controller_name.'_description').$info['nick']; ?></small>
+					<small><?php echo lang('tareas_description').$info['nick']; ?></small>
 				</h3>
 				
 			</div>

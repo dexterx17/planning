@@ -89,8 +89,7 @@ ALTER TABLE actividades ADD COLUMN sprint INT;
 CREATE TABLE estado_actividades
 (
     ID      INT PRIMARY KEY AUTO_INCREMENT,
-    nombre  VARCHAR(50),
-    lang 	VARCHAR(5) DEFAULT "es"
+    nombre  VARCHAR(50)
 );
 INSERT INTO estado_actividades(nombre) VALUES('Nueva'),('Lista para estimación'),('Lista para sprint'),('Por hacer'),('En progreso'),('Realizada'),('Sprint completado');
 
@@ -184,7 +183,11 @@ BEGIN
 END; //
 DELIMITER ;
 
+/* campo para ordenar actividades en Backlog */
+ALTER TABLE actividades ADD COLUMN orden INT;
 
+/* campo para ordenar tareas en cada actividad */
+ALTER TABLE tareas ADD COLUMN orden INT;
 -------------------------------------------------------HASTA AQUI LA VERSION DEL SCRIPT EJECUTADA --------------------------------------
 CREATE TABLE funciones
 (

@@ -62,6 +62,15 @@ $(document).on('click', '.btn-embed', function(e) {
 	loadURL($this.attr('href'),$('#contenido2'));
 });
 
+$(document).on('click', '.btn-modal', function(e) {
+    e.preventDefault();
+    var $this = $(e.currentTarget);
+ 	$('#myModal .modal-body').load($this.attr('href'),function(result){
+	    $('#myModal').modal({show:true});
+	});
+});
+
+
 $(document).on('click', '.btn-redirected', function(e) {
     e.preventDefault();
     var $this = $(e.currentTarget);

@@ -1,13 +1,9 @@
-
-<article class="master">
-	<hgroup>
-		<h2><?php echo lang('actividades_tasks'); ?></h2>
-		<small><?php echo lang('actividades_tasks_desc'); ?></small>
-	</hgroup>
-	<div id="results<?php echo $actividad; ?>" style="display: none">
-	<div id="messages<?php echo $actividad; ?>"></div>
+<div class="box">
+	<div class="box-header">
+		<h3 class="box-title"><?php echo lang('actividades_task'); ?></h3>
+		<small><?php echo lang('actividades_task_desc'); ?></small>
 	</div>
-	<form action="<?php echo site_url($controller_name.'/save') ?>" method="post" id="<?php echo $controller_name; ?>-form">
+	<form class="form-horizontal" action="<?php echo site_url($controller_name.'/save') ?>" method="post" id="<?php echo $controller_name; ?>-form">
 		<div id="errors" class="alert-info"></div>
 		<?php echo get_row_form(lang('comun_name'),'nombre',$info['nombre']); ?>
 		<?php echo get_row_form(lang('comun_description'),'descripcion',$info['descripcion']); ?>
@@ -19,23 +15,25 @@
 		<?php echo form_input(array('type'=>'hidden','name'=>'ID','value'=>$info['ID'],'id'=>'ID')); ?>
 		<?php echo form_hidden('actividad',$actividad); ?>
 		
-		<div class="footer">
-			<?php echo form_input(array(
-								'type'=>'button',
-								'name'=>'cancelar',
-								'id'=>'cancelar',
-								'value'=>lang('comun_cancel'),
-								'class'=>'btn'
-								));	?>
-			<?php echo form_submit(array(
-								'name'=>'submit',
-								'id'=>'submit',
-								'value'=>lang('comun_submit'),
-								'class'=>'btn'
-								));	?>
+		<div class="box-footer">
+			<div class="btn-group">
+				<?php echo form_input(array(
+									'type'=>'button',
+									'name'=>'cancelar',
+									'id'=>'cancelar',
+									'value'=>lang('comun_cancel'),
+									'class'=>'btn'
+									));	?>
+				<?php echo form_submit(array(
+									'name'=>'submit',
+									'id'=>'submit',
+									'value'=>lang('comun_submit'),
+									'class'=>'btn'
+									));	?>
+			</div>
 		</div>
 	</form>
-</article>
+</div>
 
 
 <script type="text/javascript">

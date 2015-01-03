@@ -1,6 +1,6 @@
 <div class="box">
 	<div class="box-header">
-		<h3 class="box-title"><?php echo lang($controller_name.'_new'); ?>
+		<h3 class="box-title"><?php echo $info['orden'].' '.lang($controller_name.'_new'); ?>
 			<small><?php echo lang($controller_name.'_description'); ?></small>
 		</h3>
 	</div>
@@ -9,29 +9,16 @@
 			
 		</div>
 	</div>
-	<form class="form-horizontal" role="form" action="<?php echo site_url($controller_name.'/save') ?>" method="post" id="<?php echo $controller_name; ?>-form">
+	<form class="form-horizontal" role="form" action="<?php echo site_url('actividades/save') ?>" method="post" id="<?php echo $controller_name; ?>-form">
 		<div id="errors" class="alert-info"></div>
 		<?php echo get_row_form(lang('comun_name'),'nombre',$info['nombre']); ?>
 		<?php echo get_row_form(lang('comun_description'),'descripcion',$info['descripcion']); ?>
-		<div class="form-group">
-			<?php echo form_label(lang('comun_planned_time'),'tiempo_planificado',array('class'=>'control-label col-sm-2')); ?>
-			<div class="col-sm-10">
-				<?php echo form_input(array(
-                                        'name'=>"tiempo_planificado",
-                                        'id'=>"red",
-                                        'value'=>$info['tiempo_planificado'],
-                                        'class'=>'form-control slider',
-                                        ));
-                ?>
-			</div>
-		</div>
 
-<input type="text" value="" class="slider form-control" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="[0, 20]" data-slider-orientation="vertical" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="red">
-		<?php echo get_row_form(lang('comun_real_time'),'tiempo_real',$info['tiempo_real']); ?>
+		<?php echo get_row_form(lang('comun_planned_time'),'tiempo_planificado',$info['tiempo_planificado']); ?>
+    <?php echo get_row_form(lang('comun_real_time'),'tiempo_real',$info['tiempo_real']); ?>
 		<?php echo get_row_form(lang('comun_state'),'estado',$info['estado'],$estados_actividad); ?>
 		
 		<?php echo get_row_form(lang('sprints_singular'),'sprint',$info['sprint'],$sprints); ?>
-
 		<?php echo form_hidden('ID',$info['ID']); ?>
 		<?php echo form_hidden('proyecto',$proyecto); ?>
 		
@@ -47,9 +34,9 @@
 </div>
 
 <script type="text/javascript">
- $(function() {
- 	$('.slider').slider();	
- });
+ 
+  $('#tiempo_planificado').spinner();
+  $('#tiempo_real').spinner();
 
 $(document).ready(function() {
 

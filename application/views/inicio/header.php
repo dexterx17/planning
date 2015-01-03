@@ -9,6 +9,7 @@
     <meta name="layout" content="main"/>
     <link href="<?php echo base_url() ?>css/normalize.min.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <link href="<?php echo base_url() ?>css/bootstrap.css" type="text/css" media="screen, projection" rel="stylesheet" />
+    <link href="<?php echo base_url() ?>css/jquery-ui.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <!--<link href="<?php echo base_url() ?>css/estilo.min.css" type="text/css" media="screen, projection" rel="stylesheet" />-->
     <link href="<?php echo base_url() ?>css/font-awesome.min.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <!-- Date Picker -->
@@ -279,6 +280,6 @@
 						</section>
 						<!-- / .sidebar -->
 					</aside>
-				
+				<?php $this->load->view('inicio/modal'); ?>
 					  <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">

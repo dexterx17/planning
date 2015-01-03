@@ -75,8 +75,21 @@ function get_proyectos(){
  **/
 function get_count_actividades($proyecto_id){
     $CI =& get_instance();
-    return $CI->actividad->get_count_by_proyecto(0);
+    return $CI->actividad->get_count_by_proyecto($proyecto_id);
 }
 
+/**
+ * Devuelve solos los digitos de una cadena
+ * TODO: optimizar
+ *@param string Cadena de texto de la que se quiere obtener un digito
+ **/
+function extrar_numeros($cadena){
+    $resultado="";
+    for ($i=0; $i < strlen($cadena); $i++) { 
+        if(is_numeric($cadena[$i]))
+            $resultado.=$cadena[$i];
+    }
+    return $resultado;
+}
 
 ?>

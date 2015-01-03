@@ -71,7 +71,7 @@ class Actividad extends CI_Model{
 	public function get_with_limits($skip=0,$proyecto){
 		try{
 				$this->db->where('proyecto',$proyecto);	
-				$res=  (array)$this->db->get($this->table_name,10,$skip)->result();
+				$res=  (array)$this->db->get($this->table_name,20,$skip)->result();
 				$resultado=array();
 				foreach ($res as $key => $value) {
 					$aux=(array)$value;
@@ -116,7 +116,7 @@ class Actividad extends CI_Model{
 		try{
 			
 			$this->db->where('ID',$id);
-			return $this->db->delete($this->$table_name);
+			return $this->db->delete($this->table_name);
 			
 			}catch(Exception $e){
 				show_error($e->getMessage().' --- '.$e->getTraceAsString());
@@ -131,7 +131,7 @@ class Actividad extends CI_Model{
 	function get_count_by_proyecto($proyecto){
 		try{
 			$this->db->where('proyecto',$proyecto);	
-			return  $this->db->count_all($this->table_name);
+			return  $this->db->count_all_results($this->table_name);
 			
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
