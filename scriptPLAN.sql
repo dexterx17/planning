@@ -188,6 +188,8 @@ ALTER TABLE actividades ADD COLUMN orden INT;
 
 /* campo para ordenar tareas en cada actividad */
 ALTER TABLE tareas ADD COLUMN orden INT;
+
+
 -------------------------------------------------------HASTA AQUI LA VERSION DEL SCRIPT EJECUTADA --------------------------------------
 CREATE TABLE funciones
 (

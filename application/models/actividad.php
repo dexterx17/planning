@@ -156,7 +156,7 @@ class Actividad extends CI_Model{
 	}
 
 	/**
-	 * Devuelve un array con todas las actividades de un proyecto
+	 * Devuelve un array con todas las actividades de un proyecto y que no esten asginadas a un sprint
 	 * @param integer $proyecto Clave primaria del proyecto
 	 */
 	function get_by_proyecto_sin_sprint($proyecto){
@@ -164,6 +164,7 @@ class Actividad extends CI_Model{
 			$this->db->where('proyecto',$proyecto);
 			$this->db->where('sprint',NULL);		
 			$this->db->or_where('sprint',0);
+			$this->db->where('proyecto',$proyecto);
 			$res =  $this->db->get($this->table_name)->result_array();
 			$resultado=array();
 			foreach ($res as $key => $value) {

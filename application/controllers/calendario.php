@@ -4,37 +4,24 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 /**
- * Permite realizar operaciones de mantenimiento con la pila de producto BACKLOG
+ * Permite realizar operaciones de mantenimiento en el calendario de eventos
  * 
  * @author Jaime Santana
  * @package planning
  * @subpackage controllers
  */
-class Actividades extends CI_Controller {
+class Calendario extends CI_Controller {
 
     /**
      * Muestra una vista con el listado de actividades o items del BACKLOG y los botones realizar operaciones CRUD
      * @param integer $proyecto Clave primaria del proyecto
      */
-    public function index($proyecto) {
+    public function index() {
         try {
 
-            $data['controller_name'] = 'actividades';
-            $data['proyecto'] = $proyecto;
-            $ultimo = $this->input->post('ultimo_id');
-            $data['estados_tarea'] = $this->configuracion->get_comboBox('estado_tarea');
-            $data['sprints']=$this->sprint->get_by_proyecto($proyecto);
-            if ($ultimo) {
-                $nuevos_datos = $this->actividad->get_with_limits($ultimo, $proyecto);
-                if ($nuevos_datos) {
-                    foreach ($nuevos_datos as $fila) {
-                        get_row_people($fila, $data['items']);
-                    }
-                }
-            } else {
-                $data['items'] = $this->actividad->get_with_limits(0, $proyecto);
-                $this->load->view('backlog/manage', $data);
-            }
+            $data['controller_name'] = 'calendario';
+
+            $this->load->view('calendario/calendario', $data);
         } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }

@@ -31,7 +31,7 @@
 							
 						</div>
 						<div class="box-body">
-							<ul class="todo-list">
+							<ul class="todo-list" id="backlog-content">
 					            <?php 
 									foreach ($actividades as $key => $value) {
 										 $data['info']=$value;
@@ -52,22 +52,32 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
-    //jQuery UI sortable for the todo list
-    $(".todo-list").sortable({
-        placeholder: "sort-highlight",
+    $(".sprint-backlog").sortable({
+    	connectWith:"#backlog-content",
         handle: ".handle",
-        forcePlaceholderSize: true,
-        zIndex: 999999
-    }).disableSelection();
+        helper:'clone',
+        update:function(event, ui){
+            $.post('<?php echo site_url("actividades/asignar_a_sprint"); ?>',
+                    {	sprint:$(this).attr('sprint'),
+                    	items : $(this).sortable('toArray')},
+                    function(data){
+                        //Hacer algo 
+                    });
+        }
+    });
     
-        //jQuery UI sortable for the todo list
-    $(".block_actividad").sortable({
-        placeholder: "sort-highlight",
-        connectWith: ".block_actividad",
-        handle: ".handl",
-        forcePlaceholderSize: true,
-        zIndex: 999978
-    }).disableSelection();
+    $("#backlog-content").sortable({
+        connectWith: ".sprint-backlog",
+        handle: ".handle",
+        update:function(event, ui){
+            $.post('<?php echo site_url("actividades/asignar_a_sprint"); ?>',
+                    {	sprint:$(this).attr('sprint'),
+                    	items : $(this).sortable('toArray')},
+                    function(data){
+                        //Hacer algo 
+                    });
+        }
+    });
     
     $("div.calendario").each(function(){
     	$item = $(this);
@@ -75,5 +85,23 @@ $(document).ready(function() {
     					endDate:$item.attr('endDate'),
     					language:"es"});
 
+    });
+
+    $("[data-widget='collapse']").click(function() {
+        //Find the box parent        
+        var box = $(this).parents(".box").first();
+        //Find the body and the footer
+        var bf = box.find(".box-body, .box-footer");
+        if (!box.hasClass("collapsed-box")) {
+            box.addClass("collapsed-box");
+            //Convert minus into plus
+            $(this).children(".fa-minus").removeClass("fa-minus").addClass("fa-plus");
+            bf.slideUp();
+        } else {
+            box.removeClass("collapsed-box");
+            //Convert plus into minus
+            $(this).children(".fa-plus").removeClass("fa-plus").addClass("fa-minus");
+            bf.slideDown();
+        }
     });
 }); // end document.ready

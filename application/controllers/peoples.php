@@ -9,10 +9,37 @@
  */
 class Peoples extends CI_Controller {
 
+    /**
+     * Muestra una vista con el listado de personas involucradas en el proyecto
+     * @param integer $proyecto Clave primaria del proyecto
+     */
+    public function index($proyecto) {
+        try {
+
+            $data['controller_name'] = 'peoples';
+            $data['proyecto'] = $proyecto;
+            $ultimo = $this->input->post('ultimo_id');
+
+            if ($ultimo) {
+                $nuevos_datos = $this->people->get_with_limits(0);
+                if ($nuevos_datos) {
+                    foreach ($nuevos_datos as $fila) {
+                        get_row_people($fila, $data['items']);
+                    }
+                }
+            } else {
+                $data['people']=$this->people->get_with_limits(0);
+                $this->load->view('people/manager', $data);
+            }
+        } catch (Exception $e) {
+            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
+        }
+    }
+
 	/**
 	 * Muestra una vista con el listado de personas y los botones realizar operaciones CRUD
 	 */
-	public function index()
+	public function admin()
 	{
 		try{
 			

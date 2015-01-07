@@ -271,7 +271,7 @@
 								</ul>
 							</li>
 							<li>
-								<a href="http://127.0.0.1/planning/es/sprints">
+								<a href="http://127.0.0.1/planning/calendario">
 									<i class="fa fa-lg fa-fw fa-calendar"></i>
 									<span><?php echo lang('comun_calendario'); ?></span>
 								</a>

@@ -64,7 +64,7 @@
 									
 								</div>
 								<div class="box-body">
-									<ul class="todo-list">
+									<ul class="todo-list sprint-backlog" sprint="<?php echo $info['ID']; ?>" >
 							            <?php 
 											foreach ($info['actividades'] as $key => $value) {
 												 $data['info']=$value;

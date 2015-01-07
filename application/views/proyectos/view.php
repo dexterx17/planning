@@ -20,7 +20,7 @@
 				<div class="menu-sec">
 					<ul class="nav nav-pills nav-justified">
 						<li>
-							<a class="btn disabled" href="<?php echo site_url("$controller_name/people"); ?>">
+							<a class="btn" href="<?php echo site_url("peoples/index").'/'.$info['ID']; ?>">
 								<i class="fa fa-lg fa-fw fa-group"></i>
 								<span><?php echo lang('comun_personas'); ?></span>
 							</a>

@@ -4,12 +4,48 @@
 		"selected_items":
 		[
 			[
-				"pr",
-				"proyecto"
+				"table",
+				"table_name"
+			],
+			[
+				"ba",
+				"backlog-content"
+			],
+			[
+				"js",
+				"json_encode"
+			],
+			[
+				"co",
+				"count"
+			],
+			[
+				"arra",
+				"array"
+			],
+			[
+				"is_nu",
+				"is_numeric"
 			],
 			[
 				"for",
-				"foreach	foreach …"
+				"for	for …"
+			],
+			[
+				"jso",
+				"json_encode"
+			],
+			[
+				"blo",
+				"block_actividad"
+			],
+			[
+				"con",
+				"connectWith"
+			],
+			[
+				"pr",
+				"proyecto"
 			],
 			[
 				"est",
@@ -54,10 +90,6 @@
 			[
 				"CLICK",
 				"clicksillo"
-			],
-			[
-				"co",
-				"config"
 			],
 			[
 				"tiem",
@@ -164,60 +196,72 @@
 	[
 		"/var/www/html/planning",
 		"/var/www/html/planning/application",
+		"/var/www/html/planning/application/config/conf",
+		"/var/www/html/planning/application/config/testing",
 		"/var/www/html/planning/application/controllers",
-		"/var/www/html/planning/application/language",
 		"/var/www/html/planning/application/models",
 		"/var/www/html/planning/application/views",
 		"/var/www/html/planning/application/views/backlog",
+		"/var/www/html/planning/application/views/inicio",
 		"/var/www/html/planning/application/views/sprints",
 		"/var/www/html/planning/js",
 		"/var/www/html/planning/js/AdminLTE",
-		"/var/www/html/planning/js/plugins/datepicker/locales"
+		"/var/www/html/planning/js/src"
 	],
 	"file_history":
 	[
-		"/var/www/html/planning/application/views/backlog/block_actividad.php",
-		"/var/www/html/planning/application/models/sprint.php",
+		"/var/www/html/planning/application/views/backlog/block.php",
+		"/var/www/html/planning/scriptPLAN.sql",
+		"/var/www/html/planning/application/views/backlog/form_tarea.php",
+		"/var/www/html/planning/js/src/scripts.js",
+		"/var/www/html/planning/application/controllers/actividades.php",
+		"/var/www/html/planning/js/AdminLTE/app.js",
+		"/var/www/html/planning/application/controllers/sprints.php",
 		"/var/www/html/planning/application/views/sprints/block.php",
 		"/var/www/html/planning/application/views/sprints/manage.php",
+		"/var/www/html/planning/application/config/conf/database.php",
+		"/var/www/html/planning/application/config/conf/.htaccess",
 		"/var/www/html/planning/application/models/actividad.php",
+		"/var/www/html/planning/css/AdminLTE.css",
+		"/var/www/html/planning/application/views/inicio/index.php",
+		"/var/www/html/planning/application/views/backlog/manage.php",
+		"/var/www/html/planning/application/views/sprints/view.php",
+		"/var/www/html/planning/application/views/people/manager.php",
+		"/var/www/html/planning/application/views/people/perfil.php",
+		"/var/www/html/planning/application/views/proyectos/block.php",
+		"/var/www/html/planning/application/views/people/dropable.php",
+		"/var/www/html/planning/application/controllers/peoples.php",
+		"/var/www/html/planning/application/views/proyectos/view.php",
+		"/var/www/html/planning/application/controllers/proyectos.php",
+		"/var/www/html/planning/application/views/backlog/form.php",
+		"/var/www/html/planning/application/controllers/tareas.php",
+		"/var/www/html/planning/application/helpers/table_helper.php",
+		"/var/www/html/planning/js/src/jquery-ui.js",
+		"/var/www/html/planning/application/language/espanol/comun_lang.php",
+		"/var/www/html/planning/application/models/proyecto.php",
+		"/var/www/html/planning/system/database/DB_active_rec.php",
+		"/var/www/html/planning/application/views/backlog/block_actividad.php",
+		"/var/www/html/planning/application/models/sprint.php",
 		"/var/www/html/planning/application/models/tarea.php",
-		"/var/www/html/planning/application/controllers/sprints.php",
-		"/var/www/html/planning/application/views/backlog/block.php",
 		"/var/www/html/planning/application/views/backlog/block_tarea.php",
 		"/var/www/html/planning/system/database/DB_result.php",
-		"/var/www/html/planning/application/language/espanol/comun_lang.php",
 		"/var/www/html/planning/js/plugins/datepicker/bootstrap-datepicker.js",
 		"/var/www/html/planning/application/views/inicio/footer.php",
 		"/var/www/html/planning/.gitignore",
 		"/var/www/html/planning/application/views/proyectos/manage.php",
-		"/var/www/html/planning/application/views/proyectos/block.php",
 		"/var/www/html/planning/application/language/espanol/actividades_lang.php",
-		"/var/www/html/planning/application/controllers/tareas.php",
-		"/var/www/html/planning/scriptPLAN.sql",
-		"/var/www/html/planning/application/views/proyectos/view.php",
-		"/var/www/html/planning/application/helpers/table_helper.php",
-		"/var/www/html/planning/application/views/backlog/manage.php",
 		"/var/www/html/planning/js/AdminLTE/dashboard.js",
 		"/var/www/html/planning/application/views/inicio/header.php",
-		"/var/www/html/planning/application/views/backlog/form.php",
-		"/var/www/html/planning/js/AdminLTE/app.js",
-		"/var/www/html/planning/application/views/inicio/index.php",
-		"/var/www/html/planning/js/src/scripts.js",
 		"/var/www/html/planning/js/plugins/bootstrap-slider/bootstrap-slider.js",
 		"/var/www/html/planning/application/views/proyectos/form.php",
 		"/var/www/html/planning/application/controllers/inicio.php",
-		"/var/www/html/planning/application/models/proyecto.php",
 		"/var/www/html/planning/planning.sublime-project",
 		"/var/www/html/planning/js/AdminLTE/demo.js",
 		"/var/www/html/planning/DER.pgd",
 		"/var/www/html/planning/node_modules/grunt-contrib-stylus/node_modules/stylus/node_modules/sax/test/xmlns-xml-default-ns.js",
 		"/var/www/html/planning/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/argument_parser.js",
 		"/var/www/html/planning/application/config/autoload.php",
-		"/var/www/html/planning/application/controllers/actividades.php",
-		"/var/www/html/planning/application/controllers/proyectos.php",
 		"/var/www/html/planning/application/views/sprints/form.php",
-		"/var/www/html/planning/application/views/backlog/form_tarea.php",
 		"/var/www/html/planning/application/controllers/android.php",
 		"/var/www/html/planning/application/controllers/android.html",
 		"/var/www/html/rrnn/application/modules/inicio/models/vocero.php",
@@ -293,21 +337,11 @@
 		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/monitoreo/reportes_generales2.html.twig",
 		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/beneficiarios/resumen.html.twig",
 		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/beneficiarios/mini_view.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/beneficiarios/listado.html.twig",
-		"/var/www/html/rrnn/application/modules/planes_manejo/language/espanol/beneficiarios_lang.php",
-		"/home/dexter/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
-		"/home/dexter/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/var/www/html/rrnn/application/plugins/doctrine/lib/Doctrine/ORM/Internal/Hydration/HydrationException.php",
-		"/var/www/html/rrnn/application/config/hooks.php",
-		"/var/www/html/rrnn/application/modules/poas/themes/bootstrap/resultados/view_row.html.twig",
-		"/var/www/html/rrnn/application/modules/poas/themes/bootstrap/actividades/view_row.html.twig",
-		"/var/www/html/rrnn/application/modules/poas/themes/bootstrap/poas/cronograma.html.twig",
-		"/var/www/html/rrnn/application/modules/poas/themes/bootstrap/poas/matriz_planificacion.html.twig",
-		"/var/www/html/rrnn/application/modules/poas/themes/bootstrap/poas/matriz_general.html.twig"
+		"/var/www/html/rrnn/application/modules/planes_manejo/themes/bootstrap/beneficiarios/listado.html.twig"
 	],
 	"find":
 	{
-		"height": 51.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -322,6 +356,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			">\n",
+			"sortable",
+			"count_all",
 			"result_array",
 			"where_not",
 			"datepicker",
@@ -535,7 +572,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 		"xdebug":

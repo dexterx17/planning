@@ -81,8 +81,26 @@ $(document).on('click', '.btn-redirected', function(e) {
 $(document).on('click', '.btn-delete', function(e) {
     e.preventDefault();
     var $this = $(e.currentTarget);
-    
-	loadURL($this.attr('href'),$('#'+$this.attr('data-content')));
+    container =$('#'+$this.attr('data-content'));
+    $.ajax({
+		type : "GET",
+		url : $this.attr('href'),
+		dataType : 'html',
+		cache : false, // (warning: this will cause a timestamp and will call the request twice)
+		beforeSend : function() {
+			container.html('<h3><i class="small progress"></i> Procesando petición...</h3>');
+		},
+		success : function(data) {
+			container.fadeOut('slow').delay(50).animate({
+				opacity : '1.0',
+			}, 300);
+		},
+		error : function(xhr, ajaxOptions, thrownError) {
+			container.html('<h4 style="margin-top:10px; display:block; text-align:left"><i class="fa fa-warning txt-color-orangeDark"></i> Error 404! Página no encontrada.</h4>');
+		},
+		async : false
+	});
+
 });
 
 $(document).on('click', '.panel-collapse panel-header', function(e) {

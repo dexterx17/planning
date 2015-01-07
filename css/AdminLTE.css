@@ -3535,3 +3535,9 @@ fieldset[disabled] .btn-vk.active {
   color: #587ea3;
   background-color: #ffffff;
 }
+
+
+#project-content, #people-content, .sprint-backlog{
+  min-width: 100px;
+  min-height: 100px;
+}

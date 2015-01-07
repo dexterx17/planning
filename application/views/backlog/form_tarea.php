@@ -65,10 +65,10 @@ $(document).ready(function() {
             dataType: 'json',
             success : function(data){
             if(!data.error){
-                $("#<?php echo $controller_name; ?>-form").hide('slow');
+                $("#<?php echo $controller_name; ?>-form").parent('.box').fadeOut('slow');
                 if(id_tarea===""){
                 	$.get('<?php echo site_url($controller_name);?>/get_row/'+data.task_id, function(data) {
-					    $('#tareillas'+'<?php echo $actividad;?> ul.todo-list').prepend(data);
+					    $('#tareillas'+'<?php echo $actividad;?>+ul.todo-list').prepend(data);
 					});
 			 	}else{
 			 		$('#task-'+id_tarea).load('<?php echo site_url($controller_name);?>/get_row/'+id_tarea);
