@@ -51,6 +51,30 @@ class Sprint extends CI_Model{
 			return $info_obj;
 		}
 	}
+
+	/**
+	 * Devuelve un array con un sprint con sus actividades asignadas
+	 * @param integer $id Clave primaria del elemento
+	 */
+	function get_full_info($id){
+		$this->db->where('ID',$id);
+		$query=  $this->db->get($this->table_name);
+		
+		if ($query->num_rows() == 1) {
+			$res= (array) $query->row();
+			$res['actividades']=$this->actividad->get_by_sprint($res['ID']);
+			return $res;
+		} else {
+			//Get empty base parent object, as $item_id is NOT an item
+			$info_obj =  array();
+			
+			$fields = $this->db->list_fields($this->table_name);
+			foreach ($fields as $field) {
+				$info_obj["$field"] = '';
+			}
+			return $info_obj;
+		}
+	}
 	
 	/**
 	 * Devuelve una array con todos los elementos
@@ -94,7 +118,8 @@ class Sprint extends CI_Model{
 		try{
 			
 			if($id==-1 && !$this->exists($id)){
-				return $this->db->insert($this->table_name,$data);
+				if($this->db->insert($this->table_name,$data))
+					return $this->db->insert_id();
 			}
 			
 			$this->db->where('ID',$id);
@@ -115,8 +140,12 @@ class Sprint extends CI_Model{
 	public function delete($id){
 		try{
 			
+			//Si el sprint tiene actividades asignadas no se puede eliminar
+			if($this->actividad->get_count_filtered(array('sprint'=>$id))>0)
+				return false;
+
 			$this->db->where('ID',$id);
-			return $this->db->delete($this->$table_name);
+			return $this->db->delete($this->table_name);
 			
 			}catch(Exception $e){
 				show_error($e->getMessage().' --- '.$e->getTraceAsString());

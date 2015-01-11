@@ -41,6 +41,7 @@
 $(document).ready(function() {
 
 	var id_tarea = $('#ID').val();
+	var estado = $('#estado').val();
 
 	$('#tiempo_planificado').spinner();
 	$('#tiempo_real').spinner();
@@ -59,7 +60,7 @@ $(document).ready(function() {
   }, 
   
   submitHandler: function( form ) {
-       
+	estado = $('#estado').val();       
         $.ajax({
             url : '<?php echo site_url($controller_name);?>/save',
             data : $('#<?php echo $controller_name; ?>-form').serialize(),
@@ -71,9 +72,14 @@ $(document).ready(function() {
                 if(id_tarea===""){
                 	$.get('<?php echo site_url($controller_name);?>/get_row/'+data.task_id, function(data) {
 					    $('#tareillas'+'<?php echo $actividad;?>+ul.todo-list').prepend($(data));
+					    $('#tareillas'+'<?php echo $actividad;?>+ul.todo-list').todolist();
 					});
 			 	}else{
-			 		$('#task-'+id_tarea).load('<?php echo site_url($controller_name);?>/get_row/'+id_tarea);
+			 		$.get('<?php echo site_url($controller_name);?>/get_row/'+id_tarea, function(data) {
+					    $('#task-'+id_tarea).replaceWith(data);
+			 			$('#task-'+id_tarea).parent('ul').todolist();
+					});
+			 		
 			 	}
             }else
              $('#errors'+'<?php echo $actividad;?>').html(data.message);	

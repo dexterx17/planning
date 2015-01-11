@@ -7,7 +7,7 @@
     		</div>
     		<div class="text-center">
     			Copyright © 2014 
-    		</p>
+    		</div>
 	   </footer>
 	 
     </aside><!-- /.right-side -->

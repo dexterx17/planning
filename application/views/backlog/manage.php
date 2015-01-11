@@ -5,14 +5,6 @@
 	</a>
 </div>
 <article class="master">
-<!--	<?php echo form_input(array(
-								'type'=>'button',
-								'name'=>'lol',
-								'id'=>'lol',
-								'value'=>'LOL',
-								'class'=>'btn'
-								));	?>
--->
     <div id="actividadsillas"></div>
 	<div class="panel-group" id="backlog-content">
 	<?php 

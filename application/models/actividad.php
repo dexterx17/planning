@@ -28,6 +28,17 @@ class Actividad extends CI_Model{
 		
 		return ($query->num_rows()>=1);
 	}
+
+	/**
+	 * Devuelve el numero de actividades que cumplen con where
+	 *@param array $where Array con los filtros de 
+	 **/
+	function get_count_filtered($where){
+		foreach ($where as $key => $value) {
+			$this->db->where($key,$value);
+		}
+		return $this->db->count_all_results($this->table_name);
+	}
 	
 	
 	/**

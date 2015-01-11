@@ -93,6 +93,15 @@
      }
   
  });  
+ $('#cancelar').click(function(){
+  if(id_actividad===""){
+    $('#actividadsillas').html('');
+  }else{
+     $('#actividadbody'+id_actividad).load('<?php echo site_url($controller_name);?>/get_detail_row/'+id_actividad, function(data) {
+     $('#actividad'+id_actividad+' .activity_title').html(title);  
+   });
+  }
+ });
 }); // end document.ready
 
 </script>

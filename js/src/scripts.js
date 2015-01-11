@@ -84,15 +84,16 @@ $(document).on('click', '.btn-delete', function(e) {
     $.ajax({
 		type : "GET",
 		url : $this.attr('href'),
-		dataType : 'html',
+		dataType : 'json',
 		cache : false, // (warning: this will cause a timestamp and will call the request twice)
-		beforeSend : function() {
-			container.html('<h3><i class="small progress"></i> Procesando petición...</h3>');
-		},
 		success : function(data) {
-			container.fadeOut('slow').delay(50).animate({
-				opacity : '1.0',
-			}, 300).remove();
+			if(!data.error){
+				container.fadeOut('slow').delay(50).animate({
+					opacity : '1.0',
+				}, 300).remove();
+			}else{
+				alert(data.message);
+			}
 		},
 		error : function(xhr, ajaxOptions, thrownError) {
 			container.html('<h4 style="margin-top:10px; display:block; text-align:left"><i class="fa fa-warning txt-color-orangeDark"></i> Error 404! Página no encontrada.</h4>');
