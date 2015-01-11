@@ -103,7 +103,7 @@
                             <div class="small-box bg-green">
                                 <div class="inner">
                                     <h3>
-                                        #<!--<sup style="font-size: 20px">%</sup>-->
+                                         <?php echo get_count_actividades($info['ID'],array(6,7)); ?>
                                     </h3>
                                     <p>
                                         Tareas completadas
@@ -122,7 +122,7 @@
                             <div class="small-box bg-yellow">
                                 <div class="inner">
                                     <h3>
-                                        #
+                                        <?php echo get_count_actividades($info['ID'],5); ?>
                                     </h3>
                                     <p>
                                         Tareas en progreso
@@ -141,7 +141,7 @@
                             <div class="small-box bg-red">
                                 <div class="inner">
                                     <h3>
-                                        #
+                                        <?php echo get_count_actividades($info['ID'],4); ?>
                                     </h3>
                                     <p>
                                         Tareas por completar

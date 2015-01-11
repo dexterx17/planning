@@ -56,12 +56,8 @@
 									</h3>
 									<div class="box-tools pull-right">
 										<div class="btn-group">
-											<button type="button" class="btn-redirected" data-content="tareillas<?php echo $info['ID']; ?>"  href="<?php echo site_url("tareas/nuevo/-1/".$info['ID']); ?> ">
-													<i class="fa fa-lg fa-fw fa-plus"></i>
-											</button>
 										</div>
 									</div>
-									
 								</div>
 								<div class="box-body">
 									<ul class="todo-list sprint-backlog" sprint="<?php echo $info['ID']; ?>" >

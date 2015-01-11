@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('table','database','form_validation','googlemaps');
+$autoload['libraries'] = array('table','database','form_validation','googlemaps','ion_auth');
 
 
 /*
@@ -96,7 +96,7 @@ $autoload['config'] = array();
 |
 */
 
-$autoload['language'] = array('inicio','comun','people','proyectos','sprints','actividades');
+$autoload['language'] = array('inicio','comun','people','proyectos','sprints','actividades','auth');
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array('inicio','comun','people','proyectos','sprints','a
 |
 */
 
-$autoload['model'] = array('people','proyecto','actividad','tarea','sprint','configuracion');
+$autoload['model'] = array('people','proyecto','actividad','tarea','sprint','configuracion','team');
 
 
 /* End of file autoload.php */

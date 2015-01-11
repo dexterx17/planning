@@ -1,5 +1,5 @@
 <div class="acciones">
-	<a class="btn btn-embed" href="<?php echo site_url("actividades/nuevo/-1/".$proyecto); ?>">
+	<a class="btn btn-redirected" data-content="actividadsillas" href="<?php echo site_url("actividades/nuevo/-1/".$proyecto); ?>">
 		<i class="fa fa-lg fa-fw fa-plus"></i>
 		<span><?php echo lang($controller_name.'_new'); ?></span>
 	</a>
@@ -13,6 +13,7 @@
 								'class'=>'btn'
 								));	?>
 -->
+    <div id="actividadsillas"></div>
 	<div class="panel-group" id="backlog-content">
 	<?php 
 		foreach ($items as $key => $value) {

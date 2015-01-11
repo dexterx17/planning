@@ -7,7 +7,7 @@
  * @package planning
  * @subpackage controllers
  */
-class Tareas extends CI_Controller {
+class Tareas extends MY_Controller {
 	
 	/**
 	 * Muestra un formulario que permite ingresar y modificar los datos de un proyecto
@@ -90,7 +90,7 @@ class Tareas extends CI_Controller {
      **/
     public function ordenar(){
         $items = $this->input->post('items');
-        $res=[];
+        $res=array();
         $count=0;
 
         foreach ($items as $key => $value) {

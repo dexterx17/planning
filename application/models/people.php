@@ -12,7 +12,7 @@ class People extends CI_Model{
 	* Nombre de la table en la cual se realizaran las operaciones DML
 	*@var string Nombre de la Tabla
 	**/
-	var $table_name = "people";
+	var $table_name = "users";
 	
 	/**
 	 *Determina si determinado elemento existe
@@ -115,6 +115,22 @@ class People extends CI_Model{
 				show_error($e->getMessage().' --- '.$e->getTraceAsString());
 				return false;
 			} 
+	}
+
+	/**
+	 * Devuelve los IDS de los proyectos del usuario
+	 *@param integer $user Clave primaria del usuario
+	 **/
+	public function get_involved_projects($user){
+		//Obtengo los proyectos que le pertenecen al usuario
+		$mios = $this->proyecto->get_ids(array('owner'=>$user));
+		$ids = array_column($mios,'ID');
+		//Obtengo los proyectos en los que participa el usuario
+		$participando = $this->team->get_proyectos($user);
+		$parts=array_column($participando,'proyecto');
+		//unifico y mezclo los resultados
+		$resultado= array_unique(array_merge($ids,$parts));
+		return empty($resultado)?array(-1):$resultado;
 	}
 }
 

@@ -25,6 +25,7 @@
 									'class'=>'btn'
 									));	?>
 				<?php echo form_submit(array(
+									
 									'name'=>'submit',
 									'id'=>'submit',
 									'value'=>lang('comun_submit'),
@@ -38,6 +39,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+
 	var id_tarea = $('#ID').val();
 
 	$('#tiempo_planificado').spinner();
@@ -50,10 +52,10 @@ $(document).ready(function() {
    }
   },
   highlight: function(element) {
-   $(element).closest('.control-group').removeClass('success').addClass('error');
+   $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
   },
   success: function(element) {
-   element.addClass('valid').closest('.control-group').removeClass('error').addClass('success');
+   element.closest('.form-group').removeClass('has-error').addClass('has-success');
   }, 
   
   submitHandler: function( form ) {
@@ -65,10 +67,10 @@ $(document).ready(function() {
             dataType: 'json',
             success : function(data){
             if(!data.error){
-                $("#<?php echo $controller_name; ?>-form").parent('.box').fadeOut('slow');
+                $("#<?php echo $controller_name; ?>-form").parent('.box').fadeOut('slow').remove();
                 if(id_tarea===""){
                 	$.get('<?php echo site_url($controller_name);?>/get_row/'+data.task_id, function(data) {
-					    $('#tareillas'+'<?php echo $actividad;?>+ul.todo-list').prepend(data);
+					    $('#tareillas'+'<?php echo $actividad;?>+ul.todo-list').prepend($(data));
 					});
 			 	}else{
 			 		$('#task-'+id_tarea).load('<?php echo site_url($controller_name);?>/get_row/'+id_tarea);

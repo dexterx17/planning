@@ -7,7 +7,7 @@
  * @package planning
  * @subpackage controllers
  */
-class Inicio extends CI_Controller {
+class Inicio extends MY_Controller {
 
 	/**
 	 * Muestra la pagina de inicio

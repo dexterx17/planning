@@ -10,8 +10,16 @@ if (!defined('BASEPATH'))
  * @package planning
  * @subpackage controllers
  */
-class Actividades extends CI_Controller {
+class Actividades extends MY_Controller {
 
+    var $data;
+
+    function __construct(){
+        parent::__construct();
+        $this->data['estados_tarea']=$this->configuracion->get_comboBox('estado_tarea');
+        $this->data['controller_name'] = 'actividades';
+        $this->data['estados_actividad'] = (array)$this->configuracion->get_comboBox('estado_actividades');
+    }
     /**
      * Muestra una vista con el listado de actividades o items del BACKLOG y los botones realizar operaciones CRUD
      * @param integer $proyecto Clave primaria del proyecto
@@ -19,24 +27,55 @@ class Actividades extends CI_Controller {
     public function index($proyecto) {
         try {
 
-            $data['controller_name'] = 'actividades';
-            $data['proyecto'] = $proyecto;
+            $this->data['proyecto'] = $proyecto;
             $ultimo = $this->input->post('ultimo_id');
-            $data['estados_tarea'] = $this->configuracion->get_comboBox('estado_tarea');
-            $data['sprints']=$this->sprint->get_by_proyecto($proyecto);
+            $this->data['sprints']=$this->sprint->get_by_proyecto($proyecto);
             if ($ultimo) {
                 $nuevos_datos = $this->actividad->get_with_limits($ultimo, $proyecto);
                 if ($nuevos_datos) {
                     foreach ($nuevos_datos as $fila) {
-                        get_row_people($fila, $data['items']);
+                        get_row_people($fila, $this->data['items']);
                     }
                 }
             } else {
-                $data['items'] = $this->actividad->get_with_limits(0, $proyecto);
-                $this->load->view('backlog/manage', $data);
+                $this->data['items'] = $this->actividad->get_with_limits(0, $proyecto);
+                $this->load->view('backlog/manage', $this->data);
             }
         } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
+        }
+    }
+
+    /**
+     * Muestra un row con información de la actividad
+     * 
+     * @param integer $clave Clave primaria de la actividad EJ: 2
+     */
+    public function get_row($clave=-1)
+    {
+        try{
+            $this->data['info'] = (array) $this->actividad->get_full_info($clave);
+            $this->data['sprints']=$this->sprint->get_by_proyecto($this->data['info']['proyecto']);
+            $this->load->view('backlog/block',$this->data);
+        }catch(Exception $e){
+            show_error($e->getMessage().' --- '.$e->getTraceAsString());
+        }
+    }
+
+    /**
+     * Retorna un jsonarray con información de la actividad
+     * 
+     * @param integer $clave Clave primaria de la actividad EJ: 2
+     */
+    public function get_detail_row($clave=-1)
+    {
+        try{
+            $this->data['info'] = (array) $this->actividad->get_info($clave);
+            $this->data['sprints']=$this->sprint->get_by_proyecto($this->data['info']['proyecto']);
+            $this->load->view('backlog/block_detail',$this->data);
+            
+        }catch(Exception $e){
+            show_error($e->getMessage().' --- '.$e->getTraceAsString());
         }
     }
 
@@ -48,15 +87,12 @@ class Actividades extends CI_Controller {
      */
     public function nuevo($clave = -1, $proyecto) {
         try {
-
-            $data['controller_name'] = 'actividades';
-            $data['info'] = (array) $this->actividad->get_info($clave);
-            $data['estados_actividad'] = (array)$this->configuracion->get_comboBox('estado_actividades');
+            $this->data['info'] = (array) $this->actividad->get_info($clave);
             $sprints=$this->sprint->get_by_proyecto_comboBox($proyecto);
             $sprints[""]="";
-            $data['sprints']=$sprints;
-            $data['proyecto'] = $proyecto;
-            $this->load->view('backlog/form', $data);
+            $this->data['sprints']=$sprints;
+            $this->data['proyecto'] = $proyecto;
+            $this->load->view('backlog/form', $this->data);
         } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
@@ -85,8 +121,8 @@ class Actividades extends CI_Controller {
                     'sprint' => $this->input->post('sprint'),
                 );
 
-                if ($this->actividad->save($ID, $data)) {
-                    echo json_encode(array('error' => false, 'message' => 'TODO BIEN'));
+                if ($ID = $this->actividad->save($ID, $data)) {
+                    echo json_encode(array('error' => false, 'message' => 'TODO BIEN','actividad_id'=>$ID));
                 } else {
                     echo json_encode(array('error' => true, 'message' => 'Error al guardar'));
                 }

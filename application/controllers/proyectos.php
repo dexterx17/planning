@@ -7,10 +7,17 @@
  * @package planning
  * @subpackage controllers
  */
-class Proyectos extends CI_Controller {
+class Proyectos extends MY_Controller {
+
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->config('parametros', TRUE);
+	}
 
 	/**
-	 * Muestra una vista con el listado de proyectos y los botones realizar operaciones CRUD
+	 * Muestra una vista con el listado de proyectos en los que esta participando el usuario
+	 * Se verifica la participación en la tabla "proyectos" y equipo_proyecto
 	 */
 	public function index()
 	{
@@ -30,7 +37,8 @@ class Proyectos extends CI_Controller {
 			            }
 			         }
 		    }	else{
-				$data['items']=$this->proyecto->get_with_limits(0);
+				$ids = $this->people->get_involved_projects($this->user->id);
+				$data['items']=$this->proyecto->get_where_in($ids,0);
 				$this->load->view('proyectos/manage',$data);
 			}
 		  
@@ -107,9 +115,13 @@ class Proyectos extends CI_Controller {
 					'descripcion'=>$this->input->post('descripcion'),
 					'fecha_inicio'=>$this->input->post('fecha_inicio'),
 					'fecha_fin'=>$this->input->post('fecha_fin'),
-					'owner'=>$this->input->post('owner'),
-					'presupuesto'=>$this->input->post('presupuesto')
+					'presupuesto'=>$this->input->post('presupuesto'),
+					'visibilidad'=>$this->input->post('visibilidad')
 					);
+				//Si recien creo el proyecto le agrego el ID del usuario creador
+				if($ID==-1){
+					$data['owner']=$this->user->id;
+				}
 					
 				if($ID= $this->proyecto->save($ID,$data)){
 					echo json_encode(array('error'=>false,'message'=>'TODO BIEN','proyecto_id'=>$ID));

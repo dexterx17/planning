@@ -189,6 +189,58 @@ ALTER TABLE actividades ADD COLUMN orden INT;
 /* campo para ordenar tareas en cada actividad */
 ALTER TABLE tareas ADD COLUMN orden INT;
 
+/* campo para visibilidad de proyectos, por defecto privado(1) */
+ALTER TABLE proyectos ADD COLUMN visibilidad INT DEFAULT 1;
+
+ALTER TABLE users ADD COLUMN latitud float DEFAULT NULL;
+ALTER TABLE users ADD COLUMN longitud float DEFAULT NULL;
+ALTER TABLE users ADD COLUMN imagen VARCHAR(255);
+
+CREATE TABLE equipo_proyecto 
+( 
+ 	ID INT NOT NULL,
+ 	proyecto INT NOT NULL,
+ 	miembro INT unsigned NOT NULL,
+ 	fecha_integracion DATE NOT NULL,
+  	grupo INT
+);
+
+ALTER TABLE equipo_proyecto
+ADD FOREIGN KEY (proyecto) REFERENCES proyectos(ID);
+
+ALTER TABLE equipo_proyecto 
+ADD FOREIGN KEY (miembro) REFERENCES users(id);
+
+ALTER TABLE equipo_proyecto
+ADD PRIMARY KEY(ID,miembro,proyecto);
+
+ALTER TABLE equipo_proyecto
+ADD UNIQUE u_ep(miembro,proyecto);
+
+/**
+* gENERA UN NUEVO CODIGO PARA LA TABLA
+**/
+DELIMITER //
+DROP TRIGGER IF EXISTS before_ep_insert; //
+CREATE TRIGGER before_ep_insert
+BEFORE INSERT ON equipo_proyecto
+FOR EACH ROW
+BEGIN
+SET NEW.ID=(SELECT ifnull((select max(ID)+1 from equipo_proyecto),1));
+
+END; //
+DELIMITER ;
+
+/* Cambio de tipo de columna para FK de users */
+ALTER TABLE proyectos MODIFY COLUMN owner INT  unsigned;
+/* Referencia para ID de creador del proyecto */
+ALTER TABLE proyectos 
+ADD FOREIGN KEY (owner) REFERENCES users(id);
+
+/* FK de proyecto es sprint */
+ALTER TABLE sprints 
+ADD FOREIGN KEY (proyecto) REFERENCES proyectos(ID);
+
 
 -------------------------------------------------------HASTA AQUI LA VERSION DEL SCRIPT EJECUTADA --------------------------------------
 CREATE TABLE funciones

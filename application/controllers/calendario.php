@@ -10,7 +10,7 @@ if (!defined('BASEPATH'))
  * @package planning
  * @subpackage controllers
  */
-class Calendario extends CI_Controller {
+class Calendario extends MY_Controller {
 
     /**
      * Muestra una vista con el listado de actividades o items del BACKLOG y los botones realizar operaciones CRUD

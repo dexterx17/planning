@@ -29,7 +29,20 @@ class Proyecto extends CI_Model{
 		return ($query->num_rows()>=1);
 	}
 	
-	
+	/**
+	 * Devuelve un array de IDS de proyectos que cumpla la clausula WHERE 
+	 * enviada como parametros
+	 *@param array $where
+	 *@return Array IDs de proyectos
+	 **/
+	function get_ids($where){
+		$this->db->select('ID');
+		foreach ($where as $key => $value) {
+			$this->db->where($key,$value);
+		}
+		return $this->db->get($this->table_name)->result_array();
+	}
+
 	/**
 	 * Devuelve un array con un elemento de la tabla
 	 * @param integer $id Clave primaria del elemento
@@ -62,7 +75,22 @@ class Proyecto extends CI_Model{
 		return $res;
 	}
 	
-		
+	/**
+	 * Devuelve un array  de 10 elementos
+	 * @param array $ids Claves primaria de proyectos
+	 * @param integer $skip Número desde el cual se cuentan los 10 elementos
+	 */
+	public function get_where_in($ids,$skip=0){
+		try{
+				$this->db->where_in('ID',$ids);
+				return  $this->db->get($this->table_name,10,$skip)->result_array();
+				
+			}catch(Exception $e){
+				return null;
+				show_error($e->getMessage().' --- '.$e->getTraceAsString());
+			} 
+	}
+
 	/**
 	 * Devuelve un array  de 10 elementos
 	 * @param integer $skip Número desde el cual se cuentan los 10 elementos

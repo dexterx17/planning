@@ -7,7 +7,7 @@
  * @package planning
  * @subpackage controllers
  */
-class Peoples extends CI_Controller {
+class Peoples extends MY_Controller {
 
     /**
      * Muestra una vista con el listado de personas involucradas en el proyecto
@@ -29,6 +29,13 @@ class Peoples extends CI_Controller {
                 }
             } else {
                 $data['people']=$this->people->get_with_limits(0);
+                $team=$this->team->get_with_limits(0,$proyecto);
+                $person = array();
+                foreach ($team as $key => $value) {
+                	$person[$key]=$this->people->get_info($value['miembro']);
+                }
+                $data['team']=$person;
+
                 $this->load->view('people/manager', $data);
             }
         } catch (Exception $e) {
@@ -42,50 +49,62 @@ class Peoples extends CI_Controller {
 	public function admin()
 	{
 		try{
-			
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
-
-			//LATITUD - LONGITUD 
-			$config['center'] = '-1.2403298, -78.6285244';
-			//$config['backgroundColor']="red";
-			// valid types are hybrid, satellite, terrain, map
-			//$config['setMapType']="map";
-			$config['directionsDivID']="direccion";
-			$config['clickable']="TRUE";
-			//$config['onclick']="return clicksillo;";
-			//$config['onclick'] = 'createMarker({ map: map, position:event.LatLng });';
-			$config['onclick'] = 'createMarker(map,event.latLng);';
-			//$config['jsfile']=site_url('js/maps.js');
-
-			//Para produccion
-			$config['minifyJS'] = TRUE;
-			//Para activar CACHE y se guardar en la BDD las localizaciones
-			//$config['geocodeCaching'] = TRUE;
-			//$config['zoom'] = 'auto';
-			$this->googlemaps->initialize($config);
-
-			$ultimo = $this->input->post('ultimo_id');
-			if($ultimo)
+			if (!$this->ion_auth->logged_in())
 			{
-	            $nuevos_datos = $this->people->get_with_limits($ultimo);
-	            if($nuevos_datos){      
-		            foreach ($nuevos_datos as $fila) {
-		            		get_row_people($fila,$data['items']);
-			            }
-			         }
-	      }	else{
-			$data['items']=$this->people->get_with_limits(0);
-			foreach ($data['items'] as $key => $value) {
-				$marker = array();
-				$marker['position'] = $value->latitud.','.$value->longitud;
-				$marker['title'] = $value->nick;
-				$marker['infowindow_content'] = '<div class="panel"><div class="panel-body">'.$value->latitud.','.$value->longitud.'</div></div>';
-				$this->googlemaps->add_marker($marker);
+				//redirect them to the login page
+				redirect('auth/login', 'refresh');
 			}
-			
-			$data['map'] = $this->googlemaps->create_map();
-			$this->load->view('people/manage',$data);
-		  }
+			elseif (!$this->ion_auth->is_admin()) //remove this elseif if you want to enable this for non-admins
+			{
+				//redirect them to the home page because they must be an administrator to view this
+				return show_error('You must be an administrator to view this page.');
+			}
+			else
+			{
+				$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+
+				//LATITUD - LONGITUD 
+				$config['center'] = '-1.2403298, -78.6285244';
+				//$config['backgroundColor']="red";
+				// valid types are hybrid, satellite, terrain, map
+				//$config['setMapType']="map";
+				$config['directionsDivID']="direccion";
+				$config['clickable']="TRUE";
+				//$config['onclick']="return clicksillo;";
+				//$config['onclick'] = 'createMarker({ map: map, position:event.LatLng });';
+				$config['onclick'] = 'createMarker(map,event.latLng);';
+				//$config['jsfile']=site_url('js/maps.js');
+
+				//Para produccion
+				$config['minifyJS'] = TRUE;
+				//Para activar CACHE y se guardar en la BDD las localizaciones
+				//$config['geocodeCaching'] = TRUE;
+				//$config['zoom'] = 'auto';
+				$this->googlemaps->initialize($config);
+
+				$ultimo = $this->input->post('ultimo_id');
+				if($ultimo)
+				{
+		            $nuevos_datos = $this->people->get_with_limits($ultimo);
+		            if($nuevos_datos){      
+			            foreach ($nuevos_datos as $fila) {
+			            		get_row_people($fila,$data['items']);
+				            }
+				         }
+		      }	else{
+				$data['items']=$this->ion_auth->users()->result();
+				foreach ($data['items'] as $key => $value) {
+					$marker = array();
+					$marker['position'] = $value->latitud.','.$value->longitud;
+					$marker['title'] = $value->username;
+					$marker['infowindow_content'] = '<div class="panel"><div class="panel-body">'.$value->latitud.','.$value->longitud.'</div></div>';
+					$this->googlemaps->add_marker($marker);
+				}
+				
+				$data['map'] = $this->googlemaps->create_map();
+				$this->load->view('people/manage',$data);
+			  }
+			}
 		  
 			
 		}catch(Exception $e){
@@ -259,6 +278,14 @@ class Peoples extends CI_Controller {
 			}else{
 				echo json_encode(array('error'=>true,'message'=>'Error al eliminar'));
 			}	
+	}
+
+	/**
+	 * Muestra el listado de grupos exitentes y permite editarlos/eliminarlos
+	 **/
+	public function grupos(){
+		$data['grupos']=$this->ion_auth->groups()->result_array();
+		$this->load->view('auth/manage_groups',$data);
 	}
 
 	

@@ -25,6 +25,7 @@ $lang[$word.'_delete'] = "Eliminar";
 $lang[$word.'_cancel'] = "Cancelar";
 $lang[$word.'_submit'] = "Guardar";
 $lang[$word.'_personas'] = "Personas";
+$lang[$word.'_list_personas'] = "Listado de Personas";
 $lang[$word.'_backlog'] = "Backlog";
 $lang[$word.'_backlog_desc'] = "Listado de actividades del proyecto";
 $lang[$word.'_sprint_backlog'] = "Sprint Backlog";
@@ -49,4 +50,6 @@ $lang[$word.'_remove_marker'] = "Remover marcador";
 $lang[$word.'_mi_perfil'] = "Mi perfil";
 $lang[$word.'_more_info'] = "Mas información";
 $lang[$word.'_orden_on_backlog'] = "Orden en Backlog";
+$lang[$word.'_visibilidad'] = "Visibilidad";
+
 ?>

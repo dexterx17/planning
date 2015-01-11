@@ -53,6 +53,30 @@ class Actividad extends CI_Model{
 	}
 	
 	/**
+	 * Devuelve un array con un elemento de la tabla
+	 * @param integer $id Clave primaria de la actividad
+	 */
+	function get_full_info($id){
+		$this->db->where('ID',$id);
+		$query=  $this->db->get($this->table_name);
+		
+		if ($query->num_rows() == 1) {
+			$res= (array)$query->row();
+			$res['tareas']=$this->tarea->get_by_actividad($res['ID']);
+			return $res;
+		} else {
+			//Get empty base parent object, as $item_id is NOT an item
+			$info_obj =  array();
+			
+			$fields = $this->db->list_fields($this->table_name);
+			foreach ($fields as $field) {
+				$info_obj["$field"] = '';
+			}
+			return $info_obj;
+		}
+	}
+
+	/**
 	 * Devuelve una array con todos los elementos
 	 * @return array Array con todos los elementos 
 	 */
@@ -71,6 +95,7 @@ class Actividad extends CI_Model{
 	public function get_with_limits($skip=0,$proyecto){
 		try{
 				$this->db->where('proyecto',$proyecto);	
+				$this->db->order_by('orden','asc');
 				$res=  (array)$this->db->get($this->table_name,20,$skip)->result();
 				$resultado=array();
 				foreach ($res as $key => $value) {
@@ -94,7 +119,8 @@ class Actividad extends CI_Model{
 		try{
 			
 			if($id==-1 && !$this->exists($id)){
-				return $this->db->insert($this->table_name,$data);
+				if($this->db->insert($this->table_name,$data))
+					return $this->db->insert_id();
 			}
 			
 			$this->db->where('ID',$id);
@@ -139,6 +165,28 @@ class Actividad extends CI_Model{
 		} 
 	}
 
+	/**
+	 * Devuelve el número de actividades de un proyecto
+	 * @param integer $proyecto Clave primaria del proyecto
+	 * @param array $estado Estado de la actividad
+	 */
+	function get_count_by_proyecto_filtered($proyecto,$estado=null){
+		try{
+			$this->db->where('proyecto',$proyecto);	
+			if($estado!=null){
+				if(is_array($estado))
+					$this->db->where_in('estado',$estado);	
+				else
+					$this->db->where('estado',$estado);	
+			}
+			return  $this->db->count_all_results($this->table_name);
+			
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+			return null;
+		} 
+	}
+
 	
 	/**
 	 * Devuelve un array con todas las actividades de un proyecto
@@ -147,6 +195,7 @@ class Actividad extends CI_Model{
 	function get_by_proyecto($proyecto){
 		try{
 			$this->db->where('proyecto',$proyecto);	
+			$this->db->order_by('orden','desc');
 			return  $this->db->get($this->table_name)->result_array();
 			
 		}catch(Exception $e){

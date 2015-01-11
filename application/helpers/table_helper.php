@@ -64,18 +64,20 @@ function get_row_form($caption,$id,$value,$opciones="") {
 /**
  * Retorna un array con los proyectos 
  **/
-function get_proyectos(){
+function get_proyectos($user){
     $CI =& get_instance();
-    return $CI->proyecto->get_with_limits(0);
+    $ids = $CI->people->get_involved_projects($user);
+    return $CI->proyecto->get_where_in($ids,0);
 }
 
 /**
  * Retorn el número de actividades que tiene un proyecto
  *@param integer $proyecto_id Clave primaria del proyecto
+ *@param integer $estado Estado de las actividades
  **/
-function get_count_actividades($proyecto_id){
+function get_count_actividades($proyecto_id,$estado=null){
     $CI =& get_instance();
-    return $CI->actividad->get_count_by_proyecto($proyecto_id);
+    return $CI->actividad->get_count_by_proyecto_filtered($proyecto_id,$estado);
 }
 
 /**

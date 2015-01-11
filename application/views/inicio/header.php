@@ -47,10 +47,10 @@
                         <li class="dropdown messages-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope"></i>
-                                <span class="label label-success">4</span>
+                                <span class="label label-success">1</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header">You have 4 messages</li>
+                                <li class="header">Tienes 1 mensaje nuevo</li>
                                 <li>
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
@@ -60,30 +60,30 @@
                                                     <img src="img/avatar3.png" class="img-circle" alt="User Image"/>
                                                 </div>
                                                 <h4>
-                                                    Support Team
+                                                    Admin
                                                     <small><i class="fa fa-clock-o"></i> 5 mins</small>
                                                 </h4>
-                                                <p>Why not buy a new awesome theme?</p>
+                                                <p>Bienvenido ...</p>
                                             </a>
                                         </li><!-- end message -->
                                        <!-- ..message.. -->
                                     </ul>
                                 </li>
-                                <li class="footer"><a href="#">See All Messages</a></li>
+                                <li class="footer"><a href="#">Ver todos los mensajes</a></li>
                             </ul>
                         </li>
                          <!-- Notifications: style can be found in dropdown.less -->
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-warning"></i>
-                                <span class="label label-warning">10</span>
+                                <span class="label label-warning">0</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header">You have 10 notifications</li>
+                                <li class="header">No tienes notificaciones</li>
                                 <li>
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
-                                        <li>
+                                        <!--<li>
                                             <a href="#">
                                                 <i class="fa fa-warning danger"></i> Very long description here that may not fit into the page and may cause design problems
                                             </a>
@@ -92,24 +92,24 @@
                                             <a href="#">
                                                 <i class="fa fa-users warning"></i> 5 new members joined
                                             </a>
-                                        </li>
+                                        </li>-->
                                     </ul>
                                 </li>
-                                <li class="footer"><a href="#">View all</a></li>
+                                <li class="footer"><a href="#">Ver todas</a></li>
                             </ul>
                         </li>
                          <!-- Tasks: style can be found in dropdown.less -->
                         <li class="dropdown tasks-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-tasks"></i>
-                                <span class="label label-danger">9</span>
+                                <span class="label label-danger">0</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header">You have 9 tasks</li>
+                                <li class="header">No tienes tareas pendientes</li>
                                 <li>
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
-                                        <li><!-- Task item -->
+                                        <!-- Task item <li>
                                             <a href="#">
                                                 <h3>
                                                     Design some buttons
@@ -121,50 +121,11 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                        </li><!-- end task item -->
-                                        <li><!-- Task item -->
-                                            <a href="#">
-                                                <h3>
-                                                    Create a nice theme
-                                                    <small class="pull-right">40%</small>
-                                                </h3>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="sr-only">40% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li><!-- end task item -->
-                                        <li><!-- Task item -->
-                                            <a href="#">
-                                                <h3>
-                                                    Some task I need to do
-                                                    <small class="pull-right">60%</small>
-                                                </h3>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="sr-only">60% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li><!-- end task item -->
-                                        <li><!-- Task item -->
-                                            <a href="#">
-                                                <h3>
-                                                    Make beautiful transitions
-                                                    <small class="pull-right">80%</small>
-                                                </h3>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="sr-only">80% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li><!-- end task item -->
+                                        </li> end task item -->
                                     </ul>
                                 </li>
                                 <li class="footer">
-                                    <a href="#">View all tasks</a>
+                                    <a href="#">Ver todas las tareas</a>
                                 </li>
                             </ul>
                         </li>
@@ -172,36 +133,33 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span>Jane Doe <i class="caret"></i></span>
+                                <span><?php echo $this->user->username; ?><i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
-                                <li class="user-header bg-light-blue">
+                                <li class="user-header bg-black-gradient">
                                     <img src="img/avatar3.png" class="img-circle" alt="User Image" />
                                     <p>
-                                        Jane Doe - Web Developer
-                                        <small>Member since Nov. 2012</small>
+                                        <?php echo $this->user->first_name.' '. $this->user->last_name; ?>
+                                        <small>Miembro desde <?php echo date('d/m/Y',$this->user->created_on); ?></small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
                                 <li class="user-body">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
+                                    <div class="col-xs-6 text-center">
+                                        <a href="<?php echo site_url('proyectos'); ?>">Proyectos</a>
                                     </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
+                                    <div class="col-xs-6 text-center">
+                                        <a href="#">Amigos</a>
                                     </div>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="<?php echo site_url("peoples/perfil"); ?>" class="btn btn-default btn-flat">Perfil</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="<?php echo site_url("auth/logout"); ?>" class="btn btn-default btn-flat">Salir</a>
                                     </div>
                                 </li>
                             </ul>
@@ -222,7 +180,7 @@
                             <img src="img/avatar3.png" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
-                            <p>Hello, Jane</p>
+                            <p>Hi, <?php echo $this->user->username; ?></p>
 
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
@@ -251,14 +209,15 @@
                                     <i class="fa fa-angle-left pull-right"></i>
 								</a>
 								<ul class="treeview-menu">
-                                <?php foreach (get_proyectos() as $key => $proyecto) { ?>
+                                <?php foreach (get_proyectos($this->user->id) as $key => $proyecto) { ?>
 									<li>
 										<a href="<?php echo site_url('proyectos/view')."/".$proyecto['ID']; ?>"><i class="fa fa-lg fa-fw fa-suitcase"></i><?php echo $proyecto['nick']; ?></a>
 									</li>
                                     <?php } ?>
 								</ul>
 							</li>
-							<li class="treeview-menu">
+							<?php if($this->ion_auth->is_admin()){ ?>
+                            <li class="treeview">
 								<a href="#">
 									<i class="fa fa-lg fa-fw fa-group"></i>
 									<span>Personas</span>
@@ -266,10 +225,14 @@
 								</a>
 								<ul class="treeview-menu">
 									<li>
-										<a href="<?php echo site_url('peoples') ?>"><i class="fa fa-lg fa-fw fa-suitcase"></i>Owners</a>
+										<a href="<?php echo site_url('peoples/admin') ?>"><i class="fa fa-lg fa-fw fa-suitcase"></i>Personas</a>
 									</li>
+                                    <li>
+                                        <a href="<?php echo site_url('peoples/grupos') ?>"><i class="fa fa-lg fa-fw fa-suitcase"></i>Grupos</a>
+                                    </li>
 								</ul>
 							</li>
+                            <?php } ?>
 							<li>
 								<a href="http://127.0.0.1/planning/calendario">
 									<i class="fa fa-lg fa-fw fa-calendar"></i>

@@ -1,6 +1,6 @@
 <div class="box">
 	<div class="box-header">
-		<h3 class="box-title"><?php echo $info['orden'].' '.lang($controller_name.'_new'); ?>
+		<h3 class="box-title"><?php if($info['ID']==-1 || $info['ID']==""){ echo lang($controller_name.'_new'); }else{ echo lang($controller_name.'_edit'); } ?>
 			<small><?php echo lang($controller_name.'_description'); ?></small>
 		</h3>
 	</div>
@@ -19,28 +19,35 @@
 		<?php echo get_row_form(lang('comun_state'),'estado',$info['estado'],$estados_actividad); ?>
 		
 		<?php echo get_row_form(lang('sprints_singular'),'sprint',$info['sprint'],$sprints); ?>
-		<?php echo form_hidden('ID',$info['ID']); ?>
+		<?php echo form_input(array('type'=>'hidden','name'=>'ID','value'=>$info['ID'],'id'=>'ID')); ?>
 		<?php echo form_hidden('proyecto',$proyecto); ?>
 		
 		<div class="box-footer">
+      <div class="btn-group">
+        <?php echo form_input(array(
+                  'type'=>'button',
+                  'name'=>'cancelar',
+                  'id'=>'cancelar',
+                  'value'=>lang('comun_cancel'),
+                  'class'=>'btn'
+                  )); ?>
 			<?php echo form_submit(array(
 								'name'=>'submit',
 								'id'=>'submit',
 								'value'=>lang('comun_submit'),
 								'class'=>'btn'
 								));	?>
+      </div>
 		</div>
 	</form>
 </div>
 
 <script type="text/javascript">
- 
+ $(document).ready(function() {
   $('#tiempo_planificado').spinner();
   $('#tiempo_real').spinner();
-
-$(document).ready(function() {
-
-
+  var id_actividad = $('#ID').val();
+  var title =$('#nombre').val();
  $('#<?php echo $controller_name; ?>-form').validate({
   rules: {
    nick: {
@@ -53,14 +60,14 @@ $(document).ready(function() {
    }
   },
   highlight: function(element) {
-   $(element).closest('.control-group').removeClass('success').addClass('error');
+   $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
   },
   success: function(element) {
-   element.addClass('valid').closest('.control-group').removeClass('error').addClass('success');
+   element.closest('.form-group').removeClass('has-error').addClass('has-success');
   }, 
   
   submitHandler: function( form ) {
-       
+        title =$('#nombre').val();
         $.ajax({
             url : '<?php echo site_url($controller_name);?>/save',
             data : $('#<?php echo $controller_name; ?>-form').serialize(),
@@ -68,9 +75,16 @@ $(document).ready(function() {
             dataType: 'json',
             success : function(data){
             if(!data.error){
-             $("#<?php echo $controller_name; ?>-form").hide('slow');
-             $('#results').show();
-             $('#messages').html(data.message);
+             $("#<?php echo $controller_name; ?>-form").parent('.box').fadeOut('slow').remove();
+             if(id_actividad===""){
+                $.get('<?php echo site_url($controller_name);?>/get_row/'+data.actividad_id, function(data) {
+                  $('#backlog-content').prepend($(data));
+                });
+             }else{
+                $('#actividadbody'+id_actividad).load('<?php echo site_url($controller_name);?>/get_detail_row/'+id_actividad, function(data) {
+                $('#actividad'+id_actividad+' .activity_title').html(title);  
+                });
+             }
             }else
              $('#errors').html(data.message);	
             }

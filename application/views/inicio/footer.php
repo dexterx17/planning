@@ -1,15 +1,17 @@
-<footer class="pie">
-						<p>
-							Pie de pagina
-						</p>
-						<p>
-							Copyright © 2014 
-						</p>
-
-					</footer>
-			 
-            </aside><!-- /.right-side -->
-        </div><!-- ./wrapper -->
+        <footer class="pie">
+            <div class="clearfix">
+            <blockquote class="pull-right">
+                <p>Si tuviera 9 horas para cortar un árbol, le dedicaría 6 horas a afilar mi hacha</p>
+                <small> Abraham Lincoln</small>
+                </blockquote>
+    		</div>
+    		<div class="text-center">
+    			Copyright © 2014 
+    		</p>
+	   </footer>
+	 
+    </aside><!-- /.right-side -->
+</div><!-- ./wrapper -->
 
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 

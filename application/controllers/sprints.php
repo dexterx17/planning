@@ -7,7 +7,7 @@
  * @package planning
  * @subpackage controllers
  */
-class Sprints extends CI_Controller {
+class Sprints extends MY_Controller {
 
 	 /**
      * Muestra una vista con el listado de sprints de un proyecto y los botones realizar operaciones CRUD

@@ -30,8 +30,11 @@
 				<li>"Los gastos aumentan hasta cubrir todos los ingresos".</li>
 				<li>"El tiempo dedicado a cualquier tema de la agenda es inversamente proporcional a su importancia"</li>
 			</ul>
-		    Ley de la ocupación de los espacios vacíos: por mucho espacio que haya en una oficina siempre hará falta más
 		</div>
+			<div class="row">
+		    Ley de la ocupación de los espacios vacíos: por mucho espacio que haya en una oficina siempre hará falta más
+		    </div>
+		    <hr />
 		<div class="row">
 		<ul>
 			<li>Busca antes de preguntar</li>
@@ -45,15 +48,17 @@
 		</ul>	
 
 		</div>
+		<hr />
 		<div class="row">
 			http://itechnode.com/
 		</div>
 		<div class="row">
-			<p>Tómate el tiempo para aprender y experimentar con la plataforma Android en primer lugar.</p>
+			<p>Tómate el tiempo para aprender y experimentar con la plataforma de trabajo en primer lugar.</p>
 			<p>siéntate con tu equipo y piensa en lo que queréis realmente crear</p> 
 			<p> y empezar desde cero. En última instancia, se ahorrará en tiempo y quebraderos de cabeza y obtendrás un código de alta calidad fácilmente mantenible para el futuro.</p>
 
 		</div>
+		<hr />
 		<div class="row">
 			<h1>USABILIDAD</h1>
 			<ul>
