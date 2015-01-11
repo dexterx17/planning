@@ -64,7 +64,7 @@ $autoload['libraries'] = array('table','database','form_validation','googlemaps'
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url','table','form','language');
+$autoload['helper'] = array('url','table','form','language','funciones');
 
 
 /*

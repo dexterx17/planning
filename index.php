@@ -129,6 +129,16 @@ if (defined('ENVIRONMENT'))
 // END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
 // --------------------------------------------------------------------
 
+
+/** --------------------------------------------------------------------
+* DEFAULT TIMEZONE
+* Set the default timezone for date/time functions to use if | none is set on the server.
+* --------------------------------------------------------------------*/
+
+if( ! ini_get('date.timezone'))
+{
+	date_default_timezone_set('America/Guayaquil');
+}
 /*
  * ---------------------------------------------------------------
  *  Resolve the system path for increased reliability
