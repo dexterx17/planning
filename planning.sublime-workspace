@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"an",
+				"animate	.animate()"
+			],
+			[
+				"di",
+				"disabled"
+			],
+			[
+				"ha",
+				"hasClass	.hasClass()"
+			],
+			[
+				"to",
+				"toggleClass	.toggleClass()"
+			],
+			[
+				"fi",
+				"first	.first()"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"cont",
+				"contador-tareas"
+			],
+			[
+				"pr",
+				"proyecto_id"
+			],
+			[
+				"controll",
+				"controller_name"
+			],
+			[
+				"repl",
+				"replaceWith	.replaceWith()"
+			],
+			[
+				"date_defa",
+				"date_default_timezone_set"
+			],
+			[
 				"resu",
 				"result_array"
 			],
@@ -120,10 +164,6 @@
 				"connectWith"
 			],
 			[
-				"pr",
-				"proyecto"
-			],
-			[
 				"est",
 				"estados_tarea"
 			],
@@ -176,11 +216,19 @@
 	"buffers":
 	[
 		{
-			"file": "ion_auth.sql",
+			"file": "application/views/backlog/manage.php",
 			"settings":
 			{
-				"buffer_size": 2941,
-				"line_ending": "Windows"
+				"buffer_size": 3314,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/src/scripts.js",
+			"settings":
+			{
+				"buffer_size": 3502,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -280,41 +328,54 @@
 	[
 		"/var/www/html/planning",
 		"/var/www/html/planning/application",
+		"/var/www/html/planning/application/language/espanol",
 		"/var/www/html/planning/application/views",
-		"/var/www/html/planning/system"
+		"/var/www/html/planning/application/views/backlog",
+		"/var/www/html/planning/js",
+		"/var/www/html/planning/js/src"
 	],
 	"file_history":
 	[
-		"/var/www/html/planning/application/views/backlog/form.php",
-		"/var/www/html/planning/application/controllers/proyectos.php",
-		"/var/www/html/planning/application/views/backlog/block_detail.php",
 		"/var/www/html/planning/application/views/backlog/block.php",
-		"/var/www/html/planning/application/models/tarea.php",
-		"/var/www/html/planning/application/views/backlog/manage.php",
+		"/var/www/html/planning/js/src/scripts.js",
+		"/var/www/html/planning/application/controllers/proyectos.php",
 		"/var/www/html/planning/application/controllers/actividades.php",
 		"/var/www/html/planning/application/models/actividad.php",
+		"/var/www/html/planning/application/models/tarea.php",
 		"/var/www/html/planning/application/language/espanol/actividades_lang.php",
-		"/var/www/html/planning/application/models/proyecto.php",
+		"/var/www/html/planning/application/views/backlog/block_actividad.php",
+		"/var/www/html/planning/application/views/backlog/manage.php",
+		"/var/www/html/planning/application/controllers/kanbans.html",
+		"/var/www/html/planning/application/views/kanban/manage.php",
+		"/var/www/html/planning/application/views/sprints/block.php",
+		"/var/www/html/planning/application/views/sprints/manage.php",
+		"/var/www/html/planning/application/views/people/manager.php",
+		"/var/www/html/planning/application/views/proyectos/view.php",
+		"/var/www/html/planning/index.php",
+		"/var/www/html/planning/application/views/sprints/form.php",
+		"/var/www/html/planning/application/models/sprint.php",
+		"/var/www/html/planning/application/libraries/Googlemaps.php",
+		"/var/www/html/planning/application/views/inicio/footer.php",
+		"/var/www/html/planning/application/controllers/sprints.php",
+		"/var/www/html/planning/application/views/backlog/form.php",
+		"/var/www/html/planning/application/views/sprints/block_detail.php",
 		"/var/www/html/planning/application/views/backlog/form_tarea.php",
+		"/var/www/html/planning/application/config/autoload.php",
+		"/var/www/html/planning/application/helpers/funciones.php",
+		"/var/www/html/planning/application/views/backlog/block_detail.php",
+		"/var/www/html/planning/application/models/proyecto.php",
 		"/var/www/html/planning/application/models/people.php",
 		"/var/www/html/planning/application/helpers/table_helper.php",
 		"/var/www/html/planning/application/views/proyectos/manage.php",
 		"/var/www/html/planning/application/views/proyectos/form.php",
-		"/var/www/html/planning/application/views/inicio/footer.php",
 		"/var/www/html/planning/application/controllers/calendario.php",
 		"/var/www/html/planning/application/views/inicio/header.php",
 		"/var/www/html/planning/scriptPLAN.sql",
 		"/var/www/html/planning/application/models/team.php",
-		"/var/www/html/planning/application/views/proyectos/view.php",
 		"/var/www/html/planning/application/views/people/perfil.php",
 		"/var/www/html/planning/js/src/droparea.js",
-		"/var/www/html/planning/application/views/sprints/block.php",
-		"/var/www/html/planning/js/src/scripts.js",
 		"/var/www/html/planning/application/controllers/peoples.php",
 		"/var/www/html/planning/application/controllers/teams.php",
-		"/var/www/html/planning/application/views/people/manager.php",
-		"/var/www/html/planning/application/controllers/sprints.php",
-		"/var/www/html/planning/application/config/autoload.php",
 		"/var/www/html/planning/application/language/espanol/ion_auth_lang.php",
 		"/var/www/html/planning/application/views/auth/edit_user.php",
 		"/var/www/html/planning/application/controllers/auth.php",
@@ -344,14 +405,11 @@
 		"/var/www/html/planning/application/models/ion_auth_model.php",
 		"/var/www/html/planning/application/config/config.php",
 		"/var/www/html/planning/application/views/calendario/calendario.php",
-		"/var/www/html/planning/application/views/sprints/manage.php",
 		"/var/www/html/planning/application/config/conf/database.php",
 		"/var/www/html/planning/application/config/conf/.htaccess",
 		"/var/www/html/planning/css/AdminLTE.css",
 		"/var/www/html/planning/application/views/sprints/view.php",
 		"/var/www/html/planning/js/src/jquery-ui.js",
-		"/var/www/html/planning/application/views/backlog/block_actividad.php",
-		"/var/www/html/planning/application/models/sprint.php",
 		"/var/www/html/planning/application/views/backlog/block_tarea.php",
 		"/var/www/html/planning/system/database/DB_result.php",
 		"/var/www/html/planning/js/plugins/datepicker/bootstrap-datepicker.js",
@@ -363,7 +421,6 @@
 		"/var/www/html/planning/DER.pgd",
 		"/var/www/html/planning/node_modules/grunt-contrib-stylus/node_modules/stylus/node_modules/sax/test/xmlns-xml-default-ns.js",
 		"/var/www/html/planning/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/argument_parser.js",
-		"/var/www/html/planning/application/views/sprints/form.php",
 		"/var/www/html/planning/application/controllers/android.php",
 		"/var/www/html/planning/application/controllers/android.html",
 		"/var/www/html/rrnn/application/modules/inicio/models/vocero.php",
@@ -406,13 +463,7 @@
 		"/var/www/html/rrnn/application/modules/inicio/models/comentario.php",
 		"/var/www/html/rrnn/application/modules/auth/themes/bootstrap/auth/perfil.html.twig",
 		"/var/www/html/rrnn/application/modules/poas/themes/bootstrap/poas/matriz_monitoreo.html.twig",
-		"/var/www/html/rrnn/application/modules/poas/themes/bootstrap/actividades/form_row.html.twig",
-		"/var/www/html/rrnn/application/modules/poas/themes/bootstrap/monitoreo/view_actividad_row.html.twig",
-		"/var/www/html/rrnn/.gitignore",
-		"/var/www/html/rrnn/application/modules/auth/config/autoload.php",
-		"/var/www/html/rrnn/assets/bootstrap-3.1.1/js_extra/jarvis.js",
-		"/var/www/html/rrnn/application/modules/auth/models/ion_auth_mongodb_model.php",
-		"/var/www/html/rrnn/application/modules/auth/models/ion_auth_model.php"
+		"/var/www/html/rrnn/application/modules/poas/themes/bootstrap/actividades/form_row.html.twig"
 	],
 	"find":
 	{
@@ -431,6 +482,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"disabled",
+			"function",
+			"actividad",
+			"navbar-",
+			"actividad",
 			"droparea",
 			"owner",
 			"date",
@@ -521,29 +577,24 @@
 	"groups":
 	[
 		{
-			"sheets":
-			[
-			]
-		},
-		{
 			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "ion_auth.sql",
-					"semi_transient": true,
+					"file": "application/views/backlog/manage.php",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2941,
+						"buffer_size": 3314,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								3274,
+								3274
 							]
 						],
 						"settings":
@@ -551,76 +602,172 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_round_content"
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
 							],
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/SQL/SQL.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 918.0,
+						"translation.y": 714.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/src/scripts.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3502,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3483,
+								3483
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1491.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
 				}
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
@@ -652,7 +799,7 @@
 		"cols":
 		[
 			0.0,
-			0.452591656132,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -756,7 +903,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 		"xdebug":

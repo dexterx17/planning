@@ -1,5 +1,5 @@
 
-<li class="block_actividad_sprint row" id="<?php echo $info['ID']; ?>">
+<li class="block_actividad_sprint" id="<?php echo $info['ID']; ?>">
    <!--Boton de DRAG and DROP-->
     <span class="handle">
         <i class="fa fa-ellipsis-v"></i>
@@ -8,9 +8,9 @@
     <!-- Dropdown para Estado de Actividad -->
     <?php echo $estados_tarea[$info["estado"]]; ?>
     <!-- # de tareas cumplidas -->
-    <small class="label label-success" data-toggle="tooltip" title="Tareas completas"><?php echo $info['done']; ?></small>
+    <small class="label label-success" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_done'); ?>"><?php echo $info['done']; ?></small>
     <!-- # de tareas por cumplir -->
-    <small class="label label-warning" data-toggle="tooltip" title="Tareas por cumplir"><?php echo $info['todo']; ?></small>
+    <small class="label label-warning" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_todo'); ?>"><?php echo $info['todo']; ?></small>
     <!--Descripcion de la actividad-->
     <span class="text"><?php echo $info['nombre']; ?></span>
 

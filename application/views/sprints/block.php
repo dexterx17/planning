@@ -14,32 +14,30 @@
 					</div>
 				</div>
 				<div class="box-body">
-						<div class="row" id="bodysprint<?php echo $info['ID']; ?>">
+						<div class="" id="bodysprint<?php echo $info['ID']; ?>">
 							<?php $this->load->view('sprints/block_detail'); ?>
 						</div>
-						<div class="row">
-							<div class="box">
-								<div class="box-header">
-									<h3 class="box-title"><?php echo lang('actividades_sprint') ?>
-										<small><?php echo lang('actividades_sprint_desc'); ?></small>
-									</h3>
-									<div class="box-tools pull-right">
-										<div class="btn-group">
-										</div>
+						<div class="box">
+							<div class="box-header">
+								<h3 class="box-title"><?php echo lang('actividades_sprint') ?>
+									<small><?php echo lang('actividades_sprint_desc'); ?></small>
+								</h3>
+								<div class="box-tools pull-right">
+									<div class="btn-group">
 									</div>
 								</div>
-								<div class="box-body">
-									<ul class="todo-list sprint-backlog" sprint="<?php echo $info['ID']; ?>" >
-							            <?php 
-											foreach ($info['actividades'] as $key => $value) {
-												 $data['info']=$value;
-				                                $this->load->view('backlog/block_actividad',$data);
-											}
-										?>
-						        	</ul>
-						        </div>
+							</div>
+							<div class="box-body">
+								<ul class="todo-list sprint-backlog" sprint="<?php echo $info['ID']; ?>" >
+						            <?php 
+										foreach ($info['actividades'] as $key => $value) {
+											 $data['info']=$value;
+			                                $this->load->view('backlog/block_actividad',$data);
+										}
+									?>
+					        	</ul>
 					        </div>
-						</div>
+				        </div>
 				</div>
 			</div>
 </div>

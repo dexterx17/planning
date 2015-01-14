@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><?php echo lang('comun_backlog'); ?></a>
+            <a class="navbar-brand" href="#"><?php echo lang('comun_kanban'); ?></a>
         </div>
           <div class="collapse navbar-collapse" id="bs-backlog">
                 <ul class="nav navbar-nav">
@@ -20,10 +20,8 @@
                     </li>
                 </ul>
                  <form class="navbar-form navbar-right" role="form">
-                    <div class="form-group contador-tareas">
-                        <button type="button" class="btn bg-green-gradient active" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_done'); ?>" >0</button>
-                        <button type="button" class="btn bg-yellow-gradient" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_doing'); ?>">0</button>
-                        <button type="button" class="btn bg-red-gradient" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_todo'); ?>">0</button>
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="TAREAS MOSTRADAS">
                     </div>
                   </form>
             </div>
@@ -68,20 +66,6 @@ $(document).ready(function() {
         }
     });
     $(".todo-list").todolist();
-
-    $.ajax({
-        url:'<?php echo site_url("proyectos/get_status/$proyecto");?>',
-        data: {},
-        dataType : 'json',
-        cache: false,
-        success : function(data){
-            $btnTODO = $('.contador-tareas button').first();
-            $btnTODO.html(data[1]);
-            $btnTODO.next().html(data[2]);
-            $btnTODO.next().next().html(data[3]);
-        }
-    });
-
 }); // end document.ready
 
 

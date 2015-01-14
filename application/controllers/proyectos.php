@@ -150,4 +150,26 @@ class Proyectos extends MY_Controller {
 			echo json_encode(array('error'=>true,'message'=>'Error al eliminar'));
 		}	
 	}
+
+	/**
+	 * Devuelve un array de variables del proyecto
+	 *@param integer $proyecto_id Clave primaria del proyecto
+	 *@param string $tipo "tasks"|"actividades"
+	 **/
+	public function get_status($proyecto_id,$tipo='tasks'){
+		$resultado = array();
+		switch ($tipo) {
+			case 'tasks':
+				$resultado[1]=$this->tarea->get_count_by_proyecto_estado($proyecto_id,1);
+				$resultado[2]=$this->tarea->get_count_by_proyecto_estado($proyecto_id,2);
+				$resultado[3]=$this->tarea->get_count_by_proyecto_estado($proyecto_id,3);
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+
+        echo json_encode($resultado);
+    }
 }

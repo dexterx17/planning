@@ -39,6 +39,7 @@ class Actividades extends MY_Controller {
                 }
             } else {
                 $this->data['items'] = $this->actividad->get_with_limits(0, $proyecto);
+                
                 $this->load->view('backlog/manage', $this->data);
             }
         } catch (Exception $e) {

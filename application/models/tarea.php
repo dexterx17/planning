@@ -157,7 +157,7 @@ class Tarea extends CI_Model{
 			}
 	}
 
-		/**
+	/**
 	 * Devuelve un array con todas las tareas en determinado estado de una actividad
 	 * @param integer $actividad Clave primaria de la actividad a la que pertenecen las tareas
 	 * @param integer $estado Estado de las tareas que se quiere obtener
@@ -172,6 +172,31 @@ class Tarea extends CI_Model{
 						
 				$this->db->where('actividad',$actividad);	
 				return  $this->db->get($this->table_name)->num_rows();
+				
+			}catch(Exception $e){
+				show_error($e->getMessage().' --- '.$e->getTraceAsString());
+				return null;
+			}
+	}
+
+	/**
+	 * Devuelve un array con todas las tareas en determinado estado de un proyecto
+	 * @param integer $proyecto Clave primaria de la proyecto a la que pertenecen las tareas
+	 * @param integer $estado Estado de las tareas que se quiere obtener
+	 * @param boolean $not Si es true se busca las tareas que no tengan el estado especificado
+	 */
+	function get_count_by_proyecto_estado($proyecto, $estado = 0,$not=false){
+		try{
+				$this->db->from($this->table_name.' T');
+				$this->db->join('actividades A', 'A.ID=T.actividad');
+				if($not)
+					$this->db->where_not_in('T.estado',$estado);
+				else	
+					$this->db->where('T.estado',$estado);
+						
+				$this->db->where('A.proyecto',$proyecto);
+
+				return  $this->db->get()->num_rows();
 				
 			}catch(Exception $e){
 				show_error($e->getMessage().' --- '.$e->getTraceAsString());

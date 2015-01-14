@@ -139,6 +139,11 @@ if( ! ini_get('date.timezone'))
 {
 	date_default_timezone_set('America/Guayaquil');
 }
+//Esta opción habilita las envolturas fopen de tipo URL que permiten el acceso a objetos URL como ficheros.
+if(  ini_get('allow_url_fopen'))
+{
+	ini_set('allow_url_fopen', 1);
+}
 /*
  * ---------------------------------------------------------------
  *  Resolve the system path for increased reliability

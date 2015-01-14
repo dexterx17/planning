@@ -2,7 +2,7 @@
 <div class="row " id="actividad<?php echo $info['ID']; ?>">
 			<div class="box">
 				<div class="box-header">
-					<span class="pull-left"><i class="fa fa-fw fa-folder handl"></i></span>
+					<span class="pull-left"><i class="fa fa-fw fa-arrows handl"></i></span>
 					<h3 class="box-title activity_title"><?php echo $info['nombre']; ?></h3>
 					<div class="box-tools pull-right">
 						<div class="btn-group">

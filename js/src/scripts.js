@@ -9,7 +9,7 @@ function loadURL(url, container) {
 		type : "GET",
 		url : url,
 		dataType : 'html',
-		cache : true, // (warning: this will cause a timestamp and will call the request twice)
+		cache : false, // (warning: this will cause a timestamp and will call the request twice)
 		beforeSend : function() {
 			// cog placed
 			container.html('<h1><i class="small progress"></i> Cargando contenido...</h1>');
@@ -118,3 +118,14 @@ $(document).on('click', '.menu-sec a[href!="#"]', function(e) {
  $('#cancelar').click(function(){
  	$('#tareillas'+'<?php echo $actividad;?>').html('');
  });
+
+$(document).on('click','.contador-tareas button',function(){
+    $btn  = $(this);
+    $btn.toggleClass('active',function(){
+    	if($btn.css('opacity')==1){
+    		$btn.animate({'opacity':0.5}, 200);
+    	}else{
+    		$btn.animate({'opacity':1}, 200);
+    	}
+    });
+});
