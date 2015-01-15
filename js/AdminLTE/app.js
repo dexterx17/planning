@@ -633,18 +633,24 @@ $(window).load(function() {
     $.fn.todolist = function(options) {
         // Render options
         var settings = $.extend({
+            hide:[]
         }, options);
-
         return this.each(function() {
 
             $('li', this).each(function(event) {
                 var $li = $(this);
+                $li.show('fast');
                 var estado=parseInt($li.attr('status'));
                 switch(estado){
                     case 1: $li.addClass('bg-red-gradient'); break;
                     case 2: $li.addClass('bg-yellow-gradient'); break;
                     case 3: $li.addClass('bg-green-gradient'); break;
                 }
+                $.each(settings.hide, function(index, val) {
+                    if(val==estado){
+                        $li.fadeOut('fast');
+                    }
+                });
             });
         });
     };

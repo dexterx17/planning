@@ -21,9 +21,9 @@
                 </ul>
                  <form class="navbar-form navbar-right" role="form">
                     <div class="form-group contador-tareas">
-                        <button type="button" class="btn bg-green-gradient active" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_done'); ?>" >0</button>
-                        <button type="button" class="btn bg-yellow-gradient" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_doing'); ?>">0</button>
-                        <button type="button" class="btn bg-red-gradient" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_todo'); ?>">0</button>
+                        <button type="button" class="btn bg-green-gradient" status="3" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_done'); ?>" >0</button>
+                        <button type="button" class="btn bg-yellow-gradient" status="2" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_doing'); ?>">0</button>
+                        <button type="button" class="btn bg-red-gradient" status="1" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_todo'); ?>">0</button>
                     </div>
                   </form>
             </div>
@@ -80,6 +80,7 @@ $(document).ready(function() {
             $btnTODO.next().html(data[2]);
             $btnTODO.next().next().html(data[3]);
         }
+
     });
 
 }); // end document.ready

@@ -127,5 +127,16 @@ $(document).on('click','.contador-tareas button',function(){
     	}else{
     		$btn.animate({'opacity':1}, 200);
     	}
+
+		var  ids=[];
+		for (var i = 1; i <= 3; i++) {
+			if(i==parseInt($btn.attr('status'))){
+				ids[i-1]=$btn.hasClass('active')?i:0;
+			}else{
+				ids[i-1]=$('.contador-tareas button[status="'+i+'"]').hasClass('active')?i:0;
+			}
+		};
+		$("#backlog-content .todo-list").todolist({hide:ids});
     });
+
 });
