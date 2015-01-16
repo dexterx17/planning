@@ -40,7 +40,7 @@
 </section>
 <script type="text/javavscript">
 $(document).ready(function() {
-	$('#calendar').datepicker({language:"es"});
+    $('#calendar').datepicker({language:"es"});
 });
 </script>
 <?php $this -> load -> view('inicio/footer'); ?>

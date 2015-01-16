@@ -1,3 +1,13 @@
+//Obtiene un array con todos los segmetos de la URL
+var pathArray = window.location.pathname.split('/');
+var applicacion = (window.location.host === "127.0.0.1" || window.location.host === "localhost" || window.location.host.indexOf('192.168.') !== -1) ? pathArray[1] : '';
+function getBasePath() {
+	if (!window.location.origin)
+		return window.location.protocol + "//" + window.location.host + "/" + applicacion;
+	else
+		return window.location.origin + "/" + applicacion;
+}
+
 /**
  * Carga contenido de una URL en un elemento HTML
  *
@@ -115,9 +125,6 @@ $(document).on('click', '.menu-sec a[href!="#"]', function(e) {
 	loadURL($this.attr('href'),$('#contenido2'));
 });
 
- $('#cancelar').click(function(){
- 	$('#tareillas'+'<?php echo $actividad;?>').html('');
- });
 
 $(document).on('click','.contador-tareas button',function(){
     $btn  = $(this);
@@ -140,3 +147,22 @@ $(document).on('click','.contador-tareas button',function(){
     });
 
 });
+
+/**
+*Realiza una llamada Ajax para obtener los contadores de tareas por proyecto
+**/
+function reload_counter_taks(){
+	proyecto = $('.contador-tareas').attr('proyecto');
+	$.ajax({
+        url:getBasePath()+'/proyectos/get_status/'+proyecto,
+        data: {},
+        dataType : 'json',
+        cache: false,
+        success : function(data){
+            $btnTODO = $('.contador-tareas button').first();
+            $btnTODO.html(data[1]);
+            $btnTODO.next().html(data[2]);
+            $btnTODO.next().next().html(data[3]);
+        }
+    });
+}

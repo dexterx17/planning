@@ -138,7 +138,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-black-gradient">
-                                    <img src="img/avatar3.png" class="img-circle" alt="User Image" />
+                                    <img src="<?php echo base_url('uploads/profiles').'/'.$this->user->imagen; ?>" class="img-circle" alt="<?php echo $this->user->username; ?>" />
                                     <p>
                                         <?php echo $this->user->first_name.' '. $this->user->last_name; ?>
                                         <small>Miembro desde <?php echo date('d/m/Y',$this->user->created_on); ?></small>
@@ -177,7 +177,7 @@
             	<!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="img/avatar3.png" class="img-circle" alt="User Image" />
+                            <img src="<?php echo base_url('uploads/profiles').'/'.$this->user->imagen; ?>" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
                             <p>Hi, <?php echo $this->user->username; ?></p>

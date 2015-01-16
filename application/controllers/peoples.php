@@ -120,7 +120,7 @@ class Peoples extends MY_Controller {
 	public function nuevo($clave=-1)
 	{
 		try{
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+			$data['controller_name'] ="peoples";
 			//LATITUD - LONGITUD 
 			$config['center'] = '-1.2403298, -78.6285244';
 			$info=(array)$this->people->get_info($clave);
@@ -153,10 +153,15 @@ class Peoples extends MY_Controller {
 	public function perfil($clave=-1)
 	{
 		try{
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+			$data['controller_name'] ="peoples";
 			//LATITUD - LONGITUD 
 			$config['center'] = '-1.2403298, -78.6285244';
-			$info=(array)$this->people->get_info($clave);
+			if($clave==-1){
+				$info=(array)$this->people->get_info($this->user->id);
+			}else{
+				$info=(array)$this->people->get_info($clave);
+			}
+
 			$data['info']=$info;
 			if(!empty($info['latitud'])&&!empty($info['longitud'])){
 				$marker = array();

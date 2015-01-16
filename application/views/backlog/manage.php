@@ -20,7 +20,7 @@
                     </li>
                 </ul>
                  <form class="navbar-form navbar-right" role="form">
-                    <div class="form-group contador-tareas">
+                    <div class="form-group contador-tareas" proyecto="<?php echo $proyecto; ?>">
                         <button type="button" class="btn bg-green-gradient" status="3" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_done'); ?>" >0</button>
                         <button type="button" class="btn bg-yellow-gradient" status="2" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_doing'); ?>">0</button>
                         <button type="button" class="btn bg-red-gradient" status="1" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_todo'); ?>">0</button>
@@ -69,19 +69,8 @@ $(document).ready(function() {
     });
     $(".todo-list").todolist();
 
-    $.ajax({
-        url:'<?php echo site_url("proyectos/get_status/$proyecto");?>',
-        data: {},
-        dataType : 'json',
-        cache: false,
-        success : function(data){
-            $btnTODO = $('.contador-tareas button').first();
-            $btnTODO.html(data[1]);
-            $btnTODO.next().html(data[2]);
-            $btnTODO.next().next().html(data[3]);
-        }
+    reload_counter_taks();
 
-    });
 
 }); // end document.ready
 
