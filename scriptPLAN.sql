@@ -241,6 +241,41 @@ ADD FOREIGN KEY (owner) REFERENCES users(id);
 ALTER TABLE sprints 
 ADD FOREIGN KEY (proyecto) REFERENCES proyectos(ID);
 
+/**
+* Asigna el nuevo orden a la actividad asignada al backlog
+**/
+DELIMITER //
+DROP TRIGGER IF EXISTS before_actividades_insert; //
+CREATE TRIGGER before_actividades_insert
+BEFORE INSERT ON actividades
+FOR EACH ROW
+BEGIN
+SET NEW.orden=(SELECT ifnull((select max(orden)+1 from actividades where proyecto=NEW.proyecto),1));
+
+END; //
+DELIMITER ;
+
+CREATE TABLE tablero
+(
+	ID INT PRIMARY KEY AUTO_INCREMENT,
+	proyecto INT NOT NULL,
+	nombre VARCHAR(100),
+	descripcion TEXT,
+	FOREIGN KEY (proyecto) REFERENCES proyectos (ID)
+);
+
+CREATE TABLE columna_tablero
+(
+	ID INT PRIMARY KEY AUTO_INCREMENT,
+	tablero INT NOT NULL,
+	proyecto INT NOT NULL,
+	nombre VARCHAR(100) NOT NULL,
+	descripcion TEXT,
+	estado INT NOT NULL,
+	FOREIGN KEY (tablero) REFERENCES tablero(ID),
+	FOREIGN KEY (proyecto) REFERENCES proyectos(ID),
+	FOREIGN KEY (estado) REFERENCES estado_tarea(ID)
+);
 
 -------------------------------------------------------HASTA AQUI LA VERSION DEL SCRIPT EJECUTADA --------------------------------------
 CREATE TABLE funciones

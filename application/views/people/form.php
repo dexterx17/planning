@@ -2,8 +2,9 @@
 <div class="contenido">
 	<section class="seccion">
 		<hgroup>
-			<h2><?php echo lang($controller_name.'_new'); ?></h2>
-			<small><?php echo lang($controller_name.'_description'); ?></small>
+			<h2><?php echo lang($controller_name.'_new'); ?>
+				<small><?php echo lang($controller_name.'_description'); ?></small>
+			</h2>
 		</hgroup>
 		<article class="panel">
 			<div id="results" style="display: none">

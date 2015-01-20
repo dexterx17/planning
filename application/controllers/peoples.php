@@ -9,6 +9,13 @@
  */
 class Peoples extends MY_Controller {
 
+   	var $data;
+
+    function __construct(){
+        parent::__construct();
+        $this->data['controller_name'] = 'peoples';
+    }
+
     /**
      * Muestra una vista con el listado de personas involucradas en el proyecto
      * @param integer $proyecto Clave primaria del proyecto
@@ -16,27 +23,26 @@ class Peoples extends MY_Controller {
     public function index($proyecto) {
         try {
 
-            $data['controller_name'] = 'peoples';
-            $data['proyecto'] = $proyecto;
+            $this->data['proyecto'] = $proyecto;
             $ultimo = $this->input->post('ultimo_id');
 
             if ($ultimo) {
                 $nuevos_datos = $this->people->get_with_limits(0);
                 if ($nuevos_datos) {
                     foreach ($nuevos_datos as $fila) {
-                        get_row_people($fila, $data['items']);
+                        get_row_people($fila, $this->data['items']);
                     }
                 }
             } else {
-                $data['people']=$this->people->get_with_limits(0);
+                $this->data['people']=$this->people->get_with_limits(0);
                 $team=$this->team->get_with_limits(0,$proyecto);
                 $person = array();
                 foreach ($team as $key => $value) {
                 	$person[$key]=$this->people->get_info($value['miembro']);
                 }
-                $data['team']=$person;
+                $this->data['team']=$person;
 
-                $this->load->view('people/manager', $data);
+                $this->load->view('people/manager', $this->data);
             }
         } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
@@ -88,12 +94,12 @@ class Peoples extends MY_Controller {
 		            $nuevos_datos = $this->people->get_with_limits($ultimo);
 		            if($nuevos_datos){      
 			            foreach ($nuevos_datos as $fila) {
-			            		get_row_people($fila,$data['items']);
+			            		get_row_people($fila,$this->data['items']);
 				            }
 				         }
 		      }	else{
-				$data['items']=$this->ion_auth->users()->result();
-				foreach ($data['items'] as $key => $value) {
+				$this->data['items']=$this->ion_auth->users()->result();
+				foreach ($this->data['items'] as $key => $value) {
 					$marker = array();
 					$marker['position'] = $value->latitud.','.$value->longitud;
 					$marker['title'] = $value->username;
@@ -101,8 +107,8 @@ class Peoples extends MY_Controller {
 					$this->googlemaps->add_marker($marker);
 				}
 				
-				$data['map'] = $this->googlemaps->create_map();
-				$this->load->view('people/manage',$data);
+				$this->data['map'] = $this->googlemaps->create_map();
+				$this->load->view('people/manage',$this->data);
 			  }
 			}
 		  
@@ -112,6 +118,21 @@ class Peoples extends MY_Controller {
 		}
 	}
 	
+	/**
+     * Muestra un row con información de la persona
+     * 
+     * @param integer $clave Clave primaria de la persona EJ: 2
+     */
+    public function get_row($clave=-1)
+    {
+        try{
+            $this->data['info'] = (array) $this->people->get_info($clave);
+            $this->load->view('people/block',$this->data);
+        }catch(Exception $e){
+            show_error($e->getMessage().' --- '.$e->getTraceAsString());
+        }
+    }
+    
 	/**
 	 * Muestra un formulario que permite ingresar y modificar los datos de una persona
 	 * 
@@ -166,7 +187,7 @@ class Peoples extends MY_Controller {
 			if(!empty($info['latitud'])&&!empty($info['longitud'])){
 				$marker = array();
 				$marker['position'] = $info['latitud'].','.$info['longitud'];
-				$marker['title'] = $info['nick'];
+				$marker['title'] = $info['username'];
 				$marker['infowindow_content'] = '<div class="panel"><div class="panel-body">'.$info['latitud'].','.$info['longitud'].'</div></div>';
 				$config['clickable']="TRUE";
 				$marker['draggable'] = true;
@@ -178,56 +199,6 @@ class Peoples extends MY_Controller {
 			$this->googlemaps->initialize($config);
 			$data['map'] = $this->googlemaps->create_map();
 			$this->load->view('people/perfil',$data);
-		}catch(Exception $e){
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-
-	/**
-	* Obtiene y valida los datos del formularios para enviarlos a guardar 
-	*/
-	public function save()
-	{
-		try{
-			$ID = $this->input->post('ID')==''? -1 :$this->input->post('ID');
-			if($ID==-1){
-				$this->form_validation->set_rules('nick',lang('comun_nick'),'trim|required|min_length[5]|max_length[30]|is_unique[people.nick]'); 
-			}else{
-				$this->form_validation->set_rules('nick',lang('comun_nick'),'trim|required|min_length[5]|max_length[30]'); 
-			}
-			$this->form_validation->set_rules('nombres',lang('comun_names'),'trim|required|alpha');
-			$this->form_validation->set_rules('apellidos',lang('comun_lastnames'),'trim|required|alpha');
-			$this->form_validation->set_rules('email',lang('comun_email'),'required|valid_email');
-			//$this->form_validation->set_rules('password',lang('comun_password'),'required|matches[repassword]|md5');
-			//$this->form_validation->set_rules('repassword',lang('comun_repassword'),'required');
-			
-			
-		
-			if($this->form_validation->run()==TRUE){
-				
-				$data=array(
-					'nick'=>$this->input->post('nick'),
-					'nombres'=>$this->input->post('nombres'),
-					'apellidos'=>$this->input->post('apellidos'),
-					'direccion'=>$this->input->post('direccion'),
-					'email'=>$this->input->post('email'),
-					'telefono'=>$this->input->post('telefono'),
-					'celular'=>$this->input->post('celular'),
-					'latitud'=>$this->input->post('latitud'),
-					'longitud'=>$this->input->post('longitud'),
-					);
-					
-				if($this->people->save($ID,$data)){
-					echo json_encode(array('error'=>false,'message'=>'TODO BIEN'));
-				}else{
-					echo json_encode(array('error'=>true,'message'=>'Error al guardar'));
-				}				
-				
-			}else{
-				$error = validation_errors();
-				echo json_encode(array('error'=>true,'message'=> "$error" ) );
-			}
-			
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}

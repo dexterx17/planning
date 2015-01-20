@@ -3,13 +3,19 @@
 	<div class="box">
 				<div class="box-header">
 					<h3>
-						<a class="btn" href="<?php echo site_url("peoples/perfil/".$info['id']); ?> "><i class="fa fa-lg fa-fw fa-user"></i></a>
-						<?php echo $info['first_name'].' '.$info['last_name']; ?>
-						<small><?php echo $info['email']; ?></small>
+						<span class="col-lg-4">
+							<a class="" href="<?php echo site_url("peoples/perfil/".$info['id']); ?> ">
+								<img src="<?php echo base_url('uploads/profiles').'/'.$info['imagen']; ?>" class="img-thumbnail people_block_pic">
+							</a>	
+						</span>
+						<span class="col-lg-4">
+							<?php echo $info['first_name'].' '.$info['last_name']; ?>
+							<small><?php echo $info['email']; ?></small>
+						</span>
 					</h3>
 					<div class="box-tools pull-right">
 						<div class="btn-group">
-							<button class="btn btn-sm btn-embed" href="<?php echo site_url("auth/edit_user/".$info['id']); ?> ">
+							<button class="btn btn-sm btn-redirected"  data-content="people<?php echo $info['id']; ?>" href="<?php echo site_url("auth/edit_user").'/'.$info['id']; ?> ">
 									<i class="fa fa-lg fa-fw fa-edit"></i>
 							</button>
 							<button type="button" class="btn btn-sm btn-delete" data-content="people<?php echo $info['id']; ?>" href="<?php echo site_url("peoples/delete/".$info['id']); ?>">

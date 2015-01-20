@@ -3541,3 +3541,8 @@ fieldset[disabled] .btn-vk.active {
   min-width: 100px;
   min-height: 100px;
 }
+
+.people_block_pic{
+  width: 50px;
+  height: 50px;
+}

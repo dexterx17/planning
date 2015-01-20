@@ -280,6 +280,17 @@ class Actividad extends CI_Model{
 			return null;
 		} 
 	}
+
+	function get_next_orden($proyecto){
+		try {
+			$this->db->select_max('orden');
+			$this->db->where('proyecto',$proyecto);
+			return $this->db->get($this->table_name)->result_array();
+		} catch (Exception $e) {
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+			return null;	
+		}
+	}
 }
 
 ?>

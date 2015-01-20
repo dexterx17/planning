@@ -14,12 +14,11 @@ function getBasePath() {
  **/
 function loadURL(url, container) {
 	//console.log(container)
-
 	$.ajax({
 		type : "GET",
 		url : url,
 		dataType : 'html',
-		cache : false, // (warning: this will cause a timestamp and will call the request twice)
+		cache : true, // (warning: this will cause a timestamp and will call the request twice)
 		beforeSend : function() {
 			// cog placed
 			container.html('<h1><i class="small progress"></i> Cargando contenido...</h1>');

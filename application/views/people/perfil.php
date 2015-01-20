@@ -101,11 +101,15 @@ $(document).ready(function() {
             //console.log('custom error',result.error);
         },
         'complete' : function(result, file, input, area){
-            if((/image/i).test(file.type)){
-                area.find('img').remove();
-                //area.data('value',result.filename);
-                area.append($('<img>',{'src': '<?php echo base_url("uploads/profiles"); ?>/'+result.filename + '?' + Math.random()}));
-            } 
+        	if(result.error){
+				$('<div class="alert alert-danger">').html(result.message).prependTo(area); 
+        	}else{
+	            if((/image/i).test(file.type)){
+	                area.find('img').remove();
+	                //area.data('value',result.filename);
+	                area.append($('<img>',{'src': '<?php echo base_url("uploads/profiles"); ?>/'+result.filename + '?' + Math.random()}));
+	            } 
+	        }
             //console.log('custom complete',result);
         }
     });

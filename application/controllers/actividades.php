@@ -122,6 +122,11 @@ class Actividades extends MY_Controller {
                     'sprint' => $this->input->post('sprint'),
                 );
 
+                if($ID==-1){
+                    $orden = $this->actividad->get_next_orden($data['proyecto']);
+                    $data['orden']=$orden[0]['orden'];
+                }
+
                 if ($ID = $this->actividad->save($ID, $data)) {
                     echo json_encode(array('error' => false, 'message' => 'TODO BIEN','actividad_id'=>$ID));
                 } else {

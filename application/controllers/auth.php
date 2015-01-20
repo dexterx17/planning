@@ -567,6 +567,8 @@ class Auth extends CI_Controller {
 					'last_name'  => $this->input->post('last_name'),
 					'company'    => $this->input->post('company'),
 					'phone'      => $this->input->post('phone'),
+					'latitud'=>$this->input->post('latitud'),
+					'longitud'=>$this->input->post('longitud'),
 				);
 
 				//update the password if it was posted
@@ -657,6 +659,20 @@ class Auth extends CI_Controller {
 			'name' => 'password_confirm',
 			'id'   => 'password_confirm',
 			'type' => 'password',
+			'class' => 'form-control'
+		);
+		$this->data['latitud'] = array(
+			'name'  => 'latitud',
+			'id'    => 'latitud',
+			'type'  => 'text',
+			'value' => $this->form_validation->set_value('latitud', $user->latitud),
+			'class' => 'form-control'
+		);
+		$this->data['longitud'] = array(
+			'name'  => 'longitud',
+			'id'    => 'longitud',
+			'type'  => 'text',
+			'value' => $this->form_validation->set_value('longitud', $user->longitud),
 			'class' => 'form-control'
 		);
 
