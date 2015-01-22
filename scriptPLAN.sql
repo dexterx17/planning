@@ -255,28 +255,27 @@ SET NEW.orden=(SELECT ifnull((select max(orden)+1 from actividades where proyect
 END; //
 DELIMITER ;
 
-CREATE TABLE tablero
-(
-	ID INT PRIMARY KEY AUTO_INCREMENT,
-	proyecto INT NOT NULL,
-	nombre VARCHAR(100),
-	descripcion TEXT,
-	FOREIGN KEY (proyecto) REFERENCES proyectos (ID)
-);
-
 CREATE TABLE columna_tablero
 (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
-	tablero INT NOT NULL,
 	proyecto INT NOT NULL,
 	nombre VARCHAR(100) NOT NULL,
 	descripcion TEXT,
 	estado INT NOT NULL,
-	FOREIGN KEY (tablero) REFERENCES tablero(ID),
 	FOREIGN KEY (proyecto) REFERENCES proyectos(ID),
 	FOREIGN KEY (estado) REFERENCES estado_tarea(ID)
 );
 
+ALTER TABLE tareas ADD COLUMN creador INT unsigned;
+ALTER TABLE actividades ADD COLUMN creador INT unsigned;
+
+
+CREATE TABLE tarea_responsables
+(
+	ID INT PRIMARY KEY AUTO_INCREMENT,
+	tarea INT NOT NULL,
+	responsable INT unsigned NOT NULL
+);
 -------------------------------------------------------HASTA AQUI LA VERSION DEL SCRIPT EJECUTADA --------------------------------------
 CREATE TABLE funciones
 (

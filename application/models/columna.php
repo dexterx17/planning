@@ -1,18 +1,18 @@
 <?php
 
 /**
-* Permite realizar operaciones DML sobre la tabla "sprints"
+* Permite realizar operaciones DML sobre la tabla "columna_tablero"
 *
 * @package planning
 * @subpackage models
 **/
-class Sprint extends CI_Model{
+class Columna extends CI_Model{
 	
 	/**
 	* Nombre de la table en la cual se realizaran las operaciones DML
 	*@var string Nombre de la Tabla
 	**/
-	var $table_name = "sprints";
+	var $table_name = "columna_tablero";
 	
 	/**
 	 *Determina si determinado elemento existe
@@ -32,7 +32,7 @@ class Sprint extends CI_Model{
 	
 	/**
 	 * Devuelve un array con un elemento de la tabla
-	 * @param integer $id Clave primaria del elemento
+	 * @param integer $id Clave primaria del 	elemento
 	 */
 	function get_info($id){
 		$this->db->where('ID',$id);
@@ -40,30 +40,6 @@ class Sprint extends CI_Model{
 		
 		if ($query->num_rows() == 1) {
 			return $query->row();
-		} else {
-			//Get empty base parent object, as $item_id is NOT an item
-			$info_obj =  array();
-			
-			$fields = $this->db->list_fields($this->table_name);
-			foreach ($fields as $field) {
-				$info_obj["$field"] = '';
-			}
-			return $info_obj;
-		}
-	}
-
-	/**
-	 * Devuelve un array con un sprint con sus actividades asignadas
-	 * @param integer $id Clave primaria del elemento
-	 */
-	function get_full_info($id){
-		$this->db->where('ID',$id);
-		$query=  $this->db->get($this->table_name);
-		
-		if ($query->num_rows() == 1) {
-			$res= (array) $query->row();
-			$res['actividades']=$this->actividad->get_by_sprint($res['ID']);
-			return $res;
 		} else {
 			//Get empty base parent object, as $item_id is NOT an item
 			$info_obj =  array();
@@ -90,19 +66,13 @@ class Sprint extends CI_Model{
 	/**
 	 * Devuelve un array  de 10 elementos
 	 * @param integer $skip Número desde el cual se cuentan los 10 elementos
-	 * @param integer $proyecto Clave primaria del proyecto
+	 * @param integer $actividad Clave primaria de la actividad
 	 */
-	public function get_with_limits($skip=0,$proyecto){
+	function get_with_limits($skip=0,$actividad){
 		try{
-				$this->db->where('proyecto',$proyecto);	
-				$res=  (array)$this->db->get($this->table_name,10,$skip)->result();
-				$resultado=array();
-				foreach ($res as $key => $value) {
-					$aux=(array)$value;
-					$resultado[$key]=(array)$value;
-					$resultado[$key]['actividades']=$this->actividad->get_by_sprint($aux['ID']);
-				}
-				return $resultado;
+				$this->db->where('actividad',$actividad);	
+				return  $this->db->get($this->table_name,10,$skip)->result();
+				
 			}catch(Exception $e){
 				show_error($e->getMessage().' --- '.$e->getTraceAsString());
 				return null;
@@ -140,10 +110,6 @@ class Sprint extends CI_Model{
 	public function delete($id){
 		try{
 			
-			//Si el sprint tiene actividades asignadas no se puede eliminar
-			if($this->actividad->get_count_filtered(array('sprint'=>$id))>0)
-				return false;
-
 			$this->db->where('ID',$id);
 			return $this->db->delete($this->table_name);
 			
@@ -154,30 +120,21 @@ class Sprint extends CI_Model{
 	}
 	
 	/**
-	 * Devuelve un array con todos los sprints de un proyecto
-	 * @param integer $proyecto Clave primaria del proyecto
+	 * Devuelve un array con todas las columnas de una proyecto
+	 * @param integer $proyecto Clave primaria del proyecto a la que pertenecen la columna
 	 */
 	function get_by_proyecto($proyecto){
-		$this->db->where('proyecto',$proyecto);
-		return $this->db->get($this->table_name)->result_array();
+		try{
+				$this->db->where('proyecto',$proyecto);	
+				return  $this->db->get($this->table_name)->result_array();
+				
+			}catch(Exception $e){
+				show_error($e->getMessage().' --- '.$e->getTraceAsString());
+				return null;
+			} 
+			
 	}
 
-	/**
-	 * Devuelve una array con el ID y el nombre del elemento
-     * @param integer $proyecto Clave primaria del proyecto
-	 * @return array Array con todos los elementos 
-	 */
-	function get_by_proyecto_comboBox($proyecto){
-		$this->db->select('ID,num');
-		$this->db->where('proyecto',$proyecto);
-		$this->db->order_by('fecha_inicio','desc');
-		$res = $this->db->get($this->table_name)->result_array();
-        $resultado=array();
-        foreach ($res as $key => $value) {
-            $resultado[$value['ID']]=$value['num'];
-        }
-        return $resultado;
-	}
 }
 
 ?>

@@ -150,7 +150,7 @@
                                         <a href="<?php echo site_url('proyectos'); ?>">Proyectos</a>
                                     </div>
                                     <div class="col-xs-6 text-center">
-                                        <a href="#">Amigos</a>
+                                        <a href="<?php echo site_url("peoples/dashboard"); ?>">Dashboard</a>
                                     </div>
                                 </li>
                                 <!-- Menu Footer-->

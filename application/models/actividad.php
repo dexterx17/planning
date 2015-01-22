@@ -260,6 +260,24 @@ class Actividad extends CI_Model{
 	}
 
 	/**
+	 * Devuelve un array con todas las actividades y subtareas de un sprint
+	 * @param integer $sprint Clave primaria del sprint
+	 */
+	function get_full_by_sprint($sprint){
+		try{
+			$this->db->where('sprint',$sprint);	
+			$res=  $this->db->get($this->table_name)->result_array();
+			foreach ($res as $key => $value) {
+				$res[$key]['tareas']=$this->tarea->get_by_actividad($value['ID']);
+			}
+			return $res;
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+			return null;
+		} 
+	}
+
+	/**
 	 * Devuelve un array con las actividades que estan activas
 	 * @param integer $proyecto Clave primaria del proyecto
 	 */

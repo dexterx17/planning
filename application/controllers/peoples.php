@@ -50,6 +50,29 @@ class Peoples extends MY_Controller {
     }
 
 	/**
+	 * Muestra una vista con el Dashboard de un usuario
+	 * 
+	 * @param integer $clave Clave primario de la Persona EJ: 2
+	 */
+	public function dashboard($clave=-1)
+	{
+		try{
+			//LATITUD - LONGITUD 
+			$config['center'] = '-1.2403298, -78.6285244';
+			if($clave==-1){
+				$info=(array)$this->people->get_info($this->user->id);
+			}else{
+				$info=(array)$this->people->get_info($clave);
+			}
+			$this->data['info']=$info;
+
+			$this->load->view('people/dashboard',$this->data);
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+	}
+
+	/**
 	 * Muestra una vista con el listado de personas y los botones realizar operaciones CRUD
 	 */
 	public function admin()

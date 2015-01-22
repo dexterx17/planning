@@ -67,7 +67,11 @@ class Tareas extends MY_Controller {
 					'estado'=>$this->input->post('estado'),
 					'actividad'=>$this->input->post('actividad')
 					);
-					
+				
+				if($ID==-1){
+					$data['creador']=$this->user->id;
+				}
+
 				if($ID= $this->tarea->save($ID,$data)){
 					echo json_encode(array('error'=>false,'message'=>'OK','task_id'=>$ID));
 				}else{
@@ -102,6 +106,28 @@ class Tareas extends MY_Controller {
         else 
             echo json_encode(array('error' => true, 'message' => 'Error al guardar'));
     }
+
+    /**
+     * Es llamado cuando se cambia de columna una tarea
+     **/
+    public function asignar_columnas(){
+        $items = $this->input->post('items');
+        $columna = $this->input->post('columna');
+        $estado = $this->input->post('estado');
+        $res=array();
+        $count=0;
+
+        foreach ($items as $key => $value) {
+            if($this->tarea->save(extrar_numeros($value),array('columna'=>$columna, 'estado' => $estado)))
+                $count++;
+        }
+        if($count==count($items))
+            echo json_encode(array('error' => false, 'message' => 'TODO BIEN'));
+        else 
+            echo json_encode(array('error' => true, 'message' => 'Error al guardar'));
+    }
+
+
 
 	/**
 	 * Elimina una tarea
