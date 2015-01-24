@@ -142,7 +142,7 @@ $(document).on('click','.contador-tareas button',function(){
 				ids[i-1]=$('.contador-tareas button[status="'+i+'"]').hasClass('active')?i:0;
 			}
 		};
-		$("#backlog-content .todo-list").todolist({hide:ids});
+		$("#backlog-content .todo-list, #tablero-kanban .todo-list").todolist({hide:ids});
     });
 
 });
@@ -152,16 +152,21 @@ $(document).on('click','.contador-tareas button',function(){
 **/
 function reload_counter_taks(){
 	proyecto = $('.contador-tareas').attr('proyecto');
+	var url = getBasePath()+'/proyectos/get_status/'+proyecto;
+	sprint = $('.contador-tareas').attr('sprint');
+	if(sprint!=null){
+		url = getBasePath()+'/proyectos/get_status/'+sprint+'/sprint';
+	}
 	$.ajax({
-        url:getBasePath()+'/proyectos/get_status/'+proyecto,
+        url:url,
         data: {},
         dataType : 'json',
         cache: false,
         success : function(data){
             $btnTODO = $('.contador-tareas button').first();
-            $btnTODO.html(data[1]);
+            $btnTODO.html(data[3]);
             $btnTODO.next().html(data[2]);
-            $btnTODO.next().next().html(data[3]);
+            $btnTODO.next().next().html(data[1]);
         }
     });
 }

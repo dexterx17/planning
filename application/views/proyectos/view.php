@@ -39,19 +39,19 @@
     						</li>
     						<li>
     							<a class="btn" href="<?php echo site_url("actividades/index").'/'.$info['ID']; ?>">
-    								<i class="fa fa-lg fa-fw fa-group"></i>
+    								<i class="fa fa-lg fa-fw fa-list"></i>
     								<span><?php echo lang('comun_backlog'); ?></span>
     							</a>
     						</li>
     						<li>
     							<a class="btn" href="<?php echo site_url("sprints/index").'/'.$info['ID']; ?>">
-    								<i class="fa fa-lg fa-fw fa-group"></i>
+    								<i class="fa fa-lg fa-fw fa-list-ul"></i>
     								<span><?php echo lang('comun_sprints'); ?></span>
     							</a>
     						</li>
     						<li>
     							<a class="btn" href="<?php echo site_url("kanbans/index").'/'.$info['ID']; ?>">
-    								<i class="fa fa-lg fa-fw fa-group"></i>
+    								<i class="fa fa-lg fa-fw fa-table"></i>
     								<span><?php echo lang('comun_kanban'); ?></span>
     							</a>
     						</li>
@@ -62,9 +62,9 @@
     							</a>
     						</li>
     						<li>
-    							<a class="btn disabled" href="<?php echo site_url("$controller_name/nuevo"); ?>">
-    								<i class="fa fa-lg fa-fw fa-group"></i>
-    								<span><?php echo lang('comun_git'); ?></span>
+    							<a class="btn" href="<?php echo site_url("presupuestos/index").'/'.$info['ID']; ?>">
+    								<i class="fa fa-lg fa-fw fa-usd"></i>
+    								<span><?php echo lang('comun_presupuesto'); ?></span>
     							</a>
     						</li>
     						<li>

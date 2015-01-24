@@ -15,9 +15,18 @@
 		<div class="col-lg-6">
 			<div class="box">
 				<div class="box-header">
-						<h2 class="box-title"><?php echo  lang('peoples_datos_personales'); ?></h2>
+					<h3 class="box-title"><?php echo  lang('peoples_datos_personales'); ?></h3>
+					<?php if ($this->ion_auth->get_user_id()==$info['id']){ ?>
+					<div class="box-tools pull-right">
+						<div class="btn-group">
+							<button type="button" class="btn btn-sm btn-redirected" data-content="people<?php echo $info['id']; ?>" href="<?php echo site_url("auth/edit_user").'/'.$info['id']; ?>">
+								<i class="fa fa-lg fa-fw fa-edit"></i>
+							</button>
+						</div>
+					</div>
+					<?php } ?>
 				</div>
-				<div class="box-body">
+				<div class="box-body" id="people<?php echo $info['id']; ?>">
 					<div class="row">
 						<div class="col-md-4">
 							<input type="file" class="droparea spot" name="userfile" value="<?php echo base_url('uploads/profiles').'/'.$info['imagen']; ?>" data-post="<?php echo site_url("$controller_name/upload_pic/".$info['id']); ?>"  data-width="100" data-height="100" data-crop="true" data-canvas="false"/>

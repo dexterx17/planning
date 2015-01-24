@@ -93,7 +93,9 @@ $(document).ready(function() {
  	if(id_tarea===""){
  		$('#tareillas'+'<?php echo $actividad;?>').html('');
  	}else{
- 		$('#task-'+id_tarea).load('<?php echo site_url($controller_name);?>/get_row/'+id_tarea);
+ 		$.get('<?php echo site_url($controller_name);?>/get_row/'+id_tarea, function(data) {
+		    $('#task-'+id_tarea).replaceWith(data);
+		});
  	}
  });
   

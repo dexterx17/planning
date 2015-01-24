@@ -96,7 +96,7 @@ $autoload['config'] = array();
 |
 */
 
-$autoload['language'] = array('inicio','comun','people','proyectos','sprints','actividades','auth','kanban');
+$autoload['language'] = array('inicio','comun','people','proyectos','sprints','actividades','auth','kanban','presupuestos');
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array('inicio','comun','people','proyectos','sprints','a
 |
 */
 
-$autoload['model'] = array('people','proyecto','actividad','tarea','sprint','configuracion','team','columna');
+$autoload['model'] = array('people','proyecto','actividad','tarea','sprint','configuracion','team','columna','presupuesto');
 
 
 /* End of file autoload.php */

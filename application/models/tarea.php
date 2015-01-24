@@ -203,6 +203,31 @@ class Tarea extends CI_Model{
 				return null;
 			}
 	}
+
+	/**
+	 * Devuelve un array con todas las tareas en determinado estado de un sprint
+	 * @param integer $sprint Clave primaria de la sprint a la que pertenecen las tareas
+	 * @param integer $estado Estado de las tareas que se quiere obtener
+	 * @param boolean $not Si es true se busca las tareas que no tengan el estado especificado
+	 */
+	function get_count_by_sprint_estado($sprint, $estado = 0,$not=false){
+		try{
+				$this->db->from($this->table_name.' T');
+				$this->db->join('actividades A', 'A.ID=T.actividad');
+				if($not)
+					$this->db->where_not_in('T.estado',$estado);
+				else	
+					$this->db->where('T.estado',$estado);
+						
+				$this->db->where('A.sprint',$sprint);
+
+				return  $this->db->get()->num_rows();
+				
+			}catch(Exception $e){
+				show_error($e->getMessage().' --- '.$e->getTraceAsString());
+				return null;
+			}
+	}
 }
 
 ?>

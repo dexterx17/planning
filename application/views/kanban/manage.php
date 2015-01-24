@@ -30,7 +30,7 @@
                     </div>
                 </form>
                  <form class="navbar-form navbar-right" role="form">
-                    <div class="form-group contador-tareas" proyecto="<?php echo $proyecto; ?>">
+                    <div class="form-group contador-tareas" proyecto="<?php echo $proyecto; ?>" sprint="<?php echo $sprint;?>" >
                         <button type="button" class="btn bg-green-gradient" status="3" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_done'); ?>" >0</button>
                         <button type="button" class="btn bg-yellow-gradient" status="2" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_doing'); ?>">0</button>
                         <button type="button" class="btn bg-red-gradient" status="1" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_todo'); ?>">0</button>
@@ -126,6 +126,7 @@ $(document).ready(function() {
         loadURL('<?php echo site_url("kanbans/index")."/".$proyecto; ?>?sprint='+$(this).val(),$('#contenido2'));
     })
     $(".todo-list").todolist();
+    reload_counter_taks();
 }); // end document.ready
 
 

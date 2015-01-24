@@ -276,6 +276,19 @@ CREATE TABLE tarea_responsables
 	tarea INT NOT NULL,
 	responsable INT unsigned NOT NULL
 );
+
+ALTER TABLE tareas ADD COLUMN columna INT;
+
+CREATE TABLE presupuesto
+(
+	ID INT PRIMARY KEY AUTO_INCREMENT,
+	valor double precision NOT NULL,
+	descripcion	 TEXT,
+	fecha TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,
+	tipo CHAR(1) NOT NULL,
+	proyecto INT NOT NULL,
+	FOREIGN KEY(proyecto) REFERENCES proyectos(ID)
+);
 -------------------------------------------------------HASTA AQUI LA VERSION DEL SCRIPT EJECUTADA --------------------------------------
 CREATE TABLE funciones
 (

@@ -153,18 +153,28 @@ class Proyectos extends MY_Controller {
 
 	/**
 	 * Devuelve un array de variables del proyecto
-	 *@param integer $proyecto_id Clave primaria del proyecto
-	 *@param string $tipo "tasks"|"actividades"
+	 *@param integer $proyecto_id Clave primaria del objeto
+	 *@param string $tipo "proyecto|sprint|task|actividad|presupuesto"
 	 **/
-	public function get_status($proyecto_id,$tipo='tasks'){
+	public function get_status($proyecto_id,$tipo='proyecto'){
 		$resultado = array();
 		switch ($tipo) {
-			case 'tasks':
+			case 'proyecto':
 				$resultado[1]=$this->tarea->get_count_by_proyecto_estado($proyecto_id,1);
 				$resultado[2]=$this->tarea->get_count_by_proyecto_estado($proyecto_id,2);
 				$resultado[3]=$this->tarea->get_count_by_proyecto_estado($proyecto_id,3);
 				break;
-			
+			case 'sprint':
+				$resultado[1]=$this->tarea->get_count_by_sprint_estado($proyecto_id,1);
+				$resultado[2]=$this->tarea->get_count_by_sprint_estado($proyecto_id,2);
+				$resultado[3]=$this->tarea->get_count_by_sprint_estado($proyecto_id,3);
+				break;
+			case 'presupuesto':
+				$ingresos=$this->presupuesto->get_total_by_proyecto_tipo($proyecto_id,"I");
+				$resultado[1]=(!empty($ingresos))?$ingresos[0]['total']:0;
+				$egresos=$this->presupuesto->get_total_by_proyecto_tipo($proyecto_id,"E");
+				$resultado[2]=(!empty($egresos))?$egresos[0]['total']:0;
+				break;
 			default:
 				# code...
 				break;
