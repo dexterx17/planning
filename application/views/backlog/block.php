@@ -1,5 +1,5 @@
 
-<div class="row " id="actividad<?php echo $info['ID']; ?>">
+<div class="row " id="actividad<?php echo $info['ID']; ?>" status="<?php echo $info['estado']; ?>">
 			<div class="box">
 				<div class="box-header">
 					<span class="pull-left"><i class="fa fa-fw fa-arrows handl"></i></span>

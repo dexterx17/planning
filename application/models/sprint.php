@@ -178,6 +178,21 @@ class Sprint extends CI_Model{
         }
         return $resultado;
 	}
+
+	/**
+	 * Devuelve el siguiente número secuencial de sprint que se debe asignar 
+	 * @param integer $proyecto Clave primaria del proyecto
+	 **/
+	function get_next_orden($proyecto){
+		try {
+			$this->db->select_max('num');
+			$this->db->where('proyecto',$proyecto);
+			return $this->db->get($this->table_name)->result_array();
+		} catch (Exception $e) {
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+			return null;	
+		}
+	}
 }
 
 ?>

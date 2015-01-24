@@ -86,14 +86,6 @@ class Sprints extends MY_Controller {
 		$this->data['info']=(array)$this->sprint->get_info($sprint_id);
 		$this->load->view('sprints/view',$this->data);
 	}
-	/**
-	 * Ok
-	 * 
-	 * @ignore
-	 **/
-	function test(){
-		return anchor('#','Test');
-	}
 	
 	/**
 	 * Muestra un formulario que permite ingresar y modificar los datos de un sprint
@@ -134,6 +126,11 @@ class Sprints extends MY_Controller {
 					'porcentaje_valido'=>$this->input->post('porcentaje_valido'),
 					'proyecto'=>$this->input->post('proyecto')
 					);
+
+				if($ID==-1){
+                    $orden = $this->sprint->get_next_orden($data['proyecto']);
+                    $data['num']=(isset($orden[0]['num']))?$orden[0]['num']:1;
+                }
 					
 				if($ID = $this->sprint->save($ID,$data)){
 					echo json_encode(array('error'=>false,'message'=>'TODO BIEN','sprint_id'=>$ID));

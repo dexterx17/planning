@@ -299,6 +299,10 @@ class Actividad extends CI_Model{
 		} 
 	}
 
+	/**
+	 * Devuelve el siguiente número secuencial de actividad que se debe asignar 
+	 * @param integer $proyecto Clave primaria del proyecto
+	 **/
 	function get_next_orden($proyecto){
 		try {
 			$this->db->select_max('orden');

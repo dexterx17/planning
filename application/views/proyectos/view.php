@@ -61,12 +61,14 @@
     								<span><?php echo lang('comun_wiki'); ?></span>
     							</a>
     						</li>
+                            <?php if ($this->ion_auth->get_user_id()==$info['owner']){ ?>
     						<li>
     							<a class="btn" href="<?php echo site_url("presupuestos/index").'/'.$info['ID']; ?>">
     								<i class="fa fa-lg fa-fw fa-usd"></i>
     								<span><?php echo lang('comun_presupuesto'); ?></span>
     							</a>
     						</li>
+                            <?php } ?>
     						<li>
     							<a class="btn disabled" href="<?php echo site_url("$controller_name/nuevo"); ?>">
     								<i class="fa fa-lg fa-fw fa-calendar"></i>

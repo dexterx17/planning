@@ -124,7 +124,7 @@ class Actividades extends MY_Controller {
 
                 if($ID==-1){
                     $orden = $this->actividad->get_next_orden($data['proyecto']);
-                    $data['orden']=$orden[0]['orden'];
+                    $data['orden']=(isset($orden[0]['orden']))?$orden[0]['orden']:1;
                     $data['creador']=$this->user->id;
                 }
 
