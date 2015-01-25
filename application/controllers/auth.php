@@ -733,6 +733,14 @@ class Auth extends CI_Controller {
 				'class' => 'form-control'
 			);
 
+			$this->data['id_grupo'] = array(
+				'name'  => 'ID',
+				'id'    => 'ID',
+				'type'  => 'hidden',
+				'value' => "",
+				'class' => 'form-control'
+			);
+
 			if(!$this->data['message']){
 				$this->_render_page('auth/create_group', $this->data);
 			}else{
@@ -741,7 +749,11 @@ class Auth extends CI_Controller {
 		}
 	}
 
-	//edit a group
+	/**
+	 * Despliega un formulario para editar un grupo,
+	 * Captura y válida los datos del formulario
+	 * @param integer $id Clave primaria del grupo
+	 **/
 	function edit_group($id)
 	{
 		// bail if no group id given
@@ -766,40 +778,53 @@ class Auth extends CI_Controller {
 		{
 			if ($this->form_validation->run() === TRUE)
 			{
-				$group_update = $this->ion_auth->update_group($id, $_POST['group_name'], $_POST['group_description']);
+				$group_update = $this->ion_auth->update_group($id, $_POST['group_name'], $_POST['description']);
 
 				if($group_update)
 				{
 					$this->session->set_flashdata('message', $this->lang->line('edit_group_saved'));
+					echo json_encode(array('error' => false, 'message' => $this->lang->line('edit_group_saved'),'grupo_id'=>$id));
 				}
 				else
 				{
 					$this->session->set_flashdata('message', $this->ion_auth->errors());
+					echo json_encode(array('error' => true, 'message' => $this->ion_auth->errors()));
 				}
-				redirect("auth", 'refresh');
+			}
+		}else{
+
+			//set the flash data error message if there is one
+			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+
+			//pass the user to the view
+			$this->data['group'] = $group;
+
+			$this->data['group_name'] = array(
+				'name'  => 'group_name',
+				'id'    => 'group_name',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('group_name', $group->name),
+			);
+			$this->data['description'] = array(
+				'name'  => 'description',
+				'id'    => 'description',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('description', $group->description),
+			);
+			$this->data['id_grupo'] = array(
+					'name'  => 'ID',
+					'id'    => 'ID',
+					'type'  => 'hidden',
+					'value' => $group->id,
+					'class' => 'form-control'
+				);
+
+			if(!$this->data['message']){
+				$this->_render_page('auth/edit_group', $this->data);
+			}else{
+				echo json_encode(array('error' => true, 'message' => $this->data['message']));
 			}
 		}
-
-		//set the flash data error message if there is one
-		$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
-
-		//pass the user to the view
-		$this->data['group'] = $group;
-
-		$this->data['group_name'] = array(
-			'name'  => 'group_name',
-			'id'    => 'group_name',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('group_name', $group->name),
-		);
-		$this->data['group_description'] = array(
-			'name'  => 'group_description',
-			'id'    => 'group_description',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('group_description', $group->description),
-		);
-
-		$this->_render_page('auth/edit_group', $this->data);
 	}
 
 

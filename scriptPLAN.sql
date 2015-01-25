@@ -289,6 +289,9 @@ CREATE TABLE presupuesto
 	proyecto INT NOT NULL,
 	FOREIGN KEY(proyecto) REFERENCES proyectos(ID)
 );
+
+ALTER TABLE tareas ADD COLUMN responsable INT unsigned;
+
 -------------------------------------------------------HASTA AQUI LA VERSION DEL SCRIPT EJECUTADA --------------------------------------
 CREATE TABLE funciones
 (

@@ -1,16 +1,17 @@
-<div class="contenido">
-      <section class="seccion">
-            <hgroup>
-                  <h2><?php echo lang('create_group_heading');?></h2>
+<td colspan="3">
+      <div class="box">
+            <div class="box-header">
+             <h3 class="box-title"><?php echo lang('create_group_heading');?>
                   <small><?php echo lang('create_group_subheading');?></small>
-            </hgroup>
-            <article class="panel">
+                  </h3>
+            </div>
+            <div class="bpx-doby">
                   <div id="results" style="display: none">
                         <div id="messages">
                               
                         </div>
                   </div>
-					<?php echo form_open("auth/create_group",array('method'=>'post','id'=>'grupo-form'));?>
+					<?php echo form_open("auth/create_group",array('method'=>'post','id'=>'grupo-form','class'=>'form-horizontal','role'=>'form'));?>
 					<div id="infoMessage"><?php echo $message;?></div>
 
 					        <div class="form-group">
@@ -26,18 +27,33 @@
 					            <?php echo form_input($description);?>
 					       		</div>
 					        </div>
-
-					      <div class="footer">
-					      <?php echo form_submit('submit', lang('create_group_submit_btn'));?>
-					      </div>
+    <?php echo form_input($id_grupo); ?>
+					         <div class="box-footer">
+                    <div class="btn-group">
+                     <?php echo form_input(array(
+                        'type'=>'button',
+                        'name'=>'cancelar',
+                        'id'=>'cancelar',
+                        'value'=>lang('comun_cancel'),
+                        'class'=>'btn'
+                        )); ?>
+                  <?php echo form_submit(array(
+                      'name'=>'submit',
+                      'id'=>'submit',
+                      'value'=>lang('create_group_submit_btn'),
+                      'class'=>'btn'
+                      )); ?>
+    					      </div>
+                  </div>
 
 					<?php echo form_close();?>
-					</article>
-				</section>
-			</div>
+					</div>
+				</div>
+			</td>
 
 			<script type="text/javascript">
 $(document).ready(function() {
+  var id_grupo = $('#ID').val();
  $('#grupo-form').validate({
   rules: {
    group_name: {
@@ -60,9 +76,16 @@ $(document).ready(function() {
             dataType: 'json',
             success : function(data){
             if(!data.error){
-             $("#grupo-form").hide('slow');
-             $('#results').show();
-             $('#messages').html(data.message);
+               $("#grupo-form").parent('.box').fadeOut('slow').remove();
+               if(id_grupo===""){
+                  $.get('<?php echo site_url("peoples");?>/get_row_grupo/'+data.grupo_id, function(data) {
+                    $('#grupos-content').prepend($(data));
+                  });
+               }else{
+                  $.get('<?php echo site_url("peoples");?>/get_row_grupo/'+id_grupo,function(data){
+                     $('#grupo'+id_grupo).replaceWith(data); 
+                   });
+               }
             }else
              $('#infoMessage').html(data.message);   
             }
@@ -71,4 +94,17 @@ $(document).ready(function() {
      }
   
  });  
+
+ $('#cancelar').click(function(){
+  if(id_grupo===""){
+    $('#grupillo').html('');
+  }else{
+    $.get('<?php echo site_url("peoples");?>/get_row_grupo/'+id_grupo,
+      function(data){
+       $('#grupo'+id_grupo).replaceWith(data); 
+     }
+   );
+  }
+ });
+
 }); // end document.ready

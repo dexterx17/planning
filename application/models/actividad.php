@@ -313,6 +313,26 @@ class Actividad extends CI_Model{
 			return null;	
 		}
 	}
+
+	/**
+	 * Devuelve el ID del proyecto al que pertenece la atividad
+	 * @param integer $actividad Clave primaria del actividad
+	 */
+	function get_id_proyecto($actividad){
+
+		try{
+			$this->db->select('proyecto');
+			$this->db->where('ID',$actividad);	
+			$res=  $this->db->get($this->table_name)->result_array();
+			foreach ($res as $key => $value) {
+				return $value['proyecto'];
+			}
+			return null;
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+			return null;
+		} 
+	}
 }
 
 ?>

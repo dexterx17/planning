@@ -90,7 +90,7 @@ class Actividades extends MY_Controller {
         try {
             $this->data['info'] = (array) $this->actividad->get_info($clave);
             $sprints=$this->sprint->get_by_proyecto_comboBox($proyecto);
-            $sprints[""]="";
+            $sprints[""]="Sin Sprint";
             $this->data['sprints']=$sprints;
             $this->data['proyecto'] = $proyecto;
             $this->load->view('backlog/form', $this->data);

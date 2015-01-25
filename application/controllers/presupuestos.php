@@ -71,7 +71,7 @@ class Presupuestos extends MY_Controller {
      */
     public function save() {
         try {
-            $this->form_validation->set_rules('valor', lang('presupuestos_valor'), 'required');
+            $this->form_validation->set_rules('valor', lang('presupuestos_valor'), 'required|numeric');
 
             $ID = $this->input->post('ID') == '' ? -1 : $this->input->post('ID');
 
@@ -99,4 +99,15 @@ class Presupuestos extends MY_Controller {
         }
     }
 
+    /**
+     * Elimina una transacción
+     *@param integer $transaccion_id Clave primaria de la actividad
+     **/
+    public function delete($transaccion_id){
+        if($ID= $this->presupuesto->delete($transaccion_id)){
+            echo json_encode(array('error'=>false,'message'=>'TODO BIEN','transaccion_id'=>$transaccion_id));
+        }else{
+            echo json_encode(array('error'=>true,'message'=>'Error al eliminar'));
+        }
+    }
 }

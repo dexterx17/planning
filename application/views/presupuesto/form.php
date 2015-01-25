@@ -77,7 +77,7 @@
              $("#<?php echo $controller_name; ?>-form").parent('.box').fadeOut('slow').remove();
              if(id_transaccion===""){
                 $.get('<?php echo site_url($controller_name);?>/get_row/'+data.presupuesto_id, function(data) {
-                  $('#presupuesto-content').prepend($(data));
+                  $('#presupuesto-content tbody').prepend($(data));
                 });
              }else{
                 $.get('<?php echo site_url($controller_name);?>/get_row/'+id_transaccion,

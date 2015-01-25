@@ -129,6 +129,25 @@ class Team extends CI_Model{
 				return false;
 			} 
 	}
+
+	/**
+	 * Devuelve una array con el ID y el nombre del usuario
+     * @param integer $proyecto Clave primaria del proyecto
+	 * @return array Array con todos los elementos 
+	 */
+	function get_by_proyecto_comboBox($proyecto){
+		$this->db->select('U.id,U.username');
+		$this->db->from('users U');
+		$this->db->join($this->table_name.' T', 'T.miembro=U.id');
+		$this->db->where('T.proyecto',$proyecto);
+		$this->db->order_by('U.username','desc');
+		$res = $this->db->get()->result_array();
+        $resultado=array();
+        foreach ($res as $key => $value) {
+            $resultado[$value['id']]=$value['username'];
+        }
+        return $resultado;
+	}
 }
 
 ?>

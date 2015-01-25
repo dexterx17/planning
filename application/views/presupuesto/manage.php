@@ -38,11 +38,11 @@
                 <th><?php echo lang($controller_name.'_valor'); ?></th>
                 <th><?php echo lang($controller_name.'_fecha'); ?></th>
             </tr>
+            <tr id="registrillos">
+
+            </tr>
         </thead>
         <tbody>
-        <tr id="registrillos">
-
-        </tr>
     	<?php 
     		foreach ($items as $key => $value) {
     			$data['info']=(array)$value;

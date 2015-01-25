@@ -287,6 +287,15 @@ class Peoples extends MY_Controller {
 		$this->load->view('auth/manage_groups',$data);
 	}
 
+	/**
+	 * Muestra el listado de grupos exitentes y permite editarlos/eliminarlos
+	 * @param integer $id Clave primaria del grupo
+	 **/
+	public function get_row_grupo($id){
+		$data['grupo']=(array)$this->ion_auth->group($id)->row();
+		$this->load->view('auth/block_group',$data);
+	}
+
 	
 // Image resize function with php + gd2 lib
 function imageresize($source, $destination, $width = 0, $height = 0, $crop = false, $quality = 80) {

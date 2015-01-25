@@ -8,6 +8,14 @@
  * @subpackage controllers
  */
 class Tareas extends MY_Controller {
+
+	var $data;
+
+    function __construct(){
+        parent::__construct();
+        $this->data['estados_tarea']=$this->configuracion->get_comboBox('estado_tarea');
+        $this->data['controller_name'] = 'tareas';
+    }
 	
 	/**
 	 * Muestra un formulario que permite ingresar y modificar los datos de un proyecto
@@ -18,12 +26,11 @@ class Tareas extends MY_Controller {
 	public function nuevo($clave=-1,$actividad)
 	{
 		try{
-			
-			$data['controller_name'] = "tareas";
-			$data['info']=(array)$this->tarea->get_info($clave);
-			$data['actividad']=$actividad;
-            $data['estados_tarea'] = $this->configuracion->get_comboBox('estado_tarea');
-			$this->load->view('backlog/form_tarea',$data);
+			$this->data['info']=(array)$this->tarea->get_info($clave);
+			$this->data['actividad']=$actividad;
+			$this->data['team']=$this->team->get_by_proyecto_comboBox($this->actividad->get_id_proyecto($actividad));
+			$this->data['team'][""]="Sin responsable";//
+			$this->load->view('backlog/form_tarea',$this->data);
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
@@ -37,12 +44,8 @@ class Tareas extends MY_Controller {
 	public function get_row($clave=-1)
 	{
 		try{
-			
-			$data['controller_name'] = "tareas";
-			$data['tarea']=(array)$this->tarea->get_info($clave);
-			//$data['actividad']=$actividad;
-            $data['estados_tarea'] = $this->configuracion->get_comboBox('estado_tarea');
-			$this->load->view('backlog/block_tarea',$data);
+			$this->data['tarea']=(array)$this->tarea->get_info($clave);
+			$this->load->view('backlog/block_tarea',$this->data);
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
@@ -65,7 +68,8 @@ class Tareas extends MY_Controller {
 					'tiempo_planificado'=>$this->input->post('tiempo_planificado'),
 					'tiempo_real'=>$this->input->post('tiempo_real'),
 					'estado'=>$this->input->post('estado'),
-					'actividad'=>$this->input->post('actividad')
+					'actividad'=>$this->input->post('actividad'),
+					'responsable'=>$this->input->post('responsable'),
 					);
 				
 				if($ID==-1){
