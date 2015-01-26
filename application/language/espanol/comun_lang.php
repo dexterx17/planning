@@ -51,5 +51,6 @@ $lang[$word.'_mi_perfil'] = "Mi perfil";
 $lang[$word.'_more_info'] = "Mas información";
 $lang[$word.'_orden_on_backlog'] = "Orden en Backlog";
 $lang[$word.'_visibilidad'] = "Visibilidad";
-
+$lang[$word.'_chat'] = "Chat";
+$lang[$word.'_times'] = "Tiempos";
 ?>

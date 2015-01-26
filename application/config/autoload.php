@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('table','database','form_validation','googlemaps','ion_auth');
+$autoload['libraries'] = array('table','database','form_validation','googlemaps','ion_auth','PHPWebSocket');
 
 
 /*

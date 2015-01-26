@@ -143,5 +143,13 @@ class Tareas extends MY_Controller {
 		}else{
 			echo json_encode(array('error'=>true,'message'=>'Error al eliminar'));
 		}	
-	}	
+	}
+
+	 /**
+     * Retorna el listado de tareas pendientes de un usuario
+     * @param integer $user Clave primaria del usuario
+     */
+    public function get_user_tasks($user) {
+        echo json_encode($this->tarea->get_by_usuario_estado($user,[1],true));
+    }	
 }

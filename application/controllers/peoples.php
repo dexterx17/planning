@@ -14,6 +14,7 @@ class Peoples extends MY_Controller {
     function __construct(){
         parent::__construct();
         $this->data['controller_name'] = 'peoples';
+         $this->data['estados_tarea']=$this->configuracion->get_comboBox('estado_tarea');
     }
 
     /**
@@ -57,14 +58,13 @@ class Peoples extends MY_Controller {
 	public function dashboard($clave=-1)
 	{
 		try{
-			//LATITUD - LONGITUD 
-			$config['center'] = '-1.2403298, -78.6285244';
-			if($clave==-1){
-				$info=(array)$this->people->get_info($this->user->id);
-			}else{
-				$info=(array)$this->people->get_info($clave);
-			}
-			$this->data['info']=$info;
+
+			$id = ($clave==-1) ? $this->user->id : $clave;
+
+			$this->data['info']=(array)$this->people->get_info($id);
+			
+			$this->data['tareas_pendientes']=$this->tarea->get_by_usuario_estado($id,[1],true);
+
 
 			$this->load->view('people/dashboard',$this->data);
 		}catch(Exception $e){

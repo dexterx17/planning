@@ -117,7 +117,8 @@ $(document).ready(function() {
                         items : $(this).sortable('toArray'),
                         estado :$(this).attr('status')},
                     function(data){
-                        //Hacer algo 
+                       reload_counter_taks();
+                       $(".todo-list").todolist();
                     });
         }
     });

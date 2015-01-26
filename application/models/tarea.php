@@ -158,6 +158,28 @@ class Tarea extends CI_Model{
 	}
 
 	/**
+	 * Devuelve un array con todas las tareas en determinado estado de un responsable
+	 * @param integer $usuario Clave primaria del responsable a la que pertenecen las tareas
+	 * @param integer $estado Estado de las tareas que se quiere obtener
+	 * @param boolean $not Si es true se buscar las tareas que no tengan el estado especificado
+	 */
+	function get_by_usuario_estado($usuario, $estado = 0,$not=false){
+		try{
+				if($not)
+					$this->db->where_not_in('estado',$estado);
+				else	
+					$this->db->where('estado',$estado);
+						
+				$this->db->where('responsable',$usuario);	
+				return  $this->db->get($this->table_name)->result_array();
+				
+			}catch(Exception $e){
+				show_error($e->getMessage().' --- '.$e->getTraceAsString());
+				return null;
+			}
+	}
+
+	/**
 	 * Devuelve un array con todas las tareas en determinado estado de una actividad
 	 * @param integer $actividad Clave primaria de la actividad a la que pertenecen las tareas
 	 * @param integer $estado Estado de las tareas que se quiere obtener

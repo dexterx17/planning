@@ -14,6 +14,8 @@
     <link href="<?php echo base_url() ?>css/font-awesome.min.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <!-- Date Picker -->
     <link href="<?php echo base_url() ?>css/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <!-- Morris charts -->
+    <link href="<?php echo base_url() ?>css/morris/morris.css" rel="stylesheet" type="text/css" />
     <!-- Daterange picker -->
     <link href="<?php echo base_url() ?>css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
     <!--<link href="<?php echo base_url() ?>css/jquery-spinner.min.css" type="text/css" media="screen, projection" rel="stylesheet" />-->
@@ -102,13 +104,13 @@
                         <li class="dropdown tasks-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-tasks"></i>
-                                <span class="label label-danger">0</span>
+                                <span class="label label-danger" id="tareas_pendientes_counter_user">0</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header">No tienes tareas pendientes</li>
+                                <li class="header" id="tareas_pendientes_title_user" >No tienes tareas pendientes</li>
                                 <li>
                                     <!-- inner menu: contains the actual data -->
-                                    <ul class="menu">
+                                    <ul class="menu" id="tareas_pendientes_user">
                                         <!-- Task item <li>
                                             <a href="#">
                                                 <h3>
@@ -125,7 +127,7 @@
                                     </ul>
                                 </li>
                                 <li class="footer">
-                                    <a href="#">Ver todas las tareas</a>
+                                    <a href="<?php echo site_url("peoples/dashboard"); ?>">Ver todas las tareas</a>
                                 </li>
                             </ul>
                         </li>
@@ -179,7 +181,7 @@
                         <div class="pull-left image">
                             <img src="<?php echo base_url('uploads/profiles').'/'.$this->user->imagen; ?>" class="img-circle" alt="User Image" />
                         </div>
-                        <div class="pull-left info">
+                        <div class="pull-left info" id="usuarsillo" usuario="<?php echo $this->user->id; ?>">
                             <p>Hi, <?php echo $this->user->username; ?></p>
 
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
@@ -239,6 +241,12 @@
 									<span><?php echo lang('comun_calendario'); ?></span>
 								</a>
 							</li>
+                            <li>
+                                <a href="http://127.0.0.1/planning/chat/room">
+                                    <i class="fa fa-lg fa-fw fa-comments"></i>
+                                    <span><?php echo lang('comun_chat'); ?></span>
+                                </a>
+                            </li>
 						</ul>
 						</section>
 						<!-- / .sidebar -->

@@ -21,6 +21,9 @@
     <script src="<?php echo base_url() ?>js/min/jquery.validate_es.min.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/min/highcharts.js" type="text/javascript" ></script>
     <!--<script src="<?php echo base_url() ?>js/min/dark-blue.js" type="text/javascript" ></script>-->
+    <!-- Morris.js charts -->
+    <script src="<?php echo base_url() ?>js/plugins/morris/raphael-min.js"></script>
+    <script src="<?php echo base_url() ?>js/plugins/morris/morris.min.js" type="text/javascript"></script>
     <!-- Sparkline -->
     <script src="<?php echo base_url() ?>js/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
  	<!-- daterangepicker -->
@@ -31,7 +34,6 @@
     <script src="<?php echo base_url() ?>js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
     <!-- iCheck -->
     <script src="<?php echo base_url() ?>js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
-    
     <!-- Bootstrap slider -->
     <script src="<?php echo base_url() ?>js/plugins/bootstrap-slider/bootstrap-slider.js" type="text/javascript"></script>
         
@@ -44,8 +46,11 @@
 <!--    <script src="<?php echo base_url() ?>js/min/jquery.spinner.js" type="text/javascript" ></script>-->
     <script src="<?php echo base_url() ?>js/min/jquery.datetimepicker.js" type="text/javascript" ></script> 
     <script src="<?php echo base_url() ?>js/src/droparea.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/src/fancywebsocket.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/src/scripts.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url() ?>js/src/script2.js" type="text/javascript" ></script>
     <script src="<?php echo base_url() ?>js/min/maps.js" type="text/javascript" ></script>
+
 	
 	<!-- Piwik 
 	<script type="text/javascript">
