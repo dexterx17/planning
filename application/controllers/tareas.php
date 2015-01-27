@@ -150,6 +150,6 @@ class Tareas extends MY_Controller {
      * @param integer $user Clave primaria del usuario
      */
     public function get_user_tasks($user) {
-        echo json_encode($this->tarea->get_by_usuario_estado($user,[1],true));
+        echo json_encode($this->tarea->get_by_usuario_estado($user,array(3),true));
     }	
 }

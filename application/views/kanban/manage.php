@@ -79,6 +79,7 @@
                                                                             <i class="fa fa-ellipsis-v"></i>
                                                                             <i class="fa fa-ellipsis-v"></i>
                                                                         </span>
+                                                                        <?php echo user_miniblock($tarea['responsable']); ?>
                                                                         <span class="text"><?php echo $tar['nombre']; ?></span>
                                                                      </li>
                                                             <?php

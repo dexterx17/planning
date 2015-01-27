@@ -4,6 +4,7 @@
         <i class="fa fa-ellipsis-v"></i>
         <i class="fa fa-ellipsis-v"></i>
     </span>
+    <?php echo user_miniblock($tarea['responsable']); ?>
     <?php echo $estados_tarea[$tarea["estado"]]; ?>
     <!--Descripcion de la tarea-->
     <span class="text"><?php echo $tarea['nombre']; ?></span>

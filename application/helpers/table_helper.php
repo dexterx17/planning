@@ -94,4 +94,18 @@ function extrar_numeros($cadena){
     return $resultado;
 }
 
+/**
+ * Devuelve solos los digitos de una cadena
+ * TODO: optimizar
+ *@param string Cadena de texto de la que se quiere obtener un digito
+ **/
+function user_miniblock($user){
+    $CI =& get_instance();
+    $info = $CI->people->get_info($user);
+    if(isset($info->id))
+        $res= '<img class="img-circle" src="'.base_url('uploads/profiles').'/'.$info->imagen.'" alt="'.ucwords($info->username).'" width="25px" height="25px" data-toggle="tooltip" title="'.ucwords($info->username).'">';
+    else
+        $res= '<img class="img-circle" src="'.base_url('images/unknow_user.png').'" alt="Sin asignar" width="25px" height="25px" data-toggle="tooltip" title="Sin asignar">';
+    return $res;
+}
 ?>

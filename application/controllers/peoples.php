@@ -63,7 +63,7 @@ class Peoples extends MY_Controller {
 
 			$this->data['info']=(array)$this->people->get_info($id);
 			
-			$this->data['tareas_pendientes']=$this->tarea->get_by_usuario_estado($id,[1],true);
+			$this->data['tareas_pendientes']=$this->tarea->get_by_usuario_estado($id,array(3),true);
 
 
 			$this->load->view('people/dashboard',$this->data);

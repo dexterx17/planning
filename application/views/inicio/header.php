@@ -135,14 +135,14 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span><?php echo $this->user->username; ?><i class="caret"></i></span>
+                                <span><?php echo ucwords($this->user->username); ?><i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-black-gradient">
                                     <img src="<?php echo base_url('uploads/profiles').'/'.$this->user->imagen; ?>" class="img-circle" alt="<?php echo $this->user->username; ?>" />
                                     <p>
-                                        <?php echo $this->user->first_name.' '. $this->user->last_name; ?>
+                                        <?php echo ucfirst($this->user->first_name).' '. ucfirst($this->user->last_name); ?>
                                         <small>Miembro desde <?php echo date('d/m/Y',$this->user->created_on); ?></small>
                                     </p>
                                 </li>
@@ -182,7 +182,7 @@
                             <img src="<?php echo base_url('uploads/profiles').'/'.$this->user->imagen; ?>" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info" id="usuarsillo" usuario="<?php echo $this->user->id; ?>">
-                            <p>Hi, <?php echo $this->user->username; ?></p>
+                            <p>Hi, <?php echo ucwords($this->user->username); ?></p>
 
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>

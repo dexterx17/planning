@@ -177,7 +177,9 @@ class Auth extends CI_Controller {
 		}
 	}
 
-	//forgot password
+	/**
+	 * Muestra un formulario que solicita un email/usuario para enviar un email con la nueva contraseña
+	 **/
 	function forgot_password()
 	{
 		//setting validation rules by checking wheather identity is username or email
@@ -196,6 +198,8 @@ class Auth extends CI_Controller {
 			//setup the input
 			$this->data['email'] = array('name' => 'email',
 				'id' => 'email',
+				'class' => 'form-control',
+				'placeholder'=>lang('forgot_password_validation_email_label')
 			);
 
 			if ( $this->config->item('identity', 'ion_auth') == 'username' ){
@@ -208,7 +212,11 @@ class Auth extends CI_Controller {
 
 			//set any errors and display the form
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-			$this->_render_page('auth/forgot_password', $this->data);
+			if(!$this->data['message']){
+				$this->_render_page('auth/forgot_password', $this->data);
+			}else{
+				echo json_encode(array('error' => true, 'message' => $this->data['message']));
+			}
 		}
 		else
 		{
@@ -232,7 +240,8 @@ class Auth extends CI_Controller {
 		            	}
 
 		                $this->session->set_flashdata('message', $this->ion_auth->messages());
-                		redirect("auth/forgot_password", 'refresh');
+		                echo json_encode(array('error' => true, 'message' => $this->ion_auth->messages()));
+		                return;
             		}
 
 			//run the forgotten password method to email an activation code to the user
@@ -242,12 +251,12 @@ class Auth extends CI_Controller {
 			{
 				//if there were no errors
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect("auth/login", 'refresh'); //we should display a confirmation page here instead of the login page
+				echo json_encode(array('error' => false, 'message' => $this->ion_auth->messages()));
 			}
 			else
 			{
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect("auth/forgot_password", 'refresh');
+				echo json_encode(array('error' => true, 'message' => $this->ion_auth->errors()));
 			}
 		}
 	}
