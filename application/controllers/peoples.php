@@ -35,7 +35,8 @@ class Peoples extends MY_Controller {
                     }
                 }
             } else {
-                $this->data['people']=$this->people->get_with_limits(0);
+                $this->data['people']=$this->people->get_for_project($proyecto);
+
                 $team=$this->team->get_with_limits(0,$proyecto);
                 $person = array();
                 foreach ($team as $key => $value) {

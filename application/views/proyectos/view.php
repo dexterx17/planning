@@ -107,7 +107,7 @@
                             <div class="small-box bg-green">
                                 <div class="inner">
                                     <h3>
-                                         <?php echo get_count_actividades($info['ID'],array(6,7)); ?>
+                                         <?php echo get_count_actividades($info['ID'],array(3,6,7)); ?>
                                     </h3>
                                     <p>
                                         Tareas completadas
@@ -126,7 +126,7 @@
                             <div class="small-box bg-yellow">
                                 <div class="inner">
                                     <h3>
-                                        <?php echo get_count_actividades($info['ID'],5); ?>
+                                        <?php echo get_count_actividades($info['ID'],2); ?>
                                     </h3>
                                     <p>
                                         Tareas en progreso
@@ -135,7 +135,7 @@
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">
+                                <a href="<?php echo site_url("kanbans/index").'/'.$info['ID']; ?>" class="small-box-footer btn-embed">
                                     <?php echo lang('comun_more_info'); ?><i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -145,7 +145,7 @@
                             <div class="small-box bg-red">
                                 <div class="inner">
                                     <h3>
-                                        <?php echo get_count_actividades($info['ID'],4); ?>
+                                        <?php echo get_count_actividades($info['ID'],1); ?>
                                     </h3>
                                     <p>
                                         Tareas por completar

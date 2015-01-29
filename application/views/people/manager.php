@@ -74,12 +74,12 @@ $(document).ready(function() {
         connectWith: "#project-content",
         dropOnEmpty: true,
         update:function(event, ui){
-          //  alert($(this).sortable('toArray'));
-           /* $.post('<?php echo site_url("actividades/ordenar"); ?>',
-                    {items : $(this).sortable('toArray')},
+            $.post('<?php echo site_url("teams/remover_de_team"); ?>',
+                    {    proyecto : '<?php echo $proyecto; ?>',
+                        items : $(this).sortable('toArray')},
                     function(data){
                         //Hacer algo 
-                    });*/
+                    });
         }
     });
 

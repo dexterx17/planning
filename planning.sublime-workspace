@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"relo",
+				"reload_status_actividades"
+			],
+			[
 				"w",
 				"width	.width()"
 			],
@@ -343,53 +347,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "application/views/chat/room.php",
-			"settings":
-			{
-				"buffer_size": 9357,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/controllers/inicio.php",
-			"settings":
-			{
-				"buffer_size": 361,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/src/fancywebsocket.js",
-			"settings":
-			{
-				"buffer_size": 1034,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/controllers/chat.php",
-			"settings":
-			{
-				"buffer_size": 3038,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/views/inicio/header.php",
-			"settings":
-			{
-				"buffer_size": 14817,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -495,25 +452,38 @@
 	[
 		"/var/www/html/planning",
 		"/var/www/html/planning/application",
+		"/var/www/html/planning/application/language/espanol",
 		"/var/www/html/planning/application/views",
-		"/var/www/html/planning/application/views/calendario",
-		"/var/www/html/planning/application/views/inicio",
+		"/var/www/html/planning/application/views/proyectos",
 		"/var/www/html/planning/js",
+		"/var/www/html/planning/js/AdminLTE",
 		"/var/www/html/planning/js/src"
 	],
 	"file_history":
 	[
+		"/var/www/html/planning/application/controllers/actividades.php",
+		"/var/www/html/planning/application/views/proyectos/view.php",
+		"/var/www/html/planning/application/controllers/tareas.php",
+		"/var/www/html/planning/application/views/backlog/form_tarea.php",
+		"/var/www/html/planning/application/views/backlog/manage.php",
+		"/var/www/html/planning/scriptPLAN.sql",
+		"/var/www/html/planning/application/models/tarea.php",
+		"/var/www/html/planning/application/views/backlog/block.php",
+		"/var/www/html/planning/js/src/scripts.js",
+		"/var/www/html/planning/application/models/actividad.php",
+		"/var/www/html/planning/application/views/backlog/block_detail.php",
+		"/var/www/html/planning/css/AdminLTE.css",
+		"/var/www/html/planning/application/models/team.php",
+		"/var/www/html/planning/application/language/espanol/comun_lang.php",
+		"/var/www/html/planning/application/controllers/inicio.php",
+		"/var/www/html/planning/application/views/inicio/header.php",
+		"/var/www/html/planning/js/src/fancywebsocket.js",
+		"/var/www/html/planning/application/controllers/chat.php",
+		"/var/www/html/planning/application/views/chat/room.php",
 		"/var/www/html/planning/application/libraries/PHPWebSocket.php",
 		"/var/www/html/planning/application/views/calendario/calendario.php",
 		"/var/www/html/planning/application/views/inicio/footer.php",
-		"/var/www/html/planning/application/language/espanol/comun_lang.php",
 		"/var/www/html/planning/application/config/autoload.php",
-		"/var/www/html/planning/scriptPLAN.sql",
-		"/var/www/html/planning/application/controllers/actividades.php",
-		"/var/www/html/planning/application/models/team.php",
-		"/var/www/html/planning/application/views/backlog/form_tarea.php",
-		"/var/www/html/planning/application/models/actividad.php",
-		"/var/www/html/planning/application/controllers/tareas.php",
 		"/var/www/html/planning/application/controllers/presupuestos.php",
 		"/var/www/html/planning/application/models/presupuesto.php",
 		"/var/www/html/planning/application/views/presupuesto/form.php",
@@ -526,22 +496,15 @@
 		"/var/www/html/planning/application/views/auth/create_group.php",
 		"/var/www/html/planning/application/views/auth/manage_groups.php",
 		"/var/www/html/planning/application/controllers/auth.php",
-		"/var/www/html/planning/application/views/backlog/manage.php",
-		"/var/www/html/planning/application/views/proyectos/view.php",
-		"/var/www/html/planning/application/views/backlog/block.php",
-		"/var/www/html/planning/js/src/scripts.js",
-		"/var/www/html/planning/application/views/backlog/block_detail.php",
 		"/var/www/html/planning/application/controllers/sprints.php",
 		"/var/www/html/planning/application/models/proyecto.php",
 		"/var/www/html/planning/application/models/sprint.php",
 		"/var/www/html/planning/application/controllers/proyectos.php",
-		"/var/www/html/planning/application/views/inicio/header.php",
 		"/var/www/html/planning/application/views/proyectos/block.php",
 		"/var/www/html/planning/application/views/people/perfil.php",
 		"/var/www/html/planning/tests/controllers/SomeControllerTest.php",
 		"/var/www/html/planning/application/views/kanban/manage.php",
 		"/var/www/html/planning/application/views/people/manager.php",
-		"/var/www/html/planning/application/models/tarea.php",
 		"/var/www/html/planning/application/views/backlog/block_tarea.php",
 		"/var/www/html/planning/application/views/people/manage.php",
 		"/var/www/html/planning/application/views/people/block.php",
@@ -549,7 +512,6 @@
 		"/var/www/html/planning/application/views/kanban/manager.php",
 		"/var/www/html/planning/application/language/espanol/kanban_lang.php",
 		"/var/www/html/planning/application/controllers/kanbans.php",
-		"/var/www/html/planning/css/AdminLTE.css",
 		"/var/www/html/planning/application/models/columna.php",
 		"/var/www/html/planning/application/views/kanban/column_tr.php",
 		"/var/www/html/planning/application/views/kanban/column_form.php",
@@ -601,7 +563,6 @@
 		"/var/www/html/planning/system/helpers/form_helper.php",
 		"/var/www/html/planning/application/helpers/MY_language_helper.php",
 		"/var/www/html/planning/application/core/MY_Controller.php",
-		"/var/www/html/planning/application/controllers/inicio.php",
 		"/var/www/html/planning/application/views/auth/login.php",
 		"/var/www/html/planning/application/models/ion_auth_model.php",
 		"/var/www/html/planning/application/config/config.php",
@@ -627,10 +588,7 @@
 		"/var/www/html/rrnn/application/modules/auth/controllers/modulos.php",
 		"/var/www/html/rrnn/application/modules/inicio/themes/bootstrap/voceros/evento_row.html.twig",
 		"/var/www/html/rrnn/application/modules/inicio/themes/bootstrap/voceros/form.html.twig",
-		"/var/www/html/rrnn/application/modules/inicio/themes/bootstrap/voceros/listado.html.twig",
-		"/var/www/html/rrnn/application/modules/inicio/themes/bootstrap/voceros/top_tabs.html.twig",
-		"/var/www/html/rrnn/application/language/espanol/common_lang.php",
-		"/var/www/html/rrnn/application/modules/inicio/themes/bootstrap/voceros/vista.html.twig"
+		"/var/www/html/rrnn/application/modules/inicio/themes/bootstrap/voceros/listado.html.twig"
 	],
 	"find":
 	{
@@ -649,6 +607,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"responsable",
+			"badge",
+			"no-padding",
+			"badge",
 			"alert",
 			"socket_select",
 			"PHPWebSocket",
@@ -773,554 +735,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "application/views/chat/room.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9357,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5903,
-								5903
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1398.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/controllers/inicio.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 361,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								290,
-								290
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 2,
-					"file": "js/src/fancywebsocket.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1034,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								622,
-								622
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"incomplete_sync": null,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "application/controllers/chat.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3038,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1502,
-								1502
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"incomplete_sync": null,
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 348.0,
-						"translation.y": 270.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"default_dir": "/var/www/html/planning/application/views/chat",
-							"incomplete_sync": null,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "application/views/inicio/header.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 14817,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 316.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1341,18 +757,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":

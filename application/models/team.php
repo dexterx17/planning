@@ -43,6 +43,16 @@ class Team extends CI_Model{
 	}
 
 	/**
+	 * Devuelve los IDS de los usuarios de un proyecto
+	 *@param integer $user Clave primaria del usuario
+	 **/
+	public function get_involved_people_ids($proyecto){
+		$this->db->select('miembro');
+		$this->db->where('proyecto',$proyecto);
+		return $this->db->get($this->table_name)->result_array();
+	}
+
+	/**
 	 * Devuelve un array con un elemento de la tabla
 	 * @param integer $id Clave primaria de la actividad
 	 */
@@ -115,13 +125,15 @@ class Team extends CI_Model{
 	/**
 	 * Elimina un elemento de la tabla 
 	 * 
-	 * @param integer $id Clave primaria del elemento
+	 * @param integer $proyecto Clave primaria del proyecto
+	 * @param integer $miembro Clave primaria del proyecto
 	 *@return boolean Devuelve true o false
 	 */
-	public function delete($id){
+	public function delete($proyecto,$miembro){
 		try{
 			
-			$this->db->where('ID',$id);
+			$this->db->where('miembro',$miembro);
+			$this->db->where('proyecto',$proyecto);
 			return $this->db->delete($this->table_name);
 			
 			}catch(Exception $e){

@@ -132,6 +132,24 @@ class People extends CI_Model{
 		$resultado= array_unique(array_merge($ids,$parts));
 		return empty($resultado)?array(-1):$resultado;
 	}
+
+	/**
+	 * Devuelve el listado de todas las personas menos las que ya estan agregadas
+	 * @param integer $skip Número desde el cual se cuentan los 10 elementos
+	 */
+	public function get_for_project($proyecto=0){
+		try{
+			$involved_people = $this->team->get_involved_people_ids($proyecto);
+			$ids = array_column($involved_people,'miembro');
+			$this->db->where_not_in('id',$ids);
+
+			return $this->db->get($this->table_name)->result_array();
+				
+			}catch(Exception $e){
+				show_error($e->getMessage().' --- '.$e->getTraceAsString());
+				return null;
+			} 
+	}
 }
 
 ?>

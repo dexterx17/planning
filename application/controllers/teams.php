@@ -27,4 +27,23 @@ class Teams extends MY_Controller {
         else 
             echo json_encode(array('error' => true, 'message' => 'Error al guardar'));
     }
+
+    /**
+     * Es llamado cuando se arrastra una persona del proyecto hacia el listado
+     **/
+    public function remover_de_team(){
+        $items = $this->input->post('items');
+        $proyecto = $this->input->post('proyecto');
+        $res=array();
+        $count=0;
+
+        foreach ($items as $key => $value) {
+            if($this->team->delete($proyecto,$value))
+                $count++;
+        }
+        if($count==count($items))
+            echo json_encode(array('error' => false, 'message' => 'TODO BIEN'));
+        else 
+            echo json_encode(array('error' => true, 'message' => 'Error al guardar'));
+    }
 }
