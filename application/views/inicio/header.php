@@ -236,13 +236,13 @@
 							</li>
                             <?php } ?>
 							<li>
-								<a href="http://127.0.0.1/planning/calendario">
+								<a href="<?php echo site_url('calendario') ?>">
 									<i class="fa fa-lg fa-fw fa-calendar"></i>
 									<span><?php echo lang('comun_calendario'); ?></span>
 								</a>
 							</li>
                             <li>
-                                <a href="http://127.0.0.1/planning/chat/room">
+                                <a href="<?php echo site_url('chat/room') ?>">
                                     <i class="fa fa-lg fa-fw fa-comments"></i>
                                     <span><?php echo lang('comun_chat'); ?></span>
                                 </a>

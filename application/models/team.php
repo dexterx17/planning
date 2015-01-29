@@ -148,6 +148,21 @@ class Team extends CI_Model{
         }
         return $resultado;
 	}
+
+	/**
+	 * Devuelve una array con las personas que trabajaron en una actividad
+     * @param integer $actividad Clave primaria de la actividad
+	 * @return array Array con todos los elementos 
+	 */
+	function get_by_actividad($actividad){
+		$this->db->select('distinct(U.id),U.username');
+		$this->db->from('users U');
+		$this->db->join('tareas T', 'T.responsable=U.id');
+		$this->db->join('actividades A', 'A.id=T.actividad');
+		$this->db->where('A.ID',$actividad);
+		$this->db->order_by('U.username','desc');
+		return $this->db->get()->result_array();
+	}
 }
 
 ?>

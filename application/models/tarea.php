@@ -250,6 +250,24 @@ class Tarea extends CI_Model{
 				return null;
 			}
 	}
+
+	/**
+	 * Devuelve el valor del estado de la tarea con menor valor (menor progreso) de entre todas las tareas de la actividad
+	 * @param integer $actividad Clave primaria de la actividad a la que pertenecen las tareas
+	 */
+	function get_by_actividad_min_estado($actividad){
+		try{
+				$this->db->select_min('estado');
+				$this->db->where('actividad',$actividad);	
+				return  $this->db->get($this->table_name)->result_array();
+				
+			}catch(Exception $e){
+				show_error($e->getMessage().' --- '.$e->getTraceAsString());
+				return null;
+			} 
+			
+	}
+
 }
 
 ?>

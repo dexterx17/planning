@@ -2004,10 +2004,16 @@ Component: timeline
 }
 .btn.btn-app > .badge {
   position: absolute;
-  top: -3px;
-  right: -10px;
   font-size: 10px;
   font-weight: 400;
+}
+.btn.btn-app > .badge-right{
+  top: -3px;
+  right: -10px;
+}
+.btn.btn-app > .badge-left{
+  top: -3px;
+  left: -10px;
 }
 .btn.btn-social-old {
   -webkit-box-shadow: none;

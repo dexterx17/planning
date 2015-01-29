@@ -53,4 +53,6 @@ $lang[$word.'_orden_on_backlog'] = "Orden en Backlog";
 $lang[$word.'_visibilidad'] = "Visibilidad";
 $lang[$word.'_chat'] = "Chat";
 $lang[$word.'_times'] = "Tiempos";
+$lang[$word.'_responsable'] = "Responsable";
+$lang[$word.'_responsables'] = "Equipo encargado";
 ?>

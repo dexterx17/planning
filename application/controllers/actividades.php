@@ -71,8 +71,9 @@ class Actividades extends MY_Controller {
     public function get_detail_row($clave=-1)
     {
         try{
-            $this->data['info'] = (array) $this->actividad->get_info($clave);
+            $this->data['info'] = (array) $this->actividad->get_full_info($clave);
             $this->data['sprints']=$this->sprint->get_by_proyecto($this->data['info']['proyecto']);
+                        print_r( $this->tarea->get_by_actividad_min_estado($clave));
             $this->load->view('backlog/block_detail',$this->data);
             
         }catch(Exception $e){

@@ -74,6 +74,7 @@ class Actividad extends CI_Model{
 		if ($query->num_rows() == 1) {
 			$res= (array)$query->row();
 			$res['tareas']=$this->tarea->get_by_actividad($res['ID']);
+			$res['responsables']=$this->team->get_by_actividad($res['ID']);
 			return $res;
 		} else {
 			//Get empty base parent object, as $item_id is NOT an item
@@ -113,6 +114,7 @@ class Actividad extends CI_Model{
 					$aux=(array)$value;
 					$resultado[$key]=(array)$value;
 					$resultado[$key]['tareas']=$this->tarea->get_by_actividad($aux['ID']);
+					$resultado[$key]['responsables']=$this->team->get_by_actividad($aux['ID']);
 				}
 				return $resultado;
 			}catch(Exception $e){
@@ -331,6 +333,24 @@ class Actividad extends CI_Model{
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 			return null;
+		} 
+	}
+
+	/**
+	 * Actualiza el estado de la actividad
+	 * @param integer $id Clave primaria de la actividad
+	 */
+	function update_status($id){
+		try{
+			$min = $this->tarea->get_by_actividad_min_estado($id);
+			$minimo=(!empty($min))?$min[0]['estado']:1;
+			$data = array('estado'=>$minimo);
+			$this->db->where('ID',$id);
+			return $this->db->update($this->table_name,$data);
+			
+			}catch(Exception $e){
+				show_error($e->getMessage().' --- '.$e->getTraceAsString());
+				return -1;
 		} 
 	}
 }

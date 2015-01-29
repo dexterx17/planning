@@ -70,7 +70,7 @@ $(document).ready(function() {
     $(".todo-list").todolist();
 
     reload_counter_taks();
-
+    reload_status_actividades([]);
 
 }); // end document.ready
 

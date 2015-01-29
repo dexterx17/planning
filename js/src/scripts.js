@@ -143,6 +143,7 @@ $(document).on('click','.contador-tareas button',function(){
 			}
 		};
 		$("#backlog-content .todo-list, #tablero-kanban .todo-list").todolist({hide:ids});
+		reload_status_actividades(ids);
     });
 
 });
@@ -168,5 +169,24 @@ function reload_counter_taks(){
             $btnTODO.next().html(data[2]);
             $btnTODO.next().next().html(data[1]);
         }
+    });
+}
+
+function reload_status_actividades(settings){
+
+ $('#backlog-content>div[id^="actividad"]').each(function(event) {
+        var $li = $(this);
+        $li.show('fast');
+        var estado=parseInt($li.attr('status'));
+        switch(estado){
+            case 1: $li.children('.box-header').first().addClass('bg-red-gradient'); break;
+            case 2: $li.children('.box-header').first().addClass('bg-yellow-gradient'); break;
+            case 3: $li.children('.box-header').first().addClass('bg-green-gradient'); break;
+        }
+        $.each(settings, function(index, val) {
+            if(val==estado){
+                $li.fadeOut('fast');
+            }
+        });
     });
 }
