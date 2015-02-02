@@ -20,6 +20,17 @@
                     </li>
                 </ul>
                  <form class="navbar-form navbar-right" role="form">
+                    <div class="form-group" proyecto="<?php echo $proyecto; ?>">
+                    <?php 
+                         foreach ($people as $key => $value) { 
+                            ?>
+                            <button type="button" class="btn bg-black backlog-user" data-toggle="tooltip" title="<?php echo $value; ?>" >
+                                <?php   echo user_miniblock($key); ?>
+                            </button>
+                     <?php   }  ?>
+                    </div>
+                    <span class="form-group" style="width:25px;"></span>
+
                     <div class="form-group contador-tareas" proyecto="<?php echo $proyecto; ?>">
                         <button type="button" class="btn bg-green-gradient" status="3" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_done'); ?>" >0</button>
                         <button type="button" class="btn bg-yellow-gradient" status="2" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_doing'); ?>">0</button>

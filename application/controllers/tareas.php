@@ -75,8 +75,8 @@ class Tareas extends MY_Controller {
 				if($ID==-1){
 					$data['creador']=$this->user->id;
 				}
-
-				if($ID= $this->tarea->save($ID,$data) && $this->actividad->update_status($this->input->post('actividad'))){
+				$ID= $this->tarea->save($ID,$data);
+				if( $ID && $this->actividad->update_status($this->input->post('actividad'))){
 
 					echo json_encode(array('error'=>false,'message'=>'OK','task_id'=>$ID));
 				}else{

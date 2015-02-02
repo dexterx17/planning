@@ -452,20 +452,27 @@
 	[
 		"/var/www/html/planning",
 		"/var/www/html/planning/application",
-		"/var/www/html/planning/application/language/espanol",
+		"/var/www/html/planning/application/models",
 		"/var/www/html/planning/application/views",
-		"/var/www/html/planning/application/views/proyectos",
+		"/var/www/html/planning/application/views/backlog",
+		"/var/www/html/planning/application/views/inicio",
 		"/var/www/html/planning/js",
 		"/var/www/html/planning/js/AdminLTE",
 		"/var/www/html/planning/js/src"
 	],
 	"file_history":
 	[
+		"/var/www/html/planning/application/controllers/peoples.php",
 		"/var/www/html/planning/application/controllers/actividades.php",
+		"/var/www/html/planning/application/views/backlog/manage.php",
+		"/var/www/html/planning/application/views/inicio/index.php",
+		"/var/www/html/planning/application/views/people/manager.php",
+		"/var/www/html/planning/application/models/people.php",
+		"/var/www/html/planning/application/controllers/teams.php",
+		"/var/www/html/planning/application/models/team.php",
 		"/var/www/html/planning/application/views/proyectos/view.php",
 		"/var/www/html/planning/application/controllers/tareas.php",
 		"/var/www/html/planning/application/views/backlog/form_tarea.php",
-		"/var/www/html/planning/application/views/backlog/manage.php",
 		"/var/www/html/planning/scriptPLAN.sql",
 		"/var/www/html/planning/application/models/tarea.php",
 		"/var/www/html/planning/application/views/backlog/block.php",
@@ -473,7 +480,6 @@
 		"/var/www/html/planning/application/models/actividad.php",
 		"/var/www/html/planning/application/views/backlog/block_detail.php",
 		"/var/www/html/planning/css/AdminLTE.css",
-		"/var/www/html/planning/application/models/team.php",
 		"/var/www/html/planning/application/language/espanol/comun_lang.php",
 		"/var/www/html/planning/application/controllers/inicio.php",
 		"/var/www/html/planning/application/views/inicio/header.php",
@@ -492,7 +498,6 @@
 		"/var/www/html/planning/application/language/espanol/presupuestos_lang.php",
 		"/var/www/html/planning/application/views/auth/edit_group.php",
 		"/var/www/html/planning/application/views/auth/block_group.php",
-		"/var/www/html/planning/application/controllers/peoples.php",
 		"/var/www/html/planning/application/views/auth/create_group.php",
 		"/var/www/html/planning/application/views/auth/manage_groups.php",
 		"/var/www/html/planning/application/controllers/auth.php",
@@ -504,11 +509,9 @@
 		"/var/www/html/planning/application/views/people/perfil.php",
 		"/var/www/html/planning/tests/controllers/SomeControllerTest.php",
 		"/var/www/html/planning/application/views/kanban/manage.php",
-		"/var/www/html/planning/application/views/people/manager.php",
 		"/var/www/html/planning/application/views/backlog/block_tarea.php",
 		"/var/www/html/planning/application/views/people/manage.php",
 		"/var/www/html/planning/application/views/people/block.php",
-		"/var/www/html/planning/application/models/people.php",
 		"/var/www/html/planning/application/views/kanban/manager.php",
 		"/var/www/html/planning/application/language/espanol/kanban_lang.php",
 		"/var/www/html/planning/application/controllers/kanbans.php",
@@ -551,12 +554,10 @@
 		"/var/www/html/planning/application/views/proyectos/manage.php",
 		"/var/www/html/planning/application/views/proyectos/form.php",
 		"/var/www/html/planning/application/controllers/calendario.php",
-		"/var/www/html/planning/application/controllers/teams.php",
 		"/var/www/html/planning/application/language/espanol/ion_auth_lang.php",
 		"/var/www/html/planning/application/views/auth/create_user.php",
 		"/var/www/html/planning/application/config/ion_auth.php",
 		"/var/www/html/planning/application/config/parametros.php",
-		"/var/www/html/planning/application/views/inicio/index.php",
 		"/var/www/html/planning/system/database/DB_active_rec.php",
 		"/var/www/html/planning/application/views/auth/index.php",
 		"/var/www/html/planning/application/libraries/Ion_auth.php",
@@ -607,6 +608,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"array_column() ",
 			"responsable",
 			"badge",
 			"no-padding",
@@ -738,6 +740,11 @@
 			"sheets":
 			[
 			]
+		},
+		{
+			"sheets":
+			[
+			]
 		}
 	],
 	"incremental_find":
@@ -757,11 +764,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.493682880606,
 			1.0
 		],
 		"rows":
@@ -877,7 +891,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 		"xdebug":

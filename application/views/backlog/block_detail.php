@@ -51,10 +51,10 @@
 					$responsable=(array)$value;
 			?>
 				<a class="btn btn-app">
-					<span class="badge badge-right bg-aqua pull-left">0</span>
+					<span class="badge badge-right bg-aqua pull-left"><?php echo $responsable['tiempo_real']; ?></span>
 				    <?php echo user_miniblock($responsable['id']); ?>
 				     <?php echo $responsable['username']; ?>
-				    <span class="badge badge-left bg-blue pull-right">0</span>
+				    <span class="badge badge-left bg-blue pull-right"><?php echo $responsable['tiempo_planificado']; ?></span>
 				</a>
 
 			<?php } ?>
