@@ -174,7 +174,7 @@ function reload_counter_taks(){
 
 function reload_status_actividades(settings){
 
- $('#backlog-content>div[id^="actividad"]').each(function(event) {
+ $('#backlog-content>div[id^="actividad"], #tablero-kanban>div.row div[id^="actividad"]').each(function(event) {
         var $li = $(this);
         $li.show('fast');
         var estado=parseInt($li.attr('status'));

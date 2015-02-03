@@ -271,6 +271,7 @@ class Actividad extends CI_Model{
 			$res=  $this->db->get($this->table_name)->result_array();
 			foreach ($res as $key => $value) {
 				$res[$key]['tareas']=$this->tarea->get_by_actividad($value['ID']);
+				$res[$key]['responsables']=$this->team->get_by_actividad($value['ID']);
 			}
 			return $res;
 		}catch(Exception $e){

@@ -40,7 +40,7 @@ class Kanbans extends MY_Controller {
 				}
 				$this->data['actividades']= $this->actividad->get_full_by_sprint($this->data['sprint']);
 			}
-
+			$this->data['people']=$this->team->get_by_proyecto_comboBox($proyecto);
 
 			$this->data['columnas']=$this->columna->get_by_proyecto($proyecto);
 			$this->load->view('kanban/manage',$this->data);

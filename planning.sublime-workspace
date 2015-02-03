@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"ti",
+				"tiempo_planificado"
+			],
+			[
 				"relo",
 				"reload_status_actividades"
 			],
@@ -452,33 +456,37 @@
 	[
 		"/var/www/html/planning",
 		"/var/www/html/planning/application",
-		"/var/www/html/planning/application/models",
-		"/var/www/html/planning/application/views",
+		"/var/www/html/planning/application/controllers",
 		"/var/www/html/planning/application/views/backlog",
 		"/var/www/html/planning/application/views/inicio",
+		"/var/www/html/planning/application/views/kanban",
 		"/var/www/html/planning/js",
 		"/var/www/html/planning/js/AdminLTE",
 		"/var/www/html/planning/js/src"
 	],
 	"file_history":
 	[
-		"/var/www/html/planning/application/controllers/peoples.php",
-		"/var/www/html/planning/application/controllers/actividades.php",
+		"/var/www/html/planning/application/views/backlog/block.php",
+		"/var/www/html/planning/js/src/scripts.js",
 		"/var/www/html/planning/application/views/backlog/manage.php",
+		"/var/www/html/planning/application/controllers/tareas.php",
+		"/var/www/html/planning/application/views/kanban/manage.php",
+		"/var/www/html/planning/application/models/tarea.php",
+		"/var/www/html/planning/js/AdminLTE/app.js",
+		"/var/www/html/planning/application/models/team.php",
+		"/var/www/html/planning/application/controllers/kanbans.php",
+		"/var/www/html/planning/application/controllers/actividades.php",
+		"/var/www/html/planning/application/views/backlog/block_detail.php",
+		"/var/www/html/planning/application/models/actividad.php",
+		"/var/www/html/planning/application/views/backlog/block_tarea.php",
+		"/var/www/html/planning/application/controllers/peoples.php",
 		"/var/www/html/planning/application/views/inicio/index.php",
 		"/var/www/html/planning/application/views/people/manager.php",
 		"/var/www/html/planning/application/models/people.php",
 		"/var/www/html/planning/application/controllers/teams.php",
-		"/var/www/html/planning/application/models/team.php",
 		"/var/www/html/planning/application/views/proyectos/view.php",
-		"/var/www/html/planning/application/controllers/tareas.php",
 		"/var/www/html/planning/application/views/backlog/form_tarea.php",
 		"/var/www/html/planning/scriptPLAN.sql",
-		"/var/www/html/planning/application/models/tarea.php",
-		"/var/www/html/planning/application/views/backlog/block.php",
-		"/var/www/html/planning/js/src/scripts.js",
-		"/var/www/html/planning/application/models/actividad.php",
-		"/var/www/html/planning/application/views/backlog/block_detail.php",
 		"/var/www/html/planning/css/AdminLTE.css",
 		"/var/www/html/planning/application/language/espanol/comun_lang.php",
 		"/var/www/html/planning/application/controllers/inicio.php",
@@ -508,13 +516,10 @@
 		"/var/www/html/planning/application/views/proyectos/block.php",
 		"/var/www/html/planning/application/views/people/perfil.php",
 		"/var/www/html/planning/tests/controllers/SomeControllerTest.php",
-		"/var/www/html/planning/application/views/kanban/manage.php",
-		"/var/www/html/planning/application/views/backlog/block_tarea.php",
 		"/var/www/html/planning/application/views/people/manage.php",
 		"/var/www/html/planning/application/views/people/block.php",
 		"/var/www/html/planning/application/views/kanban/manager.php",
 		"/var/www/html/planning/application/language/espanol/kanban_lang.php",
-		"/var/www/html/planning/application/controllers/kanbans.php",
 		"/var/www/html/planning/application/models/columna.php",
 		"/var/www/html/planning/application/views/kanban/column_tr.php",
 		"/var/www/html/planning/application/views/kanban/column_form.php",
@@ -538,7 +543,6 @@
 		"/var/www/html/planning/application/language/espanol/people_lang.php",
 		"/var/www/html/planning/js/src/droparea.js",
 		"/var/www/html/planning/application/views/people/dropable.php",
-		"/var/www/html/planning/js/AdminLTE/app.js",
 		"/var/www/html/planning/application/language/espanol/actividades_lang.php",
 		"/var/www/html/planning/application/views/backlog/block_actividad.php",
 		"/var/www/html/planning/application/controllers/kanbans.html",
@@ -775,7 +779,7 @@
 		"cols":
 		[
 			0.0,
-			0.493682880606,
+			0.5,
 			1.0
 		],
 		"rows":

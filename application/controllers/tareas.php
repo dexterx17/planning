@@ -123,7 +123,7 @@ class Tareas extends MY_Controller {
         $count=0;
 
         foreach ($items as $key => $value) {
-            if($this->tarea->save(extrar_numeros($value),array('columna'=>$columna, 'estado' => $estado)))
+            if($this->tarea->save(extrar_numeros($value),array('columna'=>$columna, 'estado' => $estado)) && $this->actividad->update_status($this->input->post('actividad')))
                 $count++;
         }
         if($count==count($items))

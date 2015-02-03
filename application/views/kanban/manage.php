@@ -30,6 +30,16 @@
                     </div>
                 </form>
                  <form class="navbar-form navbar-right" role="form">
+                  <div class="form-group" proyecto="<?php echo $proyecto; ?>">
+                    <?php 
+                         foreach ($people as $key => $value) { 
+                            ?>
+                            <button type="button" class="btn bg-black backlog-user" data-toggle="tooltip" title="<?php echo $value; ?>" >
+                                <?php   echo user_miniblock($key); ?>
+                            </button>
+                     <?php   }  ?>
+                    </div>
+                    <span class="form-group" style="width:25px;"></span>
                     <div class="form-group contador-tareas" proyecto="<?php echo $proyecto; ?>" sprint="<?php echo $sprint;?>" >
                         <button type="button" class="btn bg-green-gradient" status="3" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_done'); ?>" >0</button>
                         <button type="button" class="btn bg-yellow-gradient" status="2" data-toggle="tooltip" title="<?php echo lang('actividades_tasks_doing'); ?>">0</button>
@@ -43,7 +53,8 @@
     <div id="kanban-configuraciones"></div>
     <?php if (count($columnas)>0){ ?>
     	<?php $col_width=(int)12/(count($columnas)); ?>
-        <div id="tablero-kanban" class="row" > 
+        <div id="tablero-kanban" > 
+         <div class="row">
             <?php 
                 foreach ($columnas as $key => $value) {
                     $columna=(array)$value;
@@ -56,53 +67,61 @@
                                 </h4>
                             </div>
                             <div class="box-body" column="<?php echo $columna['estado']; ?>">
-                                 <?php 
-                                    if(isset($actividades)){
-                                        foreach ($actividades as $key => $actividad) {
-                                            $activ=(array)$actividad;
-                                            ?>
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <?php echo $activ['nombre']; ?>
-                                                </div>
-                                                <div class="panel-body">
-                                                    <ul class="todo-list" style="min-height:25px" columna="<?php echo $columna["ID"] ?>" status="<?php echo $columna["estado"] ?>">
-                                                         <?php 
-                                                             if(isset($activ['tareas'])){
-                                                                foreach ($activ['tareas'] as $key => $tarea) {
-                                                                    $tar=(array)$tarea;
-                                                                    if($tar['estado']==$columna['estado']){
-                                                                    ?>
-                                                                    <li id="task-<?php echo $tar['ID']; ?>" status="<?php echo $tar["estado"] ?>">
-                                                                    <!--Boton de DRAG and DROP-->
-                                                                        <span class="handle">
-                                                                            <i class="fa fa-ellipsis-v"></i>
-                                                                            <i class="fa fa-ellipsis-v"></i>
-                                                                        </span>
-                                                                        <?php echo user_miniblock($tarea['responsable']); ?>
-                                                                        <span class="text"><?php echo $tar['nombre']; ?></span>
-                                                                     </li>
-                                                            <?php
-                                                                    }
-                                                                }
-                                                            }
-                                                        ?>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        <?php
-                                            }
-                                    }
-                                   ?>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
-            <?php
-                }
-            ?>  
-        </div>    
-        <?php } ?>      
+                <?php   }   ?>
+
+            </div>
+             <?php 
+                if(isset($actividades)){
+                    foreach ($actividades as $key => $actividad) {
+                        $activ=(array)$actividad;
+                        ?>
+                        <div class="row">
+                             <?php 
+                            foreach ($columnas as $key => $value) {
+                                $columna=(array)$value;
+                                ?>
+                                <div class="col-lg-<?php echo $col_width; ?>">
+                                    <div class="box" status="<?php echo $activ["estado"] ?>" id="actividad<?php echo $activ['ID']; ?>" >
+                                        <div class="box-header">
+                                            <h3 class="box-title"><?php echo $activ['nombre']; ?></h3>
+                                        </div>
+                                        <div class="box-body">
+                                            <ul class="todo-list" style="min-height:25px" columna="<?php echo $columna["ID"] ?>" status="<?php echo $columna["estado"] ?>" actividad="<?php echo $activ["ID"] ?>">
+                                                 <?php 
+                                                     if(isset($activ['tareas'])){
+                                                        foreach ($activ['tareas'] as $key => $tarea) {
+                                                            $tar=(array)$tarea;
+                                                            if($tar['estado']==$columna['estado']){
+                                                            ?>
+                                                            <li id="task-<?php echo $tar['ID']; ?>" status="<?php echo $tar["estado"] ?>">
+                                                            <!--Boton de DRAG and DROP-->
+                                                                <span class="handle">
+                                                                    <i class="fa fa-ellipsis-v"></i>
+                                                                    <i class="fa fa-ellipsis-v"></i>
+                                                                </span>
+                                                                <?php echo user_miniblock($tarea['responsable']); ?>
+                                                                <span class="text"><?php echo $tar['nombre']; ?></span>
+                                                             </li>
+                                                    <?php
+                                                            }
+                                                        }
+                                                    }
+                                                ?>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            <?php   }   ?>
+
+                        </div>
+                    <?php    } }}  ?> 
+            </div>
+        </div>        
 </article>
 
 
@@ -116,7 +135,8 @@ $(document).ready(function() {
             $.post('<?php echo site_url("tareas/asignar_columnas"); ?>',
                     {   columna :$(this).attr('columna'),
                         items : $(this).sortable('toArray'),
-                        estado :$(this).attr('status')},
+                        estado :$(this).attr('status'),
+                        actividad : $(this).attr('actividad') },
                     function(data){
                        reload_counter_taks();
                        $(".todo-list").todolist();
@@ -129,6 +149,7 @@ $(document).ready(function() {
     })
     $(".todo-list").todolist();
     reload_counter_taks();
+    reload_status_actividades([]);
 }); // end document.ready
 
 
