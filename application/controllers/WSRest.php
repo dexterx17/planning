@@ -13,6 +13,39 @@ require_once(APPPATH.'libraries/REST_Controller.php');
 class WSRest extends REST_Controller {
 
     /**
+     * Respond con listado de usuarios GCM registrados
+     **/
+    function usersgcm_get(){
+
+        $users = $this->gcm_user->get_all();
+
+        if($users){
+            $this->response($users,200);
+        }else{
+            $this->response(NULL,404);
+        }
+    }
+
+    /**
+     * Registrar un nuevo usuario GCM y responde con status/error
+     **/
+    function usergcm_post(){
+
+        $data = array(
+            'name' => $this->post('nombre'),
+            'email' => $this->post('email'),
+            'gcm_regid' => $this->post('regid'),
+            'created_at' => date('Y-m-d H:i:s')
+        );
+
+        if ($this->gcm_user->save($data)) {
+            $this->response(array('error' => false, 'message' => 'TODO BIEN'));
+        } else {
+            $this->response(array('error' => true, 'message' => 'Error al guardar'));
+        }
+    }
+
+    /**
      * Respond con información de las actividades
      **/
     function actividades_get(){

@@ -55,4 +55,5 @@ $lang[$word.'_chat'] = "Chat";
 $lang[$word.'_times'] = "Tiempos";
 $lang[$word.'_responsable'] = "Responsable";
 $lang[$word.'_responsables'] = "Equipo encargado";
+$lang[$word.'_recursos'] = "Recursos";
 ?>

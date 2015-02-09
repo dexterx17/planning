@@ -1,6 +1,12 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /*
+ * Google API Key
+ */
+define("GOOGLE_API_KEY", "AIzaSyDozR5VTICOFe6nhVj9H16dOn13PXo1OmE");
+
+
+/*
 |--------------------------------------------------------------------------
 | File and Directory Modes
 |--------------------------------------------------------------------------

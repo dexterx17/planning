@@ -20,11 +20,11 @@
                     </li>
                 </ul>
                  <form class="navbar-form navbar-right" role="form">
-                    <div class="form-group" proyecto="<?php echo $proyecto; ?>">
+                    <div class="form-group people-proyecto" proyecto="<?php echo $proyecto; ?>">
                     <?php 
                          foreach ($people as $key => $value) { 
                             ?>
-                            <button type="button" class="btn bg-black backlog-user" data-toggle="tooltip" title="<?php echo $value; ?>" >
+                            <button type="button" class="btn bg-black backlog-user" data-toggle="tooltip" title="<?php echo $value; ?>" responsable="<?php echo $key; ?>">
                                 <?php   echo user_miniblock($key); ?>
                             </button>
                      <?php   }  ?>

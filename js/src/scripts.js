@@ -125,7 +125,7 @@ $(document).on('click', '.menu-sec a[href!="#"]', function(e) {
 });
 
 
-$(document).on('click','.contador-tareas button',function(){
+$(document).on('click','.contador-tareas button,.people-proyecto button',function(){
     $btn  = $(this);
     $btn.toggleClass('active',function(){
     	if($btn.css('opacity')==1){
@@ -142,8 +142,20 @@ $(document).on('click','.contador-tareas button',function(){
 				ids[i-1]=$('.contador-tareas button[status="'+i+'"]').hasClass('active')?i:0;
 			}
 		};
-		$("#backlog-content .todo-list, #tablero-kanban .todo-list").todolist({hide:ids});
-		reload_status_actividades(ids);
+
+		var respons=[];
+		var n_respons = $('.people-proyecto button').size();
+		var counter=0;
+		for (var i = 1; i <= n_respons; i++) {
+			if($('.people-proyecto button:nth-child('+i+')').hasClass('active')){
+				respons[counter++]=parseInt($('.people-proyecto button:nth-child('+i+')').attr('responsable'));
+			}
+		};
+
+
+		$("#backlog-content .todo-list, #tablero-kanban .todo-list").todolist({hide_tasks:ids,hide_users:respons});
+
+		reload_status_actividades({hide_tasks:ids,hide_users:respons});
     });
 
 });
@@ -158,6 +170,7 @@ function reload_counter_taks(){
 	if(sprint!=null){
 		url = getBasePath()+'/proyectos/get_status/'+sprint+'/sprint';
 	}
+	
 	$.ajax({
         url:url,
         data: {},
@@ -173,20 +186,32 @@ function reload_counter_taks(){
 }
 
 function reload_status_actividades(settings){
+  // Render options
+    var options = $.extend({
+        hide_tasks:[],
+        hide_users:[]
+    }, settings);
 
  $('#backlog-content>div[id^="actividad"], #tablero-kanban>div.row div[id^="actividad"]').each(function(event) {
         var $li = $(this);
         $li.show('fast');
         var estado=parseInt($li.attr('status'));
+        var responsables=$li.attr('responsable').split(',');
         switch(estado){
             case 1: $li.children('.box-header').first().addClass('bg-red-gradient'); break;
             case 2: $li.children('.box-header').first().addClass('bg-yellow-gradient'); break;
             case 3: $li.children('.box-header').first().addClass('bg-green-gradient'); break;
         }
-        $.each(settings, function(index, val) {
+        $.each(options.hide_tasks, function(index, val) {
             if(val==estado){
                 $li.fadeOut('fast');
             }
         });
+        if(responsables.length==1){
+	        if($.inArray(parseInt(responsables[0]),options.hide_users)>=0){
+	            $li.fadeOut('fast');
+	        }
+	    }
+
     });
 }

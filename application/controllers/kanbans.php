@@ -34,11 +34,15 @@ class Kanbans extends MY_Controller {
 				$this->data['actividades']= $this->actividad->get_full_by_sprint($sprint);
 				$this->data['sprint']=$sprint;
 			}else{
-				//Valor por defecto para combobox
-				foreach ($this->data['sprints'] as $key => $value) {
-					$this->data['sprint']=$key;
+				if(!empty($this->data['sprints'])){
+					foreach ($this->data['sprints'] as $key => $value) {
+						$this->data['sprint']=$key;
+					}
+					$this->data['actividades']= $this->actividad->get_full_by_sprint($this->data['sprint']);
+				}else{
+					//Valor por defecto para combobox
+					$this->data['sprint']="";
 				}
-				$this->data['actividades']= $this->actividad->get_full_by_sprint($this->data['sprint']);
 			}
 			$this->data['people']=$this->team->get_by_proyecto_comboBox($proyecto);
 

@@ -30,11 +30,11 @@
                     </div>
                 </form>
                  <form class="navbar-form navbar-right" role="form">
-                  <div class="form-group" proyecto="<?php echo $proyecto; ?>">
+                  <div class="form-group people-proyecto" proyecto="<?php echo $proyecto; ?>">
                     <?php 
                          foreach ($people as $key => $value) { 
                             ?>
-                            <button type="button" class="btn bg-black backlog-user" data-toggle="tooltip" title="<?php echo $value; ?>" >
+                            <button type="button" class="btn bg-black backlog-user" data-toggle="tooltip" title="<?php echo ucwords($value); ?>" responsable="<?php echo $key; ?>">
                                 <?php   echo user_miniblock($key); ?>
                             </button>
                      <?php   }  ?>
@@ -51,6 +51,13 @@
 </div>
 <article class="master">
     <div id="kanban-configuraciones"></div>
+
+     <?php 
+        if(!isset($actividades)){ ?>
+            <div class="alert alert-info">Para utilizar el tablero, primero debe crear un Sprint y asignarle actividades</div>
+
+    <?php }else{ ?>
+
     <?php if (count($columnas)>0){ ?>
     	<?php $col_width=(int)12/(count($columnas)); ?>
         <div id="tablero-kanban" > 
@@ -78,26 +85,31 @@
                 if(isset($actividades)){
                     foreach ($actividades as $key => $actividad) {
                         $activ=(array)$actividad;
-                        ?>
+                    
+                        $resps  = array();
+                        if(isset($activ['responsables'])){
+                                $resps=array_column($activ['responsables'],'id');
+                        }
+?>
                         <div class="row">
                              <?php 
                             foreach ($columnas as $key => $value) {
                                 $columna=(array)$value;
                                 ?>
                                 <div class="col-lg-<?php echo $col_width; ?>">
-                                    <div class="box" status="<?php echo $activ["estado"] ?>" id="actividad<?php echo $activ['ID']; ?>" >
+                                    <div class="box" status="<?php echo $activ["estado"] ?>" id="actividad<?php echo $activ['ID']; ?>" responsable="<?php echo implode(",",$resps); ?>">
                                         <div class="box-header">
                                             <h3 class="box-title"><?php echo $activ['nombre']; ?></h3>
                                         </div>
                                         <div class="box-body">
-                                            <ul class="todo-list" style="min-height:25px" columna="<?php echo $columna["ID"] ?>" status="<?php echo $columna["estado"] ?>" actividad="<?php echo $activ["ID"] ?>">
+                                            <ul class="todo-list" style="min-height:25px" columna="<?php echo $columna["ID"] ?>" status="<?php echo $columna["estado"] ?>" actividad="<?php echo $activ["ID"] ?>" >
                                                  <?php 
                                                      if(isset($activ['tareas'])){
                                                         foreach ($activ['tareas'] as $key => $tarea) {
                                                             $tar=(array)$tarea;
                                                             if($tar['estado']==$columna['estado']){
                                                             ?>
-                                                            <li id="task-<?php echo $tar['ID']; ?>" status="<?php echo $tar["estado"] ?>">
+                                                            <li id="task-<?php echo $tar['ID']; ?>" status="<?php echo $tar["estado"] ?>" responsable="<?php echo $tar['responsable']; ?>">
                                                             <!--Boton de DRAG and DROP-->
                                                                 <span class="handle">
                                                                     <i class="fa fa-ellipsis-v"></i>
@@ -121,6 +133,7 @@
                         </div>
                     <?php    } }}  ?> 
             </div>
+            <?php  } ?>
         </div>        
 </article>
 

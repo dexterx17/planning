@@ -141,7 +141,8 @@ class People extends CI_Model{
 		try{
 			$involved_people = $this->team->get_involved_people_ids($proyecto);
 			$ids = array_column($involved_people,'miembro');
-			$this->db->where_not_in('id',$ids);
+			if(!empty($ids))
+				$this->db->where_not_in('id',$ids);
 
 			return $this->db->get($this->table_name)->result_array();
 				

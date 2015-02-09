@@ -633,7 +633,8 @@ $(window).load(function() {
     $.fn.todolist = function(options) {
         // Render options
         var settings = $.extend({
-            hide:[]
+            hide_tasks:[],
+            hide_users:[]
         }, options);
         return this.each(function() {
 
@@ -641,16 +642,22 @@ $(window).load(function() {
                 var $li = $(this);
                 $li.show('fast');
                 var estado=parseInt($li.attr('status'));
+                var responsable=$li.attr('responsable')?parseInt($li.attr('responsable')):-1;
                 switch(estado){
                     case 1: $li.addClass('bg-red-gradient'); break;
                     case 2: $li.addClass('bg-yellow-gradient'); break;
                     case 3: $li.addClass('bg-green-gradient'); break;
                 }
-                $.each(settings.hide, function(index, val) {
+
+                $.each(settings.hide_tasks, function(index, val) {
                     if(val==estado){
                         $li.fadeOut('fast');
                     }
                 });
+                  
+                if($.inArray(responsable,settings.hide_users)>=0){
+                    $li.fadeOut('fast');
+                }
             });
         });
     };

@@ -157,7 +157,6 @@
           $('#message').val('');
       });
 
-
       //Let the user know we're connected
       Server.bind('open', function() {
         log( "Connected." );

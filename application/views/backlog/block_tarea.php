@@ -1,4 +1,4 @@
-<li id="task-<?php echo $tarea['ID']; ?>" status="<?php echo $tarea["estado"] ?>">
+<li id="task-<?php echo $tarea['ID']; ?>" status="<?php echo $tarea["estado"] ?>" responsable="<?php echo $tarea['responsable']; ?>">
    <!--Boton de DRAG and DROP-->
     <span class="handle">
         <i class="fa fa-ellipsis-v"></i>

@@ -292,6 +292,30 @@ CREATE TABLE presupuesto
 
 ALTER TABLE tareas ADD COLUMN responsable INT unsigned;
 
+
+CREATE TABLE recursos
+(
+	ID INT PRIMARY KEY AUTO_INCREMENT,
+	recurso VARCHAR(250) NOT NULL,
+	descripcion	 TEXT,
+	fecha TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,
+	costo double precision ,
+	estado CHAR(1) NOT NULL,
+	proyecto INT NOT NULL,
+	FOREIGN KEY(proyecto) REFERENCES proyectos(ID)
+);
+
+CREATE TABLE IF NOT EXISTS gcm_users (
+  ID int(11) NOT NULL AUTO_INCREMENT,
+  gcm_regid text,
+  name varchar(50) NOT NULL,
+  email varchar(255) NOT NULL,
+  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ;
+
+ALTER TABLE tareas
+ADD COLUMN fecha_fin TIMESTAMP;
 -------------------------------------------------------HASTA AQUI LA VERSION DEL SCRIPT EJECUTADA --------------------------------------
 CREATE TABLE funciones
 (

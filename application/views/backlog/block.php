@@ -1,4 +1,10 @@
-<div class="box" id="actividad<?php echo $info['ID']; ?>" status="<?php echo $info['estado']; ?>">
+<?php 
+	$resps  = array();
+	if(isset($info['responsables'])){
+			$resps=array_column($info['responsables'],'id');
+	}
+?>
+<div class="box" id="actividad<?php echo $info['ID']; ?>" status="<?php echo $info['estado']; ?>" responsable="<?php echo implode(",",$resps); ?>">
 	<div class="box-header">
 		<span class="pull-left"><i class="btn fa fa-fw fa-arrows handl"></i></span>
 		<h3 class="box-title activity_title"><?php echo $info['nombre']; ?></h3>
