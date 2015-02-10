@@ -18,7 +18,6 @@ class Actividades extends MY_Controller {
         parent::__construct();
         $this->data['estados_tarea']=$this->configuracion->get_comboBox('estado_tarea');
         $this->data['controller_name'] = 'actividades';
-        $this->data['estados_actividad'] = (array)$this->configuracion->get_comboBox('estado_actividades');
     }
     /**
      * Muestra una vista con el listado de actividades o items del BACKLOG y los botones realizar operaciones CRUD

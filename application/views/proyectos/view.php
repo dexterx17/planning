@@ -166,6 +166,32 @@
                             </div>
                         </div><!-- ./col -->
                     </div><!-- /.row -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">
+                                        Product BurnDown (Tiempo planificado)
+                                    </h3>
+                                </div>
+                                <div class="box-body">
+                                    <div id="burndown-tiempos" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                             <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">
+                                        Product BurnDown (Tareas cumplidas)
+                                    </h3>
+                                </div>
+                                <div class="box-body">
+                                     <div id="burndown-tareas" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 			<div class="row">
 				<div class="col-lg-2">
 					<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
@@ -173,6 +199,63 @@
 			</div>
 		</article>
 	</section>
-
 </section>
 <?php $this -> load -> view('inicio/footer'); ?>
+    <!-- page script -->
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            var url = getBasePath()+'/proyectos/get_status/<?php echo $info["ID"]; ?>/burndown';
+            $.ajax({
+                url:url,
+                data:{},
+                dataType : 'json',
+                cache: false,
+                success:function(result){
+
+                    var area = new Morris.Area({
+                        element: 'burndown-tareas',
+                        resize: true,
+                        data: result,
+                        xkey: 'fecha',
+                        ykeys: ['total'],
+                        labels: ['Total'],
+                        xlabels: "day",
+                        lineColors: ['#a0d0e0', '#3c8dbc'],
+                        hideHover: 'auto',
+                        xLabelAngle: 90,
+                        postUnits:' tareas'
+                    });
+                }
+            });
+
+            var url2 = getBasePath()+'/proyectos/get_status/<?php echo $info["ID"]; ?>/burndown_tiempo';
+            $.ajax({
+                url:url2,
+                data:{},
+                dataType : 'json',
+                cache: false,
+                success:function(result){
+
+                    var area = new Morris.Area({
+                        element: 'burndown-tiempos',
+                        resize: true,
+                        data: result,
+                        xkey: 'fecha',
+                        ykeys: ['total'],
+                        labels: ['Total'],
+                        xlabels: "day",
+                        lineColors: ['#a0d0e0', '#3c8dbc'],
+                        hideHover: 'auto',
+                        xLabelAngle: 90,
+                        postUnits:' horas',
+                        hoverCallback: function (index, options, content, row) {
+                            return content;
+                          return "sin(" + row.x + ") = " + row.y;
+                        },
+                        dateFormat:function (x) { return new Date(x).toDateString(); }
+                    });
+                }
+            });
+        });
+    </script>

@@ -75,13 +75,17 @@ class Tareas extends MY_Controller {
 				if($ID==-1){
 					$data['creador']=$this->user->id;
 				}
+				//Si la tarea esta completa, seteo la fecha de culminación
+				if($data['estado']==3){
+					$data['fecha_fin']=date('Y-m-d H:i:s');
+				}
 				$ID= $this->tarea->save($ID,$data);
 				if( $ID && $this->actividad->update_status($this->input->post('actividad'))){
 
 					echo json_encode(array('error'=>false,'message'=>'OK','task_id'=>$ID));
 				}else{
 					echo json_encode(array('error'=>true,'message'=>'Error al guardar'));
-				}				
+				}		
 				
 			}else{
 				$error = validation_errors();
@@ -123,8 +127,14 @@ class Tareas extends MY_Controller {
         $count=0;
 
         foreach ($items as $key => $value) {
-            if($this->tarea->save(extrar_numeros($value),array('columna'=>$columna, 'estado' => $estado)) && $this->actividad->update_status($this->input->post('actividad')))
-                $count++;
+        	//Si la tarea esta completa, seteo la fecha de culminación
+			if($estado==3){
+				if($this->tarea->save(extrar_numeros($value),array('columna'=>$columna, 'estado' => $estado,'fecha_fin'=>$data['fecha_fin'])) && $this->actividad->update_status($this->input->post('actividad')))
+	                $count++;
+			}else{
+	            if($this->tarea->save(extrar_numeros($value),array('columna'=>$columna, 'estado' => $estado)) && $this->actividad->update_status($this->input->post('actividad')))
+	                $count++;
+	        }
         }
         if($count==count($items))
             echo json_encode(array('error' => false, 'message' => 'TODO BIEN'));

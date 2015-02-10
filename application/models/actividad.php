@@ -108,7 +108,7 @@ class Actividad extends CI_Model{
 		try{
 				$this->db->where('proyecto',$proyecto);	
 				$this->db->order_by('orden','asc');
-				$res=  (array)$this->db->get($this->table_name,20,$skip)->result();
+				$res=  (array)$this->db->get($this->table_name,40,$skip)->result();
 				$resultado=array();
 				foreach ($res as $key => $value) {
 					$aux=(array)$value;
@@ -209,6 +209,24 @@ class Actividad extends CI_Model{
 		try{
 			$this->db->where('proyecto',$proyecto);	
 			$this->db->order_by('orden','desc');
+			return  $this->db->get($this->table_name)->result_array();
+			
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+			return null;
+		} 
+	}
+
+	/**
+	 * Devuelve el total de tiempo utilizado/planificado en un proyecto
+	 * @param integer $proyecto Clave primaria del proyecto
+	 * @param string $tiempo tiempo_real|tiempo_planificado
+	 */
+	function get_tiempos_by_proyecto($proyecto,$tiempo){
+		try{
+			$this->db->select_sum($tiempo);
+			$this->db->where('proyecto',$proyecto);	
+			$this->db->group_by('proyecto');
 			return  $this->db->get($this->table_name)->result_array();
 			
 		}catch(Exception $e){

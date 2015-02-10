@@ -314,6 +314,7 @@ CREATE TABLE IF NOT EXISTS gcm_users (
   PRIMARY KEY (`id`)
 ) ;
 
+/** Campo para registrar cuando se culmino una tarea **/
 ALTER TABLE tareas
 ADD COLUMN fecha_fin TIMESTAMP;
 -------------------------------------------------------HASTA AQUI LA VERSION DEL SCRIPT EJECUTADA --------------------------------------

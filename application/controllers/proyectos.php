@@ -175,6 +175,28 @@ class Proyectos extends MY_Controller {
 				$egresos=$this->presupuesto->get_total_by_proyecto_tipo($proyecto_id,"E");
 				$resultado[2]=(!empty($egresos))?$egresos[0]['total']:0;
 				break;
+			case 'burndown':
+				$proyecto_info =(array)$this->proyecto->get_info($proyecto_id); 
+				$fecha_inicio = strtotime($proyecto_info['fecha_inicio']);
+				$total_tareas = $this->actividad->get_count_by_proyecto_filtered($proyecto_id,null);
+				$fecha=strtotime($proyecto_info['fecha_inicio']);
+				do{
+					    $fecha = strtotime(" +1 days", $fecha);
+						$resultado[]=array('fecha'=>date("Y-m-d", $fecha),'total'=>$total_tareas);
+				}while($fecha<strtotime("now"));
+				break;
+			case 'burndown_tiempo':
+				$proyecto_info =(array)$this->proyecto->get_info($proyecto_id); 
+				$fecha_inicio = strtotime($proyecto_info['fecha_inicio']);
+				$total_tiempos = $this->actividad->get_tiempos_by_proyecto($proyecto_id,'tiempo_planificado');
+				$total_tiempo=(!empty($total_tiempos))?$total_tiempos[0]['tiempo_planificado']:0;
+				$fecha=strtotime($proyecto_info['fecha_inicio']);
+				do{
+					    $fecha = strtotime(" +1 days", $fecha);
+						$resultado[]=array('fecha'=>date("Y-m-d", $fecha),'total'=>$total_tiempo);
+				}while($fecha<strtotime("now"));
+				break;
+
 			default:
 				# code...
 				break;
