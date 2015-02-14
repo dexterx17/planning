@@ -236,6 +236,24 @@ class Actividad extends CI_Model{
 	}
 
 	/**
+	 * Devuelve el total de tiempo utilizado/planificado en un proyecto
+	 * @param integer $proyecto Clave primaria del proyecto
+	 * @param string $tiempo tiempo_real|tiempo_planificado
+	 */
+	function get_tiempos_by_fecha_proyecto($proyecto,$tiempo){
+		try{
+			$this->db->select_sum($tiempo);
+			$this->db->where('proyecto',$proyecto);	
+			$this->db->group_by('proyecto, fecha_fin');
+			return  $this->db->get($this->table_name)->result_array();
+			
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+			return null;
+		} 
+	}
+
+	/**
 	 * Devuelve un array con todas las actividades de un proyecto y que no esten asginadas a un sprint
 	 * @param integer $proyecto Clave primaria del proyecto
 	 */

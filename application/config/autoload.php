@@ -109,7 +109,7 @@ $autoload['language'] = array('scrum','inicio','comun','people','proyectos','spr
 |
 */
 
-$autoload['model'] = array('people','proyecto','actividad','tarea','sprint','configuracion','team','columna','presupuesto','recurso','gcm_user');
+$autoload['model'] = array('people','proyecto','actividad','tarea','sprint','configuracion','team','columna','presupuesto','recurso','gcm_user','wik');
 
 
 /* End of file autoload.php */

@@ -93,7 +93,8 @@ class Tarea extends CI_Model{
 			}
 			
 			$this->db->where('ID',$id);
-			return $this->db->update($this->table_name,$data);
+			if($this->db->update($this->table_name,$data))
+				 return $id;
 			
 			}catch(Exception $e){
 				show_error($e->getMessage().' --- '.$e->getTraceAsString());

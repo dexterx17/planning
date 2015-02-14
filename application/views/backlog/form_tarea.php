@@ -13,7 +13,7 @@
 		<?php echo get_row_form(lang('comun_responsable'),'responsable',$info['responsable'],$team); ?>
 		
 		<?php echo form_input(array('type'=>'hidden','name'=>'ID','value'=>$info['ID'],'id'=>'ID')); ?>
-		<?php echo form_hidden('actividad',$actividad); ?>
+		<?php echo form_input(array('type'=>'hidden','name'=>'actividad','value'=>$actividad,'id'=>'actividad')); ?>
 		
 		<div class="box-footer">
 			<div class="btn-group">
@@ -41,6 +41,7 @@
 $(document).ready(function() {
 
 	var id_tarea = $('#ID').val();
+	var id_actividad = $('#actividad').val();
 	var estado = $('#estado').val();
 
 	$('#tiempo_planificado').spinner();
@@ -80,6 +81,7 @@ $(document).ready(function() {
 			 			$('#task-'+id_tarea).parent('ul').todolist();
 					});
 			 	}
+			 	$('#actividadbody'+id_actividad).load('<?php echo site_url("actividades");?>/get_detail_row/'+id_actividad);
 			 	 reload_counter_taks();
 			 	 reload_status_actividades([]);
             }else

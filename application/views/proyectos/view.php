@@ -56,7 +56,7 @@
     							</a>
     						</li>
     						<li>
-    							<a class="btn disabled" href="<?php echo site_url("$controller_name/nuevo"); ?>">
+    							<a class="btn" href="<?php echo site_url("wiki/index").'/'.$info['ID']; ?>">
     								<i class="fa fa-lg fa-fw fa-group"></i>
     								<span><?php echo lang('comun_wiki'); ?></span>
     							</a>

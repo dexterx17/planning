@@ -39,6 +39,7 @@ class Actividades extends MY_Controller {
             } else {
                 $this->data['items'] = $this->actividad->get_with_limits(0, $proyecto);
                 $this->data['people']=$this->team->get_by_proyecto_comboBox($proyecto);
+                //print_r($this->actividad->get_tiempos_by_fecha_proyecto($proyecto,'tiempo_real'));
                 $this->load->view('backlog/manage', $this->data);
             }
         } catch (Exception $e) {
