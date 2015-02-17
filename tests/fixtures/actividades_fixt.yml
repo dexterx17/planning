@@ -1,0 +1,60 @@
+
+row1: 
+  ID: 1
+  nombre: "Sesion de usuario"
+  descripcion: ""
+  tiempo_planificado: 0
+  tiempo_real: 0
+  estado: "1"
+  proyecto: 2
+  sprint: 
+  orden: 
+  creador: 7
+row2: 
+  ID: 2
+  nombre: "Master page FORM"
+  descripcion: >
+    "Diseno de secciones que debe tener un
+    pagina de formulario"
+  tiempo_planificado: 0
+  tiempo_real: 0
+  estado: "1"
+  proyecto: 2
+  sprint: 
+  orden: 
+  creador: 7
+row3: 
+  ID: 3
+  nombre: "implementar WYSWIG para formularios"
+  descripcion: ""
+  tiempo_planificado: 0
+  tiempo_real: 0
+  estado: "1"
+  proyecto: 2
+  sprint: 
+  orden: 
+  creador: 7
+row4: 
+  ID: 4
+  nombre: "Implementar bloques ordenados"
+  descripcion: >
+    "los bloques html con la clase \"block\"
+    son drag and drop para reordenarse"
+  tiempo_planificado: 0
+  tiempo_real: 0
+  estado: "1"
+  proyecto: 2
+  sprint: 
+  orden: 
+  creador: 7
+row5: 
+  ID: 5
+  nombre: "Implementar administrador de Backlog"
+  descripcion: ""
+  tiempo_planificado: 0
+  tiempo_real: 0
+  estado: "1"
+  proyecto: 2
+  sprint: 
+  orden: 
+  creador: 7

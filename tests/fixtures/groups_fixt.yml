@@ -1,0 +1,21 @@
+
+row1: 
+  id: 1
+  name: "admin"
+  description: "Administrator"
+row2: 
+  id: 2
+  name: "team"
+  description: "Equipo de trabajo"
+row3: 
+  id: 3
+  name: "Owners"
+  description: "Dueños de Producto"
+row4: 
+  id: 4
+  name: "ScrumMaster"
+  description: "Gestióna y Apoya al proyecto"
+row5: 
+  id: 5
+  name: "Registrado"
+  description: "Usuario registrado"

@@ -1,0 +1,8 @@
+
+row1: 
+  ID: 1
+  valor: 60
+  descripcion: "Adelanto a progamador"
+  fecha: "2015-01-12 20:01:00"
+  tipo: "E"
+  proyecto: 11

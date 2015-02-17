@@ -82,8 +82,9 @@ $(document).ready(function() {
 					});
 			 	}
 			 	$('#actividadbody'+id_actividad).load('<?php echo site_url("actividades");?>/get_detail_row/'+id_actividad);
-			 	 reload_counter_taks();
-			 	 reload_status_actividades([]);
+			 	reload_counter_taks();
+			 	$('#actividad'+id_actividad).attr('status',data.estado_actividad); 
+			 	reload_status_actividades({ids_especificos:[id_actividad]});
             }else
              $('#errors'+'<?php echo $actividad;?>').html(data.message);	
             }

@@ -1,0 +1,31 @@
+
+row1: 
+  ID: 1
+  proyecto: 1
+  nombre: "TODO"
+  descripcion: "Tareas por realizar"
+  estado: 1
+row2: 
+  ID: 2
+  proyecto: 1
+  nombre: "DOING"
+  descripcion: "Tareas en ejecución"
+  estado: 2
+row3: 
+  ID: 3
+  proyecto: 1
+  nombre: "TESTING"
+  descripcion: "Tareas en fase de verificación"
+  estado: 2
+row4: 
+  ID: 4
+  proyecto: 1
+  nombre: "DONE"
+  descripcion: "Tareas completadas"
+  estado: 3
+row5: 
+  ID: 5
+  proyecto: 13
+  nombre: "TODO"
+  descripcion: "Tareas por realizar"
+  estado: 1

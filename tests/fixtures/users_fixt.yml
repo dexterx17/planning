@@ -1,0 +1,114 @@
+
+row1: 
+  id: 1
+  ip_address: "127.0.0.1"
+  username: "administrator"
+  password: >
+    "$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36"
+  salt: ""
+  email: "admin@admin.com"
+  activation_code: ""
+  forgotten_password_code: ""
+  forgotten_password_time: 
+  remember_code: "vgyys3nJDN56hoOvbA9vwe"
+  created_on: 1268889823
+  last_login: 1422264954
+  active: 1
+  first_name: "Admin"
+  last_name: "istrator"
+  company: "ADMIN"
+  phone: "0"
+  latitud: 
+  longitud: 
+  imagen: >
+    "356a192b7913b04c54574d18c28d46e6395428ab.jpg"
+row2: 
+  id: 7
+  ip_address: "127.0.0.1"
+  username: "jaime santana"
+  password: >
+    "$2y$08$dLF9F./ho9h2R/f7LJ/rOuBMgXEIx3HvTFVTylwrbO6/RNwMEa.Nu"
+  salt: ""
+  email: "dexterx17@hotmail.com"
+  activation_code: ""
+  forgotten_password_code: >
+    "kaOId5CQRH.VjXDrFtz2q.0c1fedfe1b9ee9c9e9"
+  forgotten_password_time: 1422326246
+  remember_code: "wqbam455zoynUWakdtYWFO"
+  created_on: 1420735570
+  last_login: 1423905183
+  active: 1
+  first_name: "Jaime"
+  last_name: "Santana"
+  company: "DENUX"
+  phone: "0983706086"
+  latitud: -1.23947
+  longitud: -78.629
+  imagen: >
+    "902ba3cda1883801594b6e1b452790cc53948fda.jpeg"
+row3: 
+  id: 8
+  ip_address: "127.0.0.1"
+  username: "danilo nuela"
+  password: >
+    "$2y$08$8AuOvy6eJNBFswecA4.G0ed8Nl5EAXL0l872kXH0s7eXPQFxnpGHO"
+  salt: ""
+  email: "danilo.nuela@gmail.com"
+  activation_code: ""
+  forgotten_password_code: ""
+  forgotten_password_time: 
+  remember_code: ""
+  created_on: 1420777603
+  last_login: 
+  active: 1
+  first_name: "Danilo"
+  last_name: "Nuela"
+  company: "..."
+  phone: "0998945229"
+  latitud: 
+  longitud: 
+  imagen: ""
+row4: 
+  id: 9
+  ip_address: "127.0.0.1"
+  username: "nataly armas"
+  password: >
+    "$2y$08$n8BAssiBcizqb4NJlDOz9OKxwfbIyglc3f61rVqF4eKDs39xpiOja"
+  salt: ""
+  email: "sanu_23gi@yahoo.es"
+  activation_code: ""
+  forgotten_password_code: ""
+  forgotten_password_time: 
+  remember_code: ""
+  created_on: 1420795647
+  last_login: 1420895963
+  active: 1
+  first_name: "Nataly"
+  last_name: "Armas"
+  company: "DENUX"
+  phone: "0995629151"
+  latitud: -1.2514
+  longitud: -78.6397
+  imagen: ""
+row5: 
+  id: 10
+  ip_address: "127.0.0.1"
+  username: "cristian gallardo"
+  password: >
+    "$2y$08$uNbq2saYZkHnH1N617/pb.ioiJ8nbFsaqyK5PmAQCCZ7l0WxUQSo."
+  salt: ""
+  email: "cmgallardop@gmail.com"
+  activation_code: ""
+  forgotten_password_code: ""
+  forgotten_password_time: 
+  remember_code: ""
+  created_on: 1420830783
+  last_login: 1422091346
+  active: 1
+  first_name: "Cristian"
+  last_name: "Gallardo"
+  company: "BITSTECHNOLOGIES"
+  phone: "0987768245"
+  latitud: -1.27136
+  longitud: -78.6264
+  imagen: ""

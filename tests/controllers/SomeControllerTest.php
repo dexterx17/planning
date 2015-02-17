@@ -9,7 +9,7 @@ class SomeControllerTest extends CIUnit_TestCase
 	public function setUp()
 	{
 		// Set the tested controller
-		$this->CI = set_controller('inicio');
+		$this->CI = set_controller('welcome');
 	}
 	
 	public function testWelcomeController()

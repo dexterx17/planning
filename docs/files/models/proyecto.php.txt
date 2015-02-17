@@ -29,7 +29,20 @@ class Proyecto extends CI_Model{
 		return ($query->num_rows()>=1);
 	}
 	
-	
+	/**
+	 * Devuelve un array de IDS de proyectos que cumpla la clausula WHERE 
+	 * enviada como parametros
+	 *@param array $where
+	 *@return Array IDs de proyectos
+	 **/
+	function get_ids($where){
+		$this->db->select('ID');
+		foreach ($where as $key => $value) {
+			$this->db->where($key,$value);
+		}
+		return $this->db->get($this->table_name)->result_array();
+	}
+
 	/**
 	 * Devuelve un array con un elemento de la tabla
 	 * @param integer $id Clave primaria del elemento
@@ -62,7 +75,22 @@ class Proyecto extends CI_Model{
 		return $res;
 	}
 	
-		
+	/**
+	 * Devuelve un array  de 10 elementos
+	 * @param array $ids Claves primaria de proyectos
+	 * @param integer $skip Número desde el cual se cuentan los 10 elementos
+	 */
+	public function get_where_in($ids,$skip=0){
+		try{
+				$this->db->where_in('ID',$ids);
+				return  $this->db->get($this->table_name,10,$skip)->result_array();
+				
+			}catch(Exception $e){
+				return null;
+				show_error($e->getMessage().' --- '.$e->getTraceAsString());
+			} 
+	}
+
 	/**
 	 * Devuelve un array  de 10 elementos
 	 * @param integer $skip Número desde el cual se cuentan los 10 elementos
@@ -70,7 +98,7 @@ class Proyecto extends CI_Model{
 	public function get_with_limits($skip=0){
 		try{
 			
-				return  $this->db->get($this->table_name,10,$skip)->result();
+				return  $this->db->get($this->table_name,10,$skip)->result_array();
 				
 			}catch(Exception $e){
 				show_error($e->getMessage().' --- '.$e->getTraceAsString());
@@ -87,7 +115,8 @@ class Proyecto extends CI_Model{
 		try{
 			
 			if($id==-1 && !$this->exists($id)){
-				return $this->db->insert($this->table_name,$data);
+				if($this->db->insert($this->table_name,$data))
+					return $this->db->insert_id();
 			}
 			
 			$this->db->where('ID',$id);
@@ -109,7 +138,7 @@ class Proyecto extends CI_Model{
 		try{
 			
 			$this->db->where('ID',$id);
-			return $this->db->delete($this->$table_name);
+			return $this->db->delete($this->table_name);
 			
 			}catch(Exception $e){
 				show_error($e->getMessage().' --- '.$e->getTraceAsString());

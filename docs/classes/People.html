@@ -113,12 +113,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">18</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">208</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                         </ul>
@@ -138,10 +138,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1543604560"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-543271488"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1543604560" class="accordion-body collapse in">
+            <div id="namespace-543271488" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -159,6 +159,23 @@
                                                     <li class="class"><a href="../classes/Inicio.html">Inicio</a></li>
                                                     <li class="class"><a href="../classes/Tarea.html">Tarea</a></li>
                                                     <li class="class"><a href="../classes/Android.html">Android</a></li>
+                                                    <li class="class"><a href="../classes/Calendario.html">Calendario</a></li>
+                                                    <li class="class"><a href="../classes/Wiki.html">Wiki</a></li>
+                                                    <li class="class"><a href="../classes/Presupuestos.html">Presupuestos</a></li>
+                                                    <li class="class"><a href="../classes/Teams.html">Teams</a></li>
+                                                    <li class="class"><a href="../classes/WSRest.html">WSRest</a></li>
+                                                    <li class="class"><a href="../classes/Chat.html">Chat</a></li>
+                                                    <li class="class"><a href="../classes/Kanbans.html">Kanbans</a></li>
+                                                    <li class="class"><a href="../classes/Auth.html">Auth</a></li>
+                                                    <li class="class"><a href="../classes/Notificaciones.html">Notificaciones</a></li>
+                                                    <li class="class"><a href="../classes/Recursos.html">Recursos</a></li>
+                                                    <li class="class"><a href="../classes/Team.html">Team</a></li>
+                                                    <li class="class"><a href="../classes/Wik.html">Wik</a></li>
+                                                    <li class="class"><a href="../classes/Gcm_user.html">Gcm_user</a></li>
+                                                    <li class="class"><a href="../classes/Ion_auth_model.html">Ion_auth_model</a></li>
+                                                    <li class="class"><a href="../classes/Columna.html">Columna</a></li>
+                                                    <li class="class"><a href="../classes/Recurso.html">Recurso</a></li>
+                                                    <li class="class"><a href="../classes/Presupuesto.html">Presupuesto</a></li>
                                             </ul>
                 </div>
             </div>
@@ -201,6 +218,8 @@
                                                                     <a href="../classes/People.html#method_get_with_limits" class="">get_with_limits()</a><br />
                                                                     <a href="../classes/People.html#method_save" class="">save()</a><br />
                                                                     <a href="../classes/People.html#method_delete" class="">delete()</a><br />
+                                                                    <a href="../classes/People.html#method_get_involved_projects" class="">get_involved_projects()</a><br />
+                                                                    <a href="../classes/People.html#method_get_for_project" class="">get_for_project()</a><br />
                                                             </section>
                             <section class="span4">
                                                                     <a href="../classes/People.html#property_table_name" class="">$table_name</a><br />
@@ -552,6 +571,84 @@
         </aside>
     </div>
 
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_involved_projects" name="method_get_involved_projects" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_involved_projects()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_involved_projects(integer <span class="argument">$user</span>)</pre>
+                <p><em>Devuelve los IDS de los proyectos del usuario</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$user</td>
+                                <td><p>Clave primaria del usuario</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_for_project" name="method_get_for_project" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_for_project()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_for_project( <span class="argument">$proyecto</span>)</pre>
+                <p><em>Devuelve el listado de todas las personas menos las que ya estan agregadas</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$proyecto</td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
                                                                     </div>
     </section>
 
@@ -601,7 +698,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on November 7th, 2014 at 13:00.
+                    on February 13th, 2015 at 23:02.
                 </section>
             </section>
         </section>

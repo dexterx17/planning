@@ -7,17 +7,24 @@
  * @package planning
  * @subpackage controllers
  */
-class Proyectos extends CI_Controller {
+class Proyectos extends MY_Controller {
+
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->config('parametros', TRUE);
+	}
 
 	/**
-	 * Muestra una vista con el listado de proyectos y los botones realizar operaciones CRUD
+	 * Muestra una vista con el listado de proyectos en los que esta participando el usuario
+	 * Se verifica la participación en la tabla "proyectos" y equipo_proyecto
 	 */
 	public function index()
 	{
 		
 		try{
 			
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+			$data['controller_name'] = "proyectos";
 			
 			$ultimo = $this->input->post('ultimo_id');
 			if($ultimo)
@@ -30,7 +37,8 @@ class Proyectos extends CI_Controller {
 			            }
 			         }
 		    }	else{
-				$data['items']=$this->proyecto->get_with_limits(0);
+				$ids = $this->people->get_involved_projects($this->user->id);
+				$data['items']=$this->proyecto->get_where_in($ids,0);
 				$this->load->view('proyectos/manage',$data);
 			}
 		  
@@ -42,23 +50,28 @@ class Proyectos extends CI_Controller {
 	
 	/**
 	 * Devuelve un bloque HTML con la info de un proyecto
+	 * @param integer $clave Clave primaria del proyecto EJ: 2
 	 */
-	public function get_block(){
-		$this->load->view('proyectos/block');
+	public function get_row($clave=-1)
+	{
+		try{
+			$data['controller_name'] = "proyectos";
+			$data['info']=(array)$this->proyecto->get_info($clave);
+			$this->load->view('proyectos/block',$data);
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
 	}
-	
 	/**
 	 * Muestra un formulario que permite ingresar y modificar los datos de un proyecto
 	 * 
-	 * @param $clave Clave primario del Proyecto EJ: 2
+	 * @param integer $clave Clave primario del Proyecto EJ: 2
 	 */
 	public function nuevo($clave=-1)
 	{
 		try{
-			
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+			$data['controller_name'] = "proyectos";
 			$data['info']=(array)$this->proyecto->get_info($clave);
-			print_r($data['info']);
 			$this->load->view('proyectos/form',$data);
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
@@ -68,13 +81,12 @@ class Proyectos extends CI_Controller {
 	/**
 	 * Muestra un formulario que permite ver toda la informacion de un proyecto
 	 * 
-	 * @param $clave Clave primario del Proyecto EJ: 2
+	 * @param integer $clave Clave primario del Proyecto EJ: 2
 	 */
 	public function view($clave=-1)
 	{
 		try{
-			
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
+			$data['controller_name'] = "proyectos";
 			$data['info']=(array)$this->proyecto->get_info($clave);
 			$this->load->view('proyectos/view',$data);
 		}catch(Exception $e){
@@ -88,13 +100,13 @@ class Proyectos extends CI_Controller {
 	public function save()
 	{
 		try{
-			$this->form_validation->set_rules('nick',lang('comun_nick'),'trim|required|min_length[4]|max_length[50]|is_unique[proyectos.nick]'); 
-			$this->form_validation->set_rules('nombre',lang('comun_name'),'trim|required');
-			//$this->form_validation->set_rules('password',lang('comun_password'),'required|matches[repassword]|md5');
-			//$this->form_validation->set_rules('repassword',lang('comun_repassword'),'required');
-			
 			$ID = $this->input->post('ID')==''? -1 :$this->input->post('ID');
-		
+			$this->form_validation->set_rules('nombre',lang('comun_name'),'trim|required');
+			if($ID==-1){
+				$this->form_validation->set_rules('nick',lang('comun_nick'),'trim|required|min_length[4]|max_length[50]|is_unique[proyectos.nick]'); 
+			}else{
+				$this->form_validation->set_rules('nick',lang('comun_nick'),'trim|required|min_length[4]|max_length[50]'); 
+			}
 			if($this->form_validation->run()==TRUE){
 				
 				$data=array(
@@ -103,12 +115,16 @@ class Proyectos extends CI_Controller {
 					'descripcion'=>$this->input->post('descripcion'),
 					'fecha_inicio'=>$this->input->post('fecha_inicio'),
 					'fecha_fin'=>$this->input->post('fecha_fin'),
-					'owner'=>$this->input->post('owner'),
-					'presupuesto'=>$this->input->post('presupuesto')
+					'presupuesto'=>$this->input->post('presupuesto'),
+					'visibilidad'=>$this->input->post('visibilidad')
 					);
+				//Si recien creo el proyecto le agrego el ID del usuario creador
+				if($ID==-1){
+					$data['owner']=$this->user->id;
+				}
 					
-				if($this->proyecto->save($ID,$data)){
-					echo json_encode(array('error'=>false,'message'=>'TODO BIEN'));
+				if($ID= $this->proyecto->save($ID,$data)){
+					echo json_encode(array('error'=>false,'message'=>'TODO BIEN','proyecto_id'=>$ID));
 				}else{
 					echo json_encode(array('error'=>true,'message'=>'Error al guardar'));
 				}				
@@ -122,5 +138,71 @@ class Proyectos extends CI_Controller {
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
 	}
+
+	/**
+	 * Elimina un proyecto
+	 *@param integer $proyecto_id Clave primaria del proyecto
+	 **/
+	public function delete($proyecto_id){
+		if($ID= $this->proyecto->delete($proyecto_id)){
+			echo json_encode(array('error'=>false,'message'=>'TODO BIEN','proyecto_id'=>$proyecto_id));
+		}else{
+			echo json_encode(array('error'=>true,'message'=>'Error al eliminar'));
+		}	
+	}
+
+	/**
+	 * Devuelve un array de variables del proyecto
+	 *@param integer $proyecto_id Clave primaria del objeto
+	 *@param string $tipo "proyecto|sprint|task|actividad|presupuesto"
+	 **/
+	public function get_status($proyecto_id,$tipo='proyecto'){
+		$resultado = array();
+		switch ($tipo) {
+			case 'proyecto':
+				$resultado[1]=$this->tarea->get_count_by_proyecto_estado($proyecto_id,1);
+				$resultado[2]=$this->tarea->get_count_by_proyecto_estado($proyecto_id,2);
+				$resultado[3]=$this->tarea->get_count_by_proyecto_estado($proyecto_id,3);
+				break;
+			case 'sprint':
+				$resultado[1]=$this->tarea->get_count_by_sprint_estado($proyecto_id,1);
+				$resultado[2]=$this->tarea->get_count_by_sprint_estado($proyecto_id,2);
+				$resultado[3]=$this->tarea->get_count_by_sprint_estado($proyecto_id,3);
+				break;
+			case 'presupuesto':
+				$ingresos=$this->presupuesto->get_total_by_proyecto_tipo($proyecto_id,"I");
+				$resultado[1]=(!empty($ingresos))?$ingresos[0]['total']:0;
+				$egresos=$this->presupuesto->get_total_by_proyecto_tipo($proyecto_id,"E");
+				$resultado[2]=(!empty($egresos))?$egresos[0]['total']:0;
+				break;
+			case 'burndown':
+				$proyecto_info =(array)$this->proyecto->get_info($proyecto_id); 
+				$fecha_inicio = strtotime($proyecto_info['fecha_inicio']);
+				$total_tareas = $this->actividad->get_count_by_proyecto_filtered($proyecto_id,null);
+				$fecha=strtotime($proyecto_info['fecha_inicio']);
+				do{
+					    $fecha = strtotime(" +1 days", $fecha);
+						$resultado[]=array('fecha'=>date("Y-m-d", $fecha),'total'=>$total_tareas);
+				}while($fecha<strtotime("now"));
+				break;
+			case 'burndown_tiempo':
+				$proyecto_info =(array)$this->proyecto->get_info($proyecto_id); 
+				$fecha_inicio = strtotime($proyecto_info['fecha_inicio']);
+				$total_tiempos = $this->actividad->get_tiempos_by_proyecto($proyecto_id,'tiempo_planificado');
+				$total_tiempo=(!empty($total_tiempos))?$total_tiempos[0]['tiempo_planificado']:0;
+				$fecha=strtotime($proyecto_info['fecha_inicio']);
+				do{
+					    $fecha = strtotime(" +1 days", $fecha);
+						$resultado[]=array('fecha'=>date("Y-m-d", $fecha),'total'=>$total_tiempo);
+				}while($fecha<strtotime("now"));
+				break;
+
+			default:
+				# code...
+				break;
+		}
+
+        echo json_encode($resultado);
+    }
 }
 

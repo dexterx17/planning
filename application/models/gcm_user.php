@@ -18,7 +18,7 @@ class Gcm_user extends CI_Model{
      * Envia una notificación al servidor de Google para que notifique a todos los dispositivos
      **/
     public function send_notification($registatoin_ids, $message) {
- 
+
         // Set POST variables
         $url = 'https://android.googleapis.com/gcm/send';
  
@@ -26,14 +26,13 @@ class Gcm_user extends CI_Model{
             'registration_ids' => $registatoin_ids,
             'data' => $message,
         );
- 
         $headers = array(
             'Authorization: key=' . GOOGLE_API_KEY,
             'Content-Type: application/json'
         );
+
         // Open connection
         $ch = curl_init();
- 
         // Set the url, number of POST vars, POST data
         curl_setopt($ch, CURLOPT_URL, $url);
  

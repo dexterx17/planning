@@ -1,0 +1,11 @@
+
+row1: 
+  ID: 1
+  titulo: >
+    "Generar documentación de clases con
+    grunt-phpdocumentor"
+  contenido: |
+    "1) inicializar npm en raiz de proyecto (crea archivo package.json)<br><blockquote><i><b>npm init</b></i><br></blockquote>2) instar plugin de grunt en la raiz del proyecto <br><blockquote><b><i>npm install grunt-phpdocumentor --save-dev</i></b><br></blockquote>3)Crear archivo Gruntfile.js en la raíz del proyecto.<br><blockquote>module.exports = function (grunt){<br><blockquote>grunt.initConfig({<br><blockquote>phpdocumentor:{<br><blockquote>dist:{<br><blockquote>directory:[\'./application/controllers\',\'./application/models\',\'./application/helpers\'],<br>target:\'docs\'<br></blockquote>}<br></blockquote>}<br></blockquote>});<br>//Carga el plugin phpdocumentor<br>grunt.loadNpmTasks(\'grunt-phpdocumentor\');<br>//Registra el plugin, para luego invocarlo solamente con \"grunt documentar\"<br>grunt.registerTask(\'documentar\',[\'phpdocumentor\']);<br></blockquote>}<br></blockquote>"
+  fecha: "2015-02-13 22:25:44"
+  creador: 7
+  proyecto: 11

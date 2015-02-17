@@ -1,0 +1,21 @@
+
+row1: 
+  ID: 1
+  nombre: "Nueva"
+  lang: "es"
+row2: 
+  ID: 2
+  nombre: "Lista para estimación"
+  lang: "es"
+row3: 
+  ID: 3
+  nombre: "Lista para sprint"
+  lang: "es"
+row4: 
+  ID: 4
+  nombre: "Por hacer"
+  lang: "es"
+row5: 
+  ID: 5
+  nombre: "En progreso"
+  lang: "es"

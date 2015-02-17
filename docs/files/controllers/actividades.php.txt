@@ -10,8 +10,15 @@ if (!defined('BASEPATH'))
  * @package planning
  * @subpackage controllers
  */
-class Actividades extends CI_Controller {
+class Actividades extends MY_Controller {
 
+    var $data;
+
+    function __construct(){
+        parent::__construct();
+        $this->data['estados_tarea']=$this->configuracion->get_comboBox('estado_tarea');
+        $this->data['controller_name'] = 'actividades';
+    }
     /**
      * Muestra una vista con el listado de actividades o items del BACKLOG y los botones realizar operaciones CRUD
      * @param integer $proyecto Clave primaria del proyecto
@@ -19,23 +26,57 @@ class Actividades extends CI_Controller {
     public function index($proyecto) {
         try {
 
-            $data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
-            $data['proyecto'] = $proyecto;
+            $this->data['proyecto'] = $proyecto;
             $ultimo = $this->input->post('ultimo_id');
-            $data['estados_tarea'] = $this->configuracion->get_comboBox('estado_tarea');
+            $this->data['sprints']=$this->sprint->get_by_proyecto($proyecto);
             if ($ultimo) {
                 $nuevos_datos = $this->actividad->get_with_limits($ultimo, $proyecto);
                 if ($nuevos_datos) {
                     foreach ($nuevos_datos as $fila) {
-                        get_row_people($fila, $data['items']);
+                        get_row_people($fila, $this->data['items']);
                     }
                 }
             } else {
-                $data['items'] = $this->actividad->get_with_limits(0, $proyecto);
-                $this->load->view('backlog/manage', $data);
+                $this->data['items'] = $this->actividad->get_with_limits(0, $proyecto);
+                $this->data['people']=$this->team->get_by_proyecto_comboBox($proyecto);
+                //print_r($this->actividad->get_tiempos_by_fecha_proyecto($proyecto,'tiempo_real'));
+                $this->load->view('backlog/manage', $this->data);
             }
         } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
+        }
+    }
+
+    /**
+     * Muestra un row con información de la actividad
+     * 
+     * @param integer $clave Clave primaria de la actividad EJ: 2
+     */
+    public function get_row($clave=-1)
+    {
+        try{
+            $this->data['info'] = (array) $this->actividad->get_full_info($clave);
+            $this->data['sprints']=$this->sprint->get_by_proyecto($this->data['info']['proyecto']);
+            $this->load->view('backlog/block',$this->data);
+        }catch(Exception $e){
+            show_error($e->getMessage().' --- '.$e->getTraceAsString());
+        }
+    }
+
+    /**
+     * Retorna un jsonarray con información de la actividad
+     * 
+     * @param integer $clave Clave primaria de la actividad EJ: 2
+     */
+    public function get_detail_row($clave=-1)
+    {
+        try{
+            $this->data['info'] = (array) $this->actividad->get_full_info($clave);
+            $this->data['sprints']=$this->sprint->get_by_proyecto($this->data['info']['proyecto']);
+            $this->load->view('backlog/block_detail',$this->data);
+            
+        }catch(Exception $e){
+            show_error($e->getMessage().' --- '.$e->getTraceAsString());
         }
     }
 
@@ -47,11 +88,12 @@ class Actividades extends CI_Controller {
      */
     public function nuevo($clave = -1, $proyecto) {
         try {
-
-            $data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
-            $data['info'] = (array) $this->actividad->get_info($clave);
-            $data['proyecto'] = $proyecto;
-            $this->load->view('backlog/form', $data);
+            $this->data['info'] = (array) $this->actividad->get_info($clave);
+            $sprints=$this->sprint->get_by_proyecto_comboBox($proyecto);
+            $sprints[""]="Sin Sprint";
+            $this->data['sprints']=$sprints;
+            $this->data['proyecto'] = $proyecto;
+            $this->load->view('backlog/form', $this->data);
         } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
@@ -76,11 +118,18 @@ class Actividades extends CI_Controller {
                     'tiempo_planificado' => $this->input->post('tiempo_planificado'),
                     'tiempo_real' => $this->input->post('tiempo_real'),
                     'estado' => $this->input->post('estado'),
-                    'proyecto' => $this->input->post('proyecto')
+                    'proyecto' => $this->input->post('proyecto'),
+                    'sprint' => $this->input->post('sprint'),
                 );
 
-                if ($this->actividad->save($ID, $data)) {
-                    echo json_encode(array('error' => false, 'message' => 'TODO BIEN'));
+                if($ID==-1){
+                    $orden = $this->actividad->get_next_orden($data['proyecto']);
+                    $data['orden']=(isset($orden[0]['orden']))?$orden[0]['orden']:1;
+                    $data['creador']=$this->user->id;
+                }
+
+                if ($ID = $this->actividad->save($ID, $data)) {
+                    echo json_encode(array('error' => false, 'message' => 'TODO BIEN','actividad_id'=>$ID));
                 } else {
                     echo json_encode(array('error' => true, 'message' => 'Error al guardar'));
                 }
@@ -93,4 +142,54 @@ class Actividades extends CI_Controller {
         }
     }
 
+    /**
+     * Es llamado cuando se cambia de posición un elemento del backlog para que actualize el orden 
+     * de la pila de producto
+     **/
+    public function ordenar(){
+        $items = $this->input->post('items');
+        $res=array();
+        $count=0;
+
+        foreach ($items as $key => $value) {
+            if($this->actividad->save(extrar_numeros($value),array('orden'=>$key+1)))
+                $count++;
+        }
+        if($count==count($items))
+            echo json_encode(array('error' => false, 'message' => 'TODO BIEN'));
+        else 
+            echo json_encode(array('error' => true, 'message' => 'Error al guardar'));
+    }
+    
+    /**
+     * Es llamado cuando se arrastra un item del backlog hacia un sprint
+     **/
+    public function asignar_a_sprint(){
+        $items = $this->input->post('items');
+        $sprint = $this->input->post('sprint');
+        $res=array();
+        $count=0;
+        print_r($items);
+
+        foreach ($items as $key => $value) {
+            if($this->actividad->save($value,array('sprint'=>$sprint)))
+                $count++;
+        }
+        if($count==count($items))
+            echo json_encode(array('error' => false, 'message' => 'TODO BIEN'));
+        else 
+            echo json_encode(array('error' => true, 'message' => 'Error al guardar'));
+    }
+
+    /**
+     * Elimina una actividad 
+     *@param integer $actividad_id Clave primaria de la actividad
+     **/
+    public function delete($actividad_id){
+        if($ID= $this->actividad->delete($actividad_id)){
+            echo json_encode(array('error'=>false,'message'=>'TODO BIEN','actividad_id'=>$actividad_id));
+        }else{
+            echo json_encode(array('error'=>true,'message'=>'Error al eliminar'));
+        }
+    }
 }

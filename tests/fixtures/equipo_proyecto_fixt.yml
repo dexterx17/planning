@@ -1,0 +1,31 @@
+
+row1: 
+  ID: 1
+  proyecto: 11
+  miembro: 7
+  fecha_integracion: "2015-01-09"
+  grupo: 
+row2: 
+  ID: 2
+  proyecto: 11
+  miembro: 8
+  fecha_integracion: "2015-01-09"
+  grupo: 
+row3: 
+  ID: 3
+  proyecto: 1
+  miembro: 7
+  fecha_integracion: "2015-01-09"
+  grupo: 
+row4: 
+  ID: 4
+  proyecto: 2
+  miembro: 7
+  fecha_integracion: "2015-01-09"
+  grupo: 
+row5: 
+  ID: 5
+  proyecto: 2
+  miembro: 10
+  fecha_integracion: "2015-01-09"
+  grupo: 

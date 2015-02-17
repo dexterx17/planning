@@ -1,0 +1,28 @@
+
+row1: 
+  ID: 1
+  nick: "dexter"
+  nombres: "Jaime"
+  apellidos: "Santana"
+  telefono: "032822406"
+  celular: "0983706086"
+  direccion: ""
+  email: "jaimesantanal@hotmail.com"
+  empresa: ""
+  latitud: -1.24033
+  longitud: -78.6285
+  imagen: >
+    "356a192b7913b04c54574d18c28d46e6395428ab.jpeg"
+row2: 
+  ID: 2
+  nick: "nataly"
+  nombres: "Nalaty"
+  apellidos: "Armas"
+  telefono: ""
+  celular: "0995629151"
+  direccion: ""
+  email: "sanu_23gi@yahoo.es"
+  empresa: ""
+  latitud: -1.25135
+  longitud: -78.6393
+  imagen: ""

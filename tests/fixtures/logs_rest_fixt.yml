@@ -1,0 +1,31 @@
+
+row1: 
+  id: 1
+  uri: "WSRest/actividades"
+  method: "get"
+  params: ""
+  api_key: ""
+  ip_address: "127.0.0.1"
+  time: 1423802043
+  rtime: 0.0605171
+  authorized: 1
+row2: 
+  id: 2
+  uri: "WSRest/actividades/proyecto/1"
+  method: "get"
+  params: '"a:1:{s:8:\"proyecto\";s:1:\"1\";}"'
+  api_key: ""
+  ip_address: "127.0.0.1"
+  time: 1423802049
+  rtime: 0.0630519
+  authorized: 1
+row3: 
+  id: 3
+  uri: "WSRest/actividades/proyecto/1"
+  method: "get"
+  params: '"a:1:{s:8:\"proyecto\";s:1:\"1\";}"'
+  api_key: ""
+  ip_address: "127.0.0.1"
+  time: 1423810226
+  rtime: 0.0691261
+  authorized: 1

@@ -1,0 +1,58 @@
+
+row1: 
+  ID: 1
+  nick: "Planning"
+  nombre: "Monitoreo y seguimiento"
+  descripcion: >
+    " Te ayudara con la planificacion de
+    actividades y seguimiento de las mismas"
+  fecha_inicio: "2014-09-07"
+  fecha_fin: "2015-08-07"
+  presupuesto: 0
+  owner: 7
+  visibilidad: 1
+row2: 
+  ID: 2
+  nick: "Terminales interactivas"
+  nombre: "Sistema interactivo"
+  descripcion: "Este conformado por "
+  fecha_inicio: "2014-12-01"
+  fecha_fin: "2015-06-30"
+  presupuesto: 0
+  owner: 7
+  visibilidad: 2
+row3: 
+  ID: 4
+  nick: "rrnn"
+  nombre: >
+    "GeoPortal de Recursos Naturales de
+    Tungurahua"
+  descripcion: ""
+  fecha_inicio: "2015-01-01"
+  fecha_fin: "2015-12-04"
+  presupuesto: 0
+  owner: 7
+  visibilidad: 1
+row4: 
+  ID: 11
+  nick: "Mayorga"
+  nombre: "Sistema de Pedidos"
+  descripcion: "App Android y Web Service en PHP"
+  fecha_inicio: "2014-12-05"
+  fecha_fin: "2015-01-30"
+  presupuesto: 0
+  owner: 7
+  visibilidad: 1
+row5: 
+  ID: 12
+  nick: "¿Conoces el Ecuador?"
+  nombre: "Diviertete conociendo el Ecuador"
+  descripcion: >
+    "APP con información turística de cada
+    provincia categorizada en gastronomia,
+    cultura, lugares, historia"
+  fecha_inicio: "2015-02-01"
+  fecha_fin: "2015-12-31"
+  presupuesto: 0
+  owner: 7
+  visibilidad: 3

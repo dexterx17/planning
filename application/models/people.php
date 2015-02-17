@@ -59,7 +59,7 @@ class People extends CI_Model{
 	function get_all(){
 		$res = $this->db->query('select * from '.$this->table_name);
 		
-		return $res;
+		return $res->result_array();
 	}
 	
 		
@@ -149,6 +149,22 @@ class People extends CI_Model{
 			}catch(Exception $e){
 				show_error($e->getMessage().' --- '.$e->getTraceAsString());
 				return null;
+			} 
+	}
+
+	/**
+	 * Elimina todos los usuarios
+	 * 
+	 * @return boolean Devuelve true o false
+	 */
+	public function delete_all(){
+		try{
+			$this->db->where('ID != ',0);
+			return $this->db->delete($this->table_name);
+			
+			}catch(Exception $e){
+				show_error($e->getMessage().' --- '.$e->getTraceAsString());
+				return false;
 			} 
 	}
 }

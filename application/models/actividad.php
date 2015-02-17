@@ -95,7 +95,7 @@ class Actividad extends CI_Model{
 	function get_all(){
 		$res = $this->db->query('select * from '.$this->table_name);
 		
-		return $res;
+		return $res->result_array();
 	}
 	
 		
@@ -163,6 +163,19 @@ class Actividad extends CI_Model{
 			} 
 	}
 
+	/**
+	 * Devuelve el estado de la actividad
+	 *@param integer $id Clave primaria de la actividad
+	 **/
+	function get_estado($id){
+		$this->db->where('ID',$id);
+		$this->db->select('estado');
+		$res = $this->db->get($this->table_name)->result_array();
+		if (!empty($res))
+			return $res[0]['estado'];
+		else
+			return -1;
+	}
 	/**
 	 * Devuelve el número de actividades de un proyecto
 	 * @param integer $proyecto Clave primaria del proyecto

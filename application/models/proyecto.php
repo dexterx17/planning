@@ -72,7 +72,7 @@ class Proyecto extends CI_Model{
 	function get_all(){
 		$res = $this->db->query('select * from '.$this->table_name);
 		
-		return $res;
+		return $res->result_array();
 	}
 	
 	/**

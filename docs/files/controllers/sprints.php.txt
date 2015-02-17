@@ -7,7 +7,14 @@
  * @package planning
  * @subpackage controllers
  */
-class Sprints extends CI_Controller {
+class Sprints extends MY_Controller {
+
+	var $data;
+
+	function __construct(){
+		parent::__construct();
+		$this->data['controller_name']="sprints";
+	}
 
 	 /**
      * Muestra una vista con el listado de sprints de un proyecto y los botones realizar operaciones CRUD
@@ -16,48 +23,82 @@ class Sprints extends CI_Controller {
 	public function index($proyecto)
 	{
 		try{
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
-			$data['proyecto']=$proyecto;
+			$this->data['proyecto']=$proyecto;
 			$ultimo = $this->input->post('ultimo_id');
+			$this->data['estados_tarea'] = $this->configuracion->get_comboBox('estado_tarea');
+			$this->data['actividades']= $this->actividad->get_by_proyecto_sin_sprint($proyecto);
+
 			if($ultimo)
 			{
 	            $nuevos_datos = $this->sprint->get_with_limits($ultimo,$proyecto);
 	            if($nuevos_datos){      
 		            foreach ($nuevos_datos as $fila) {
-		            		get_row_sprint($fila,$data['items']);
+		            		$fila['actividades']=$this->actividad->get_by_sprint($fila['ID']);
+		            		get_row_sprint($fila,$this->data['items']);
 			            }
 			         }
 	      }	else{
-			$data['items']=$this->sprint->get_with_limits(0,$proyecto);
-			$this->load->view('sprints/manage',$data);
+			$this->data['items']=$this->sprint->get_with_limits(0,$proyecto);
+			$this->load->view('sprints/manage',$this->data);
 		  }
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
 	}
+
+    /**
+     * Muestra un row con información del sprint
+     * 
+     * @param integer $clave Clave primaria del sprint EJ: 2
+     */
+    public function get_row($clave=-1)
+    {
+        try{
+            $this->data['info'] = (array) $this->sprint->get_full_info($clave);
+            $this->load->view('sprints/block',$this->data);
+        }catch(Exception $e){
+            show_error($e->getMessage().' --- '.$e->getTraceAsString());
+        }
+    }
+
+    /**
+     * Retorna un bloque html con información del sprint
+     * 
+     * @param integer $clave Clave primaria del sprint EJ: 2
+     */
+    public function get_detail_row($clave=-1)
+    {
+        try{
+            $this->data['info'] = (array) $this->sprint->get_info($clave);
+            $this->load->view('sprints/block_detail',$this->data);
+            
+        }catch(Exception $e){
+            show_error($e->getMessage().' --- '.$e->getTraceAsString());
+        }
+    }
+
 	/**
-	 * Ok
+	 * Muestra la vista principal de un sprint
 	 * 
-	 * @ignore
+	 * @param integer $sprint_id Clave primaria del sprint
 	 **/
-	function test(){
-		return anchor('#','Test');
+	function view($sprint_id){
+		$this->data['info']=(array)$this->sprint->get_info($sprint_id);
+		$this->load->view('sprints/view',$this->data);
 	}
 	
 	/**
 	 * Muestra un formulario que permite ingresar y modificar los datos de un sprint
 	 * 
 	 * @param integer $clave Clave primaria del Sprint
-	 * @param integer $proyecto Clave primiria del Proyecto
+	 * @param integer $proyecto Clave primaria del Proyecto
 	 */
 	public function nuevo($clave=-1,$proyecto)
 	{
 		try{
-			
-			$data['controller_name'] = strtolower($this->uri->segment($this->config->item('index_seg_controller')));
-			$data['info']=(array)$this->sprint->get_info($clave);
-			$data['proyecto']=$proyecto;
-			$this->load->view('sprints/form',$data);
+			$this->data['info']=(array)$this->sprint->get_info($clave);
+			$this->data['proyecto']=$proyecto;
+			$this->load->view('sprints/form',$this->data);
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
@@ -85,9 +126,14 @@ class Sprints extends CI_Controller {
 					'porcentaje_valido'=>$this->input->post('porcentaje_valido'),
 					'proyecto'=>$this->input->post('proyecto')
 					);
+
+				if($ID==-1){
+                    $orden = $this->sprint->get_next_orden($data['proyecto']);
+                    $data['num']=(isset($orden[0]['num']))?$orden[0]['num']:1;
+                }
 					
-				if($this->sprint->save($ID,$data)){
-					echo json_encode(array('error'=>false,'message'=>'TODO BIEN'));
+				if($ID = $this->sprint->save($ID,$data)){
+					echo json_encode(array('error'=>false,'message'=>'TODO BIEN','sprint_id'=>$ID));
 				}else{
 					echo json_encode(array('error'=>true,'message'=>'Error al guardar'));
 				}				
@@ -101,5 +147,17 @@ class Sprints extends CI_Controller {
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
 	}
+
+	/**
+     * Elimina una sprint 
+     *@param integer $sprint_id Clave primaria de la sprint
+     **/
+    public function delete($sprint_id){
+        if($ID= $this->sprint->delete($sprint_id)){
+            echo json_encode(array('error'=>false,'message'=>'TODO BIEN','sprint_id'=>$sprint_id));
+        }else{
+            echo json_encode(array('error'=>true,'message'=>'Error al eliminar'));
+        }
+    }
 }
 

@@ -82,9 +82,9 @@ class Tareas extends MY_Controller {
 				$ID= $this->tarea->save($ID,$data);
 				if( $ID && $this->actividad->update_status($this->input->post('actividad'))){
 
-					echo json_encode(array('error'=>false,'message'=>'OK','task_id'=>$ID));
+					echo json_encode(array('error'=>false,'message'=>'OK','task_id'=>$ID,'estado_actividad'=>$this->actividad->get_estado($this->input->post('actividad'))));
 				}else{
-					echo json_encode(array('error'=>true,'message'=>'Error al guardar'));
+					echo json_encode(array('error'=>true,'message'=>'Error al guardar','estado_actividad'=>$this->actividad->get_estado($this->input->post('actividad'))));
 				}		
 				
 			}else{

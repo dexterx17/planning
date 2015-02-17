@@ -12,7 +12,7 @@ class People extends CI_Model{
 	* Nombre de la table en la cual se realizaran las operaciones DML
 	*@var string Nombre de la Tabla
 	**/
-	var $table_name = "people";
+	var $table_name = "users";
 	
 	/**
 	 *Determina si determinado elemento existe
@@ -114,6 +114,41 @@ class People extends CI_Model{
 			}catch(Exception $e){
 				show_error($e->getMessage().' --- '.$e->getTraceAsString());
 				return false;
+			} 
+	}
+
+	/**
+	 * Devuelve los IDS de los proyectos del usuario
+	 *@param integer $user Clave primaria del usuario
+	 **/
+	public function get_involved_projects($user){
+		//Obtengo los proyectos que le pertenecen al usuario
+		$mios = $this->proyecto->get_ids(array('owner'=>$user));
+		$ids = array_column($mios,'ID');
+		//Obtengo los proyectos en los que participa el usuario
+		$participando = $this->team->get_proyectos($user);
+		$parts=array_column($participando,'proyecto');
+		//unifico y mezclo los resultados
+		$resultado= array_unique(array_merge($ids,$parts));
+		return empty($resultado)?array(-1):$resultado;
+	}
+
+	/**
+	 * Devuelve el listado de todas las personas menos las que ya estan agregadas
+	 * @param integer $skip Número desde el cual se cuentan los 10 elementos
+	 */
+	public function get_for_project($proyecto=0){
+		try{
+			$involved_people = $this->team->get_involved_people_ids($proyecto);
+			$ids = array_column($involved_people,'miembro');
+			if(!empty($ids))
+				$this->db->where_not_in('id',$ids);
+
+			return $this->db->get($this->table_name)->result_array();
+				
+			}catch(Exception $e){
+				show_error($e->getMessage().' --- '.$e->getTraceAsString());
+				return null;
 			} 
 	}
 }

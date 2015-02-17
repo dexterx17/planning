@@ -1,0 +1,54 @@
+
+row1: 
+  ID: 1
+  objetivo: >
+    "Estructura basica que permite agregar
+    proyectos y crear su BACKLOG"
+  fecha_inicio: "2015-01-01"
+  fecha_fin: "2015-01-12"
+  horas_planificadas: 0
+  porcentaje_valido: 0
+  proyecto: 1
+  num: 1
+row2: 
+  ID: 2
+  objetivo: >
+    "Implementar la BDD, la conexion y la
+    estrucutra básica de la APP"
+  fecha_inicio: "2014-12-12"
+  fecha_fin: "2014-12-22"
+  horas_planificadas: 20
+  porcentaje_valido: 0
+  proyecto: 11
+  num: 1
+row3: 
+  ID: 5
+  objetivo: >
+    "Listado de vendedores, clientes y
+    productos"
+  fecha_inicio: "2015-01-23"
+  fecha_fin: "2015-01-04"
+  horas_planificadas: 0
+  porcentaje_valido: 0
+  proyecto: 11
+  num: 2
+row4: 
+  ID: 6
+  objetivo: "Iniciar el año con pie derecho"
+  fecha_inicio: "2014-12-28"
+  fecha_fin: "2015-01-05"
+  horas_planificadas: 0
+  porcentaje_valido: 0
+  proyecto: 4
+  num: 
+row5: 
+  ID: 21
+  objetivo: >
+    "Control de Flujo de tareas y
+    asignación de usuarios"
+  fecha_inicio: "2015-04-21"
+  fecha_fin: "2015-01-31"
+  horas_planificadas: 0
+  porcentaje_valido: 0
+  proyecto: 1
+  num: 

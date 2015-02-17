@@ -189,29 +189,58 @@ function reload_status_actividades(settings){
   // Render options
     var options = $.extend({
         hide_tasks:[],
-        hide_users:[]
+        hide_users:[],
+        ids_especificos:[]
     }, settings);
-
- $('#backlog-content>div[id^="actividad"], #tablero-kanban>div.row div[id^="actividad"]').each(function(event) {
-        var $li = $(this);
-        $li.show('fast');
-        var estado=parseInt($li.attr('status'));
-        var responsables=$li.attr('responsable').split(',');
-        switch(estado){
-            case 1: $li.children('.box-header').first().addClass('bg-red-gradient'); break;
-            case 2: $li.children('.box-header').first().addClass('bg-yellow-gradient'); break;
-            case 3: $li.children('.box-header').first().addClass('bg-green-gradient'); break;
-        }
-        $.each(options.hide_tasks, function(index, val) {
-            if(val==estado){
-                $li.fadeOut('fast');
-            }
-        });
-        if(responsables.length==1){
-	        if($.inArray(parseInt(responsables[0]),options.hide_users)>=0){
-	            $li.fadeOut('fast');
+	if(options.ids_especificos.length==0){
+	 $('#backlog-content>div[id^="actividad"], #tablero-kanban>div.row div[id^="actividad"]').each(function(event) {
+	        var $li = $(this);
+	        $li.show('fast');
+	        var estado=parseInt($li.attr('status'));
+	        var responsables=$li.attr('responsable').split(',');
+	        switch(estado){
+	            case 1: $li.children('.box-header').first().addClass('bg-red-gradient'); break;
+	            case 2: $li.children('.box-header').first().addClass('bg-yellow-gradient'); break;
+	            case 3: $li.children('.box-header').first().addClass('bg-green-gradient'); break;
 	        }
-	    }
+	        $.each(options.hide_tasks, function(index, val) {
+	            if(val==estado){
+	                $li.fadeOut('fast');
+	            }
+	        });
+	        if(responsables.length==1){
+		        if($.inArray(parseInt(responsables[0]),options.hide_users)>=0){
+		            $li.fadeOut('fast');
+		        }
+		    }
 
-    });
+	    });
+	}else{
+		 $.each(options.ids_especificos, function(index, val) {
+				$('#backlog-content>div[id="actividad'+val+'"], #tablero-kanban>div.row div[id="actividad'+val+'"]').each(function(event) {
+			        var $li = $(this);
+			        $li.show('fast');
+			        var estado=parseInt($li.attr('status'));
+			        var responsables=$li.attr('responsable').split(',');
+			        
+			        $li.children('.box-header').first().removeClass('bg-green-gradient bg-red-gradient bg-yellow-gradient');
+			        switch(estado){
+			            case 1: $li.children('.box-header').first().addClass('bg-red-gradient'); break;
+			            case 2: $li.children('.box-header').first().addClass('bg-yellow-gradient'); break;
+			            case 3: $li.children('.box-header').first().addClass('bg-green-gradient'); break;
+			        }
+			        $.each(options.hide_tasks, function(index, val) {
+			            if(val==estado){
+			                $li.fadeOut('fast');
+			            }
+			        });
+			        if(responsables.length==1){
+				        if($.inArray(parseInt(responsables[0]),options.hide_users)>=0){
+				            $li.fadeOut('fast');
+				        }
+				    }
+
+			    });
+	        });
+	}
 }

@@ -48,6 +48,7 @@
   $('#tiempo_real').spinner();
   var id_actividad = $('#ID').val();
   var title =$('#nombre').val();
+  var estado =$('#estado').val();
  $('#<?php echo $controller_name; ?>-form').validate({
   rules: {
    nick: {
@@ -68,6 +69,7 @@
   
   submitHandler: function( form ) {
         title =$('#nombre').val();
+        estado =$('#estado').val();
         $.ajax({
             url : '<?php echo site_url($controller_name);?>/save',
             data : $('#<?php echo $controller_name; ?>-form').serialize(),
@@ -82,7 +84,9 @@
                 });
              }else{
                 $('#actividadbody'+id_actividad).load('<?php echo site_url($controller_name);?>/get_detail_row/'+id_actividad, function(data) {
-                $('#actividad'+id_actividad+' .activity_title').html(title);  
+                $('#actividad'+id_actividad+' .activity_title').html(title);
+                $('#actividad'+id_actividad).attr('status',estado); 
+                 reload_status_actividades({ids_especificos:[id_actividad]});
                 });
              }
             }else
@@ -98,7 +102,7 @@
     $('#actividadsillas').html('');
   }else{
      $('#actividadbody'+id_actividad).load('<?php echo site_url($controller_name);?>/get_detail_row/'+id_actividad, function(data) {
-     $('#actividad'+id_actividad+' .activity_title').html(title);  
+     $('#actividad'+id_actividad+' .activity_title').html(title);
    });
   }
  });

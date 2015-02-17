@@ -14,6 +14,10 @@
    <div class="container">
             <h1>No of Devices Registered: <?php echo count($usuarios); ?></h1>
             <hr/>
+            <input type="button" class="notificarme" value="Enviarme actualizaciones" />
+            <div id="res">
+                
+            </div>
             <ul class="devices">
                 <?php
                 if (count($usuarios) > 0) {
@@ -47,7 +51,19 @@
 <?php $this -> load -> view('inicio/footer'); ?>
   <script type="text/javascript">
     $(document).ready(function(){
-                
+        $(document).on('click', '.notificarme', function(event) {
+            event.preventDefault();          
+            $.ajax({
+                url: '<?php echo site_url("notificaciones/notificar"); ?>',
+                type: 'POST',
+                data: {},
+                success: function(data, textStatus, xhr) {
+                      $('#res').html(data);
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                }
+            });
+        });
             });
             function sendPushNotification(id){
                 var data = $('form#'+id).serialize();

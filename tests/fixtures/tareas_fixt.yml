@@ -1,0 +1,79 @@
+
+row1: 
+  ID: 1
+  nombre: "Formulario Login"
+  descripcion: >
+    "Vista para solicitar usuario y
+    contrasena"
+  tiempo_planificado: 0
+  tiempo_real: 0
+  estado: 1
+  actividad: 1
+  orden: 
+  creador: 7
+  columna: 
+  responsable: 
+  fecha_fin: "0000-00-00 00:00:00"
+row2: 
+  ID: 2
+  nombre: "Formularioa registro"
+  descripcion: >
+    "Vista para solicitar la info basica de
+    un usuario"
+  tiempo_planificado: 0
+  tiempo_real: 0
+  estado: 1
+  actividad: 1
+  orden: 
+  creador: 7
+  columna: 
+  responsable: 
+  fecha_fin: "0000-00-00 00:00:00"
+row3: 
+  ID: 4
+  nombre: >
+    "Disenio estructura general Paginas
+    Maestras"
+  descripcion: >
+    "En este tipode vistas por lo general
+    esta un listado de elementos y se pueden
+    realizar operaciones basicas"
+  tiempo_planificado: 0
+  tiempo_real: 0
+  estado: 1
+  actividad: 2
+  orden: 
+  creador: 7
+  columna: 
+  responsable: 
+  fecha_fin: "0000-00-00 00:00:00"
+row4: 
+  ID: 5
+  nombre: >
+    "Buscar en la web el plugin open source
+    mas potente"
+  descripcion: >
+    "Buscar un plugin con soporte para
+    tablas, imagenes, etc"
+  tiempo_planificado: 0
+  tiempo_real: 0
+  estado: 1
+  actividad: 3
+  orden: 
+  creador: 7
+  columna: 
+  responsable: 
+  fecha_fin: "0000-00-00 00:00:00"
+row5: 
+  ID: 6
+  nombre: "Errores en nuevo"
+  descripcion: "El evento onclick se enlaza dos veces"
+  tiempo_planificado: 1
+  tiempo_real: 1
+  estado: 3
+  actividad: 7
+  orden: 
+  creador: 7
+  columna: 
+  responsable: 
+  fecha_fin: "0000-00-00 00:00:00"

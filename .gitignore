@@ -11,5 +11,6 @@ application/config/mongodb.php
 !application/logs/.htaccess
 /nbproject/private/
 node_modules/
+docs/
 Gruntfile.js
 package.json
