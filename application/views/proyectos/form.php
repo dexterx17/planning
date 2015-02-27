@@ -8,8 +8,34 @@
 	<form role="form" class="form-horizontal" action="<?php echo site_url($controller_name.'/save') ?>" method="post" id="<?php echo $controller_name; ?>-form">
 		<div class="box-body">
 			<div id="errors" class="alert-info"></div>
-			<?php echo get_row_form(lang('comun_nick'),'nick',$info['nick']); ?>
-			<?php echo get_row_form(lang('comun_name'),'nombre',$info['nombre']); ?>
+			<div class="form-group">
+				<?php echo form_label(lang('comun_nick'),'nick',array('class'=>'control-label col-sm-2')); ?>
+				<div class="col-sm-10">
+					<?php echo form_input(array(
+								 'name'=>"nick",
+                                'id'=>"nick",
+                                'value'=>$info['nick'],
+                                'class'=>'form-control',
+                                'placeholder'=>lang('comun_nick'),
+                                'autofocus'=>'autofocus',
+                                'required'=>'required',
+                                'maxlength'=>'50'
+							)); ?>
+				</div>
+			</div>
+			<div class="form-group">
+				<?php echo form_label(lang('comun_name'),'nombre',array('class'=>'control-label col-sm-2')); ?>
+				<div class="col-sm-10">
+					<?php echo form_input(array(
+								 'name'=>"nombre",
+                                'id'=>"nombre",
+                                'value'=>$info['nombre'],
+                                'class'=>'form-control',
+                                'placeholder'=>lang('comun_name'),
+                                'required'=>'required'
+							)); ?>
+				</div>
+			</div>
 			<?php echo get_row_form(lang('comun_description'),'descripcion',$info['descripcion']); ?>
 			<?php echo get_row_form(lang('comun_date_start'),'fecha_inicio',$info['fecha_inicio']); ?>
 			<?php echo get_row_form(lang('comun_date_end'),'fecha_fin',$info['fecha_fin']); ?>
@@ -17,20 +43,24 @@
 			<?php echo get_row_form(lang('comun_visibilidad'),'visibilidad',$info['visibilidad'],$this->config->item('projects_visivility','parametros')); ?>
 			<?php echo form_input(array('type'=>'hidden','name'=>'ID','value'=>$info['ID'],'id'=>'ID')); ?>
 			<div class="box-footer">
-				<div class="btn-group">
-				<?php echo form_input(array(
-							'type'=>'button',
-							'name'=>'cancelar',
-							'id'=>'cancelar',
-							'value'=>lang('comun_cancel'),
-							'class'=>'btn'
-							));	?>
-				<?php echo form_submit(array(
-									'name'=>'submit',
-									'id'=>'submit',
-									'value'=>lang('comun_submit'),
-									'class'=>'btn'
+				<div class="btn-group btn-group-justified" role="group">
+	        		<div class="btn-group">
+						<?php echo form_input(array(
+									'type'=>'button',
+									'name'=>'cancelar',
+									'id'=>'cancelar',
+									'value'=>lang('comun_cancel'),
+									'class'=>'btn bg-verde-gris-claro'
 									));	?>
+					</div>
+	        		<div class="btn-group">
+						<?php echo form_submit(array(
+											'name'=>'submit',
+											'id'=>'submit',
+											'value'=>lang('comun_submit'),
+											'class'=>'btn bg-verde-gris'
+											));	?>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -39,6 +69,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+	$('#nick').focus();
  var id_proyecto = $('#ID').val();
  $('#<?php echo $controller_name; ?>-form').validate({
   rules: {
@@ -56,6 +87,7 @@ $(document).ready(function() {
   },
   success: function(element) {
    element.closest('.form-group').removeClass('has-error').addClass('has-success');
+   element.closest('.error').remove();
   }, 
   
   submitHandler: function( form ) {
@@ -87,14 +119,23 @@ $(document).ready(function() {
 	 	theme:'dark',
 	 	timepicker:false,
 	 	format:'Y/m/d',
-		formatDate:'Y/m/d'
+		formatDate:'Y/m/d',
+		onShow:function( ct ){
+		   this.setOptions({
+		    maxDate:jQuery('#fecha_fin').val()?jQuery('#fecha_fin').val():false
+		   })
+		},
 	});
-	//$("#fecha_inicio").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
 	$('#fecha_fin').datetimepicker({
 	 	theme:'dark',
 	 	timepicker:false,
 	 	format:'Y/m/d',
-		formatDate:'Y/m/d'
+		formatDate:'Y/m/d',
+		onShow:function( ct ){
+		   this.setOptions({
+		    minDate:jQuery('#fecha_inicio').val()?jQuery('#fecha_inicio').val():false
+		   })
+		},
 	});
 
  $('#cancelar').click(function(){

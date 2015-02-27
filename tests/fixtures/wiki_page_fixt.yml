@@ -9,3 +9,39 @@ row1:
   fecha: "2015-02-13 22:25:44"
   creador: 7
   proyecto: 11
+row2: 
+  ID: 2
+  titulo: >
+    "Generar asdasdfsdf"
+  contenido: |
+    "1) inicializar npm en raiz de proyecto (crea archivo package.json)<br><blockquote><i><b>npm init</b></i><br></blockquote>2) instar plugin de grunt en la raiz del proyecto <br><blockquote><b><i>npm install grunt-phpdocumentor --save-dev</i></b><br></blockquote>3)Crear archivo Gruntfile.js en la raíz del proyecto.<br><blockquote>module.exports = function (grunt){<br><blockquote>grunt.initConfig({<br><blockquote>phpdocumentor:{<br><blockquote>dist:{<br><blockquote>directory:[\'./application/controllers\',\'./application/models\',\'./application/helpers\'],<br>target:\'docs\'<br></blockquote>}<br></blockquote>}<br></blockquote>});<br>//Carga el plugin phpdocumentor<br>grunt.loadNpmTasks(\'grunt-phpdocumentor\');<br>//Registra el plugin, para luego invocarlo solamente con \"grunt documentar\"<br>grunt.registerTask(\'documentar\',[\'phpdocumentor\']);<br></blockquote>}<br></blockquote>"
+  fecha: "2015-02-13 22:25:45"
+  creador: 7
+  proyecto: 11
+row3: 
+  ID: 3
+  titulo: >
+    "Generar dasdfsdafdsf"
+  contenido: |
+    "1) inicializar npm en raiz de proyecto (crea archivo package.json)<br><blockquote><i><b>npm init</b></i><br></blockquote>2) instar plugin de grunt en la raiz del proyecto <br><blockquote><b><i>npm install grunt-phpdocumentor --save-dev</i></b><br></blockquote>3)Crear archivo Gruntfile.js en la raíz del proyecto.<br><blockquote>module.exports = function (grunt){<br><blockquote>grunt.initConfig({<br><blockquote>phpdocumentor:{<br><blockquote>dist:{<br><blockquote>directory:[\'./application/controllers\',\'./application/models\',\'./application/helpers\'],<br>target:\'docs\'<br></blockquote>}<br></blockquote>}<br></blockquote>});<br>//Carga el plugin phpdocumentor<br>grunt.loadNpmTasks(\'grunt-phpdocumentor\');<br>//Registra el plugin, para luego invocarlo solamente con \"grunt documentar\"<br>grunt.registerTask(\'documentar\',[\'phpdocumentor\']);<br></blockquote>}<br></blockquote>"
+  fecha: "2015-02-13 22:25:50"
+  creador: 7
+  proyecto: 11
+row4: 
+  ID: 4
+  titulo: >
+    "Generar asdfdsaf"
+  contenido: |
+    "1) inicializar npm en raiz de proyecto (crea archivo package.json)<br><blockquote><i><b>npm init</b></i><br></blockquote>2) instar plugin de grunt en la raiz del proyecto <br><blockquote><b><i>npm install grunt-phpdocumentor --save-dev</i></b><br></blockquote>3)Crear archivo Gruntfile.js en la raíz del proyecto.<br><blockquote>module.exports = function (grunt){<br><blockquote>grunt.initConfig({<br><blockquote>phpdocumentor:{<br><blockquote>dist:{<br><blockquote>directory:[\'./application/controllers\',\'./application/models\',\'./application/helpers\'],<br>target:\'docs\'<br></blockquote>}<br></blockquote>}<br></blockquote>});<br>//Carga el plugin phpdocumentor<br>grunt.loadNpmTasks(\'grunt-phpdocumentor\');<br>//Registra el plugin, para luego invocarlo solamente con \"grunt documentar\"<br>grunt.registerTask(\'documentar\',[\'phpdocumentor\']);<br></blockquote>}<br></blockquote>"
+  fecha: "2015-02-13 22:25:54"
+  creador: 7
+  proyecto: 11
+row5: 
+  ID: 5
+  titulo: >
+    "Generar sadfsdaf"
+  contenido: |
+    "1) inicializar npm en raiz de proyecto (crea archivo package.json)<br><blockquote><i><b>npm init</b></i><br></blockquote>2) instar plugin de grunt en la raiz del proyecto <br><blockquote><b><i>npm install grunt-phpdocumentor --save-dev</i></b><br></blockquote>3)Crear archivo Gruntfile.js en la raíz del proyecto.<br><blockquote>module.exports = function (grunt){<br><blockquote>grunt.initConfig({<br><blockquote>phpdocumentor:{<br><blockquote>dist:{<br><blockquote>directory:[\'./application/controllers\',\'./application/models\',\'./application/helpers\'],<br>target:\'docs\'<br></blockquote>}<br></blockquote>}<br></blockquote>});<br>//Carga el plugin phpdocumentor<br>grunt.loadNpmTasks(\'grunt-phpdocumentor\');<br>//Registra el plugin, para luego invocarlo solamente con \"grunt documentar\"<br>grunt.registerTask(\'documentar\',[\'phpdocumentor\']);<br></blockquote>}<br></blockquote>"
+  fecha: "2015-02-13 22:25:55"
+  creador: 7
+  proyecto: 11

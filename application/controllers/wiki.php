@@ -126,12 +126,12 @@ class Wiki extends MY_Controller {
     }
 
     /**
-     * Elimina una actividad 
-     *@param integer $actividad_id Clave primaria de la actividad
+     * Elimina una página de la wiki 
+     *@param integer $wiki_id Clave primaria de la wiki
      **/
-    public function delete($actividad_id){
-        if($ID= $this->actividad->delete($actividad_id)){
-            echo json_encode(array('error'=>false,'message'=>'TODO BIEN','actividad_id'=>$actividad_id));
+    public function delete($wiki_id){
+        if($ID= $this->wik->delete($wiki_id)){
+            echo json_encode(array('error'=>false,'message'=>'TODO BIEN','wiki_id'=>$wiki_id));
         }else{
             echo json_encode(array('error'=>true,'message'=>'Error al eliminar'));
         }

@@ -23,6 +23,10 @@
     <link href="<?php echo base_url() ?>css/droparea.min.css" type="text/css" media="screen, projection" rel="stylesheet" />
      <!-- bootstrap wysihtml5 - text editor -->
     <link href="<?php echo base_url() ?>css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ion Slider -->
+    <link href="<?php echo base_url() ?>css/ionslider/ion.rangeSlider.css" rel="stylesheet" type="text/css" />
+    <!-- ion slider Nice -->
+    <link href="<?php echo base_url() ?>css/ionslider/ion.rangeSlider.skinHTML5.css" rel="stylesheet" type="text/css" />
     <!-- bootstrap slider -->
     <link href="<?php echo base_url() ?>css/bootstrap-slider/slider.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->

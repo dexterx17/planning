@@ -24,7 +24,7 @@
 							<?php echo lang('comun_owner'); ?>
 						</div>
 						<div class="col-sm-6">
-							<?php echo $info['owner']; ?>
+							<?php echo user_miniblock($info['owner']); ?>
 						</div>
 					</div>
 					<div class="row">

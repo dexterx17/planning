@@ -559,7 +559,8 @@ class Auth extends CI_Controller {
 			// do we have a valid request?
 			if ($this->_valid_csrf_nonce() === FALSE || $id != $this->input->post('id'))
 			{
-				show_error($this->lang->line('error_csrf'));
+				 echo json_encode(array('error' => true, 'message' => $this->lang->line('error_csrf')));
+				 return;
 			}
 
 			//update the password if it was posted
@@ -616,81 +617,83 @@ class Auth extends CI_Controller {
 				    echo json_encode(array('error' => true, 'message' => $this->ion_auth->errors()));
 			    }
 
+			}else{
+				$this->session->set_flashdata('csrfkey', $this->input->post($this->session->flashdata('csrfkey')));
+				$this->session->set_flashdata('csrfvalue', $this->input->post($this->session->flashdata('csrfvalue')));
+				 echo json_encode(array('error' => true, 'message' => validation_errors()));
 			}
 		}else{
+			//display the edit user form
+			$this->data['csrf'] = $this->_get_csrf_nonce();
 
-		//display the edit user form
-		$this->data['csrf'] = $this->_get_csrf_nonce();
+			//set the flash data error message if there is one
+			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
-		//set the flash data error message if there is one
-		$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+			//pass the user to the view
+			$this->data['user'] = $user;
+			$this->data['groups'] = $groups;
+			$this->data['currentGroups'] = $currentGroups;
 
-		//pass the user to the view
-		$this->data['user'] = $user;
-		$this->data['groups'] = $groups;
-		$this->data['currentGroups'] = $currentGroups;
-
-		$this->data['first_name'] = array(
-			'name'  => 'first_name',
-			'id'    => 'first_name',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('first_name', $user->first_name),
-			'class' => 'form-control'
-		);
-		$this->data['last_name'] = array(
-			'name'  => 'last_name',
-			'id'    => 'last_name',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('last_name', $user->last_name),
-			'class' => 'form-control'
-		);
-		$this->data['company'] = array(
-			'name'  => 'company',
-			'id'    => 'company',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('company', $user->company),
-			'class' => 'form-control'
-		);
-		$this->data['phone'] = array(
-			'name'  => 'phone',
-			'id'    => 'phone',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('phone', $user->phone),
-			'class' => 'form-control'
-		);
-		$this->data['password'] = array(
-			'name' => 'password',
-			'id'   => 'password',
-			'type' => 'password',
-			'class' => 'form-control'
-		);
-		$this->data['password_confirm'] = array(
-			'name' => 'password_confirm',
-			'id'   => 'password_confirm',
-			'type' => 'password',
-			'class' => 'form-control'
-		);
-		$this->data['latitud'] = array(
-			'name'  => 'latitud',
-			'id'    => 'latitud',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('latitud', $user->latitud),
-			'class' => 'form-control'
-		);
-		$this->data['longitud'] = array(
-			'name'  => 'longitud',
-			'id'    => 'longitud',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('longitud', $user->longitud),
-			'class' => 'form-control'
-		);
-
-		if(!$this->data['message']){
-			$this->_render_page('auth/edit_user', $this->data);
-		}else{
-			echo json_encode(array('error' => true, 'message' => $this->data['message']));
+			$this->data['first_name'] = array(
+				'name'  => 'first_name',
+				'id'    => 'first_name',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('first_name', $user->first_name),
+				'class' => 'form-control'
+			);
+			$this->data['last_name'] = array(
+				'name'  => 'last_name',
+				'id'    => 'last_name',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('last_name', $user->last_name),
+				'class' => 'form-control'
+			);
+			$this->data['company'] = array(
+				'name'  => 'company',
+				'id'    => 'company',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('company', $user->company),
+				'class' => 'form-control'
+			);
+			$this->data['phone'] = array(
+				'name'  => 'phone',
+				'id'    => 'phone',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('phone', $user->phone),
+				'class' => 'form-control'
+			);
+			$this->data['password'] = array(
+				'name' => 'password',
+				'id'   => 'password',
+				'type' => 'password',
+				'class' => 'form-control'
+			);
+			$this->data['password_confirm'] = array(
+				'name' => 'password_confirm',
+				'id'   => 'password_confirm',
+				'type' => 'password',
+				'class' => 'form-control'
+			);
+			$this->data['latitud'] = array(
+				'name'  => 'latitud',
+				'id'    => 'latitud',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('latitud', $user->latitud),
+				'class' => 'form-control'
+			);
+			$this->data['longitud'] = array(
+				'name'  => 'longitud',
+				'id'    => 'longitud',
+				'type'  => 'text',
+				'value' => $this->form_validation->set_value('longitud', $user->longitud),
+				'class' => 'form-control'
+			);
+			if(!$this->data['message']){
+				$this->_render_page('auth/edit_user', $this->data);
+			}else{
+				echo json_encode(array('error' => true, 'message' => $this->data['message']));
+			}
 		}
-	}
 	}
 
 	/**

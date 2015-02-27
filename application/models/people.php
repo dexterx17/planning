@@ -123,8 +123,7 @@ class People extends CI_Model{
 	 **/
 	public function get_involved_projects($user){
 		//Obtengo los proyectos que le pertenecen al usuario
-		$mios = $this->proyecto->get_ids(array('owner'=>$user));
-		$ids = array_column($mios,'ID');
+		$ids = $this->proyecto->get_ids(array('owner'=>$user));
 		//Obtengo los proyectos en los que participa el usuario
 		$participando = $this->team->get_proyectos($user);
 		$parts=array_column($participando,'proyecto');

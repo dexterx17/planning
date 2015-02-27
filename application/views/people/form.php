@@ -26,12 +26,51 @@
 			
 			<form action="<?php echo site_url($controller_name.'/save') ?>" method="post" id="<?php echo $controller_name; ?>-form" >
 				<div id="errors" class="alert-info"></div>
-				<?php echo get_row_form(lang('comun_nick'),'nick', $info['nick']); ?>
+				<div class="form-group">
+					<?php echo form_label(lang('comun_nick'),'nick',array('class'=>'control-label col-sm-2')); ?>
+					<div class="col-sm-10">
+						<?php echo form_input(array(
+									 'name'=>"nick",
+	                                'id'=>"nick",
+	                                'value'=>$info['nick'],
+	                                'class'=>'form-control',
+	                                'placeholder'=>lang('comun_nick'),
+	                                'autofocus'=>'autofocus',
+	                                'required'=>'required'
+								)); ?>
+					</div>
+				</div>
 				<?php echo get_row_form(lang('comun_names'),'nombres',$info['nombres']); ?>
 				<?php echo get_row_form(lang('comun_lastnames'),'apellidos',$info['apellidos']); ?>
-				<?php echo get_row_form(lang('comun_email'),'email',$info['email']); ?>
+				<div class="form-group">
+					<?php echo form_label(lang('comun_email'),'email',array('class'=>'control-label col-sm-2')); ?>
+					<div class="col-sm-10">
+						<?php echo form_input(array(
+									'type'=>'email',
+									'name'=>"email",
+	                                'id'=>"email",
+	                                'value'=>$info['email'],
+	                                'class'=>'form-control',
+	                                'placeholder'=>lang('comun_email'),
+	                                'required'=>'required'
+								)); ?>
+					</div>
+				</div>
 				<?php echo get_row_form(lang('comun_address'),'direccion',$info['direccion']); ?>
-				<?php echo get_row_form(lang('comun_phone'),'telefono',$info['telefono']); ?>
+				<div class="form-group">
+					<?php echo form_label(lang('comun_phone'),'telefono',array('class'=>'control-label col-sm-2')); ?>
+					<div class="col-sm-10">
+						<?php echo form_input(array(
+									'type'=>'tel',
+									'name'=>"telefono",
+	                                'id'=>"telefono",
+	                                'value'=>$info['telefono'],
+	                                'class'=>'form-control',
+	                                'placeholder'=>lang('comun_phone'),
+	                                'required'=>'required'
+								)); ?>
+					</div>
+				</div>
 				<?php echo get_row_form(lang('comun_cellphone'),'celular',$info['celular']); ?>
 				<?php echo get_row_form(lang('comun_latitude'),'latitud',$info['latitud']); ?>
 				<?php echo get_row_form(lang('comun_longitude'),'longitud',$info['longitud']); ?>
@@ -130,10 +169,11 @@ $(document).ready(function() {
    }
   },
   highlight: function(element) {
-   $(element).closest('.control-group').removeClass('success').addClass('error');
+   $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
   },
   success: function(element) {
-   element.text('OK!').addClass('valid').closest('.control-group').removeClass('error').addClass('success');
+   element.closest('.form-group').removeClass('has-error').addClass('has-success');
+   element.closest('.error').remove();
   }, 
   
   submitHandler: function( form ) {

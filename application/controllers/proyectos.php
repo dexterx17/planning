@@ -122,11 +122,11 @@ class Proyectos extends MY_Controller {
 				if($ID==-1){
 					$data['owner']=$this->user->id;
 				}
-					
-				if($ID= $this->proyecto->save($ID,$data)){
-					echo json_encode(array('error'=>false,'message'=>'TODO BIEN','proyecto_id'=>$ID));
+				$resultado= $this->proyecto->save($ID,$data);
+				if(!$resultado['error']){
+					echo json_encode(array('error'=>false,'message'=>'TODO BIEN','proyecto_id'=>$resultado['ID']));
 				}else{
-					echo json_encode(array('error'=>true,'message'=>'Error al guardar'));
+					echo json_encode(array('error'=>true,'message'=>$resultado['msg']));
 				}				
 				
 			}else{
@@ -144,10 +144,11 @@ class Proyectos extends MY_Controller {
 	 *@param integer $proyecto_id Clave primaria del proyecto
 	 **/
 	public function delete($proyecto_id){
-		if($ID= $this->proyecto->delete($proyecto_id)){
+		$resultado= $this->proyecto->delete($proyecto_id);
+		if(!$resultado['error']){
 			echo json_encode(array('error'=>false,'message'=>'TODO BIEN','proyecto_id'=>$proyecto_id));
 		}else{
-			echo json_encode(array('error'=>true,'message'=>'Error al eliminar'));
+			echo json_encode(array('error'=>true,'message'=>$resultado['msg']));
 		}	
 	}
 

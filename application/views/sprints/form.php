@@ -62,6 +62,7 @@ $(document).ready(function() {
   },
   success: function(element) {
    element.closest('.form-group').removeClass('has-error').addClass('has-success');
+   element.closest('.error').remove();
   }, 
   
   submitHandler: function( form ) {

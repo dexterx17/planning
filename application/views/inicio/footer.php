@@ -36,7 +36,9 @@
     <script src="<?php echo base_url() ?>js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
     <!-- Bootstrap slider -->
     <script src="<?php echo base_url() ?>js/plugins/bootstrap-slider/bootstrap-slider.js" type="text/javascript"></script>
-        
+    <!-- Ion Slider -->
+    <script src="<?php echo base_url() ?>js/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+
     <!-- AdminLTE App -->
     <script src="<?php echo base_url() ?>js/AdminLTE/app.js" type="text/javascript"></script>
 

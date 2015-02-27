@@ -40,7 +40,8 @@ class Proyecto extends CI_Model{
 		foreach ($where as $key => $value) {
 			$this->db->where($key,$value);
 		}
-		return $this->db->get($this->table_name)->result_array();
+		$resultado =$this->db->get($this->table_name)->result_array();
+		return !empty($resultado) ? array_column($resultado,'ID') : array();
 	}
 
 	/**
@@ -81,14 +82,8 @@ class Proyecto extends CI_Model{
 	 * @param integer $skip Número desde el cual se cuentan los 10 elementos
 	 */
 	public function get_where_in($ids,$skip=0){
-		try{
-				$this->db->where_in('ID',$ids);
-				return  $this->db->get($this->table_name,10,$skip)->result_array();
-				
-			}catch(Exception $e){
-				return null;
-				show_error($e->getMessage().' --- '.$e->getTraceAsString());
-			} 
+			$this->db->where_in('ID',$ids);
+			return  $this->db->get($this->table_name,10,$skip)->result_array();
 	}
 
 	/**
@@ -96,14 +91,7 @@ class Proyecto extends CI_Model{
 	 * @param integer $skip Número desde el cual se cuentan los 10 elementos
 	 */
 	public function get_with_limits($skip=0){
-		try{
-			
-				return  $this->db->get($this->table_name,10,$skip)->result_array();
-				
-			}catch(Exception $e){
-				show_error($e->getMessage().' --- '.$e->getTraceAsString());
-				return null;
-			} 
+		return  $this->db->get($this->table_name,10,$skip)->result_array();
 	}
 	
 	/**
@@ -112,20 +100,18 @@ class Proyecto extends CI_Model{
 	 * @param array $data Array con los datos del elemento
 	 */
 	function save($id,$data){
-		try{
-			
-			if($id==-1 && !$this->exists($id)){
-				if($this->db->insert($this->table_name,$data))
-					return $this->db->insert_id();
-			}
-			
-			$this->db->where('ID',$id);
-			return $this->db->update($this->table_name,$data);
-			
-			}catch(Exception $e){
-				show_error($e->getMessage().' --- '.$e->getTraceAsString());
-				return -1;
-			} 
+		if($id==-1 && !$this->exists($id)){
+			if($this->db->insert($this->table_name,$data))
+				return array('error'=>FALSE,'ID'=>$this->db->insert_id());
+			else
+				return array('error'=>TRUE,'msg'=>$this->db->_error_message(),'code'=>$this->db->_error_number());
+		}
+		
+		$this->db->where('ID',$id);
+		if ($actualizado = $this->db->update($this->table_name,$data))
+			return array('error'=>FALSE,'ID'=>$actualizado);
+		else
+			return array('error'=>TRUE,'msg'=>$this->db->_error_message(),'code'=>$this->db->_error_number());	
 	}
 	
 	/**
@@ -135,15 +121,11 @@ class Proyecto extends CI_Model{
 	 * @return boolean Devuelve true o false
 	 */
 	public function delete($id){
-		try{
-			
-			$this->db->where('ID',$id);
-			return $this->db->delete($this->table_name);
-			
-			}catch(Exception $e){
-				show_error($e->getMessage().' --- '.$e->getTraceAsString());
-				return false;
-			} 
+		$this->db->where('ID',$id);
+		if($eliminado = $this->db->delete($this->table_name))
+			return array('error'=>FALSE,'eliminado'=>$eliminado);
+		else
+			return array('error'=>TRUE,'msg'=>$this->db->_error_message(),'code'=>$this->db->_error_number());	
 	}
 }
 

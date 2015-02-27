@@ -97,20 +97,24 @@
       <?php echo form_hidden($csrf); ?>
 
       <div class="box-footer">
-        <div class="btn-group">
-         <?php echo form_input(array(
+        <div class="btn-group btn-group-justified" role="group">
+          <div class="btn-group">
+              <?php echo form_input(array(
                   'type'=>'button',
                   'name'=>'cancelar',
                   'id'=>'cancelar',
                   'value'=>lang('comun_cancel'),
-                  'class'=>'btn'
+                  'class'=>'btn bg-verde-gris-claro'
                   )); ?>
-           <?php echo form_submit(array(
+            </div>
+            <div class="btn-group">
+              <?php echo form_submit(array(
                   'name'=>'submit',
                   'id'=>'submit',
                   'value'=>lang('edit_user_submit_btn'),
-                  'class'=>'btn'
+                  'class'=>'btn bg-verde-gris'
                   )); ?>
+              </div>
           </div>
       </div>
 
@@ -178,6 +182,7 @@ $(document).ready(function() {
   },
   success: function(element) {
    element.closest('.form-group').removeClass('has-error').addClass('has-success');
+    element.closest('.error').remove();
   }, 
   
   submitHandler: function( form ) {

@@ -329,6 +329,9 @@ CREATE TABLE wiki_page
 	FOREIGN KEY (creador) REFERENCES users(id)
 );
 
+/** Campo para registrar borrados logicos**/
+ALTER TABLE wiki_page
+ADD COLUMN deleted boolean DEFAULT FALSE;
 
 CREATE TABLE logs_rest (
 	  `id` int(11) NOT NULL AUTO_INCREMENT,

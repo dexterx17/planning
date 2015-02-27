@@ -26,9 +26,9 @@
 	<table class="table table-hover" id="wiki-content">
         <thead>
             <tr>
-                <th width="5%"></th>
+                <th width="10%"></th>
                 <th width="55%"><?php echo lang($controller_name.'_titulo'); ?></th>
-                <th width="30%"><?php echo lang($controller_name.'_creador'); ?></th>
+                <th width="25%"><?php echo lang($controller_name.'_creador'); ?></th>
                 <th width="10%"><?php echo lang($controller_name.'_fecha'); ?></th>
             </tr>
             <tr id="registrillos">

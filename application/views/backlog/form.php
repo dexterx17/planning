@@ -13,8 +13,23 @@
 		<div id="errors" class="alert-info"></div>
 		<?php echo get_row_form(lang('comun_name'),'nombre',$info['nombre']); ?>
 		<?php echo get_row_form(lang('comun_description'),'descripcion',$info['descripcion']); ?>
+    
+    <!--<div class="form-group">
+        <?php echo form_label(lang('comun_planned_time'),'tiempo_planificado',array('class'=>'control-label col-sm-2')); ?>
+        <div class="col-sm-10">
+          <?php echo form_input(array(
+                  'type'=>'text',
+                 'name'=>"tiempo_planificado",
+                      'id'=>"tiempo_planificado",
+                      'value'=>$info['tiempo_planificado'],
+                      'class'=>'form-control',
+                      'placeholder'=>lang('comun_planned_time'),
+              )); ?>
+        </div>
+      </div>-->
 
 		<?php echo get_row_form(lang('comun_planned_time'),'tiempo_planificado',$info['tiempo_planificado']); ?>
+
     <?php echo get_row_form(lang('comun_real_time'),'tiempo_real',$info['tiempo_real']); ?>
 		<?php echo get_row_form(lang('comun_state'),'estado',$info['estado'],$estados_tarea); ?>
 		
@@ -23,20 +38,24 @@
 		<?php echo form_hidden('proyecto',$proyecto); ?>
 		
 		<div class="box-footer">
-      <div class="btn-group">
-        <?php echo form_input(array(
+      <div class="btn-group btn-group-justified" role="group">
+        <div class="btn-group">
+            <?php echo form_input(array(
                   'type'=>'button',
                   'name'=>'cancelar',
                   'id'=>'cancelar',
                   'value'=>lang('comun_cancel'),
-                  'class'=>'btn'
+                  'class'=>'btn bg-verde-gris-claro'
                   )); ?>
-			<?php echo form_submit(array(
+        </div>
+        <div class="btn-group">
+			     <?php echo form_submit(array(
 								'name'=>'submit',
 								'id'=>'submit',
 								'value'=>lang('comun_submit'),
-								'class'=>'btn'
+								'class'=>'btn bg-verde-gris'
 								));	?>
+          </div>
       </div>
 		</div>
 	</form>
@@ -44,8 +63,13 @@
 
 <script type="text/javascript">
  $(document).ready(function() {
-  $('#tiempo_planificado').spinner();
-  $('#tiempo_real').spinner();
+  $('#tiempo_planificado, #tiempo_real').ionRangeSlider({
+                  type:"single",
+                  grid:true,
+                  values:[0,1,2,3,5,8,13,21,34],
+                  grid_snap:true,
+                  postfix:' horas',
+                });
   var id_actividad = $('#ID').val();
   var title =$('#nombre').val();
   var estado =$('#estado').val();
@@ -65,6 +89,7 @@
   },
   success: function(element) {
    element.closest('.form-group').removeClass('has-error').addClass('has-success');
+   element.closest('.error').remove();
   }, 
   
   submitHandler: function( form ) {

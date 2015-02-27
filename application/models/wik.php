@@ -70,7 +70,7 @@ class Wik extends CI_Model{
 	function get_all(){
 		$res = $this->db->query('select * from '.$this->table_name);
 		
-		return $res;
+		return $res->result_array();
 	}
 	
 		
@@ -81,6 +81,7 @@ class Wik extends CI_Model{
 	 */
 	public function get_with_limits($skip=0,$proyecto){
 		try{
+				$this->db->where('deleted',FALSE);
 				$this->db->where('proyecto',$proyecto);	
 				$this->db->order_by('fecha','asc');
 				$res=  (array)$this->db->get($this->table_name,40,$skip)->result();
@@ -114,7 +115,8 @@ class Wik extends CI_Model{
 	}
 	
 	/**
-	 * Elimina un elemento de la tabla 
+	 * Elimina un elemento logicamente de la tabla 
+	 * Setea el campo 'deleted' = TRUE
 	 * 
 	 * @param integer $id Clave primaria del elemento
 	 *@return boolean Devuelve true o false
@@ -123,7 +125,7 @@ class Wik extends CI_Model{
 		try{
 			
 			$this->db->where('ID',$id);
-			return $this->db->delete($this->table_name);
+			return $this->db->update($this->table_name,array('deleted'=>TRUE));
 			
 			}catch(Exception $e){
 				show_error($e->getMessage().' --- '.$e->getTraceAsString());

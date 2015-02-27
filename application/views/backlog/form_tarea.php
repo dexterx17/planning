@@ -16,21 +16,25 @@
 		<?php echo form_input(array('type'=>'hidden','name'=>'actividad','value'=>$actividad,'id'=>'actividad')); ?>
 		
 		<div class="box-footer">
-			<div class="btn-group">
-				<?php echo form_input(array(
+			<div class="btn-group btn-group-justified" role="group">
+				<div class="btn-group">
+					<?php echo form_input(array(
 									'type'=>'button',
 									'name'=>'cancelar',
 									'id'=>'cancelar',
 									'value'=>lang('comun_cancel'),
-									'class'=>'btn'
+									'class'=>'btn bg-verde-gris-claro'
 									));	?>
-				<?php echo form_submit(array(
+				</div>
+				<div class="btn-group">
+					<?php echo form_submit(array(
 									
 									'name'=>'submit',
 									'id'=>'submit',
 									'value'=>lang('comun_submit'),
-									'class'=>'btn'
+									'class'=>'btn bg-verde-gris'
 									));	?>
+				</div>
 			</div>
 		</div>
 	</form>
@@ -44,8 +48,13 @@ $(document).ready(function() {
 	var id_actividad = $('#actividad').val();
 	var estado = $('#estado').val();
 
-	$('#tiempo_planificado').spinner();
-	$('#tiempo_real').spinner();
+	  $('#tiempo_planificado, #tiempo_real').ionRangeSlider({
+                  type:"single",
+                  grid:true,
+                  values:[0,1,2,3,5,8,13,21],
+                  grid_snap:true,
+                  postfix:' horas',
+                });
 
  $('form#<?php echo $controller_name; ?>-form').validate({
   rules: {
@@ -58,6 +67,7 @@ $(document).ready(function() {
   },
   success: function(element) {
    element.closest('.form-group').removeClass('has-error').addClass('has-success');
+   element.closest('.error').remove();
   }, 
   
   submitHandler: function( form ) {

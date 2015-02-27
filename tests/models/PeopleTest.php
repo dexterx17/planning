@@ -21,7 +21,7 @@ class PeopleTest extends CIUnit_TestCase
 	
 	public function setUp()
 	{
-		parent::tearDown();
+		$this->CI->db->query("set foreign_key_checks=0");
 		parent::setUp();
 		
 		$this->CI->load->model('people');
@@ -30,8 +30,9 @@ class PeopleTest extends CIUnit_TestCase
 
 	public function tearDown()
 	{
+		$this->CI->db->query("set foreign_key_checks=1");
 		parent::tearDown();
-		$this->_pcm->delete_all();
+		//$this->_pcm->delete_all();
 	}
 
 	public function testGetAll()

@@ -363,8 +363,66 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "scriptPLAN.sql",
+			"settings":
+			{
+				"buffer_size": 9395,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/third_party/CIUnit/core/CIU_Loader.php",
+			"settings":
+			{
+				"buffer_size": 14302,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "tests/controllers/SomeControllerTest.php",
+			"settings":
+			{
+				"buffer_size": 453,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 2488 files for \"add_output\"\n\n/var/www/html/planning/phpclass.sublime-classdb:\n 1408  ./application/third_party/CIUnit/core/CIU_Output.php;[16-2];CIU_Output;__construct;();private;\n 1409  ./application/third_party/CIUnit/core/CIU_Output.php;[16-13];CIU_Output;set_cookie;($arr);private;\n 1410: ./application/third_party/CIUnit/core/CIU_Output.php;[16-25];CIU_Output;add_output;($str);private;\n 1411  ./application/third_party/CIUnit/core/CIU_Output.php;[16-36];CIU_Output;pop_output;();private;\n 1412  ./application/third_party/CIUnit/core/CIU_Output.php;[16-48];CIU_Output;set_no_cache_headers;();private;\n\n/var/www/html/planning/application/third_party/CIUnit/core/CIU_Loader.php:\n  428  		$output = $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => TRUE));\n  429  		$CI =& get_instance();\n  430: 		$CI->output->add_output($output);\n  431  	}\n  432  \n\n/var/www/html/planning/application/third_party/CIUnit/core/CIU_Output.php:\n   39  	* Add to instead of replace final output\n   40  	*/\n   41: 	function add_output($str)\n   42  	{\n   43  		$this->final_output .= $str;\n   ..\n  124  		else\n  125  		{\n  126: 			$this->add_output(ob_get_contents());\n  127  			@ob_end_clean();\n  128  		}\n\n/var/www/html/planning/application/third_party/CIUnit/core/phpclass.sublime-classdb:\n    1  ./CIU_Output.php;[16-2];CIU_Output;__construct;();private;\n    2  ./CIU_Output.php;[16-13];CIU_Output;set_cookie;($arr);private;\n    3: ./CIU_Output.php;[16-25];CIU_Output;add_output;($str);private;\n    4  ./CIU_Output.php;[16-36];CIU_Output;pop_output;();private;\n    5  ./CIU_Output.php;[16-48];CIU_Output;set_no_cache_headers;();private;\n\nUnable to open /var/www/html/planning/docs/phpdoc-cache-2e/phpdoc-cache-settings.dat\nUnable to open /var/www/html/planning/docs/phpdoc-cache-cb/phpdoc-cache-file_0aa203bbec41b2f2c12fa0f2f39a6d20.dat\nUnable to open /var/www/html/planning/docs/phpdoc-cache-cb/phpdoc-cache-file_3dce3fcd35be13b12ec6133da3106518.dat\n5 matches across 4 files\n\n\n\nSearching 2488 files for \"output()\"\n\n/var/www/html/planning/application/third_party/CIUnit/core/CIU_Output.php:\n   50  	*\n   51  	*/\n   52: 	function pop_output()\n   53  	{\n   54  		$output = $this->final_output;\n   ..\n  167  \n  168  		// Do we need to write a cache file? Only if the controller does not have its\n  169: 		// own _output() method and we are not dealing with a cache file, which we\n  170  		// can determine by the existence of the $CI object above\n  171  		if ($this->cache_expiration > 0 && isset($CI) && ! method_exists($CI, '_output'))\n  ...\n  269  		// --------------------------------------------------------------------\n  270  \n  271: 		// Does the controller contain a function named _output()?\n  272  		// If so send the output there. Otherwise, echo it.\n  273  		if (method_exists($CI, '_output'))\n\n/var/www/html/planning/application/third_party/CIUnit/libraries/CIUnit.php:\n   25  *\n   26  * created browser output is accessible like so\n   27: * $output = output();\n   28  * this function yields only once and is then reset to an empty string\n   29  *\n   ..\n   66  			//we have nothing to do, return current controller\n   67  			//echo \"current found!\"; die();\n   68: 			output();\n   69  			viewvars();\n   70  			return self::$controller;\n   ..\n  113  		if (isset(self::$controller->output))\n  114  		{\n  115: 			output();\n  116  			viewvars();\n  117  		}\n  ...\n  233  * and resets it\n  234  */\n  235: function output()\n  236  {\n  237: 	return CIUnit::$controller->output->pop_output();\n  238  }\n  239  \n\n/var/www/html/planning/docs/classes/Examples.html:\n  201                              <section class=\"span4\">\n  202                                                                      <a href=\"../classes/Examples.html#method___construct\" class=\"\">__construct()</a><br />\n  203:                                                                     <a href=\"../classes/Examples.html#method__example_output\" class=\"\">_example_output()</a><br />\n  204                                                                      <a href=\"../classes/Examples.html#method_offices\" class=\"\">offices()</a><br />\n  205                                                                      <a href=\"../classes/Examples.html#method_index\" class=\"\">index()</a><br />\n  ...\n  324              <a id=\"method__example_output\" name=\"method__example_output\" class=\"anchor\"></a>\n  325              <article class=\"method\">\n  326:                 <h3 class=\"public \">_example_output()</h3>\n  327                  <a href=\"#source-view\" role=\"button\" class=\"pull-right btn\" data-toggle=\"modal\" style=\"font-size: 1.1em; padding: 9px 14px\"><i class=\"icon-code\"></i></a>\n  328                  <pre class=\"signature\" style=\"margin-right: 54px;\">_example_output( <span class=\"argument\">$output</span>)</pre>\n\nUnable to open /var/www/html/planning/docs/phpdoc-cache-2e/phpdoc-cache-settings.dat\nUnable to open /var/www/html/planning/docs/phpdoc-cache-cb/phpdoc-cache-file_0aa203bbec41b2f2c12fa0f2f39a6d20.dat\nUnable to open /var/www/html/planning/docs/phpdoc-cache-cb/phpdoc-cache-file_3dce3fcd35be13b12ec6133da3106518.dat\n/var/www/html/planning/node_modules/grunt-phpdocumentor/bin/phpDocumentor.phar:\n    <binary>\n\n/var/www/html/planning/node_modules/grunt-phpdocumentor/test/fixtures/phpDocumentor.phar:\n    <binary>\n\n/var/www/html/planning/system/core/Output.php:\n  120  	 * @return	string\n  121  	 */\n  122: 	function get_output()\n  123  	{\n  124  		return $this->final_output;\n  ...\n  346  \n  347  		// Do we need to write a cache file?  Only if the controller does not have its\n  348: 		// own _output() method and we are not dealing with a cache file, which we\n  349  		// can determine by the existence of the $CI object above\n  350  		if ($this->cache_expiration > 0 && isset($CI) && ! method_exists($CI, '_output'))\n  ...\n  435  		// --------------------------------------------------------------------\n  436  \n  437: 		// Does the controller contain a function named _output()?\n  438  		// If so send the output there.  Otherwise, echo it.\n  439  		if (method_exists($CI, '_output'))\n\n/var/www/html/planning/tests/controllers/SomeControllerTest.php:\n   19  		\n   20  		// Fetch the buffered output\n   21: 		$out = output();\n   22  		\n   23  		// Check if the content is OK\n\n240 matches across 7 files\n",
+			"settings":
+			{
+				"buffer_size": 6342,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "application/third_party/CIUnit/libraries/CIUnit.php",
+			"settings":
+			{
+				"buffer_size": 6250,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/errors/error_db.php",
+			"settings":
+			{
+				"buffer_size": 1156,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/third_party/CIUnit/core/CIU_Output.php",
+			"settings":
+			{
+				"buffer_size": 7254,
+				"line_ending": "Unix"
+			}
+		}
 	],
-	"build_system": "",
+	"build_system": "Packages/User/firefox.sublime-build",
 	"command_palette":
 	{
 		"height": 392.0,
@@ -467,12 +525,20 @@
 	"expanded_folders":
 	[
 		"/var/www/html/planning",
-		"/var/www/html/planning/application/config/testing",
-		"/var/www/html/planning/tests/fixtures",
-		"/var/www/html/planning/tests/models"
+		"/var/www/html/planning/application",
+		"/var/www/html/planning/application/controllers",
+		"/var/www/html/planning/application/third_party",
+		"/var/www/html/planning/application/third_party/CIUnit",
+		"/var/www/html/planning/application/third_party/CIUnit/core",
+		"/var/www/html/planning/tests",
+		"/var/www/html/planning/tests/controllers"
 	],
 	"file_history":
 	[
+		"/var/www/html/planning/application/third_party/CIUnit/core/CodeIgniter.php",
+		"/var/www/html/planning/tests/fixtures/people_fixt.yml",
+		"/var/www/html/planning/application/third_party/CIUnit/libraries/CIUnitTestCase.php",
+		"/home/dexter/.config/sublime-text-3/Packages/User/firefox.sublime-build",
 		"/var/www/html/planning/.gitignore",
 		"/var/www/html/planning/tests/models/PeopleTest.php",
 		"/var/www/html/planning/tests/models/ActividadTest.php",
@@ -596,11 +662,7 @@
 		"/var/www/html/planning/application/config/conf/.htaccess",
 		"/var/www/html/planning/application/views/sprints/view.php",
 		"/var/www/html/planning/js/src/jquery-ui.js",
-		"/var/www/html/planning/system/database/DB_result.php",
-		"/var/www/html/planning/js/plugins/datepicker/bootstrap-datepicker.js",
-		"/var/www/html/planning/js/AdminLTE/dashboard.js",
-		"/var/www/html/planning/js/plugins/bootstrap-slider/bootstrap-slider.js",
-		"/var/www/html/planning/planning.sublime-project"
+		"/var/www/html/planning/system/database/DB_result.php"
 	],
 	"find":
 	{
@@ -619,6 +681,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"output()",
+			"add_output",
+			"output",
+			"PHPUnit_Framework_TestCase",
 			"update_id",
 			"insert_id",
 			"();\n",
@@ -760,8 +826,741 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "scriptPLAN.sql",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9395,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								276,
+								276
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/SQL/SQL.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/third_party/CIUnit/core/CIU_Loader.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14302,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11900,
+								11900
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5993.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "tests/controllers/SomeControllerTest.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 453,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6342,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										375,
+										385
+									],
+									[
+										881,
+										891
+									],
+									[
+										1073,
+										1083
+									],
+									[
+										1186,
+										1196
+									],
+									[
+										1520,
+										1530
+									],
+									[
+										2185,
+										2193
+									],
+									[
+										2362,
+										2370
+									],
+									[
+										2740,
+										2748
+									],
+									[
+										3014,
+										3022
+									],
+									[
+										3229,
+										3237
+									],
+									[
+										3371,
+										3379
+									],
+									[
+										3469,
+										3477
+									],
+									[
+										3535,
+										3543
+									],
+									[
+										3986,
+										3994
+									],
+									[
+										4511,
+										4519
+									],
+									[
+										5456,
+										5464
+									],
+									[
+										5631,
+										5639
+									],
+									[
+										6009,
+										6017
+									],
+									[
+										6255,
+										6263
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								3471,
+								3471
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"detect_indentation": false,
+							"incomplete_sync": null,
+							"line_numbers": false,
+							"output_tag": 2,
+							"remote_loading": false,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"synced": false,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 840.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "application/third_party/CIUnit/libraries/CIUnit.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6250,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5792,
+								5792
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3268.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "application/errors/error_db.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1156,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1156,
+								1156
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 563.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "application/third_party/CIUnit/core/CIU_Output.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7254,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7254,
+								7254
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 467.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
 			]
 		}
 	],

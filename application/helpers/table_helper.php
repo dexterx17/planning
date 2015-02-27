@@ -53,7 +53,7 @@ function get_row_form($caption,$id,$value,$opciones="") {
                                         'placeholder'=>$caption
                                         ));
         }else{
-            $default_row .= form_dropdown("$id",$opciones,$value,'id="'.$id.'"');
+            $default_row .= form_dropdown("$id",$opciones,$value,'id="'.$id.'" class="form-control"');
         }
     $default_row .= '</div>';    
 	$default_row .= '</div>';
