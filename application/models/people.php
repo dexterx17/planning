@@ -35,6 +35,7 @@ class People extends CI_Model{
 	 * @param integer $id Clave primaria del elemento
 	 */
 	function get_info($id){
+		$this->db->select('id, username, email, first_name, last_name, company, phone, imagen');
 		$this->db->where('ID',$id);
 		$query=  $this->db->get($this->table_name);
 		

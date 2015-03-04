@@ -21,10 +21,15 @@
 					<small><?php echo $info['descripcion']; ?></small>
 					<div class="row">
 						<div class="col-sm-6">
-							<?php echo lang('comun_owner'); ?>
+							<?php echo lang('comun_team'); ?>
 						</div>
 						<div class="col-sm-6">
-							<?php echo user_miniblock($info['owner']); ?>
+							<?php 
+								foreach ($info['team'] as $key => $value) {
+									
+									echo user_miniblock($value['miembro']); 
+								}
+							?>
 						</div>
 					</div>
 					<div class="row">

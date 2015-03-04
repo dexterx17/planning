@@ -83,7 +83,15 @@ class Proyecto extends CI_Model{
 	 */
 	public function get_where_in($ids,$skip=0){
 			$this->db->where_in('ID',$ids);
-			return  $this->db->get($this->table_name,10,$skip)->result_array();
+
+			$res = (array)$this->db->get($this->table_name,10,$skip)->result_array();
+			$resultado=array();
+			foreach ($res as $key => $value) {
+				$aux=(array)$value;
+				$resultado[$key]=(array)$value;
+				$resultado[$key]['team']=$this->team->get_involved_people_ids($aux['ID']);
+			}
+			return $resultado;
 	}
 
 	/**

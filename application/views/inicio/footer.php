@@ -3,8 +3,13 @@
             <blockquote class="pull-right">
                 <p>Si tuviera 9 horas para cortar un árbol, le dedicaría 6 horas a afilar mi hacha</p>
                 <small> Abraham Lincoln</small>
-                </blockquote>
-    		</div>
+            </blockquote>
+            <blockquote class="pull-right">
+                <p>Es de locos pensar obtener resultados diferentes, haciendo siempre lo mismo!</p>
+                <small> Albert Einstein</small>
+            </blockquote>
+            </div>
+                
     		<div class="text-center">
     			Copyright © 2014 
     		</div>

@@ -84,20 +84,19 @@ class Team extends CI_Model{
 		return $res;
 	}
 	
-		
 	/**
 	 * Devuelve un array  de 10 elementos
 	 * @param integer $skip Número desde el cual se cuentan los 10 elementos
 	 * @param integer $proyecto Clave primaria del proyecto
 	 */
 	public function get_with_limits($skip=0,$proyecto){
-		try{
-				$this->db->where('proyecto',$proyecto);	
-				return $this->db->get($this->table_name,20,$skip)->result_array();
-			}catch(Exception $e){
-				show_error($e->getMessage().' --- '.$e->getTraceAsString());
-				return null;
-			} 
+		$this->db->where('proyecto',$proyecto);	
+		$res = (array)$this->db->get($this->table_name,20,$skip)->result_array();
+		$resultado=array();
+		foreach ($res as $key => $value) {
+			$resultado[$key]=$this->people->get_info($value['miembro']);
+		}
+		return $resultado;
 	}
 	
 	/**

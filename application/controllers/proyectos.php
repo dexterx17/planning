@@ -21,30 +21,22 @@ class Proyectos extends MY_Controller {
 	 */
 	public function index()
 	{
+		$data['controller_name'] = "proyectos";
 		
-		try{
-			
-			$data['controller_name'] = "proyectos";
-			
-			$ultimo = $this->input->post('ultimo_id');
-			if($ultimo)
-			{
-	            $nuevos_datos = $this->proyecto->get_with_limits($ultimo);
-	            if($nuevos_datos){      
-		            foreach ($nuevos_datos as $fila) {
-		            		$this->get_block();
-		            		//get_row_proyecto($fila,$data['items']);
-			            }
-			         }
-		    }	else{
-				$ids = $this->people->get_involved_projects($this->user->id);
-				$data['items']=$this->proyecto->get_where_in($ids,0);
-				$this->load->view('proyectos/manage',$data);
-			}
-		  
-			
-		}catch(Exception $e){
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		$ultimo = $this->input->post('ultimo_id');
+		if($ultimo)
+		{
+            $nuevos_datos = $this->proyecto->get_with_limits($ultimo);
+            if($nuevos_datos){      
+	            foreach ($nuevos_datos as $fila) {
+	            		$this->get_block();
+	            		//get_row_proyecto($fila,$data['items']);
+		            }
+		         }
+	    }	else{
+			$ids = $this->people->get_involved_projects($this->user->id);
+			$data['items']=$this->proyecto->get_where_in($ids,0);
+			$this->load->view('proyectos/manage',$data);
 		}
 	}
 	
@@ -54,13 +46,9 @@ class Proyectos extends MY_Controller {
 	 */
 	public function get_row($clave=-1)
 	{
-		try{
-			$data['controller_name'] = "proyectos";
-			$data['info']=(array)$this->proyecto->get_info($clave);
-			$this->load->view('proyectos/block',$data);
-		}catch(Exception $e){
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
+		$data['controller_name'] = "proyectos";
+		$data['info']=(array)$this->proyecto->get_info($clave);
+		$this->load->view('proyectos/block',$data);
 	}
 	/**
 	 * Muestra un formulario que permite ingresar y modificar los datos de un proyecto
@@ -69,13 +57,9 @@ class Proyectos extends MY_Controller {
 	 */
 	public function nuevo($clave=-1)
 	{
-		try{
-			$data['controller_name'] = "proyectos";
-			$data['info']=(array)$this->proyecto->get_info($clave);
-			$this->load->view('proyectos/form',$data);
-		}catch(Exception $e){
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
+		$data['controller_name'] = "proyectos";
+		$data['info']=(array)$this->proyecto->get_info($clave);
+		$this->load->view('proyectos/form',$data);
 	}
 	
 	/**
@@ -85,13 +69,9 @@ class Proyectos extends MY_Controller {
 	 */
 	public function view($clave=-1)
 	{
-		try{
-			$data['controller_name'] = "proyectos";
-			$data['info']=(array)$this->proyecto->get_info($clave);
-			$this->load->view('proyectos/view',$data);
-		}catch(Exception $e){
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
+		$data['controller_name'] = "proyectos";
+		$data['info']=(array)$this->proyecto->get_info($clave);
+		$this->load->view('proyectos/view',$data);
 	}
 	
 	/**
@@ -99,43 +79,38 @@ class Proyectos extends MY_Controller {
 	*/
 	public function save()
 	{
-		try{
-			$ID = $this->input->post('ID')==''? -1 :$this->input->post('ID');
-			$this->form_validation->set_rules('nombre',lang('comun_name'),'trim|required');
-			if($ID==-1){
-				$this->form_validation->set_rules('nick',lang('comun_nick'),'trim|required|min_length[4]|max_length[50]|is_unique[proyectos.nick]'); 
-			}else{
-				$this->form_validation->set_rules('nick',lang('comun_nick'),'trim|required|min_length[4]|max_length[50]'); 
-			}
-			if($this->form_validation->run()==TRUE){
-				
-				$data=array(
-					'nick'=>$this->input->post('nick'),
-					'nombre'=>$this->input->post('nombre'),
-					'descripcion'=>$this->input->post('descripcion'),
-					'fecha_inicio'=>$this->input->post('fecha_inicio'),
-					'fecha_fin'=>$this->input->post('fecha_fin'),
-					'presupuesto'=>$this->input->post('presupuesto'),
-					'visibilidad'=>$this->input->post('visibilidad')
-					);
-				//Si recien creo el proyecto le agrego el ID del usuario creador
-				if($ID==-1){
-					$data['owner']=$this->user->id;
-				}
-				$resultado= $this->proyecto->save($ID,$data);
-				if(!$resultado['error']){
-					echo json_encode(array('error'=>false,'message'=>'TODO BIEN','proyecto_id'=>$resultado['ID']));
-				}else{
-					echo json_encode(array('error'=>true,'message'=>$resultado['msg']));
-				}				
-				
-			}else{
-				$error = validation_errors();
-				echo json_encode(array('error'=>true,'message'=> "$error" ) );
-			}
+		$ID = $this->input->post('ID')==''? -1 :$this->input->post('ID');
+		$this->form_validation->set_rules('nombre',lang('comun_name'),'trim|required');
+		if($ID==-1){
+			$this->form_validation->set_rules('nick',lang('comun_nick'),'trim|required|min_length[4]|max_length[50]|is_unique[proyectos.nick]'); 
+		}else{
+			$this->form_validation->set_rules('nick',lang('comun_nick'),'trim|required|min_length[4]|max_length[50]'); 
+		}
+		if($this->form_validation->run()==TRUE){
 			
-		}catch(Exception $e){
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+			$data=array(
+				'nick'=>$this->input->post('nick'),
+				'nombre'=>$this->input->post('nombre'),
+				'descripcion'=>$this->input->post('descripcion'),
+				'fecha_inicio'=>$this->input->post('fecha_inicio'),
+				'fecha_fin'=>$this->input->post('fecha_fin'),
+				'presupuesto'=>$this->input->post('presupuesto'),
+				'visibilidad'=>$this->input->post('visibilidad')
+				);
+			//Si recien creo el proyecto le agrego el ID del usuario creador
+			if($ID==-1){
+				$data['owner']=$this->user->id;
+			}
+			$resultado= $this->proyecto->save($ID,$data);
+			if(!$resultado['error']){
+				echo json_encode(array('error'=>false,'message'=>'TODO BIEN','proyecto_id'=>$resultado['ID']));
+			}else{
+				echo json_encode(array('error'=>true,'message'=>$resultado['msg']));
+			}				
+			
+		}else{
+			$error = validation_errors();
+			echo json_encode(array('error'=>true,'message'=> "$error" ) );
 		}
 	}
 

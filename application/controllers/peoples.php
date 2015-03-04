@@ -22,32 +22,22 @@ class Peoples extends MY_Controller {
      * @param integer $proyecto Clave primaria del proyecto
      */
     public function index($proyecto) {
-        try {
+        $this->data['proyecto'] = $proyecto;
+        $ultimo = $this->input->post('ultimo_id');
 
-            $this->data['proyecto'] = $proyecto;
-            $ultimo = $this->input->post('ultimo_id');
-
-            if ($ultimo) {
-                $nuevos_datos = $this->people->get_with_limits(0);
-                if ($nuevos_datos) {
-                    foreach ($nuevos_datos as $fila) {
-                        get_row_people($fila, $this->data['items']);
-                    }
+        if ($ultimo) {
+            $nuevos_datos = $this->people->get_with_limits(0);
+            if ($nuevos_datos) {
+                foreach ($nuevos_datos as $fila) {
+                    get_row_people($fila, $this->data['items']);
                 }
-            } else {
-                $this->data['people']=$this->people->get_for_project($proyecto);
-
-                $team=$this->team->get_with_limits(0,$proyecto);
-                $person = array();
-                foreach ($team as $key => $value) {
-                	$person[$key]=$this->people->get_info($value['miembro']);
-                }
-                $this->data['team']=$person;
-
-                $this->load->view('people/manager', $this->data);
             }
-        } catch (Exception $e) {
-            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
+        } else {
+            $this->data['people']=$this->people->get_for_project($proyecto);
+
+            $this->data['team']=$this->team->get_with_limits(0,$proyecto);
+
+            $this->load->view('people/manager', $this->data);
         }
     }
 

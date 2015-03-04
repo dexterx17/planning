@@ -7,7 +7,11 @@
 	</div>
 	<form role="form" class="form-horizontal" action="<?php echo site_url($controller_name.'/save') ?>" method="post" id="<?php echo $controller_name; ?>-form">
 		<div class="box-body">
-			<div id="errors" class="alert-info"></div>
+			<div id="errors" class="alert alert-info alert-dismissable">
+                <i class="fa fa-warning"></i>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <span></span>
+			</div>
 			<div class="form-group">
 				<?php echo form_label(lang('comun_nick'),'nick',array('class'=>'control-label col-sm-2')); ?>
 				<div class="col-sm-10">
@@ -69,6 +73,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+	$('#errors').hide();
 	$('#nick').focus();
  var id_proyecto = $('#ID').val();
  $('#<?php echo $controller_name; ?>-form').validate({
@@ -97,18 +102,30 @@ $(document).ready(function() {
             data : $('#<?php echo $controller_name; ?>-form').serialize(),
             type: "POST",
             dataType: 'json',
+            beforeSend:function(){
+            	$('#submit').addClass('disabled');
+            	$('#submit').val('Procesando...');
+            },
             success : function(data){
-            if(!data.error){
-             $("#<?php echo $controller_name; ?>-form").parent('.box').fadeOut('slow').remove();
-            	if(id_proyecto===""){
-			 		$.get('<?php echo site_url($controller_name);?>/get_row/'+data.proyecto_id, function(data) {
-					    $('#proyectillos+ ul.proyectos').prepend(data);
-					});
-			 	}else{
-			 		$('#proyecto'+id_proyecto).load('<?php echo site_url($controller_name);?>/get_row/'+id_proyecto);
-			 	}
-            }else
-            	$('#errors').html(data.message);	
+	            if(!data.error){
+	             $("#<?php echo $controller_name; ?>-form").parent('.box').fadeOut('slow').remove();
+	            	if(id_proyecto===""){
+				 		$.get('<?php echo site_url($controller_name);?>/get_row/'+data.proyecto_id, function(data) {
+						    $('#proyectillos+ ul.proyectos').prepend(data);
+						});
+				 	}else{
+				 		$('#proyecto'+id_proyecto).load('<?php echo site_url($controller_name);?>/get_row/'+id_proyecto);
+				 	}
+	            }else{
+	            	$('#errors').fadeIn('slow');
+	            	$('#errors span').html(data.message);	
+	            	$('#submit').val('Guardar');
+	            	$('#submit').removeClass('disabled');
+	            }
+            },
+            error:function(jqXHR,textStatus,errorThrown){
+            	$('#errors').fadeIn('slow');
+            	$('#errors span').html(jqXHR.status+' '+textStatus);
             }
         })
         return false;

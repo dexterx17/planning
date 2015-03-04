@@ -5,13 +5,12 @@
 			<small><?php echo lang($controller_name.'_description'); ?></small>
 		</h3>
 	</div>
-	<div id="results" style="display: none">
-		<div id="messages">
-			
-		</div>
-	</div>
 	<form class="form-horizontal" role="form" action="<?php echo site_url('kanbans/save_column') ?>" method="post" id="column-form">
-		<div id="errors" class="alert-info"></div>
+		<div id="errors" class="alert alert-info alert-dismissable">
+        <i class="fa fa-warning"></i>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <span></span>
+    </div>
 		<?php echo get_row_form(lang('comun_name'),'nombre',$info['nombre']); ?>
 		<?php echo get_row_form(lang('comun_description'),'descripcion',$info['descripcion']); ?>
 
@@ -20,20 +19,25 @@
 		<?php echo form_hidden('proyecto',$proyecto); ?>
 		
 		<div class="box-footer">
-      <div class="btn-group">
+     <div class="btn-group btn-group-justified" role="group">
+              <div class="btn-group">
         <?php echo form_input(array(
                   'type'=>'button',
                   'name'=>'cancelar',
                   'id'=>'cancelar',
                   'value'=>lang('comun_cancel'),
-                  'class'=>'btn'
+                  'class'=>'btn bg-verde-gris-claro'
                   )); ?>
+                  </div>
+              <div class="btn-group">
 			<?php echo form_submit(array(
 								'name'=>'submit',
 								'id'=>'submit',
 								'value'=>lang('comun_submit'),
-								'class'=>'btn'
+								'class'=>'btn bg-verde-gris'
 								));	?>
+                </div>
+
       </div>
 		</div>
 	</form>
@@ -41,6 +45,8 @@
 </td>
 <script type="text/javascript">
  $(document).ready(function() {
+  $('#errors').hide();
+  $('#nombre').focus();
   var id_columna = $('#ID').val();
  $('#column-form').validate({
   rules: {
@@ -68,20 +74,32 @@
             data : $('#column-form').serialize(),
             type: "POST",
             dataType: 'json',
+            beforeSend:function(){
+              $('#submit').addClass('disabled');
+              $('#submit').val('Procesando...');
+            },
             success : function(data){
-            if(!data.error){
-             $("#column-form").parent('.box').fadeOut('slow').remove();
-             if(id_columna===""){
-                $.get('<?php echo site_url("kanbans");?>/get_column_row/'+data.columna_id, function(data) {
-                  $('.tabla-columnas').append($(data));
+              if(!data.error){
+               $("#column-form").parent('.box').fadeOut('slow').remove();
+               if(id_columna===""){
+                  $.get('<?php echo site_url("kanbans");?>/get_column_row/'+data.columna_id, function(data) {
+                    $('.tabla-columnas').append($(data));
+                  });
+               }else{
+                  $.get('<?php echo site_url("kanbans");?>/get_column_row/'+id_columna, function(data) {
+                    $('#columna'+id_columna).replaceWith(data);
                 });
-             }else{
-                $.get('<?php echo site_url("kanbans");?>/get_column_row/'+id_columna, function(data) {
-                  $('#columna'+id_columna).replaceWith(data);
-              });
-             }
-            }else
-             $('#errors').html(data.message);	
+               }
+              }else{
+                $('#errors').fadeIn('slow');
+                $('#errors span').html(data.message); 
+                $('#submit').val('Guardar');
+                $('#submit').removeClass('disabled');
+              }
+            },
+            error:function(jqXHR,textStatus,errorThrown){
+              $('#errors').fadeIn('slow');
+              $('#errors span').html(jqXHR.status+' '+textStatus);
             }
         })
         return false;

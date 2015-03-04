@@ -6,5 +6,5 @@
 |--------------------------------------------------------------------------
 *
 */
-$config['projects_visivility']=array('1'=>'Privado','2'=>'Público','3'=>'Personalizado');
+$config['projects_visivility']=array(1=>'Privado',2=>'Público',3=>'Personalizado');
 $config['test']="tested";

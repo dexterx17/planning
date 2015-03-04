@@ -4,13 +4,12 @@
 			<small><?php echo lang($controller_name.'_description'); ?></small>
 		</h3>
 	</div>
-	<div id="results" style="display: none">
-		<div id="messages">
-			
-		</div>
-	</div>
 	<form class="form-horizontal" role="form" action="<?php echo site_url('actividades/save') ?>" method="post" id="<?php echo $controller_name; ?>-form">
-		<div id="errors" class="alert-info"></div>
+		<div id="errors" class="alert alert-info alert-dismissable">
+                <i class="fa fa-warning"></i>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <span></span>
+      </div>
 		<?php echo get_row_form(lang('comun_name'),'nombre',$info['nombre']); ?>
 		<?php echo get_row_form(lang('comun_description'),'descripcion',$info['descripcion']); ?>
     
@@ -63,6 +62,8 @@
 
 <script type="text/javascript">
  $(document).ready(function() {
+  $('#errors').hide();
+  $('#nombre').focus();
   $('#tiempo_planificado, #tiempo_real').ionRangeSlider({
                   type:"single",
                   grid:true,
@@ -100,22 +101,34 @@
             data : $('#<?php echo $controller_name; ?>-form').serialize(),
             type: "POST",
             dataType: 'json',
+            beforeSend:function(){
+              $('#submit').addClass('disabled');
+              $('#submit').val('Procesando...');
+            },
             success : function(data){
-            if(!data.error){
-             $("#<?php echo $controller_name; ?>-form").parent('.box').fadeOut('slow').remove();
-             if(id_actividad===""){
-                $.get('<?php echo site_url($controller_name);?>/get_row/'+data.actividad_id, function(data) {
-                  $('#backlog-content').prepend($(data));
-                });
-             }else{
-                $('#actividadbody'+id_actividad).load('<?php echo site_url($controller_name);?>/get_detail_row/'+id_actividad, function(data) {
-                $('#actividad'+id_actividad+' .activity_title').html(title);
-                $('#actividad'+id_actividad).attr('status',estado); 
-                 reload_status_actividades({ids_especificos:[id_actividad]});
-                });
-             }
-            }else
-             $('#errors').html(data.message);	
+              if(!data.error){
+               $("#<?php echo $controller_name; ?>-form").parent('.box').fadeOut('slow').remove();
+               if(id_actividad===""){
+                  $.get('<?php echo site_url($controller_name);?>/get_row/'+data.actividad_id, function(data) {
+                    $('#backlog-content').prepend($(data));
+                  });
+               }else{
+                  $('#actividadbody'+id_actividad).load('<?php echo site_url($controller_name);?>/get_detail_row/'+id_actividad, function(data) {
+                  $('#actividad'+id_actividad+' .activity_title').html(title);
+                  $('#actividad'+id_actividad).attr('status',estado); 
+                   reload_status_actividades({ids_especificos:[id_actividad]});
+                  });
+               }
+              }else{
+                $('#errors').fadeIn('slow');
+                $('#errors span').html(data.message); 
+                $('#submit').val('Guardar');
+                $('#submit').removeClass('disabled');
+              }
+            },
+            error:function(jqXHR,textStatus,errorThrown){
+              $('#errors').fadeIn('slow');
+              $('#errors span').html(jqXHR.status+' '+textStatus);
             }
         })
         return false;

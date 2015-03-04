@@ -208,19 +208,18 @@
 									<span>Inicio</span>
 								</a>
 							</li>
-							<li class="treeview">
-								<a href="#">
+							<li>
+								<a href="<?php echo site_url('proyectos'); ?>">
 									<i class="fa fa-suitcase"></i>
 									<span>Proyectos</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
 								</a>
-								<ul class="treeview-menu">
+								<!--<ul class="treeview-menu">
                                 <?php foreach (get_proyectos($this->user->id) as $key => $proyecto) { ?>
 									<li>
 										<a href="<?php echo site_url('proyectos/view')."/".$proyecto['ID']; ?>"><i class="fa fa-lg fa-fw fa-suitcase"></i><?php echo $proyecto['nick']; ?></a>
 									</li>
                                     <?php } ?>
-								</ul>
+								</ul>-->
 							</li>
 							<?php if($this->ion_auth->is_admin()){ ?>
                             <li class="treeview">
