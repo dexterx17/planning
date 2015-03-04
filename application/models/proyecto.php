@@ -53,7 +53,9 @@ class Proyecto extends CI_Model{
 		$query=  $this->db->get($this->table_name);
 		
 		if ($query->num_rows() == 1) {
-			return $query->row();
+			$res= (array)$query->row();
+			$res['team']=$this->team->get_involved_people_ids($res['ID']);
+			return $res;
 		} else {
 			//Get empty base parent object, as $item_id is NOT an item
 			$info_obj =  array();
